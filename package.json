@@ -1,4 +1,8 @@
 {
+    "name": "school-erp",
+    "version": "1.0.0",
+    "description": "A Multi-tenant ERP using Laravel and Vuejs.",
+    "author": "Adegbenga A. Adeye <adegbenga.adeye@outlook.com>",
     "private": true,
     "scripts": {
         "dev": "npm run development",
@@ -9,6 +13,27 @@
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
     },
+    "dependencies": {
+        "@fortawesome/fontawesome-svg-core": "^1.2.4",
+        "@fortawesome/free-brands-svg-icons": "^5.3.1",
+        "@fortawesome/free-regular-svg-icons": "^5.3.1",
+        "@fortawesome/free-solid-svg-icons": "^5.3.1",
+        "@fortawesome/vue-fontawesome": "^0.1.1",
+        "chart.js": "^2.7.2",
+        "font-awesome": "^4.7.0",
+        "i": "^0.3.6",
+        "lodash.truncate": "^4.4.2",
+        "npm": "^6.4.1",
+        "nprogress": "^0.2.0",
+        "popper.js": "^1.14.3",
+        "vee-validate": "^2.0.9",
+        "vue": "^2.5.17",
+        "vue-ladda": "0.0.13",
+        "vue-resource": "^1.5.1",
+        "vue-router": "^3.0.1",
+        "vuetify": "^1.2.1",
+        "vuex": "^3.0.1"
+    },
     "devDependencies": {
         "axios": "^0.18",
         "babel-preset-stage-3": "^6.24.1",
@@ -16,26 +41,38 @@
         "browser-sync": "^2.24.7",
         "browser-sync-webpack-plugin": "2.0.1",
         "cross-env": "^5.1",
+        "css-loader": "^0.28.11",
         "jquery": "^3.3.1",
         "laravel-mix": "^2.1.14",
         "lodash": "^4.17.5",
-        "popper": "^1.0.1"
+        "popper": "^1.0.1",
+        "style-loader": "^0.23.0",
+        "stylus": "^0.54.5",
+        "stylus-loader": "^3.0.2",
+        "vue-style-loader": "^3.1.2",
+        "autoprefixer": "^7.1.2",
+        "babel-core": "^6.26.3",
+        "babel-eslint": "^8.2.3",
+        "babel-helper-vue-jsx-merge-props": "^2.0.3",
+        "babel-jest": "^21.0.2",
+        "babel-loader": "^7.1.4",
+        "babel-plugin-dynamic-import-node": "^1.2.0",
+        "babel-plugin-syntax-dynamic-import": "^6.18.0",
+        "babel-plugin-syntax-jsx": "^6.18.0",
+        "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
+        "babel-plugin-transform-runtime": "^6.22.0",
+        "babel-plugin-transform-vue-jsx": "^3.7.0",
+        "babel-preset-env": "^1.7.0",
+        "babel-preset-stage-2": "^6.22.0",
+        "babel-register": "^6.22.0"
     },
-    "dependencies": {
-        "@fortawesome/fontawesome-svg-core": "^1.2.2",
-        "@fortawesome/free-brands-svg-icons": "^5.2.0",
-        "@fortawesome/free-regular-svg-icons": "^5.2.0",
-        "@fortawesome/free-solid-svg-icons": "^5.2.0",
-        "@fortawesome/vue-fontawesome": "^0.1.1",
-        "chart.js": "^2.7.2",
-        "i": "^0.3.6",
-        "npm": "^6.3.0",
-        "popper.js": "^1.14.3",
-        "vue": "^2.5.7",
-        "vue-ladda": "0.0.13",
-        "vue-resource": "^1.5.1",
-        "vue-router": "^3.0.1",
-        "vuetify": "^1.2.1",
-        "vuex": "^3.0.1"
-    }
+    "engines": {
+        "node": ">= 6.0.0",
+        "npm": ">= 3.0.0"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not ie <= 8"
+    ]
 }
