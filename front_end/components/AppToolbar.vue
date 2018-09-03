@@ -19,7 +19,7 @@
       <v-spacer></v-spacer>
       <v-btn href="mailto:wangqiangshen@gmail.com">
         Hire Me
-      </v-btn>      
+      </v-btn>
       <v-btn icon href="https://github.com/tookit/vue-material-admin">
         <v-icon>fa fa-github</v-icon>
       </v-btn>
@@ -55,8 +55,8 @@
   </v-toolbar>
 </template>
 <script>
-import NotificationList from '@/components/widgets/list/NotificationList';
-import Util from '@/util';
+import NotificationList from '../components/widgets/list/NotificationList';
+import Util from '../util';
 export default {
   name: 'app-toolbar',
   components: {

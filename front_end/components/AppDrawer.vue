@@ -12,7 +12,7 @@
       <img v-bind:src="computeLogo" height="36" alt="Vue Material Admin Template">
       <v-toolbar-title class="ml-0 pl-3">
         <span class="hidden-sm-and-down">Vue Material</span>
-      </v-toolbar-title>        
+      </v-toolbar-title>
     </v-toolbar>
     <vue-perfect-scrollbar class="drawer-menu--scroll" :settings="scrollSettings">
       <v-list dense expand>
@@ -67,12 +67,12 @@
               <!-- <v-circle class="caption blue lighten-2 white--text mx-0" v-else-if="item.chip" label="label" small="small">{{ item.chip }}</v-circle> -->
             </v-list-tile>
         </template>
-      </v-list>        
-    </vue-perfect-scrollbar>        
+      </v-list>
+    </vue-perfect-scrollbar>
   </v-navigation-drawer>
 </template>
 <script>
-import menu from '@/api/menu';
+import menu from '../api/menu';
 import VuePerfectScrollbar from 'vue-perfect-scrollbar';
 export default {
   name: 'app-drawer',
@@ -91,7 +91,7 @@ export default {
     menus: menu,
     scrollSettings: {
       maxScrollbarLength: 160
-    }    
+    }
   }),
   computed: {
     computeGroupActive () {
@@ -103,14 +103,14 @@ export default {
 
     sideToolbarColor () {
       return this.$vuetify.options.extra.sideNav;
-    }    
+    }
   },
   created () {
     window.getApp.$on('APP_DRAWER_TOGGLED', () => {
       this.drawer = (!this.drawer);
     });
   },
-  
+
 
   methods: {
     genChildTarget (item, subItem) {

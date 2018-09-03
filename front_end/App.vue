@@ -57,21 +57,21 @@
   </div>
 </template>
 <script>
-// import AppDrawer from '../components/AppDrawer';
-// import AppToolbar from '../components/AppToolbar';
+//import AppDrawer from './components/AppDrawer';
+//import AppToolbar from './components/AppToolbar';
 // import AppFab from '../components/AppFab';
 // import PageHeader from '../components/PageHeader';
 // import menu from '../api/menu';
 // import ThemeSettings from '../components/ThemeSettings';
 // import AppEvents from  './event';
 export default {
-//   components: {
-//     AppDrawer,
-//     AppToolbar,
+   components: {
+        // AppDrawer,
+        // AppToolbar,
 //     AppFab,
 //     PageHeader,
 //     ThemeSettings
-//   },
+   },
   data: () => ({
     expanded: true,
     rightDrawer: false,
