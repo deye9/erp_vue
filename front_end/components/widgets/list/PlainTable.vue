@@ -42,7 +42,7 @@
 </template>
 
 <script>
-import { Projects } from '@/api/project';
+import { Projects } from '../../../api/project';
 export default {
   data () {
     return {

@@ -7,7 +7,7 @@
       </v-avatar>
       <v-toolbar-title class="ml-0 pl-3">
         <span class="hidden-sm-and-down">Mail</span>
-      </v-toolbar-title>        
+      </v-toolbar-title>
       <v-spacer></v-spacer>
       <v-text-field
         flat
@@ -37,7 +37,7 @@
           </v-list-tile>
         </v-list>
       </v-menu>
-    </v-toolbar>    
+    </v-toolbar>
     <v-navigation-drawer
       class="mail-drawer"
       fixed
@@ -88,7 +88,7 @@
 </template>
 
 <script>
-import { MailMenu } from '@/api/mail';
+import { MailMenu } from '../../api/mail';
 import Compose from './Compose';
 export default {
   components: {

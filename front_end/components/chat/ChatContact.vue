@@ -18,7 +18,7 @@
           <v-flex sm12 v-if="showWindow">
             <chat-contact-profile></chat-contact-profile>
           </v-flex>
-        </v-layout>        
+        </v-layout>
       </template>
     </v-container>
 </template>
@@ -42,8 +42,7 @@ export default {
     },
     showWindow () {
       return this.$route.params.uuid !== undefined;
-    },    
+    },
   },
 };
 </script>
-

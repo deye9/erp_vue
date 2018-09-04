@@ -57,6 +57,7 @@
 <script>
 import NotificationList from '../components/widgets/list/NotificationList';
 import Util from '../util';
+
 export default {
   name: 'app-toolbar',
   components: {

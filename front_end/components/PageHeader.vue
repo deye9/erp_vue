@@ -17,11 +17,11 @@
         <v-icon class="text--secondary">refresh</v-icon>
       </v-btn>
     </div>
-  </v-layout>  
+  </v-layout>
 </template>
 
 <script>
-import menu from '@/api/menu';
+import menu from '../api/menu';
 export default {
   data () {
     return {
@@ -49,7 +49,7 @@ export default {
         }
       });
       return breadcrumbs;
-    },    
+    },
   }
 };
 </script>

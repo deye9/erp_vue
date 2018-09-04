@@ -110,8 +110,6 @@ export default {
       this.drawer = (!this.drawer);
     });
   },
-
-
   methods: {
     genChildTarget (item, subItem) {
       if (subItem.href) return;
@@ -128,12 +126,9 @@ export default {
 
 
 <style lang="stylus">
-// @import '../../node_modules/vuetify/src/stylus/settings/_elevations.styl';
-
 #appDrawer
   overflow: hidden
   .drawer-menu--scroll
     height: calc(100vh - 48px)
     overflow: auto
-
 </style>

@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import notes from '@/api/notification';
+import notes from '../../../api/notification';
 export default {
   data: () => ({
     items: notes

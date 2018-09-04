@@ -39,9 +39,9 @@
               <v-btn flat value="light">
                 Light
               </v-btn>
-            </v-btn-toggle>   
+            </v-btn-toggle>
           </div>
-        </div>        
+        </div>
       </v-flex>
     </v-layout>
   </v-container>
@@ -143,12 +143,12 @@ export default {
         }
       ];
     }
-  },  
+  },
   watch: {
     themeColor: {
       handler (val) {
         this.$vuetify.theme.primary = this.colors[val].base;
-        
+
       },
       immediate: true
     },
@@ -156,21 +156,22 @@ export default {
       handler (val) {
         this.$vuetify.dark = (val === 'dark');
       },
-      immediate: true      
+      immediate: true
     }
-  },  
+  },
 
 };
 </script>
+
 <style lang="stylus" scoped>
 .color-option
   &--label
     position: relative
     display: block
-    cursor: pointer  
-    & input[type="radio"] 
+    cursor: pointer
+    & input[type="radio"]
       display:none
-      &+span 
+      &+span
         position: relative
         &>.overlay
           display: none;
@@ -184,22 +185,21 @@ export default {
           background-color: rgba(0,0,0,.3);
           text-align: center;
           line-height: 30px;
-          color: #fff;                
+          color: #fff;
       &:checked+span>.overlay
-        display:block  
-    & .bg        
+        display:block
+    & .bg
       background-color: #f1f1f1
   &--item
     overflow: hidden;
     display: block;
     box-shadow: 0 0 2px rgba(0,0,0,.1);
-    margin-bottom: 15px;      
+    margin-bottom: 15px;
     &--header
       height: 10px
-    &>span 
+    &>span
       display: block;
       float: left;
       width: 50%;
-      height: 20px;          
+      height: 20px;
 </style>
-

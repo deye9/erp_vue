@@ -9,14 +9,14 @@
         width="68"
         >
         <chat-menu :items="menus" class="chat-drawer--menu">
-        </chat-menu>        
+        </chat-menu>
       </v-navigation-drawer>
       <v-content class="chat-main">
         <transition>
           <router-view></router-view>
-        </transition> 
+        </transition>
       </v-content>
-    </template>  
+    </template>
     <template v-else>
       <v-toolbar color="primary" fixed dark>
         <v-btn icon @click="handleClick">
@@ -25,25 +25,25 @@
         <v-spacer></v-spacer>
         <v-btn icon>
           <v-icon>more_vert</v-icon>
-        </v-btn>        
+        </v-btn>
       </v-toolbar>
       <v-content class="chat-main">
         <transition>
           <router-view></router-view>
-        </transition> 
-      </v-content>      
+        </transition>
+      </v-content>
       <v-bottom-nav :value="true" absolute color="primary" app fixed v-if="!hideBottomNav">
         <v-btn dark flat :value="item.to.path" v-for="(item, index) in menus" :key="index" :to="item.to">
           <span>{{item.text}}</span>
           <v-icon>{{item.icon}}</v-icon>
         </v-btn>
-      </v-bottom-nav>      
+      </v-bottom-nav>
     </template>
   </v-app>
 </template>
 
 <script>
-import API from '@/api';
+import API from '../../api';
 import ChatMenu from './ChatMenu';
 import VuePerfectScrollbar from 'vue-perfect-scrollbar';
 export default {

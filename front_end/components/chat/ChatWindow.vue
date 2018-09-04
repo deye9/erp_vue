@@ -1,4 +1,3 @@
-
 <template>
   <v-card class="chat-room">
     <v-toolbar card dense flat class="white chat-room--toolbar" light>
@@ -8,7 +7,7 @@
       <template v-if="chat.users">
         <v-avatar size="32" class="avatar-stack" v-for="(user_id,index) in chat.users" :key="index">
           <img :src="getAvatar(user_id)" alt="">
-        </v-avatar>  
+        </v-avatar>
       </template>
       <v-spacer></v-spacer>
       <v-toolbar-title> <h4>Chat Channel</h4></v-toolbar-title>
@@ -19,7 +18,7 @@
         </v-btn>
         <span>Add user</span>
       </v-tooltip>
-    </v-toolbar>    
+    </v-toolbar>
     <vue-perfect-scrollbar class="chat-room--scrollbar grey lighten-5" v-bind:style="computeHeight">
       <v-card-text class="chat-room--list pa-3">
         <template v-for="(item, index) in chat.messages">
@@ -36,15 +35,15 @@
             <v-spacer></v-spacer>
           </div>
         </template>
-      </v-card-text>  
+      </v-card-text>
     </vue-perfect-scrollbar>
     <v-card-actions>
-      <v-text-field 
-        full-width 
+      <v-text-field
+        full-width
         flat
-        clearable 
-        solo 
-        append-icon="send" 
+        clearable
+        solo
+        append-icon="send"
         label="Type some message here">
         <v-icon slot="append-icon">send</v-icon>
         <v-icon slot="append-icon" class="mx-2">photo</v-icon>
@@ -53,9 +52,10 @@
     </v-card-actions>
   </v-card>
 </template>
+
 <script>
-import { getChatById } from '@/api/chat';
-import { getUserById } from '@/api/user';
+import { getChatById } from '../../api/chat';
+import { getUserById } from '../../api/user';
 import VuePerfectScrollbar from 'vue-perfect-scrollbar';
 export default {
   components: {
@@ -76,7 +76,7 @@ export default {
       let chatOrigin = {
         title: 'Chat',
         users: [],
-        messages: [] 
+        messages: []
       };
       let chat = getChatById(this.$route.params.uuid);
       return Object.assign(chatOrigin, chat);
@@ -92,7 +92,7 @@ export default {
     getAvatar (uid) {
       return getUserById(uid).avatar;
     }
-  }  
+  }
 };
 </script>
 

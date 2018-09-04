@@ -26,7 +26,7 @@
                   <v-icon>fa fa-instagram</v-icon>
                 </v-btn>
                 <h3 class="pink--text">200+</h3>
-              </div>              
+              </div>
             </v-flex>
             <v-flex xs4>
               <div class="layout column justify-center align-center">
@@ -34,7 +34,7 @@
                   <v-icon>fa fa-twitter</v-icon>
                 </v-btn>
                 <h3 class="blue--text">50+</h3>
-              </div>              
+              </div>
             </v-flex>
           </v-layout>
           <v-tabs v-model="selectedTab">
@@ -42,7 +42,7 @@
               Profile
             </v-tab>
             <v-tab ripple href="#tab-2">
-              Activity 
+              Activity
             </v-tab>
             <v-tabs-items v-model="selectedTab">
               <v-tab-item id="tab-1">
@@ -60,7 +60,7 @@
                         <v-list-tile-action>
                         </v-list-tile-action>
                       </v-list-tile>
-                      <v-divider inset></v-divider>          
+                      <v-divider inset></v-divider>
                       <v-list-tile href="#">
                         <v-list-tile-action>
                           <v-icon color="indigo">phone</v-icon>
@@ -103,17 +103,17 @@
 
                   </v-card-text>
                 </v-card>
-              </v-tab-item>              
+              </v-tab-item>
             </v-tabs-items>
-          </v-tabs>          
+          </v-tabs>
         </v-card-text>
-      </v-card>   
+      </v-card>
     </v-layout>
-  </v-container>     
+  </v-container>
 </template>
 
 <script>
-import { getUserById } from '@/api/user';
+import { getUserById } from '../../api/user';
 export default {
   data () {
     return {
@@ -122,7 +122,7 @@ export default {
     };
   },
   computed: {
-   
+
     user () {
       let Origin = {
         name: 'Chat',
@@ -130,7 +130,7 @@ export default {
       };
       let user = getUserById(this.$route.params.uuid);
       return Object.assign(Origin, user);
-    }    
+    }
   },
 };
 </script>

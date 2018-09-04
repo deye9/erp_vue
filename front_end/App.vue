@@ -57,46 +57,45 @@
   </div>
 </template>
 <script>
-//import AppDrawer from './components/AppDrawer';
-//import AppToolbar from './components/AppToolbar';
-// import AppFab from '../components/AppFab';
-// import PageHeader from '../components/PageHeader';
-// import menu from '../api/menu';
-// import ThemeSettings from '../components/ThemeSettings';
-// import AppEvents from  './event';
-export default {
-   components: {
-        // AppDrawer,
-        // AppToolbar,
-//     AppFab,
-//     PageHeader,
-//     ThemeSettings
-   },
-  data: () => ({
-    expanded: true,
-    rightDrawer: false,
-    snackbar: {
-      show: false,
-      text: '',
-      color: '',
-    }
-  }),
-  computed: {
-  },
-  created () {
-    AppEvents.forEach(item => {
-      this.$on(item.name, item.callback);
-    });
-    window.getApp = this;
-  },
-  methods: {
-    openThemeSettings () {
-      this.$vuetify.goTo(0);
-      this.rightDrawer = (!this.rightDrawer);
-    }
-  },
-
-};
+    import AppDrawer from './components/AppDrawer';
+    import AppToolbar from './components/AppToolbar';
+    import AppFab from './components/AppFab';
+    import PageHeader from './components/PageHeader';
+    import menu from './api/menu';
+    import ThemeSettings from './components/ThemeSettings';
+    import AppEvents from  './event';
+    export default {
+        components: {
+            AppDrawer,
+            AppToolbar,
+            AppFab,
+            PageHeader,
+            ThemeSettings
+        },
+        data: () => ({
+            expanded: true,
+            rightDrawer: false,
+            snackbar: {
+            show: false,
+            text: '',
+            color: '',
+            }
+        }),
+        computed: {
+        },
+        created () {
+            AppEvents.forEach(item => {
+            this.$on(item.name, item.callback);
+            });
+            window.getApp = this;
+        },
+        methods: {
+            openThemeSettings () {
+            this.$vuetify.goTo(0);
+            this.rightDrawer = (!this.rightDrawer);
+            }
+        },
+    };
 </script>
 
 <style lang="stylus" scoped>

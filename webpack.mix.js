@@ -13,7 +13,8 @@ var mix = require('laravel-mix');
 
 mix.sass('resources/assets/sass/app.scss', 'public/css');
 
-mix.stylus('front_end/theme/default.styl', 'default.css');
+mix.stylus('front_end/theme/default.styl', 'front_end/theme');
+mix.stylus('front_end/components/circle/VCircle.styl', 'front_end/components/circle');
 
 
 // Copy the needed javascript files to the public/js folder

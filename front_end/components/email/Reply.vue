@@ -12,21 +12,21 @@
           <v-spacer></v-spacer>
           <v-btn icon>
             <v-icon color="yellow" small>star</v-icon>
-          </v-btn>        
+          </v-btn>
           <div class="caption">{{ formatDate(mail.created_at)}}</div>
           <v-btn icon small>
             <v-icon small>reply</v-icon>
-          </v-btn>          
+          </v-btn>
           <v-btn icon small>
             <v-icon small>reply_all</v-icon>
-          </v-btn>          
+          </v-btn>
           <v-btn icon small>
             <v-icon small>delete</v-icon>
-          </v-btn>          
+          </v-btn>
           <v-btn icon small>
             <v-icon small>expand_more</v-icon>
           </v-btn>
-      </v-toolbar>        
+      </v-toolbar>
       <v-flex class="mail-reply--content">
         <vue-perfect-scrollbar class="mail-reply--scrollbar">
           <v-card>
@@ -43,7 +43,7 @@
                   <div class="py-3">
                     <v-alert outline color="primary" icon="attach_file" :value="true">
                       Weekly Report
-                    </v-alert>   
+                    </v-alert>
                   </div>
                   <v-card>
                     <v-card-text class="pa-0">
@@ -53,36 +53,36 @@
                         placeholder="Your reply here"
                         full-width
                         multi-line
-                      ></v-text-field>              
+                      ></v-text-field>
                     </v-card-text>
                     <v-toolbar dense flat>
                       <v-btn icon>
                         <v-icon>attach_file</v-icon>
-                      </v-btn>                    
+                      </v-btn>
                       <v-btn icon>
                         <v-icon>link</v-icon>
-                      </v-btn>                    
+                      </v-btn>
                       <v-btn icon>
                         <v-icon>camera</v-icon>
-                      </v-btn>                    
+                      </v-btn>
                       <v-spacer></v-spacer>
                       <v-btn flat icon>
                         <v-icon>send</v-icon>
-                      </v-btn>                      
-                    </v-toolbar>   
-                  </v-card>               
+                      </v-btn>
+                    </v-toolbar>
+                  </v-card>
                 </div>
-              </div>              
+              </div>
             </v-card-text>
           </v-card>
         </vue-perfect-scrollbar>
       </v-flex>
     </v-layout>
-  </v-container>  
+  </v-container>
 </template>
 <script>
 import VuePerfectScrollbar from 'vue-perfect-scrollbar';
-import { getMailById } from '@/api/mail';
+import { getMailById } from '../../api/mail';
 export default {
   components: {
     VuePerfectScrollbar,
@@ -129,7 +129,7 @@ export default {
     },
     formatDate (s) {
       return new Date(s).toLocaleDateString();
-    }    
+    }
   }
 };
 </script>

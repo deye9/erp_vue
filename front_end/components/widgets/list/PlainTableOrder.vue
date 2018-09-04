@@ -5,7 +5,7 @@
       <v-spacer></v-spacer>
       <v-btn icon>
         <v-icon>more_vert</v-icon>
-      </v-btn>      
+      </v-btn>
     </v-toolbar>
     <v-divider></v-divider>
     <v-card-text class="pa-0">
@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import items from '@/api/order';
+import items from '../../../api/order';
 export default {
   data () {
     return {

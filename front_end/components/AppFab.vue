@@ -9,11 +9,9 @@
 <script>
 export default {
   name: 'app-fab',
-
   data: () => ({
     fab: false
   }),
-
   methods: {
     onScroll () {
       if (typeof window === 'undefined') return;

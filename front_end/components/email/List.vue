@@ -29,8 +29,8 @@
         </v-btn>
         <v-btn icon flat>
           <v-icon>keyboard_arrow_right</v-icon>
-        </v-btn>          
-      </v-toolbar>        
+        </v-btn>
+      </v-toolbar>
       <vue-perfect-scrollbar class="mail-list--scrollbar">
         <v-flex class="mail-content white">
           <v-tabs fixed-tabs grow >
@@ -77,15 +77,15 @@
               </v-list-tile>
               <v-divider :key="'divider'+index"></v-divider>
             </template>
-          </v-list>        
+          </v-list>
         </v-flex>
       </vue-perfect-scrollbar>
     </v-layout>
-  </v-container>  
+  </v-container>
 </template>
 <script>
 import VuePerfectScrollbar from 'vue-perfect-scrollbar';
-import { getMailByType } from '@/api/mail';
+import { getMailByType } from '../../api/mail';
 export default {
   components: {
     VuePerfectScrollbar,
@@ -138,7 +138,7 @@ export default {
 
     computeMailPath (id) {
       return { path: '/mail/0/' + id };
-    },    
+    },
     formatDate (s) {
       return new Date(s).toLocaleString();
     },
