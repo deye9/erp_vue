@@ -11,13 +11,15 @@ var mix = require('laravel-mix');
  |
  */
 
-mix
-    .js('resources/assets/js/app.js', 'public/js')
-    .sass('resources/assets/sass/app.scss', 'public/css');
+mix.sass('resources/assets/sass/app.scss', 'public/css');
+
+mix.stylus('front_end/theme/default.styl', 'front_end/theme');
+mix.stylus('front_end/components/circle/VCircle.styl', 'front_end/components/circle');
+
 
 // Copy the needed javascript files to the public/js folder
 mix.copy([
-    'resources/assets/js/main.js', 'node_modules/jquery/dist/jquery.min.js',
+    'node_modules/jquery/dist/jquery.min.js',
     'vendor/twbs/bootstrap/dist/js/bootstrap.min.js'
 ], 'public/js');
 
@@ -27,7 +29,11 @@ mix.copy([
     'vendor/components/font-awesome/css/fontawesome.min.css'
 ], 'public/css');
 
-mix.copyDirectory('node_modules/@fortawesome', 'resources/assets/js/vue/components/@fortawesome');
+// Copy the needed Js file for the auth front end
+mix.js('front_end/main.js', 'public/js');
+// mix.js('front_end/tenantauth.js', 'public/js');
+
+mix.copyDirectory('node_modules/@fortawesome', 'front_end/components/@fortawesome');
 
 if (mix.inProduction()) {
     mix.version();
