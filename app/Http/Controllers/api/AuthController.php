@@ -6,9 +6,10 @@ use JWTAuth;
 use JWTFactory;
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\UserPermissions;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+//use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Password;
@@ -57,6 +58,7 @@ class AuthController extends Controller
                     unset($obj->updated_at);
                  }
 
+                // $data['Menu'] = UserPermissions::getFixes();
                 $data['user'] = $user;
                 return response()->json(['code' => 200, 'data' => $data, 'meta' => $meta]);
             }

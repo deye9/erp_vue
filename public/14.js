@@ -1,14 +1,14 @@
 webpackJsonp([14],{
 
-/***/ 118:
+/***/ 128:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(675)
+var __vue_script__ = __webpack_require__(708)
 /* template */
-var __vue_template__ = __webpack_require__(681)
+var __vue_template__ = __webpack_require__(714)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48,15 +48,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 441:
+/***/ 452:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(442)
+var __vue_script__ = __webpack_require__(453)
 /* template */
-var __vue_template__ = __webpack_require__(443)
+var __vue_template__ = __webpack_require__(454)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -96,7 +96,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 442:
+/***/ 453:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -182,7 +182,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 443:
+/***/ 454:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -193,7 +193,7 @@ var render = function() {
     "v-card",
     [
       _c(
-        "v-card-media",
+        "v-img",
         { attrs: { src: "/static/people/man/m1.jpg", height: "390" } },
         [
           _c(
@@ -390,14 +390,14 @@ if (false) {
 
 /***/ }),
 
-/***/ 675:
+/***/ 708:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_widgets_card_NameCard__ = __webpack_require__(676);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_widgets_card_NameCard__ = __webpack_require__(709);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_widgets_card_NameCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_widgets_card_NameCard__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_widgets_card_ProfileCard__ = __webpack_require__(441);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_widgets_card_ProfileCard__ = __webpack_require__(452);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_widgets_card_ProfileCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_widgets_card_ProfileCard__);
 //
 //
@@ -502,19 +502,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 676:
+/***/ 709:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(677)
+  __webpack_require__(710)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(679)
+var __vue_script__ = __webpack_require__(712)
 /* template */
-var __vue_template__ = __webpack_require__(680)
+var __vue_template__ = __webpack_require__(713)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -554,13 +554,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 677:
+/***/ 710:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(678);
+var content = __webpack_require__(711);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -581,7 +581,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 678:
+/***/ 711:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -596,7 +596,7 @@ exports.push([module.i, "\n.caption[data-v-5e7eb879],\n.subheading[data-v-5e7eb8
 
 /***/ }),
 
-/***/ 679:
+/***/ 712:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -714,7 +714,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 680:
+/***/ 713:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -734,7 +734,7 @@ var render = function() {
         [
           _vm.showTopNav
             ? _c(
-                "v-card-media",
+                "v-img",
                 [
                   _c(
                     "v-layout",
@@ -868,7 +868,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 681:
+/***/ 714:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

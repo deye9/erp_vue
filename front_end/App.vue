@@ -23,14 +23,7 @@
         <v-btn small fab dark falt fixed top="top" right="right" class="setting-fab" color="red" @click="openThemeSettings">
           <v-icon>settings</v-icon>
         </v-btn>
-        <v-navigation-drawer
-          class="setting-drawer"
-          temporary
-          right
-          v-model="rightDrawer"
-          hide-overlay
-          fixed
-          >
+        <v-navigation-drawer class="setting-drawer" temporary right v-model="rightDrawer" hide-overlay fixed>
           <theme-settings></theme-settings>
         </v-navigation-drawer>
       </v-app>
@@ -42,13 +35,7 @@
         </keep-alive>
       </transition>
     </template>
-    <v-snackbar
-      :timeout="3000"
-      bottom
-      right
-      :color="snackbar.color"
-      v-model="snackbar.show"
-    >
+    <v-snackbar :timeout="3000" bottom right :color="snackbar.color" v-model="snackbar.show">
       {{ snackbar.text }}
       <v-btn dark flat @click.native="snackbar.show = false" icon>
         <v-icon>close</v-icon>
@@ -76,23 +63,23 @@
             expanded: true,
             rightDrawer: false,
             snackbar: {
-            show: false,
-            text: '',
-            color: '',
+                show: false,
+                text: '',
+                color: '',
             }
         }),
         computed: {
         },
         created () {
             AppEvents.forEach(item => {
-            this.$on(item.name, item.callback);
+                this.$on(item.name, item.callback);
             });
             window.getApp = this;
         },
         methods: {
             openThemeSettings () {
-            this.$vuetify.goTo(0);
-            this.rightDrawer = (!this.rightDrawer);
+                this.$vuetify.goTo(0);
+                this.rightDrawer = (!this.rightDrawer);
             }
         },
     };
@@ -105,5 +92,4 @@
     border-radius:0
   .page-wrapper
     min-height:calc(100vh - 64px - 50px - 81px );
-
 </style>

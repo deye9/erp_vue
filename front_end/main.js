@@ -8,12 +8,14 @@ import './theme/default.css';
 import VeeValidate from 'vee-validate';
 import colors from 'vuetify/es5/util/colors';
 import Truncate from 'lodash.truncate';
+import VueResource from 'vue-resource';
 
 Vue.config.devtools = true;
 Vue.config.productionTip = false;
 
 // Global filters
 Vue.filter('truncate', Truncate);
+Vue.use(VueResource);
 Vue.use(VeeValidate, { fieldsBagName: 'formFields' });
 Vue.use(Vuetify, {
   // theme: {
@@ -35,7 +37,16 @@ Vue.use(Vuetify, {
     }
   }
 });
+
+Vue.http.options.crossOrigin = true;
+// Vue.http.options.root = 'https://erp.dev/';
+Vue.http.headers.common['Access-Control-Request-Method'] = '*';
+// Vue.http.headers.common['Access-Control-Allow-Origin'] = 'https://erp.dev';
+Vue.http.headers.common['Authorization'] = 'Bearer ' + sessionStorage.getItem('id_token');
+Vue.http.headers.common['X-CSRF-TOKEN'] = document.getElementsByName('csrf-token')[0].getAttribute('content');
+
 // Bootstrap application components
+export default Vue;
 
 /* eslint-disable no-new */
 new Vue({

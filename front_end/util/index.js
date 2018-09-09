@@ -43,15 +43,22 @@
 
 //   return text;
 // }
+
+function toPascalCase(str) {
+    return str.toLowerCase().replace(/\b[a-z]/g, function(txtVal) {
+        return txtVal.toUpperCase();
+    });
+};
+
 const randomElement = (arr = []) => {
     return arr[Math.floor(Math.random() * arr.length)];
-  };
+};
 
-  const kebab =  (str) => {
+const kebab =  (str) => {
     return (str || '').replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-  };
+};
 
-  const toggleFullScreen = () => {
+const toggleFullScreen = () => {
     let doc = window.document;
     let docEl = doc.documentElement;
 
@@ -64,10 +71,10 @@ const randomElement = (arr = []) => {
     else {
       cancelFullScreen.call(doc);
     }
-  };
+};
 
-  export default {
+export default {
     randomElement,
     toggleFullScreen,
     kebab
-  };
+};

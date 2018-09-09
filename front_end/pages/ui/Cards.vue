@@ -51,11 +51,11 @@
         </v-flex>
         <v-flex lg4 sm12>
           <v-card>
-            <v-card-media src="/static/bg/8.jpg" height="250">
+            <v-img src="/static/bg/8.jpg" height="250">
               <h2 class="white--text pa-3">
                 Card with image
               </h2>
-            </v-card-media>
+            </v-img>
             <v-card-text>
               <div>
                 {{cardText}}
@@ -69,11 +69,11 @@
         </v-flex>
         <v-flex lg4 sm12>
           <v-card>
-            <v-card-media src="/static/nature/n3.jpeg" height="250">
+            <v-img src="/static/nature/n3.jpeg" height="250">
               <h2 class="white--text pa-3">
                 Card with image
               </h2>
-            </v-card-media>
+            </v-img>
             <v-card-text>
               <v-avatar size="64px" class="right mt-56">
                 <img src="/static/avatar/man_2.jpg" alt="">
@@ -90,11 +90,11 @@
         </v-flex>
         <v-flex lg4 sm12>
           <v-card>
-            <v-card-media src="/static/nature/n4.jpeg" height="250">
+            <v-img src="/static/nature/n4.jpeg" height="250">
               <h2 class="white--text pa-3">
                 Card with image
               </h2>
-            </v-card-media>
+            </v-img>
             <v-card-text>
               <v-btn icon fab color="red" dark class="right mt-45">
                 <v-icon>favorite</v-icon>

@@ -34436,9 +34436,9 @@ __webpack_require__.r(__webpack_exports__);
 /* istanbul ignore next */
 /* @vue/component */
 /* harmony default export */ __webpack_exports__["default"] = (_VImg_VImg__WEBPACK_IMPORTED_MODULE_0__["default"].extend({
-    name: 'v-card-media',
+    name: 'v-img',
     mounted: function mounted() {
-        Object(_util_console__WEBPACK_IMPORTED_MODULE_1__["deprecate"])('v-card-media', this.src ? 'v-img' : 'v-responsive', this);
+        Object(_util_console__WEBPACK_IMPORTED_MODULE_1__["deprecate"])('v-img', this.src ? 'v-img' : 'v-responsive', this);
     }
 }));
 

@@ -118,7 +118,7 @@
                 <div class="caption"> <v-icon>trending_up</v-icon>  20%</div>
               </div>
             </v-card-title>
-            <v-card-media class="white--text">
+            <v-img class="white--text">
               <e-chart
                 ref="chart"
                 :path-option="[
@@ -139,7 +139,7 @@
                 width="100%"
               >
               </e-chart>
-            </v-card-media>
+            </v-img>
             <v-card-text class="white">
               <div class="layout row align-center ma-0">
                 <div class="grey--text">
@@ -171,7 +171,7 @@
                 <div class="caption"> <v-icon>trending_up</v-icon>  20%</div>
               </div>
             </v-card-title>
-            <v-card-media
+            <v-img
               class="white--text"
             >
               <e-chart
@@ -188,7 +188,7 @@
                 width="100%"
               >
               </e-chart>
-            </v-card-media>
+            </v-img>
             <v-card-text class="white">
               <div class="layout row align-center ma-0">
                 <div class="grey--text">
@@ -220,7 +220,7 @@
                 <div class="caption"> <v-icon>trending_up</v-icon>  20%</div>
               </div>
             </v-card-title>
-            <v-card-media
+            <v-img
             >
               <e-chart
               :path-option="[
@@ -239,7 +239,7 @@
               width="100%"
               >
               </e-chart>
-            </v-card-media>
+            </v-img>
             <v-card-text class="white">
               <div class="layout row align-center ma-0">
                 <div class="grey--text">

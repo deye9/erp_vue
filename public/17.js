@@ -1,14 +1,14 @@
 webpackJsonp([17],{
 
-/***/ 123:
+/***/ 133:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(124)
+var __vue_script__ = __webpack_require__(134)
 /* template */
-var __vue_template__ = __webpack_require__(125)
+var __vue_template__ = __webpack_require__(135)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48,7 +48,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 124:
+/***/ 134:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -71,7 +71,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'v-widget',
+  name: "v-widget",
   props: {
     title: {
       type: String
@@ -82,7 +82,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     },
     contentBg: {
       type: String,
-      default: 'white'
+      default: "white"
     }
   },
 
@@ -95,7 +95,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 125:
+/***/ 135:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -155,13 +155,13 @@ if (false) {
 
 /***/ }),
 
-/***/ 567:
+/***/ 600:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(568);
+var content = __webpack_require__(601);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -182,7 +182,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 568:
+/***/ 601:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -197,12 +197,12 @@ exports.push([module.i, "\n.mt-45[data-v-3f3eeaea] {\n  margin-top: -45px;\n}\n.
 
 /***/ }),
 
-/***/ 569:
+/***/ 602:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget__ = __webpack_require__(123);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_VWidget__);
 //
 //
@@ -387,7 +387,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 570:
+/***/ 603:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -538,7 +538,7 @@ var render = function() {
                     "v-card",
                     [
                       _c(
-                        "v-card-media",
+                        "v-img",
                         { attrs: { src: "/static/bg/8.jpg", height: "250" } },
                         [
                           _c("h2", { staticClass: "white--text pa-3" }, [
@@ -585,7 +585,7 @@ var render = function() {
                     "v-card",
                     [
                       _c(
-                        "v-card-media",
+                        "v-img",
                         {
                           attrs: {
                             src: "/static/nature/n3.jpeg",
@@ -657,7 +657,7 @@ var render = function() {
                     "v-card",
                     [
                       _c(
-                        "v-card-media",
+                        "v-img",
                         {
                           attrs: {
                             src: "/static/nature/n4.jpeg",
@@ -886,19 +886,19 @@ if (false) {
 
 /***/ }),
 
-/***/ 89:
+/***/ 99:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(567)
+  __webpack_require__(600)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(569)
+var __vue_script__ = __webpack_require__(602)
 /* template */
-var __vue_template__ = __webpack_require__(570)
+var __vue_template__ = __webpack_require__(603)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */

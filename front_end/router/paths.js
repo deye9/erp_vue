@@ -1,4 +1,22 @@
-export default [{
+export default [
+    {
+        path: '/',
+        meta: {},
+        name: 'Root',
+        redirect: {
+            name: 'Home'
+        }
+    },
+    {
+        path: '/',
+        meta: {
+            public: true,
+        },
+        redirect: {
+            path: '/home'
+        }
+    },
+    {
         path: '*',
         meta: {
             public: true,
@@ -38,23 +56,105 @@ export default [{
         }
     },
     {
+        path: '/home',
+        meta: {
+            public: true,
+        },
+        name: 'Home',
+        component: function (resolve) {
+            require(['../pages/Home.vue'], resolve);
+        }
+    },
+    {
         path: '/login',
         meta: {
             public: true,
         },
         name: 'Login',
         component: function (resolve) {
-            require(['../pages/Login.vue'], resolve);
+            require(['../pages/auth/Login.vue'], resolve);
         }
     },
     {
-        path: '/',
-        meta: {},
-        name: 'Root',
-        redirect: {
-            name: 'Dashboard'
+        path: '/register',
+        meta: {
+            public: true,
+        },
+        name: 'Register',
+        component: function (resolve) {
+            require(['../pages/auth/Register.vue'], resolve);
         }
     },
+    {
+        path: '/forgotpassword',
+        meta: {
+            public: true,
+        },
+        name: 'ForgotPassword',
+        component: function (resolve) {
+            require(['../pages/auth/ForgotPassword.vue'], resolve);
+        }
+    },
+    {
+        path: '/reset',
+        meta: {
+            public: true,
+        },
+        name: 'Reset',
+        component: function (resolve) {
+            require(['../pages/auth/Reset.vue'], resolve);
+        }
+    },
+    {
+        path: '/admin/roles',
+        meta: {
+            breadcrumb: true
+        },
+        name: 'components/roles',
+        component: function (resolve) {
+            require(['../admin/Roles.vue'], resolve);
+        }
+    },
+    {
+        path: '/admin/users',
+        meta: {
+            breadcrumb: true
+        },
+        name: 'components/users',
+        component: function (resolve) {
+            require(['../admin/Users.vue'], resolve);
+        }
+    },
+    {
+        path: '/admin/metadata',
+        meta: {
+            breadcrumb: true
+        },
+        name: 'components/metadata',
+        component: function (resolve) {
+            require(['../admin/Metadata.vue'], resolve);
+        }
+    },
+    {
+        path: '/admin/acl',
+        meta: {
+            breadcrumb: true
+        },
+        name: 'components/permissions',
+        component: function (resolve) {
+            require(['../admin/Permissions.vue'], resolve);
+        }
+    },
+    // {
+    //     path: '/widgets/social',
+    //     meta: {
+    //         breadcrumb: true
+    //     },
+    //     name: 'components/social',
+    //     component: function (resolve) {
+    //         require(['../pages/widgets/Social.vue'], resolve);
+    //     }
+    // },
     {
         path: '/dashboard',
         meta: {

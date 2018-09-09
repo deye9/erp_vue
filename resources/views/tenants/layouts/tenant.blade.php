@@ -9,7 +9,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
     <meta name="description" content="SchoolERP is a Google Material Design inspired ERP built with PHP, Laravel, Vue and Vuetify.">
     <meta name="keywords" content="admin, dashboard, webapp, erp, responsive, material, bootstrap, uikit, framework, backend, app, widgets, premium, file manamger, mail, vue, vuetify, echarts">
     <title>{{ config('app.name', 'Welcome to School ERP') }}</title>

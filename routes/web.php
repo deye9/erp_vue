@@ -39,7 +39,7 @@ Route::get('/home', function () {
         ]);
     }
 
-    return App::call('App\Http\Controllers\Tenants\DefaultController@home');
+    return App::call('App\Http\Controllers\Tenants\DefaultController@index');
 })->name('home');
 
 Route::group(['middleware' => 'tenancy.enforce'], function () {

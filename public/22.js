@@ -1,6 +1,6 @@
 webpackJsonp([22],{
 
-/***/ 203:
+/***/ 214:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -593,13 +593,13 @@ var getFile = function getFile(limit) {
 
 /***/ }),
 
-/***/ 513:
+/***/ 546:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(514);
+var content = __webpack_require__(547);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -620,7 +620,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 514:
+/***/ 547:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -635,14 +635,14 @@ exports.push([module.i, "\n.media-cotent--wrap[data-v-0f35bf5e],\n.media-menu[da
 
 /***/ }),
 
-/***/ 515:
+/***/ 548:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bytes__ = __webpack_require__(516);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bytes__ = __webpack_require__(549);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_bytes___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_bytes__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_file__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_file__ = __webpack_require__(214);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_perfect_scrollbar__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_vue_perfect_scrollbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_vue_perfect_scrollbar__);
 //
@@ -813,7 +813,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 516:
+/***/ 549:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -980,7 +980,7 @@ function parse(val) {
 
 /***/ }),
 
-/***/ 517:
+/***/ 550:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1104,7 +1104,7 @@ var render = function() {
                                     { attrs: { flat: "", tile: "" } },
                                     [
                                       _c(
-                                        "v-card-media",
+                                        "v-img",
                                         { attrs: { height: "150px" } },
                                         [
                                           _c(
@@ -1164,7 +1164,7 @@ var render = function() {
                                         { attrs: { flat: "", tile: "" } },
                                         [
                                           _c(
-                                            "v-card-media",
+                                            "v-img",
                                             {
                                               attrs: {
                                                 height: "150px",
@@ -1306,19 +1306,19 @@ if (false) {
 
 /***/ }),
 
-/***/ 75:
+/***/ 85:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(513)
+  __webpack_require__(546)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(515)
+var __vue_script__ = __webpack_require__(548)
 /* template */
-var __vue_template__ = __webpack_require__(517)
+var __vue_template__ = __webpack_require__(550)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */

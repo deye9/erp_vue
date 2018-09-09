@@ -58,11 +58,11 @@
                 <li class="timeline-block">
                   <div class="timeline-content">
                   <v-card>
-                    <v-card-media
+                    <v-img
                       src="/static/bg/5.jpg"
                       height="200px"
                     >
-                    </v-card-media>
+                    </v-img>
                     <v-card-title primary-title>
                       <div>
                         <div class="headline">Top western road trips</div>

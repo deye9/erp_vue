@@ -1,6 +1,6 @@
 webpackJsonp([15],{
 
-/***/ 130:
+/***/ 140:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -422,7 +422,7 @@ var getUser = function getUser(limit) {
 
 /***/ }),
 
-/***/ 178:
+/***/ 188:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -430,7 +430,7 @@ var getUser = function getUser(limit) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MailMenu; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getMailById; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getMailByType; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__user__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__user__ = __webpack_require__(140);
 
 
 var MailItem = [{
@@ -676,13 +676,13 @@ var getMailByType = function getMailByType(type) {
 
 /***/ }),
 
-/***/ 540:
+/***/ 573:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(541);
+var content = __webpack_require__(574);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -703,7 +703,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 541:
+/***/ 574:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -718,13 +718,13 @@ exports.push([module.i, "", ""]);
 
 /***/ }),
 
-/***/ 542:
+/***/ 575:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_mail__ = __webpack_require__(178);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Compose__ = __webpack_require__(543);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_mail__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Compose__ = __webpack_require__(576);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__Compose___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__Compose__);
 //
 //
@@ -908,15 +908,15 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 543:
+/***/ 576:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(544)
+var __vue_script__ = __webpack_require__(577)
 /* template */
-var __vue_template__ = __webpack_require__(545)
+var __vue_template__ = __webpack_require__(578)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -956,7 +956,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 544:
+/***/ 577:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1041,7 +1041,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 545:
+/***/ 578:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1224,7 +1224,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 546:
+/***/ 579:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1504,19 +1504,19 @@ if (false) {
 
 /***/ }),
 
-/***/ 79:
+/***/ 89:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(540)
+  __webpack_require__(573)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(542)
+var __vue_script__ = __webpack_require__(575)
 /* template */
-var __vue_template__ = __webpack_require__(546)
+var __vue_template__ = __webpack_require__(579)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */

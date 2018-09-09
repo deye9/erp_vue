@@ -14,11 +14,9 @@ class CreateDefaultViews extends Migration
     public function up()
     {
         DB::statement("CREATE OR REPLACE VIEW public.permission AS
-            select row_to_json(t) menu from (
-                select r.role_id, p.parent_name as parent_menu, (
-                    select array_to_json(array_agg(name)) from permissions where parent_name = p.parent_name
-                ) as menus from permissions p join role_permissions r on r.permission_id = p.id GROUP BY r.role_id, p.parent_name
-            ) t order by t.role_id;");
+                        SELECT t.role_id, t.\"group\" AS parent, array_to_json(array_agg(row_to_json(t.*))) AS items FROM ( SELECT p.name,
+                        p.title, p.component, p.\"group\", r.role_id, p.icon, p.target FROM permissions p JOIN role_permissions r ON r.permission_id = p.id) t
+                        GROUP BY t.\"group\", t.role_id;");
     }
 
     /**
@@ -28,6 +26,21 @@ class CreateDefaultViews extends Migration
      */
     public function down()
     {
-        DB::statement("DROP VIEW IF EXISTS public.permission;");
+        //DB::statement("DROP VIEW IF EXISTS public.permission;");
     }
 }
+
+// CREATE FUNCTION public.user_permissions(IN roleid bigint DEFAULT 0)
+//     RETURNS "char"
+//     LANGUAGE 'sql'
+//     LEAKPROOF
+// AS $BODY$
+// select t."group", array_to_json(array_agg(row_to_json(t))) from
+// (
+// 	select "name", title, component, "group",  icon, target from permissions
+// 	p join role_permissions r on r.permission_id = p.id where r.role_id = role_id
+// ) t group by t."group"
+// $BODY$;
+
+// ALTER FUNCTION public.user_permissions(bigint)
+//     OWNER TO gbenga;

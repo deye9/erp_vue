@@ -136,7 +136,7 @@
               </v-list>
             </div>
           </v-widget>
-         <v-widget title="Complex (Three-line)" class="mt-3">
+        <v-widget title="Complex (Three-line)" class="mt-3">
             <div slot="widget-content">
               <v-list three-line subheader>
                 <v-subheader>User Controls</v-subheader>
@@ -188,7 +188,7 @@
                 </v-list-tile>
               </v-list>
             </div>
-          </v-widget>
+        </v-widget>
           <v-widget title="Long dark list with scroll" class="mt-3">
             <div slot="widget-content" style="max-height: 250px; overflow-y: scroll">
               <v-list dense dark>
@@ -236,7 +236,7 @@
             </div>
           </v-widget>
           <v-card class="mt-3">
-            <v-card-media src="/static/bg/15.jpg" height="300px">
+            <v-img src="/static/bg/15.jpg" height="300px">
               <v-layout column class="media">
                 <v-card-title>
                   <v-btn dark icon>
@@ -255,7 +255,7 @@
                   <div class="display-1 pl-5 pt-5">Ali Conners</div>
                 </v-card-title>
               </v-layout>
-            </v-card-media>
+            </v-img>
             <v-list two-line>
               <v-list-tile href="">
                 <v-list-tile-action>

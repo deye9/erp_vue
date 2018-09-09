@@ -1,18 +1,18 @@
 webpackJsonp([10],{
 
-/***/ 120:
+/***/ 130:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(684)
+  __webpack_require__(717)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(686)
+var __vue_script__ = __webpack_require__(719)
 /* template */
-var __vue_template__ = __webpack_require__(687)
+var __vue_template__ = __webpack_require__(720)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -52,15 +52,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 433:
+/***/ 444:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(434)
+var __vue_script__ = __webpack_require__(445)
 /* template */
-var __vue_template__ = __webpack_require__(435)
+var __vue_template__ = __webpack_require__(446)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -100,7 +100,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 434:
+/***/ 445:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -137,7 +137,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 435:
+/***/ 446:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -208,19 +208,19 @@ if (false) {
 
 /***/ }),
 
-/***/ 452:
+/***/ 463:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(453)
+  __webpack_require__(464)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(455)
+var __vue_script__ = __webpack_require__(466)
 /* template */
-var __vue_template__ = __webpack_require__(456)
+var __vue_template__ = __webpack_require__(467)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -260,13 +260,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 453:
+/***/ 464:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(454);
+var content = __webpack_require__(465);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -287,7 +287,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 454:
+/***/ 465:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -302,7 +302,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 /***/ }),
 
-/***/ 455:
+/***/ 466:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -353,7 +353,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 456:
+/***/ 467:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -432,19 +432,19 @@ if (false) {
 
 /***/ }),
 
-/***/ 457:
+/***/ 468:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(458)
+  __webpack_require__(469)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(460)
+var __vue_script__ = __webpack_require__(471)
 /* template */
-var __vue_template__ = __webpack_require__(461)
+var __vue_template__ = __webpack_require__(472)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -484,13 +484,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 458:
+/***/ 469:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(459);
+var content = __webpack_require__(470);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -511,7 +511,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 459:
+/***/ 470:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -526,7 +526,7 @@ exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\
 
 /***/ }),
 
-/***/ 460:
+/***/ 471:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -567,7 +567,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 461:
+/***/ 472:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -630,13 +630,13 @@ if (false) {
 
 /***/ }),
 
-/***/ 684:
+/***/ 717:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(685);
+var content = __webpack_require__(718);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -657,7 +657,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 685:
+/***/ 718:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -672,16 +672,16 @@ exports.push([module.i, "", ""]);
 
 /***/ }),
 
-/***/ 686:
+/***/ 719:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_widgets_statistic_MiniStatistic__ = __webpack_require__(433);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_widgets_statistic_MiniStatistic__ = __webpack_require__(444);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_widgets_statistic_MiniStatistic___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_widgets_statistic_MiniStatistic__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_widgets_statistic_LinearStatistic__ = __webpack_require__(457);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_widgets_statistic_LinearStatistic__ = __webpack_require__(468);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_widgets_statistic_LinearStatistic___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_widgets_statistic_LinearStatistic__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_widgets_statistic_CircleStatistic__ = __webpack_require__(452);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_widgets_statistic_CircleStatistic__ = __webpack_require__(463);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_widgets_statistic_CircleStatistic___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_widgets_statistic_CircleStatistic__);
 //
 //
@@ -860,7 +860,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 687:
+/***/ 720:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

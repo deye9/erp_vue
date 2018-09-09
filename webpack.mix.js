@@ -39,5 +39,18 @@ if (mix.inProduction()) {
     mix.version();
     mix.disableNotifications();
 } else {
-    mix.browserSync(process.env.APP_URL);
+    mix.browserSync({
+        proxy: 'https://pentaville.erp.dev',
+        host: 'localhost',
+        port: 1981,
+        open: 'external',
+        notify: false,
+        //reload: false,
+        reloadDelay: 10000, // Delay for 10 seconds before reloading / injecting the file change event.
+        proxyReq: [
+            function(proxyReq) {
+                proxyReq.setHeader('Access-Control-Allow-Origin', '*');
+            }
+        ]
+    });
 }

@@ -124,14 +124,13 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-
+                'Roles' => App\GraphQL\Query\RolesQuery::class
             ],
             'mutation' => [
-
+                'createRole' => App\GraphQL\Mutation\CreateRolesMutation::class
             ]
         ]
     ],
-
     /*
      * Additional resolvers which can also be used with shorthand building of the schema
      * using \GraphQL\Utils::BuildSchema feature
@@ -181,7 +180,7 @@ return [
      * ]
      */
     'types' => [
-
+        App\GraphQL\Type\RolesType::class
     ],
 
     /*
