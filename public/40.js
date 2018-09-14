@@ -1,14 +1,14 @@
 webpackJsonp([40],{
 
-/***/ 113:
+/***/ 121:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(646)
+var __vue_script__ = __webpack_require__(668)
 /* template */
-var __vue_template__ = __webpack_require__(647)
+var __vue_template__ = __webpack_require__(669)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "front_end/pages/layout/ExpansionPanels.vue"
+Component.options.__file = "front_end/pages/layout/Tabs.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-8b04c368", Component.options)
+    hotAPI.createRecord("data-v-8a2ed6a0", Component.options)
   } else {
-    hotAPI.reload("data-v-8b04c368", Component.options)
+    hotAPI.reload("data-v-8a2ed6a0", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -203,13 +203,102 @@ if (false) {
 
 /***/ }),
 
-/***/ 646:
+/***/ 668:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_VWidget__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -284,16 +373,26 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     VWidget: __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default.a
   },
   data: function data() {
-    return {};
+    return {
+      items: ['Item One', 'Item Seventeen', 'Item Five'],
+      tab: null,
+      tabs: null,
+      more: ['News', 'Maps', 'Books', 'Flights', 'Apps'],
+      text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+    };
   },
 
   computed: {},
-  methods: {}
+  methods: {
+    handleClick: function handleClick(e) {
+      e.preventDefault();
+    }
+  }
 });
 
 /***/ }),
 
-/***/ 647:
+/***/ 669:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -302,7 +401,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "page-expansion-panel" } },
+    { attrs: { id: "pageTab" } },
     [
       _c(
         "v-container",
@@ -316,52 +415,219 @@ var render = function() {
                 "v-flex",
                 { attrs: { lg6: "" } },
                 [
-                  _c("v-widget", { attrs: { title: "Expand" } }, [
-                    _c(
-                      "div",
-                      {
-                        attrs: { slot: "widget-content" },
-                        slot: "widget-content"
-                      },
-                      [
-                        _c(
-                          "v-expansion-panel",
-                          { attrs: { expand: "" } },
-                          _vm._l(5, function(item, i) {
-                            return _c(
-                              "v-expansion-panel-content",
-                              { key: i, attrs: { value: item === 2 } },
-                              [
-                                _c(
-                                  "div",
-                                  { attrs: { slot: "header" }, slot: "header" },
-                                  [_vm._v("Item")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-card",
+                  _c(
+                    "v-widget",
+                    {
+                      attrs: {
+                        title: "Basic Usage",
+                        "content-bg": "grey lighten-3"
+                      }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          attrs: { slot: "widget-content" },
+                          slot: "widget-content"
+                        },
+                        [
+                          _c("v-subheader", [_vm._v("Left Align")]),
+                          _vm._v(" "),
+                          _c(
+                            "v-tabs",
+                            _vm._l(3, function(n) {
+                              return _c("v-tab", { key: n }, [
+                                _vm._v(
+                                  "\n                Item " +
+                                    _vm._s(n) +
+                                    "\n              "
+                                )
+                              ])
+                            })
+                          ),
+                          _vm._v(" "),
+                          _c("v-subheader", [_vm._v("Right Align")]),
+                          _vm._v(" "),
+                          _c(
+                            "v-tabs",
+                            { attrs: { right: "" } },
+                            _vm._l(3, function(n) {
+                              return _c("v-tab", { key: n }, [
+                                _vm._v(
+                                  "\n                Item " +
+                                    _vm._s(n) +
+                                    "\n              "
+                                )
+                              ])
+                            })
+                          ),
+                          _vm._v(" "),
+                          _c("v-subheader", [_vm._v("Center Align")]),
+                          _vm._v(" "),
+                          _c(
+                            "v-tabs",
+                            { attrs: { centered: "" } },
+                            _vm._l(3, function(n) {
+                              return _c("v-tab", { key: n }, [
+                                _vm._v(
+                                  "\n                Item " +
+                                    _vm._s(n) +
+                                    "\n              "
+                                )
+                              ])
+                            })
+                          ),
+                          _vm._v(" "),
+                          _c("v-subheader", [_vm._v("With menu")]),
+                          _vm._v(" "),
+                          _c(
+                            "v-tabs",
+                            { attrs: { centered: "" } },
+                            [
+                              _vm._l(3, function(n) {
+                                return _c("v-tab", { key: n }, [
+                                  _vm._v(
+                                    "\n                Item " +
+                                      _vm._s(n) +
+                                      "\n              "
+                                  )
+                                ])
+                              }),
+                              _vm._v(" "),
+                              _vm.more.length
+                                ? _c(
+                                    "v-menu",
+                                    {
+                                      staticClass: "tabs__div",
+                                      attrs: { left: "", bottom: "" }
+                                    },
+                                    [
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "tabs__item",
+                                          attrs: { slot: "activator" },
+                                          slot: "activator"
+                                        },
+                                        [
+                                          _vm._v(
+                                            "\n                  more\n                  "
+                                          ),
+                                          _c("v-icon", [
+                                            _vm._v("arrow_drop_down")
+                                          ])
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "v-list",
+                                        { staticClass: "grey lighten-3" },
+                                        _vm._l(_vm.more, function(item) {
+                                          return _c(
+                                            "v-list-tile",
+                                            {
+                                              key: item,
+                                              on: { click: _vm.handleClick }
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                    " +
+                                                  _vm._s(item) +
+                                                  "\n                  "
+                                              )
+                                            ]
+                                          )
+                                        })
+                                      )
+                                    ],
+                                    1
+                                  )
+                                : _vm._e()
+                            ],
+                            2
+                          ),
+                          _vm._v(" "),
+                          _c("v-subheader", [_vm._v("Icon and text")]),
+                          _vm._v(" "),
+                          _c(
+                            "v-tabs",
+                            {
+                              attrs: {
+                                "icons-and-text": "",
+                                centered: "",
+                                dark: "",
+                                color: "cyan"
+                              }
+                            },
+                            [
+                              _c("v-tabs-slider", {
+                                attrs: { color: "yellow" }
+                              }),
+                              _vm._v(" "),
+                              _c(
+                                "v-tab",
+                                { attrs: { href: "#tab-1" } },
+                                [
+                                  _vm._v(
+                                    "\n                Recents\n                "
+                                  ),
+                                  _c("v-icon", [_vm._v("phone")])
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-tab",
+                                { attrs: { href: "#tab-2" } },
+                                [
+                                  _vm._v(
+                                    "\n                Favorites\n                "
+                                  ),
+                                  _c("v-icon", [_vm._v("favorite")])
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-tab",
+                                { attrs: { href: "#tab-3" } },
+                                [
+                                  _vm._v(
+                                    "\n                Nearby\n                "
+                                  ),
+                                  _c("v-icon", [_vm._v("account_box")])
+                                ],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _vm._l(3, function(i) {
+                                return _c(
+                                  "v-tab-item",
+                                  { key: i, attrs: { id: "tab-" + i } },
                                   [
                                     _c(
-                                      "v-card-text",
-                                      { staticClass: "grey lighten-3" },
+                                      "v-card",
+                                      { attrs: { flat: "" } },
                                       [
-                                        _vm._v(
-                                          "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                                        )
-                                      ]
+                                        _c("v-card-text", [
+                                          _vm._v(_vm._s(_vm.text))
+                                        ])
+                                      ],
+                                      1
                                     )
                                   ],
                                   1
                                 )
-                              ],
-                              1
-                            )
-                          })
-                        )
-                      ],
-                      1
-                    )
-                  ])
+                              })
+                            ],
+                            2
+                          )
+                        ],
+                        1
+                      )
+                    ]
+                  )
                 ],
                 1
               ),
@@ -370,168 +636,236 @@ var render = function() {
                 "v-flex",
                 { attrs: { lg6: "" } },
                 [
-                  _c("v-widget", { attrs: { title: "Accordion" } }, [
-                    _c(
-                      "div",
-                      {
-                        attrs: { slot: "widget-content" },
-                        slot: "widget-content"
-                      },
-                      [
-                        _c(
-                          "v-expansion-panel",
-                          { attrs: { focusable: "" } },
-                          _vm._l(5, function(item, i) {
-                            return _c(
-                              "v-expansion-panel-content",
-                              { key: i },
-                              [
-                                _c(
-                                  "div",
-                                  { attrs: { slot: "header" }, slot: "header" },
-                                  [_vm._v("Item")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-card",
-                                  [
-                                    _c("v-card-text", [
+                  _c(
+                    "v-widget",
+                    {
+                      attrs: {
+                        title: "Complex",
+                        "content-bg": "grey lighten-3"
+                      }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          attrs: { slot: "widget-content" },
+                          slot: "widget-content"
+                        },
+                        [
+                          _c("v-subheader", [_vm._v("Mixed with toolbar")]),
+                          _vm._v(" "),
+                          _c(
+                            "v-toolbar",
+                            { attrs: { color: "cyan", dark: "", tabs: "" } },
+                            [
+                              _c("v-toolbar-side-icon"),
+                              _vm._v(" "),
+                              _c("v-toolbar-title", [_vm._v("Page title")]),
+                              _vm._v(" "),
+                              _c("v-spacer"),
+                              _vm._v(" "),
+                              _c(
+                                "v-btn",
+                                { attrs: { icon: "" } },
+                                [_c("v-icon", [_vm._v("search")])],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-btn",
+                                { attrs: { icon: "" } },
+                                [_c("v-icon", [_vm._v("more_vert")])],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-tabs",
+                                {
+                                  attrs: {
+                                    slot: "extension",
+                                    color: "cyan",
+                                    grow: ""
+                                  },
+                                  slot: "extension",
+                                  model: {
+                                    value: _vm.tab,
+                                    callback: function($$v) {
+                                      _vm.tab = $$v
+                                    },
+                                    expression: "tab"
+                                  }
+                                },
+                                [
+                                  _c("v-tabs-slider", {
+                                    attrs: { color: "yellow" }
+                                  }),
+                                  _vm._v(" "),
+                                  _vm._l(_vm.items, function(item) {
+                                    return _c("v-tab", { key: item }, [
                                       _vm._v(
-                                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+                                        "\n                  " +
+                                          _vm._s(item) +
+                                          "\n                "
                                       )
                                     ])
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            )
-                          })
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { lg12: "" } },
-                [
-                  _c("v-widget", { attrs: { title: "Popout" } }, [
-                    _c(
-                      "div",
-                      {
-                        attrs: { slot: "widget-content" },
-                        slot: "widget-content"
-                      },
-                      [
-                        _c(
-                          "v-container",
-                          [
-                            _c(
-                              "v-layout",
-                              { attrs: { row: "", wrap: "" } },
-                              [
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs12: "", lg5: "", "mb-3": "" } },
-                                  [
-                                    _c(
-                                      "v-expansion-panel",
-                                      { attrs: { popout: "" } },
-                                      _vm._l(5, function(item, i) {
-                                        return _c(
-                                          "v-expansion-panel-content",
-                                          { key: i },
-                                          [
-                                            _c(
-                                              "div",
-                                              {
-                                                attrs: { slot: "header" },
-                                                slot: "header"
-                                              },
-                                              [_vm._v("Item")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "v-card",
-                                              [
-                                                _c("v-card-text", [
-                                                  _vm._v(
-                                                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                                                  )
-                                                ])
-                                              ],
-                                              1
-                                            )
-                                          ],
-                                          1
-                                        )
-                                      })
-                                    )
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-flex",
-                                  {
-                                    attrs: {
-                                      xs12: "",
-                                      lg5: "",
-                                      "offset-lg2": ""
-                                    }
+                                  })
+                                ],
+                                2
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-tabs-items",
+                            {
+                              model: {
+                                value: _vm.tab,
+                                callback: function($$v) {
+                                  _vm.tab = $$v
+                                },
+                                expression: "tab"
+                              }
+                            },
+                            _vm._l(_vm.items, function(item) {
+                              return _c(
+                                "v-tab-item",
+                                { key: item },
+                                [
+                                  _c(
+                                    "v-card",
+                                    { attrs: { flat: "" } },
+                                    [
+                                      _c("v-card-text", [
+                                        _vm._v(_vm._s(_vm.text))
+                                      ])
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            })
+                          ),
+                          _vm._v(" "),
+                          _c("v-subheader", [_vm._v("Mixed with toolbar2")]),
+                          _vm._v(" "),
+                          _c(
+                            "v-toolbar",
+                            { attrs: { tabs: "", color: "purple", dark: "" } },
+                            [
+                              _c("v-toolbar-side-icon"),
+                              _vm._v(" "),
+                              _c("v-toolbar-title", [_vm._v("Page title")]),
+                              _vm._v(" "),
+                              _c("v-spacer"),
+                              _vm._v(" "),
+                              _c(
+                                "v-btn",
+                                { attrs: { icon: "" } },
+                                [_c("v-icon", [_vm._v("search")])],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-btn",
+                                { attrs: { icon: "" } },
+                                [_c("v-icon", [_vm._v("more_vert")])],
+                                1
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "v-tabs",
+                                {
+                                  attrs: {
+                                    slot: "extension",
+                                    "fixed-tabs": "",
+                                    color: "transparent"
                                   },
-                                  [
-                                    _c(
-                                      "v-expansion-panel",
-                                      { attrs: { inset: "" } },
-                                      _vm._l(5, function(item, i) {
-                                        return _c(
-                                          "v-expansion-panel-content",
-                                          { key: i },
-                                          [
-                                            _c(
-                                              "div",
-                                              {
-                                                attrs: { slot: "header" },
-                                                slot: "header"
-                                              },
-                                              [_vm._v("Item")]
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "v-card",
-                                              [
-                                                _c("v-card-text", [
-                                                  _vm._v(
-                                                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
-                                                  )
-                                                ])
-                                              ],
-                                              1
-                                            )
-                                          ],
-                                          1
-                                        )
-                                      })
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ],
-                      1
-                    )
-                  ])
+                                  slot: "extension",
+                                  model: {
+                                    value: _vm.tabs,
+                                    callback: function($$v) {
+                                      _vm.tabs = $$v
+                                    },
+                                    expression: "tabs"
+                                  }
+                                },
+                                [
+                                  _c("v-tabs-slider"),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-tab",
+                                    {
+                                      staticClass: "primary--text",
+                                      attrs: { href: "#mobile-tabs-5-1" }
+                                    },
+                                    [_c("v-icon", [_vm._v("phone")])],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-tab",
+                                    {
+                                      staticClass: "primary--text",
+                                      attrs: { href: "#mobile-tabs-5-2" }
+                                    },
+                                    [_c("v-icon", [_vm._v("favorite")])],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "v-tab",
+                                    {
+                                      staticClass: "primary--text",
+                                      attrs: { href: "#mobile-tabs-5-3" }
+                                    },
+                                    [_c("v-icon", [_vm._v("account_box")])],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-tabs-items",
+                            {
+                              staticClass: "white elevation-1",
+                              model: {
+                                value: _vm.tabs,
+                                callback: function($$v) {
+                                  _vm.tabs = $$v
+                                },
+                                expression: "tabs"
+                              }
+                            },
+                            _vm._l(3, function(i) {
+                              return _c(
+                                "v-tab-item",
+                                { key: i, attrs: { id: "mobile-tabs-5-" + i } },
+                                [
+                                  _c(
+                                    "v-card",
+                                    [
+                                      _c("v-card-text", [
+                                        _vm._v(_vm._s(_vm.text))
+                                      ])
+                                    ],
+                                    1
+                                  )
+                                ],
+                                1
+                              )
+                            })
+                          )
+                        ],
+                        1
+                      )
+                    ]
+                  )
                 ],
                 1
               )
@@ -551,7 +885,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-8b04c368", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-8a2ed6a0", module.exports)
   }
 }
 

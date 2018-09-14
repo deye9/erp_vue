@@ -65,6 +65,7 @@ return [
      */
     'middleware_schema' => [
         'default' => [],
+        'secret' => ['auth:api'],
     ],
 
     /*
@@ -124,11 +125,21 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
-                'Roles' => App\GraphQL\Query\RolesQuery::class
+                'users' => App\GraphQL\Query\UsersQuery::class,
+                'Roles' => App\GraphQL\Query\RolesQuery::class,
+                'login' => App\GraphQL\Query\UserLoginQuery::class
             ],
             'mutation' => [
+                'createUser' => App\GraphQL\Mutation\CreateUsersMutation::class,
                 'createRole' => App\GraphQL\Mutation\CreateRolesMutation::class
             ]
+        ],
+        'secret' => [
+            'query' => [
+                // 'login' => App\GraphQL\Query\UserLoginQuery::class
+            ],
+                'mutation' => [
+            ],
         ]
     ],
     /*
@@ -180,7 +191,8 @@ return [
      * ]
      */
     'types' => [
-        App\GraphQL\Type\RolesType::class
+        'User' => App\GraphQL\Type\UsersType::class,
+        'Roles' => App\GraphQL\Type\RolesType::class
     ],
 
     /*

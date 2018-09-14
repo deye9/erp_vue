@@ -114,6 +114,7 @@ export default {
                 name: 'Dashboard'
             });
         }, (response) => {
+            console.log('Error = ' + response);
             context.error = true;
         });
     },

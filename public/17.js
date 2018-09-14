@@ -1,177 +1,191 @@
 webpackJsonp([17],{
 
-/***/ 133:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(134)
-/* template */
-var __vue_template__ = __webpack_require__(135)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "front_end/components/VWidget.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-32edf1d9", Component.options)
-  } else {
-    hotAPI.reload("data-v-32edf1d9", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 134:
+/***/ 213:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__router__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__main_js__ = __webpack_require__(10);
 
-/* harmony default export */ __webpack_exports__["default"] = ({
-  name: "v-widget",
-  props: {
-    title: {
-      type: String
+
+
+var actions = {
+    check: 'api/user?token=',
+    signinuser: 'api/signin',
+    registeruser: 'api/registeruser',
+    resetpassword: 'api/resetpassword',
+    forgotpassword: 'api/forgotpassword',
+    emailsError: 'Emails do not match. Kindly correct it.',
+    passwordError: 'Passwords do not match. Kindly correct it.',
+    isavailableError: 'Unfortunately we are unable to determine the status of your request. Please check your data and re-try. Thanks.'
+};
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    user: {
+        profile: null,
+        authenticated: false
     },
-    enableHeader: {
-      type: Boolean,
-      default: true
+    buildmenu: function buildmenu(data) {
+        var Menu = {};
+        this.user.profile = data.data;
+        this.user.authenticated = true;
+        var _roles = data.data.user.roles;
+        return true;
+
+        // $.each(_roles, function(key, value) {
+        //     // Get all Unique Parent Names
+        //     var _permissions = value.permissions;
+        //     var UniqueParentNames = $.unique(_permissions.map(function (d) {
+        //         return d.parent_name;
+        //     }));
+
+        //     // Get all child menu associated with the parent and log into an array.
+        //     $.each(UniqueParentNames, function( key, value ) {
+        //         var localMenuScope = [];
+        //         localMenuScope.push($.map(_permissions, function( a, index ) {
+        //             if (a.parent_name.toLowerCase() === value.toLowerCase())
+        //             return [ a.name ];
+        //         }));
+        //         Menu[value] = localMenuScope;
+        //     });
+        // });
+
+        // // Add the Dashboard and Profile Menu option automatically.
+        // var HtmlMenu = '<div class="sidebar-sticky">';
+        // HtmlMenu += '<ul class="nav flex-column"><li class="nav-item">';
+        // HtmlMenu += '<a class="nav-link" href="javascript:null" @click="LoadComponent(\'Dashboard\')">';
+        // HtmlMenu += '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>';
+        // HtmlMenu += 'Dashboard <span class="sr-only">(current)</span>';
+        // HtmlMenu += '</a></li>';
+
+        // HtmlMenu += '<li class="nav-item"><a class="btn btn-link float-left nav-link" href="#/profile">';
+        // HtmlMenu += '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-users"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>';
+        // HtmlMenu += 'Profile';
+        // HtmlMenu += '</a></li></ul>';
+
+        // // Build out the Menu String.
+        // $.each(Menu, function( key, value ) {
+        //     HtmlMenu += '<button class="accordion"> ' + toPascalCase(key) + ' </button>\n';
+        //     HtmlMenu += '<div class="panel">\n';
+        //     HtmlMenu += '<ul class="nav flex-column mb-2">\n';
+        //     $.each(value[0], function(_key, _value) {
+        //         HtmlMenu += '<li class="nav-item">\n';
+        //         HtmlMenu += '<a class="nav-link" href="javascript:null">\n';
+        //         HtmlMenu += '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>\n';
+        //         HtmlMenu += toPascalCase(_value) + '\n';
+        //         HtmlMenu += '</a>\n';
+        //         HtmlMenu += '</li>\n';
+        //     });
+        //     HtmlMenu += '</ul>\n';
+        //     HtmlMenu += '</div>\n';
+        // });
+        // HtmlMenu += '</div>';
+        // sessionStorage.setItem("permittedMenu", HtmlMenu);
     },
-    contentBg: {
-      type: String,
-      default: "white"
+    check: function check() {
+        var _this = this;
+
+        var token = sessionStorage.getItem('id_token');
+        if (token !== null) {
+            __WEBPACK_IMPORTED_MODULE_1__main_js__["default"].http.get(actions.check + token).then(function (response) {
+                _this.buildmenu(response.data);
+            });
+        }
+    },
+    mountresetcomponents: function mountresetcomponents() {
+        __WEBPACK_IMPORTED_MODULE_0__router__["a" /* default */].push({
+            name: 'Reset'
+        });
+    },
+    register: function register(context, name, email, password) {
+        __WEBPACK_IMPORTED_MODULE_1__main_js__["default"].http.post(this.registeruser, {
+            name: name,
+            email: email,
+            password: password
+        }).then(function (response) {
+            context.success = true;
+        }, function (response) {
+            context.error = true;
+            context.response = response.data;
+        });
+    },
+    signin: function signin(context, email, password) {
+        var _this2 = this;
+
+        __WEBPACK_IMPORTED_MODULE_1__main_js__["default"].http.post(actions.signinuser, { email: email, password: password }).then(function (response) {
+            context.error = false;
+
+            sessionStorage.setItem('id_token', response.data.meta.token);
+            __WEBPACK_IMPORTED_MODULE_1__main_js__["default"].http.headers.common['Authorization'] = 'Bearer ' + sessionStorage.getItem('id_token');
+
+            _this2.buildmenu(response.data);
+            __WEBPACK_IMPORTED_MODULE_0__router__["a" /* default */].push({
+                name: 'Dashboard'
+            });
+        }, function (response) {
+            console.log('Error = ' + response);
+            context.error = true;
+        });
+    },
+    forgotpassword: function forgotpassword(context, email) {
+        __WEBPACK_IMPORTED_MODULE_1__main_js__["default"].http.post(actions.forgotpassword, { email: email }).then(function (response) {
+            context.error = false;
+
+            __WEBPACK_IMPORTED_MODULE_0__router__["a" /* default */].push({
+                name: 'Login'
+            });
+        }, function (response) {
+            context.error = true;
+        });
+    },
+    reset: function reset(context, email, password, password_confirmation) {
+        if (password !== password_confirmation) {
+            context.error = true;
+            return false;
+        }
+        var token = location.pathname.replace('/password/reset/', '');
+        __WEBPACK_IMPORTED_MODULE_1__main_js__["default"].http.post(actions.resetpassword, { email: email, password: password, password_confirmation: password_confirmation, token: token }).then(function (response) {
+            context.error = false;
+
+            __WEBPACK_IMPORTED_MODULE_0__router__["a" /* default */].push({
+                name: 'Login'
+            });
+        }, function (response) {
+            context.error = true;
+        });
+    },
+    signout: function signout() {
+        sessionStorage.removeItem('id_token');
+        sessionStorage.removeItem('permittedMenu');
+
+        this.user.profile = null;
+        this.user.authenticated = false;
+
+        __WEBPACK_IMPORTED_MODULE_0__router__["a" /* default */].push({
+            name: 'Login'
+        });
     }
-  },
-
-  data: function data() {
-    return {};
-  },
-
-  computed: {}
 });
 
 /***/ }),
 
-/***/ 135:
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "v-widget" } },
-    [
-      _c(
-        "v-card",
-        [
-          _vm.enableHeader
-            ? _c(
-                "v-toolbar",
-                {
-                  attrs: { color: "transparent", flat: "", dense: "", card: "" }
-                },
-                [
-                  _c("v-toolbar-title", [
-                    _c("h4", [_vm._v(_vm._s(_vm.title))])
-                  ]),
-                  _vm._v(" "),
-                  _c("v-spacer"),
-                  _vm._v(" "),
-                  _vm._t("widget-header-action")
-                ],
-                2
-              )
-            : _vm._e(),
-          _vm._v(" "),
-          _vm.enableHeader ? _c("v-divider") : _vm._e(),
-          _vm._v(" "),
-          _c(
-            "v-card-text",
-            { class: _vm.contentBg },
-            [_vm._t("widget-content")],
-            2
-          )
-        ],
-        1
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-32edf1d9", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 600:
+/***/ 516:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(601);
+var content = __webpack_require__(517);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("b414dd5c", content, false, {});
+var update = __webpack_require__(3)("f390b1e8", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3f3eeaea\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/stylus-loader/index.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Cards.vue", function() {
-     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3f3eeaea\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/stylus-loader/index.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Cards.vue");
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-12a6d6e5\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Login.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-12a6d6e5\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Login.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -182,7 +196,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 601:
+/***/ 517:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -190,131 +204,19 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.mt-45[data-v-3f3eeaea] {\n  margin-top: -45px;\n}\n.mt-56[data-v-3f3eeaea] {\n  margin-top: -56px;\n}\n", ""]);
+exports.push([module.i, "\n#login[data-v-12a6d6e5] {\n  height: 50%;\n  width: 100%;\n  position: absolute;\n  top: 0;\n  left: 0;\n  content: \"\";\n  z-index: 0;\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 602:
+/***/ 518:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget__ = __webpack_require__(133);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_VWidget__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__auth_js__ = __webpack_require__(213);
 //
 //
 //
@@ -371,23 +273,38 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    VWidget: __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default.a
-  },
-  data: function data() {
-    return {
-      show: true,
-      cardText: 'Hey there, I am a very simple card. I am good at containing small bits of information. I am quite convenient because I require little markup to use effectively.'
-    };
-  },
-
-  computed: {},
-  methods: {}
+    data: function data() {
+        return {
+            email: null,
+            error: false,
+            password: null,
+            loading: false,
+            err_message: ''
+        };
+    },
+    methods: {
+        login: function login() {
+            this.loading = true;
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)) {
+                __WEBPACK_IMPORTED_MODULE_0__auth_js__["a" /* default */].signin(this, this.email, this.password);
+                return true;
+            }
+            this.error = true;
+            this.loading = false;
+            this.err_message = 'Invalid Email supplied.';
+        },
+        Register: function Register() {
+            this.$router.push({ path: '/register' });
+        },
+        ForgotPassword: function ForgotPassword() {
+            this.$router.push({ path: '/forgotpassword' });
+        }
+    }
 });
 
 /***/ }),
 
-/***/ 603:
+/***/ 519:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -395,462 +312,184 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c(
-    "div",
-    { attrs: { id: "pageCard" } },
+    "v-app",
+    { staticClass: "primary", attrs: { id: "login" } },
     [
       _c(
-        "v-container",
-        { attrs: { "grid-list-xl": "", fluid: "" } },
+        "v-toolbar",
+        { attrs: { dark: "", color: "primary", dense: "" } },
         [
           _c(
-            "v-layout",
-            { attrs: { row: "", wrap: "" } },
+            "a",
+            {
+              staticClass: "d-flex router-link-active",
+              attrs: { href: "#/home" }
+            },
             [
-              _c("v-flex", { attrs: { sm12: "" } }, [
-                _c("h3", [_vm._v("Simple")])
-              ]),
+              _c("img", {
+                attrs: {
+                  src: "https://cdn.vuetifyjs.com/images/logos/v-alt.svg",
+                  height: "38px",
+                  width: "38px"
+                }
+              })
+            ]
+          ),
+          _vm._v(" "),
+          _c("v-toolbar-title", { staticClass: "white--text" }, [
+            _vm._v("Welcome to Pentaville.")
+          ]),
+          _vm._v(" "),
+          _c("v-spacer"),
+          _vm._v(" "),
+          _c(
+            "v-toolbar-items",
+            [
+              _c("v-btn", { attrs: { flat: "" } }, [_vm._v("Login")]),
               _vm._v(" "),
               _c(
-                "v-flex",
-                { attrs: { lg4: "", sm12: "" } },
-                [
-                  _c(
-                    "v-card",
-                    { attrs: { color: "purple", dark: "" } },
-                    [
-                      _c("v-card-title", { staticClass: "pb-0" }, [
-                        _c("h4", [
-                          _vm._v("Basic card with `purple` background")
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("v-card-text", [
-                        _vm._v(
-                          "\n            " +
-                            _vm._s(_vm.cardText) +
-                            "\n          "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "v-card-actions",
-                        [
-                          _c("v-btn", { attrs: { flat: "", small: "" } }, [
-                            _vm._v("Link")
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { lg4: "", sm12: "" } },
-                [
-                  _c(
-                    "v-card",
-                    { attrs: { color: "teal", dark: "" } },
-                    [
-                      _c("v-card-title", { staticClass: "pb-0" }, [
-                        _c("h4", [_vm._v("Basic card with `teal` background")])
-                      ]),
-                      _vm._v(" "),
-                      _c("v-card-text", [
-                        _vm._v(
-                          "\n            " +
-                            _vm._s(_vm.cardText) +
-                            "\n          "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "v-card-actions",
-                        [
-                          _c("v-btn", { attrs: { flat: "", small: "" } }, [
-                            _vm._v("Link")
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { lg4: "", sm12: "" } },
-                [
-                  _c(
-                    "v-card",
-                    [
-                      _c("v-card-title", { staticClass: "pb-0" }, [
-                        _c("h4", [_vm._v("Basic")])
-                      ]),
-                      _vm._v(" "),
-                      _c("v-card-text", [
-                        _vm._v(
-                          "\n            " +
-                            _vm._s(_vm.cardText) +
-                            "\n          "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "v-card-actions",
-                        [
-                          _c("v-btn", { attrs: { flat: "", small: "" } }, [
-                            _vm._v("Link")
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
+                "v-btn",
+                { attrs: { flat: "" }, on: { click: _vm.Register } },
+                [_vm._v("Register")]
               )
             ],
             1
-          ),
-          _vm._v(" "),
+          )
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
+        "v-content",
+        [
           _c(
-            "v-layout",
-            { attrs: { row: "", wrap: "" } },
+            "v-container",
+            { attrs: { fluid: "", "fill-height": "" } },
             [
-              _c("v-flex", { attrs: { sm12: "" } }, [
-                _c("h3", [_vm._v("Image Card")])
-              ]),
-              _vm._v(" "),
               _c(
-                "v-flex",
-                { attrs: { lg4: "", sm12: "" } },
+                "v-layout",
+                { attrs: { "align-center": "", "justify-center": "" } },
                 [
                   _c(
-                    "v-card",
+                    "v-flex",
+                    { attrs: { xs12: "", sm8: "", md4: "", lg4: "" } },
                     [
                       _c(
-                        "v-img",
-                        { attrs: { src: "/static/bg/8.jpg", height: "250" } },
+                        "v-alert",
+                        {
+                          attrs: {
+                            value: _vm.error,
+                            dismissible: "",
+                            type: "error"
+                          }
+                        },
                         [
-                          _c("h2", { staticClass: "white--text pa-3" }, [
-                            _vm._v(
-                              "\n              Card with image\n            "
-                            )
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c("v-card-text", [
-                        _c("div", [
                           _vm._v(
                             "\n              " +
-                              _vm._s(_vm.cardText) +
-                              "\n            "
+                              _vm._s(_vm.err_message) +
+                              "\n          "
                           )
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("v-divider"),
-                      _vm._v(" "),
-                      _c(
-                        "v-card-actions",
-                        [
-                          _c("v-btn", { attrs: { flat: "", small: "" } }, [
-                            _vm._v("Link")
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { lg4: "", sm12: "" } },
-                [
-                  _c(
-                    "v-card",
-                    [
-                      _c(
-                        "v-img",
-                        {
-                          attrs: {
-                            src: "/static/nature/n3.jpeg",
-                            height: "250"
-                          }
-                        },
-                        [
-                          _c("h2", { staticClass: "white--text pa-3" }, [
-                            _vm._v(
-                              "\n              Card with image\n            "
-                            )
-                          ])
                         ]
                       ),
                       _vm._v(" "),
                       _c(
-                        "v-card-text",
+                        "v-card",
+                        { staticClass: "elevation-1 pa-3" },
                         [
                           _c(
-                            "v-avatar",
-                            {
-                              staticClass: "right mt-56",
-                              attrs: { size: "64px" }
-                            },
+                            "v-card-text",
                             [
-                              _c("img", {
-                                attrs: {
-                                  src: "/static/avatar/man_2.jpg",
-                                  alt: ""
-                                }
-                              })
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c("div", [
-                            _vm._v(
-                              "\n             " +
-                                _vm._s(_vm.cardText) +
-                                "\n            "
-                            )
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c("v-divider"),
-                      _vm._v(" "),
-                      _c(
-                        "v-card-actions",
-                        [
-                          _c("v-btn", { attrs: { flat: "", small: "" } }, [
-                            _vm._v("Link")
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { lg4: "", sm12: "" } },
-                [
-                  _c(
-                    "v-card",
-                    [
-                      _c(
-                        "v-img",
-                        {
-                          attrs: {
-                            src: "/static/nature/n4.jpeg",
-                            height: "250"
-                          }
-                        },
-                        [
-                          _c("h2", { staticClass: "white--text pa-3" }, [
-                            _vm._v(
-                              "\n              Card with image\n            "
-                            )
-                          ])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-card-text",
-                        [
-                          _c(
-                            "v-btn",
-                            {
-                              staticClass: "right mt-45",
-                              attrs: {
-                                icon: "",
-                                fab: "",
-                                color: "red",
-                                dark: ""
-                              }
-                            },
-                            [_c("v-icon", [_vm._v("favorite")])],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c("div", [
-                            _vm._v(
-                              "\n              " +
-                                _vm._s(_vm.cardText) +
-                                "\n            "
-                            )
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c("v-divider"),
-                      _vm._v(" "),
-                      _c(
-                        "v-card-actions",
-                        [
-                          _c("v-btn", { attrs: { flat: "", small: "" } }, [
-                            _vm._v("Link")
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "v-layout",
-            { attrs: { row: "", wrap: "" } },
-            [
-              _c("v-flex", { attrs: { sm12: "" } }, [
-                _c("h3", [_vm._v("Carousel Cards")])
-              ]),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { lg4: "", sm12: "" } },
-                [
-                  _c(
-                    "v-carousel",
-                    {
-                      staticClass: "fill-height",
-                      attrs: { "hide-controls": "", "hide-delimiters": "" }
-                    },
-                    [
-                      _c(
-                        "v-carousel-item",
-                        [
-                          _c(
-                            "v-card",
-                            { attrs: { color: "indigo", dark: "" } },
-                            [
-                              _c("v-card-title", { staticClass: "pb-0" }, [
-                                _c("h3", [
-                                  _vm._v("Basic card with `purple` background")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("v-card-text", [
-                                _vm._v(
-                                  "\n                " +
-                                    _vm._s(_vm.cardText) +
-                                    "\n              "
-                                )
-                              ]),
+                              _c(
+                                "div",
+                                { staticClass: "layout column align-center" },
+                                [
+                                  _c("img", {
+                                    attrs: {
+                                      src: "/static/m.png",
+                                      alt: "Pentaville Schools",
+                                      width: "120",
+                                      height: "120"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c(
+                                    "h2",
+                                    {
+                                      staticClass:
+                                        "flex my-4 primary--text align-center"
+                                    },
+                                    [_vm._v("Pentaville Schools")]
+                                  )
+                                ]
+                              ),
                               _vm._v(" "),
                               _c(
-                                "v-card-actions",
+                                "v-form",
                                 [
-                                  _c(
-                                    "v-btn",
-                                    { attrs: { flat: "", small: "" } },
-                                    [_vm._v("Link")]
-                                  )
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      "append-icon": "person",
+                                      name: "login",
+                                      label: "Email Address",
+                                      type: "text"
+                                    },
+                                    model: {
+                                      value: _vm.email,
+                                      callback: function($$v) {
+                                        _vm.email = $$v
+                                      },
+                                      expression: "email"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("v-text-field", {
+                                    attrs: {
+                                      "append-icon": "lock",
+                                      name: "password",
+                                      label: "Password",
+                                      id: "password",
+                                      type: "password"
+                                    },
+                                    model: {
+                                      value: _vm.password,
+                                      callback: function($$v) {
+                                        _vm.password = $$v
+                                      },
+                                      expression: "password"
+                                    }
+                                  })
                                 ],
                                 1
                               )
                             ],
                             1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-carousel-item",
-                        [
+                          ),
+                          _vm._v(" "),
                           _c(
-                            "v-card",
-                            { attrs: { color: "teal", dark: "" } },
+                            "v-card-actions",
                             [
-                              _c("v-card-title", { staticClass: "pb-0" }, [
-                                _c("h3", [
-                                  _vm._v("Basic card with `purple` background")
-                                ])
-                              ]),
+                              _c(
+                                "v-btn",
+                                {
+                                  attrs: { flat: "" },
+                                  on: { click: _vm.ForgotPassword }
+                                },
+                                [_vm._v("Forgot Password")]
+                              ),
                               _vm._v(" "),
-                              _c("v-card-text", [
-                                _vm._v(
-                                  "\n                " +
-                                    _vm._s(_vm.cardText) +
-                                    "\n              "
-                                )
-                              ]),
+                              _c("v-spacer"),
                               _vm._v(" "),
                               _c(
-                                "v-card-actions",
-                                [
-                                  _c(
-                                    "v-btn",
-                                    { attrs: { flat: "", small: "" } },
-                                    [_vm._v("Link")]
-                                  )
-                                ],
-                                1
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-carousel-item",
-                        [
-                          _c(
-                            "v-card",
-                            { attrs: { color: "purple", dark: "" } },
-                            [
-                              _c("v-card-title", { staticClass: "pb-0" }, [
-                                _c("h3", [
-                                  _vm._v("Basic card with `purple` background")
-                                ])
-                              ]),
-                              _vm._v(" "),
-                              _c("v-card-text", [
-                                _vm._v(
-                                  "\n                " +
-                                    _vm._s(_vm.cardText) +
-                                    "\n              "
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "v-card-actions",
-                                [
-                                  _c(
-                                    "v-btn",
-                                    { attrs: { flat: "", small: "" } },
-                                    [_vm._v("Link")]
-                                  )
-                                ],
-                                1
+                                "v-btn",
+                                {
+                                  attrs: {
+                                    block: "",
+                                    color: "primary",
+                                    loading: _vm.loading
+                                  },
+                                  on: { click: _vm.login }
+                                },
+                                [_vm._v("Login")]
                               )
                             ],
                             1
@@ -880,31 +519,31 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3f3eeaea", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-12a6d6e5", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 99:
+/***/ 76:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(600)
+  __webpack_require__(516)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(602)
+var __vue_script__ = __webpack_require__(518)
 /* template */
-var __vue_template__ = __webpack_require__(603)
+var __vue_template__ = __webpack_require__(519)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = "data-v-3f3eeaea"
+var __vue_scopeId__ = "data-v-12a6d6e5"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -915,7 +554,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "front_end/pages/ui/Cards.vue"
+Component.options.__file = "front_end/pages/auth/Login.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -924,9 +563,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3f3eeaea", Component.options)
+    hotAPI.createRecord("data-v-12a6d6e5", Component.options)
   } else {
-    hotAPI.reload("data-v-3f3eeaea", Component.options)
+    hotAPI.reload("data-v-12a6d6e5", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true

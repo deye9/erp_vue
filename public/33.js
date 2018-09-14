@@ -155,41 +155,13 @@ if (false) {
 
 /***/ }),
 
-/***/ 588:
+/***/ 596:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_VWidget__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -233,7 +205,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     VWidget: __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default.a
   },
   data: function data() {
-    return {};
+    return {
+      page: 1
+    };
   },
 
   computed: {},
@@ -242,7 +216,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 589:
+/***/ 597:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -251,7 +225,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "pageBadge" } },
+    { attrs: { id: "page-parallax" } },
     [
       _c(
         "v-container",
@@ -263,204 +237,96 @@ var render = function() {
             [
               _c(
                 "v-flex",
-                { attrs: { lg4: "", sm12: "" } },
+                { attrs: { lg12: "" } },
                 [
-                  _c("v-widget", { attrs: { title: "Basic Usage" } }, [
+                  _c("v-widget", { attrs: { title: "Default" } }, [
                     _c(
                       "div",
                       {
+                        staticClass: "text-xs-center",
                         attrs: { slot: "widget-content" },
                         slot: "widget-content"
                       },
                       [
-                        _c(
-                          "div",
-                          { staticClass: "text-xs-center" },
-                          [
-                            _c(
-                              "v-badge",
-                              { attrs: { left: "" } },
-                              [
-                                _c(
-                                  "span",
-                                  { attrs: { slot: "badge" }, slot: "badge" },
-                                  [_vm._v("6")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-icon",
-                                  {
-                                    attrs: {
-                                      large: "",
-                                      color: "grey lighten-1"
-                                    }
-                                  },
-                                  [_vm._v("shopping_cart")]
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-badge",
-                              { attrs: { color: "red" } },
-                              [
-                                _c(
-                                  "span",
-                                  { attrs: { slot: "badge" }, slot: "badge" },
-                                  [_vm._v("!")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-icon",
-                                  { attrs: { large: "", color: "grey" } },
-                                  [_vm._v("mail")]
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c("v-label", [_vm._v("Label")])
-                          ],
-                          1
-                        )
-                      ]
+                        _c("v-parallax", {
+                          attrs: { src: "/static/bg/12.jpg" }
+                        })
+                      ],
+                      1
                     )
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { lg4: "", sm12: "" } },
-                [
-                  _c("v-widget", { attrs: { title: "Inline Badge" } }, [
-                    _c(
-                      "div",
-                      {
-                        attrs: { slot: "widget-content" },
-                        slot: "widget-content"
-                      },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "text-xs-center" },
-                          [
-                            _c("v-badge", { attrs: { left: "" } }, [
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "v-widget",
+                    { staticClass: "mt-3", attrs: { title: "Content inside" } },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "text-xs-center",
+                          attrs: { slot: "widget-content" },
+                          slot: "widget-content"
+                        },
+                        [
+                          _c(
+                            "v-parallax",
+                            { attrs: { src: "/static/bg/1.jpg" } },
+                            [
                               _c(
-                                "span",
-                                { attrs: { slot: "badge" }, slot: "badge" },
-                                [_vm._v("2")]
-                              ),
-                              _vm._v(" "),
-                              _c("span", [_vm._v("Examples")])
-                            ]),
-                            _vm._v("\n              \n            "),
-                            _c(
-                              "v-badge",
-                              { attrs: { color: "green" } },
-                              [
-                                _c(
-                                  "v-icon",
-                                  {
-                                    attrs: {
-                                      slot: "badge",
-                                      dark: "",
-                                      small: ""
-                                    },
-                                    slot: "badge"
-                                  },
-                                  [_vm._v("list")]
-                                ),
-                                _vm._v(" "),
-                                _c("span", [_vm._v("Lists")])
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ]
-                    )
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { lg4: "", sm12: "" } },
-                [
-                  _c("v-widget", { attrs: { title: "Icon Badge" } }, [
-                    _c(
-                      "div",
-                      {
-                        attrs: { slot: "widget-content" },
-                        slot: "widget-content"
-                      },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "text-xs-center" },
-                          [
-                            _c(
-                              "v-badge",
-                              { attrs: { left: "", color: "purple" } },
-                              [
-                                _c(
-                                  "v-icon",
-                                  {
-                                    attrs: {
-                                      slot: "badge",
-                                      dark: "",
-                                      small: ""
-                                    },
-                                    slot: "badge"
-                                  },
-                                  [_vm._v("layers")]
-                                ),
-                                _vm._v(" "),
-                                _c("span", [
-                                  _vm._v(
-                                    "\n                  MDI icon\n                "
-                                  )
-                                ])
-                              ],
-                              1
-                            ),
-                            _vm._v("\n                \n              "),
-                            _c(
-                              "v-badge",
-                              { attrs: { color: "orange" } },
-                              [
-                                _c(
-                                  "v-icon",
-                                  {
-                                    attrs: {
-                                      slot: "badge",
-                                      dark: "",
-                                      small: ""
-                                    },
-                                    slot: "badge"
-                                  },
-                                  [_vm._v("fa fa-apple")]
-                                ),
-                                _vm._v(" "),
-                                _c("span", [
-                                  _vm._v(
-                                    "\n                  Font Awesome icon\n                "
-                                  )
-                                ])
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ]
-                    )
-                  ])
+                                "v-layout",
+                                {
+                                  attrs: {
+                                    column: "",
+                                    "align-center": "",
+                                    "justify-center": ""
+                                  }
+                                },
+                                [
+                                  _c("h1", { staticClass: "white--text" }, [
+                                    _vm._v("Vuetify.js")
+                                  ]),
+                                  _vm._v(" "),
+                                  _c("h4", { staticClass: "white--text" }, [
+                                    _vm._v("Build your application today!")
+                                  ])
+                                ]
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "v-widget",
+                    {
+                      staticClass: "mt-3",
+                      attrs: { title: "Jumbotron inside" }
+                    },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass: "text-xs-center",
+                          attrs: { slot: "widget-content" },
+                          slot: "widget-content"
+                        },
+                        [
+                          _c("v-parallax", {
+                            attrs: {
+                              src: "/static/bg/21.jpg",
+                              height: "700",
+                              jumbotron: ""
+                            }
+                          })
+                        ],
+                        1
+                      )
+                    ]
+                  )
                 ],
                 1
               )
@@ -480,21 +346,21 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-6bde1ecb", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-7ea9e89f", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 94:
+/***/ 96:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(588)
+var __vue_script__ = __webpack_require__(596)
 /* template */
-var __vue_template__ = __webpack_require__(589)
+var __vue_template__ = __webpack_require__(597)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -511,7 +377,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "front_end/pages/ui/Badge.vue"
+Component.options.__file = "front_end/pages/ui/Parallax.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -520,9 +386,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6bde1ecb", Component.options)
+    hotAPI.createRecord("data-v-7ea9e89f", Component.options)
   } else {
-    hotAPI.reload("data-v-6bde1ecb", Component.options)
+    hotAPI.reload("data-v-7ea9e89f", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true

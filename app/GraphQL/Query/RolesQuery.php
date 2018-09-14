@@ -12,7 +12,7 @@ class RolesQuery extends Query
 {
     protected $attributes = [
         'name' => 'RolesQuery',
-        'description' => 'A Roles query'
+        'description' => 'A query to get all roles setup in the database'
     ];
 
     public function type()
@@ -23,17 +23,23 @@ class RolesQuery extends Query
     public function args()
     {
         return [
-            'id' => [
-                'type' => Type::nonNull(Type::int()),
-            ],
-            'name' => [
-                'type' => Type::nonNull(Type::string()),
-            ]
+            // 'id' => [
+            //     'type' => Type::nonNull(Type::int()),
+            // ],
+            // 'name' => [
+            //     'type' => Type::nonNull(Type::string()),
+            // ],
+            // 'created_at' => [
+            //     'type' => Type::string(),
+            // ],
+            // 'updated_at' => [
+            //     'type' => Type::string(),
+            // ]
         ];
     }
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-        return Role::all();
+        return Role::all()->toArray();
     }
 }

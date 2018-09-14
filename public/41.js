@@ -1,14 +1,14 @@
 webpackJsonp([41],{
 
-/***/ 112:
+/***/ 119:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(644)
+var __vue_script__ = __webpack_require__(662)
 /* template */
-var __vue_template__ = __webpack_require__(645)
+var __vue_template__ = __webpack_require__(663)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "front_end/pages/layout/BottomSheets.vue"
+Component.options.__file = "front_end/pages/layout/Menus.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5a20c7b1", Component.options)
+    hotAPI.createRecord("data-v-94a0759c", Component.options)
   } else {
-    hotAPI.reload("data-v-5a20c7b1", Component.options)
+    hotAPI.reload("data-v-94a0759c", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -203,22 +203,13 @@ if (false) {
 
 /***/ }),
 
-/***/ 644:
+/***/ 662:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_VWidget__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -289,18 +280,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   data: function data() {
     return {
-      sheet: false,
-      tiles: [{ img: 'keep.png', title: 'Keep' }, { img: 'inbox.png', title: 'Inbox' }, { img: 'hangouts.png', title: 'Hangouts' }, { img: 'google.png', title: 'Google+' }]
+      items: [{ title: 'Click Me' }, { title: 'Click Me' }, { title: 'Click Me' }, { title: 'Click Me 2' }],
+      nudge: {
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0
+      }
     };
   },
 
   computed: {},
-  methods: {}
+  methods: {
+    handleClick: function handleClick(e) {
+      e.preventDefault();
+    }
+  }
 });
 
 /***/ }),
 
-/***/ 645:
+/***/ 663:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -309,7 +309,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "page-bottom-sheets" } },
+    { attrs: { id: "page-menus" } },
     [
       _c(
         "v-container",
@@ -321,125 +321,205 @@ var render = function() {
             [
               _c(
                 "v-flex",
-                { attrs: { lg6: "" } },
+                { attrs: { lg12: "", sm12: "" } },
                 [
-                  _c("v-widget", { attrs: { title: "Inset" } }, [
+                  _c("v-widget", { attrs: { title: "Basic Usage" } }, [
                     _c(
-                      "div",
+                      "section",
                       {
                         attrs: { slot: "widget-content" },
                         slot: "widget-content"
                       },
                       [
                         _c(
-                          "v-bottom-sheet",
-                          { attrs: { inset: "" } },
+                          "v-container",
+                          { attrs: { fluid: "" } },
                           [
                             _c(
-                              "v-btn",
-                              {
-                                attrs: {
-                                  slot: "activator",
-                                  color: "red",
-                                  dark: ""
-                                },
-                                slot: "activator"
-                              },
-                              [_vm._v("Show player")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-card",
-                              { attrs: { tile: "" } },
+                              "v-layout",
+                              { attrs: { row: "", wrap: "" } },
                               [
-                                _c("v-progress-linear", {
-                                  staticClass: "my-0",
-                                  attrs: { height: "3", value: 50 }
-                                }),
-                                _vm._v(" "),
                                 _c(
-                                  "v-list",
+                                  "v-flex",
+                                  {
+                                    staticClass: "text-xs-center",
+                                    attrs: { xs12: "" }
+                                  },
                                   [
                                     _c(
-                                      "v-list-tile",
+                                      "v-menu",
+                                      {
+                                        attrs: {
+                                          "offset-y": "",
+                                          "nudge-bottom": _vm.nudge.bottom,
+                                          "nudge-left": _vm.nudge.left,
+                                          "nudge-right": _vm.nudge.right,
+                                          "nudge-top": _vm.nudge.top
+                                        }
+                                      },
                                       [
                                         _c(
-                                          "v-list-tile-content",
+                                          "v-btn",
+                                          {
+                                            attrs: {
+                                              slot: "activator",
+                                              dark: "",
+                                              color: "primary"
+                                            },
+                                            slot: "activator"
+                                          },
                                           [
-                                            _c("v-list-tile-title", [
-                                              _vm._v("The Walker")
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("v-list-tile-sub-title", [
-                                              _vm._v("Fitz & The Trantrums")
-                                            ])
-                                          ],
-                                          1
+                                            _vm._v(
+                                              "\n                      Menu Offset Bottom\n                    "
+                                            )
+                                          ]
                                         ),
                                         _vm._v(" "),
-                                        _c("v-spacer"),
-                                        _vm._v(" "),
                                         _c(
-                                          "v-list-tile-action",
-                                          [
-                                            _c(
-                                              "v-btn",
-                                              { attrs: { icon: "" } },
+                                          "v-list",
+                                          _vm._l(_vm.items, function(
+                                            item,
+                                            key
+                                          ) {
+                                            return _c(
+                                              "v-list-tile",
+                                              {
+                                                key: key,
+                                                on: { click: _vm.handleClick }
+                                              },
                                               [
-                                                _c("v-icon", [
-                                                  _vm._v("fast_rewind")
+                                                _c("v-list-tile-title", [
+                                                  _vm._v(_vm._s(item.title))
                                                 ])
                                               ],
                                               1
                                             )
-                                          ],
-                                          1
-                                        ),
-                                        _vm._v(" "),
+                                          })
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-menu",
+                                      { attrs: { "offset-y": "", top: "" } },
+                                      [
                                         _c(
-                                          "v-list-tile-action",
+                                          "v-btn",
                                           {
-                                            class: {
-                                              "mx-5":
-                                                _vm.$vuetify.breakpoint.mdAndUp
-                                            }
+                                            attrs: {
+                                              slot: "activator",
+                                              dark: "",
+                                              color: "primary"
+                                            },
+                                            slot: "activator"
                                           },
                                           [
-                                            _c(
-                                              "v-btn",
-                                              { attrs: { icon: "" } },
-                                              [_c("v-icon", [_vm._v("pause")])],
-                                              1
+                                            _vm._v(
+                                              "\n                      Menu Offset Top\n                    "
                                             )
-                                          ],
-                                          1
+                                          ]
                                         ),
                                         _vm._v(" "),
                                         _c(
-                                          "v-list-tile-action",
-                                          {
-                                            class: {
-                                              "mr-3":
-                                                _vm.$vuetify.breakpoint.mdAndUp
-                                            }
-                                          },
-                                          [
-                                            _c(
-                                              "v-btn",
-                                              { attrs: { icon: "" } },
+                                          "v-list",
+                                          _vm._l(_vm.items, function(
+                                            item,
+                                            key
+                                          ) {
+                                            return _c(
+                                              "v-list-tile",
+                                              {
+                                                key: key,
+                                                on: { click: _vm.handleClick }
+                                              },
                                               [
-                                                _c("v-icon", [
-                                                  _vm._v("fast_forward")
+                                                _c("v-list-tile-title", [
+                                                  _vm._v(_vm._s(item.title))
                                                 ])
                                               ],
                                               1
                                             )
-                                          ],
-                                          1
+                                          })
                                         )
                                       ],
                                       1
                                     )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-flex",
+                                  { attrs: { xs12: "" } },
+                                  [
+                                    _c("v-slider", {
+                                      attrs: { label: "Top offset", max: 50 },
+                                      model: {
+                                        value: _vm.nudge.top,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.nudge, "top", $$v)
+                                        },
+                                        expression: "nudge.top"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-flex",
+                                  { attrs: { xs12: "" } },
+                                  [
+                                    _c("v-slider", {
+                                      attrs: {
+                                        label: "Bottom offset",
+                                        max: 50
+                                      },
+                                      model: {
+                                        value: _vm.nudge.bottom,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.nudge, "bottom", $$v)
+                                        },
+                                        expression: "nudge.bottom"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-flex",
+                                  { attrs: { xs12: "" } },
+                                  [
+                                    _c("v-slider", {
+                                      attrs: { label: "Left offset", max: 50 },
+                                      model: {
+                                        value: _vm.nudge.left,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.nudge, "left", $$v)
+                                        },
+                                        expression: "nudge.left"
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-flex",
+                                  { attrs: { xs12: "" } },
+                                  [
+                                    _c("v-slider", {
+                                      attrs: { label: "Right offset", max: 50 },
+                                      model: {
+                                        value: _vm.nudge.right,
+                                        callback: function($$v) {
+                                          _vm.$set(_vm.nudge, "right", $$v)
+                                        },
+                                        expression: "nudge.right"
+                                      }
+                                    })
                                   ],
                                   1
                                 )
@@ -451,113 +531,6 @@ var render = function() {
                         )
                       ],
                       1
-                    )
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { lg6: "" } },
-                [
-                  _c("v-widget", { attrs: { title: "Inset" } }, [
-                    _c(
-                      "div",
-                      {
-                        attrs: { slot: "widget-content" },
-                        slot: "widget-content"
-                      },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "text-xs-center" },
-                          [
-                            _c(
-                              "v-bottom-sheet",
-                              {
-                                model: {
-                                  value: _vm.sheet,
-                                  callback: function($$v) {
-                                    _vm.sheet = $$v
-                                  },
-                                  expression: "sheet"
-                                }
-                              },
-                              [
-                                _c(
-                                  "v-btn",
-                                  {
-                                    attrs: {
-                                      slot: "activator",
-                                      color: "purple",
-                                      dark: ""
-                                    },
-                                    slot: "activator"
-                                  },
-                                  [_vm._v("Click me")]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list",
-                                  [
-                                    _c("v-subheader", [_vm._v("Open in")]),
-                                    _vm._v(" "),
-                                    _vm._l(_vm.tiles, function(tile) {
-                                      return _c(
-                                        "v-list-tile",
-                                        {
-                                          key: tile.title,
-                                          on: {
-                                            click: function($event) {
-                                              _vm.sheet = false
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c(
-                                            "v-list-tile-avatar",
-                                            [
-                                              _c(
-                                                "v-avatar",
-                                                {
-                                                  attrs: {
-                                                    size: "32px",
-                                                    tile: ""
-                                                  }
-                                                },
-                                                [
-                                                  _c("img", {
-                                                    attrs: {
-                                                      src:
-                                                        "/static/icon/" +
-                                                        tile.img,
-                                                      alt: tile.title
-                                                    }
-                                                  })
-                                                ]
-                                              )
-                                            ],
-                                            1
-                                          ),
-                                          _vm._v(" "),
-                                          _c("v-list-tile-title", [
-                                            _vm._v(_vm._s(tile.title))
-                                          ])
-                                        ],
-                                        1
-                                      )
-                                    })
-                                  ],
-                                  2
-                                )
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ]
                     )
                   ])
                 ],
@@ -579,7 +552,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-5a20c7b1", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-94a0759c", module.exports)
   }
 }
 

@@ -6,9 +6,9 @@ webpackJsonp([14],{
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(708)
+var __vue_script__ = __webpack_require__(710)
 /* template */
-var __vue_template__ = __webpack_require__(714)
+var __vue_template__ = __webpack_require__(716)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -48,15 +48,15 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 452:
+/***/ 454:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(453)
+var __vue_script__ = __webpack_require__(455)
 /* template */
-var __vue_template__ = __webpack_require__(454)
+var __vue_template__ = __webpack_require__(456)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -96,7 +96,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 453:
+/***/ 455:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -182,7 +182,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 454:
+/***/ 456:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -390,14 +390,14 @@ if (false) {
 
 /***/ }),
 
-/***/ 708:
+/***/ 710:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_widgets_card_NameCard__ = __webpack_require__(709);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_widgets_card_NameCard__ = __webpack_require__(711);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_widgets_card_NameCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_widgets_card_NameCard__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_widgets_card_ProfileCard__ = __webpack_require__(452);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_widgets_card_ProfileCard__ = __webpack_require__(454);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_widgets_card_ProfileCard___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__components_widgets_card_ProfileCard__);
 //
 //
@@ -502,19 +502,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 709:
+/***/ 711:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(710)
+  __webpack_require__(712)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(712)
+var __vue_script__ = __webpack_require__(714)
 /* template */
-var __vue_template__ = __webpack_require__(713)
+var __vue_template__ = __webpack_require__(715)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -554,13 +554,13 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 710:
+/***/ 712:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(711);
+var content = __webpack_require__(713);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -581,7 +581,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 711:
+/***/ 713:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -596,7 +596,7 @@ exports.push([module.i, "\n.caption[data-v-5e7eb879],\n.subheading[data-v-5e7eb8
 
 /***/ }),
 
-/***/ 712:
+/***/ 714:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -714,7 +714,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 713:
+/***/ 715:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -868,7 +868,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 714:
+/***/ 716:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

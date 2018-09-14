@@ -1,24 +1,24 @@
 webpackJsonp([20],{
 
-/***/ 120:
+/***/ 103:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(662)
+  __webpack_require__(612)
 }
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(664)
+var __vue_script__ = __webpack_require__(614)
 /* template */
-var __vue_template__ = __webpack_require__(665)
+var __vue_template__ = __webpack_require__(615)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
 var __vue_styles__ = injectStyle
 /* scopeId */
-var __vue_scopeId__ = null
+var __vue_scopeId__ = "data-v-9b53a2fe"
 /* moduleIdentifier (server only) */
 var __vue_module_identifier__ = null
 var Component = normalizeComponent(
@@ -29,7 +29,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "front_end/pages/layout/NavigationDrawers.vue"
+Component.options.__file = "front_end/pages/ui/Icon.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +38,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-b0c765a8", Component.options)
+    hotAPI.createRecord("data-v-9b53a2fe", Component.options)
   } else {
-    hotAPI.reload("data-v-b0c765a8", Component.options)
+    hotAPI.reload("data-v-9b53a2fe", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -207,23 +207,23 @@ if (false) {
 
 /***/ }),
 
-/***/ 662:
+/***/ 612:
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(663);
+var content = __webpack_require__(613);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
-var update = __webpack_require__(3)("22113d84", content, false, {});
+var update = __webpack_require__(3)("6785f3fe", content, false, {});
 // Hot Module Replacement
 if(false) {
  // When the styles change, update the <style> tags
  if(!content.locals) {
-   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b0c765a8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/stylus-loader/index.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NavigationDrawers.vue", function() {
-     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b0c765a8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/stylus-loader/index.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NavigationDrawers.vue");
+   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-9b53a2fe\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Icon.vue", function() {
+     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-9b53a2fe\",\"scoped\":true,\"hasInlineConfig\":true}!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Icon.vue");
      if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
      update(newContent);
    });
@@ -234,7 +234,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 663:
+/***/ 613:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -242,20 +242,21 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.application--example {\n  position: relative;\n  -webkit-transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  overflow: hidden;\n  z-index: 0;\n}\n.application--example > .container {\n  min-height: 350px;\n}\n", ""]);
+exports.push([module.i, "\n.demo-icons-list[data-v-9b53a2fe] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -ms-flex-wrap: wrap;\n        flex-wrap: wrap;\n    list-style: none;\n    margin: 0;\n    padding: 0;\n    font-size: 32px\n}\n.demo-icons-list li[data-v-9b53a2fe] {\n    display: -webkit-box;\n    display: -ms-flexbox;\n    display: flex;\n    -webkit-box-align: center;\n    -ms-flex-align: center;\n        align-items: center;\n    -webkit-box-pack: center;\n    -ms-flex-pack: center;\n        justify-content: center;\n    margin-right: 20px;\n    margin-bottom: 20px;\n    width: 72px;\n    height: 72px;\n    text-align: center;\n    cursor: pointer;\n    -webkit-transition: .1s;\n    transition: .1s\n}\n.demo-icons-list li .material-icons[data-v-9b53a2fe] {\n    font-size: inherit\n}\n.demo-icons-list li [data-i8-icon][data-v-9b53a2fe] {\n    margin: 0 10px\n}\n.demo-icons-list li [data-provide~=emoji] svg[data-v-9b53a2fe] {\n    width: 32px;\n    height: 32px\n}\n.demo-icons-list li[data-v-9b53a2fe]:hover {\n    background-color: #f7fafc\n}\n.demo-icons-list.icons-size-16px[data-v-9b53a2fe] {\n    font-size: 16px\n}\n.demo-icons-list.icons-size-16px li[data-v-9b53a2fe] {\n    width: 56px;\n    height: 56px\n}\n.demo-icons-list.icons-size-24px[data-v-9b53a2fe] {\n    font-size: 24px\n}\n.demo-icons-list.icons-size-24px li[data-v-9b53a2fe] {\n    width: 64px;\n    height: 64px\n}\n.demo-icons-list.icons-size-32px[data-v-9b53a2fe] {\n    font-size: 32px\n}\n.demo-icons-list.icons-size-32px li[data-v-9b53a2fe] {\n    width: 72px;\n    height: 72px\n}\n.demo-icons-list.icons-size-48px[data-v-9b53a2fe] {\n    font-size: 48px\n}\n.demo-icons-list.icons-size-48px li[data-v-9b53a2fe] {\n    width: 88px;\n    height: 88px\n}\n.demo-icons-list.icons-size-64px[data-v-9b53a2fe] {\n    font-size: 64px\n}\n.demo-icons-list.icons-size-64px li[data-v-9b53a2fe] {\n    width: 104px;\n    height: 104px\n}\n.demo-icons-list.icons-size-80px[data-v-9b53a2fe] {\n    font-size: 80px\n}\n.demo-icons-list.icons-size-80px li[data-v-9b53a2fe] {\n    width: 120px;\n    height: 120px\n}\n.demo-icons-list.icons-size-96px[data-v-9b53a2fe] {\n    font-size: 96px\n}\n.demo-icons-list.icons-size-96px li[data-v-9b53a2fe] {\n    width: 136px;\n    height: 136px\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 664:
+/***/ 614:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_VWidget__);
+//
 //
 //
 //
@@ -312,20 +313,36 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   data: function data() {
     return {
-      drawer: true,
-      miniDrawer: false,
-      items: [{ title: 'Home', icon: 'dashboard' }, { title: 'About', icon: 'question_answer' }],
-      right: null
+      selectedTab: null,
+      tabs: null,
+      material: null,
+      ft: null
     };
   },
 
   computed: {},
+  created: function created() {
+    var _this = this;
+
+    fetch('/static/data/material.json').then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      _this.material = json.icons.splice(0, 100);
+    });
+    fetch('/static/data/font-awesome.json').then(function (response) {
+      return response.json();
+    }).then(function (json) {
+      var version = '4.7.0';
+      _this.ft = json[version].splice(0, 100);
+    });
+  },
+
   methods: {}
 });
 
 /***/ }),
 
-/***/ 665:
+/***/ 615:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -334,11 +351,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "page-badges" } },
+    { attrs: { id: "page-icons" } },
     [
       _c(
         "v-container",
-        { attrs: { "grid-list-lg": "", fluid: "" } },
+        { attrs: { "grid-list-xl": "", fluid: "" } },
         [
           _c(
             "v-layout",
@@ -346,170 +363,156 @@ var render = function() {
             [
               _c(
                 "v-flex",
-                { attrs: { xs12: "" } },
+                { attrs: { "12": "" } },
                 [
-                  _c("v-widget", { attrs: { title: "Basic Usage" } }, [
-                    _c(
-                      "div",
-                      {
-                        attrs: { slot: "widget-content" },
-                        slot: "widget-content"
-                      },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: "application--example" },
-                          [
-                            _c(
-                              "v-container",
-                              { staticClass: "application--example-container" },
-                              [
-                                _c(
-                                  "v-layout",
-                                  { attrs: { "justify-center": "" } },
-                                  [
+                  _c(
+                    "v-tabs",
+                    {
+                      attrs: { color: "grey lighten-3" },
+                      model: {
+                        value: _vm.selectedTab,
+                        callback: function($$v) {
+                          _vm.selectedTab = $$v
+                        },
+                        expression: "selectedTab"
+                      }
+                    },
+                    [
+                      _c("v-tab", { attrs: { ripple: "", href: "#tab-1" } }, [
+                        _vm._v("\n            Matrial Icons\n          ")
+                      ]),
+                      _vm._v(" "),
+                      _c("v-tab", { attrs: { ripple: "", href: "#tab-2" } }, [
+                        _vm._v("\n            Font Awesome\n          ")
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "v-tabs-items",
+                        {
+                          model: {
+                            value: _vm.selectedTab,
+                            callback: function($$v) {
+                              _vm.selectedTab = $$v
+                            },
+                            expression: "selectedTab"
+                          }
+                        },
+                        [
+                          _c(
+                            "v-tab-item",
+                            { attrs: { id: "tab-1" } },
+                            [
+                              _c(
+                                "v-card",
+                                { attrs: { flat: "" } },
+                                [
+                                  _c("v-card-text", [
                                     _c(
-                                      "v-btn",
-                                      {
-                                        attrs: { dark: "", color: "pink" },
-                                        on: {
-                                          click: function($event) {
-                                            $event.stopPropagation()
-                                            _vm.drawer = !_vm.drawer
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Toggle")]
+                                      "ul",
+                                      { staticClass: "demo-icons-list" },
+                                      _vm._l(_vm.material, function(
+                                        item,
+                                        index
+                                      ) {
+                                        return _c("li", { key: index }, [
+                                          _c(
+                                            "i",
+                                            {
+                                              staticClass: "icon material-icons"
+                                            },
+                                            [
+                                              _vm._v(
+                                                " " + _vm._s(item.ligature)
+                                              )
+                                            ]
+                                          )
+                                        ])
+                                      })
                                     ),
                                     _vm._v(" "),
                                     _c(
-                                      "v-btn",
-                                      {
-                                        attrs: { dark: "", color: "pink" },
-                                        on: {
-                                          click: function($event) {
-                                            $event.stopPropagation()
-                                            _vm.miniDrawer = !_vm.miniDrawer
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Mini Drawer")]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-navigation-drawer",
-                              {
-                                attrs: {
-                                  absolute: "",
-                                  "mini-variant": _vm.miniDrawer
-                                },
-                                model: {
-                                  value: _vm.drawer,
-                                  callback: function($$v) {
-                                    _vm.drawer = $$v
-                                  },
-                                  expression: "drawer"
-                                }
-                              },
-                              [
-                                _c(
-                                  "v-toolbar",
-                                  {
-                                    staticClass: "transparent",
-                                    attrs: { flat: "" }
-                                  },
-                                  [
-                                    _c(
-                                      "v-list",
-                                      { staticClass: "pa-0" },
+                                      "div",
+                                      { staticClass: "text-sm-center" },
                                       [
                                         _c(
-                                          "v-list-tile",
-                                          { attrs: { avatar: "" } },
-                                          [
-                                            _c("v-list-tile-avatar", [
-                                              _c("img", {
-                                                attrs: {
-                                                  src:
-                                                    "https://randomuser.me/api/portraits/men/85.jpg"
-                                                }
-                                              })
-                                            ]),
-                                            _vm._v(" "),
-                                            _c(
-                                              "v-list-tile-content",
-                                              [
-                                                _c("v-list-tile-title", [
-                                                  _vm._v("John Leider")
-                                                ])
-                                              ],
-                                              1
-                                            )
-                                          ],
-                                          1
+                                          "v-btn",
+                                          {
+                                            attrs: {
+                                              href:
+                                                "https://material.io/icons/",
+                                              color: "primary",
+                                              large: "",
+                                              depressed: ""
+                                            }
+                                          },
+                                          [_vm._v("More")]
                                         )
                                       ],
                                       1
                                     )
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list",
-                                  { staticClass: "pt-0", attrs: { dense: "" } },
-                                  [
-                                    _c("v-divider"),
+                                  ])
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "v-tab-item",
+                            { attrs: { id: "tab-2" } },
+                            [
+                              _c(
+                                "v-card",
+                                { attrs: { flat: "" } },
+                                [
+                                  _c("v-card-text", [
+                                    _c(
+                                      "ul",
+                                      { staticClass: "demo-icons-list" },
+                                      _vm._l(_vm.ft, function(item, index) {
+                                        return _c("li", { key: index }, [
+                                          _c("i", {
+                                            staticClass: "fa",
+                                            class: item
+                                          })
+                                        ])
+                                      })
+                                    ),
                                     _vm._v(" "),
-                                    _vm._l(_vm.items, function(item) {
-                                      return _c(
-                                        "v-list-tile",
-                                        {
-                                          key: item.title,
-                                          attrs: { href: "#" }
-                                        },
-                                        [
-                                          _c(
-                                            "v-list-tile-action",
-                                            [
-                                              _c("v-icon", [
-                                                _vm._v(_vm._s(item.icon))
-                                              ])
-                                            ],
-                                            1
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "v-list-tile-content",
-                                            [
-                                              _c("v-list-tile-title", [
-                                                _vm._v(_vm._s(item.title))
-                                              ])
-                                            ],
-                                            1
-                                          )
-                                        ],
-                                        1
-                                      )
-                                    })
-                                  ],
-                                  2
-                                )
-                              ],
-                              1
-                            )
-                          ],
-                          1
-                        )
-                      ]
-                    )
-                  ])
+                                    _c(
+                                      "div",
+                                      { staticClass: "text-sm-center" },
+                                      [
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            attrs: {
+                                              href:
+                                                "https://fontawesome.com/icons?d=gallery",
+                                              color: "primary",
+                                              large: "",
+                                              depressed: ""
+                                            }
+                                          },
+                                          [_vm._v("More")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ])
+                                ],
+                                1
+                              )
+                            ],
+                            1
+                          )
+                        ],
+                        1
+                      )
+                    ],
+                    1
+                  )
                 ],
                 1
               )
@@ -529,7 +532,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-b0c765a8", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-9b53a2fe", module.exports)
   }
 }
 

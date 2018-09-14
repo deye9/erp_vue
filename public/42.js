@@ -1,14 +1,14 @@
 webpackJsonp([42],{
 
-/***/ 126:
+/***/ 118:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(704)
+var __vue_script__ = __webpack_require__(660)
 /* template */
-var __vue_template__ = __webpack_require__(705)
+var __vue_template__ = __webpack_require__(661)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "front_end/pages/form/TextFields.vue"
+Component.options.__file = "front_end/pages/layout/Jumbotrons.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-71c8dc5e", Component.options)
+    hotAPI.createRecord("data-v-200f2979", Component.options)
   } else {
-    hotAPI.reload("data-v-71c8dc5e", Component.options)
+    hotAPI.reload("data-v-200f2979", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -203,142 +203,13 @@ if (false) {
 
 /***/ }),
 
-/***/ 704:
+/***/ 660:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_VWidget__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -426,16 +297,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   data: function data() {
     return {
-      email: '',
-      rules: {
-        required: function required(value) {
-          return !!value || 'Required.';
-        },
-        email: function email(value) {
-          var pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-          return pattern.test(value) || 'Invalid e-mail.';
-        }
-      }
+      gradient: 'to top, #7B1FA2, #E1BEE7',
+      gradient2: 'to top right, rgba(63,81,181, .7), rgba(25,32,72, .7)'
     };
   },
 
@@ -445,7 +308,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 705:
+/***/ 661:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -454,7 +317,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "page-text-fields" } },
+    { attrs: { id: "page-jumbotrons" } },
     [
       _c(
         "v-container",
@@ -466,7 +329,7 @@ var render = function() {
             [
               _c(
                 "v-flex",
-                { attrs: { sm12: "" } },
+                { attrs: { lg6: "" } },
                 [
                   _c("v-widget", { attrs: { title: "Basic Usage" } }, [
                     _c(
@@ -477,505 +340,240 @@ var render = function() {
                       },
                       [
                         _c(
-                          "v-container",
+                          "v-jumbotron",
+                          { attrs: { color: "grey lighten-2" } },
                           [
                             _c(
-                              "v-layout",
-                              { attrs: { row: "" } },
+                              "v-container",
+                              { attrs: { "fill-height": "" } },
                               [
                                 _c(
-                                  "v-flex",
-                                  { attrs: { xs4: "" } },
-                                  [_c("v-subheader", [_vm._v("Validation")])],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs8: "" } },
+                                  "v-layout",
+                                  { attrs: { "align-center": "" } },
                                   [
-                                    _c("v-text-field", {
-                                      attrs: {
-                                        label: "E-mail",
-                                        rules: [
-                                          _vm.rules.required,
-                                          _vm.rules.email
-                                        ]
-                                      },
-                                      model: {
-                                        value: _vm.email,
-                                        callback: function($$v) {
-                                          _vm.email = $$v
-                                        },
-                                        expression: "email"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-layout",
-                              { attrs: { row: "" } },
-                              [
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs4: "" } },
-                                  [
-                                    _c("v-subheader", [
-                                      _vm._v("Normal with hint text/label")
-                                    ])
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs8: "" } },
-                                  [
-                                    _c("v-text-field", {
-                                      attrs: {
-                                        name: "input-1",
-                                        label: "Label Text",
-                                        color: "primary",
-                                        id: "testing"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-layout",
-                              { attrs: { row: "" } },
-                              [
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs4: "" } },
-                                  [_c("v-subheader", [_vm._v("Focus")])],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs8: "" } },
-                                  [
-                                    _c("v-text-field", {
-                                      staticClass: "input-group--focused",
-                                      attrs: {
-                                        name: "input-2",
-                                        label: "Label Text",
-                                        value: "Input text",
-                                        color: "success"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-layout",
-                              { attrs: { row: "" } },
-                              [
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs4: "" } },
-                                  [
-                                    _c("v-subheader", [
-                                      _vm._v("Normal with input text + label")
-                                    ])
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs8: "" } },
-                                  [
-                                    _c("v-text-field", {
-                                      attrs: {
-                                        name: "input-3",
-                                        label: "Label Text",
-                                        color: "pink",
-                                        value: "Input text"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-layout",
-                              { attrs: { row: "" } },
-                              [
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs4: "" } },
-                                  [_c("v-subheader", [_vm._v("Single")])],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs8: "" } },
-                                  [
-                                    _c("v-text-field", {
-                                      attrs: {
-                                        name: "input-3",
-                                        label: "Label Text",
-                                        value: "Input text",
-                                        disabled: ""
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-layout",
-                              { attrs: { row: "" } },
-                              [
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs4: "" } },
-                                  [
-                                    _c("v-subheader", [
-                                      _vm._v("Single line  (no hint) ")
-                                    ])
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs8: "" } },
-                                  [
-                                    _c("v-text-field", {
-                                      attrs: {
-                                        name: "input-4",
-                                        label: "Label Text",
-                                        value: "Input text",
-                                        color: "info",
-                                        "single-line": ""
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-layout",
-                              { attrs: { row: "" } },
-                              [
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs4: "" } },
-                                  [_c("v-subheader", [_vm._v("Multiline ")])],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs8: "" } },
-                                  [
-                                    _c("v-text-field", {
-                                      attrs: {
-                                        name: "input-5",
-                                        label: "Label Text",
-                                        value: "Input text",
-                                        color: "teal",
-                                        "multi-line": ""
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-layout",
-                              { attrs: { row: "" } },
-                              [
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs4: "" } },
-                                  [
-                                    _c("v-subheader", [
-                                      _vm._v("Character counter ")
-                                    ])
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs8: "" } },
-                                  [
-                                    _c("v-text-field", {
-                                      attrs: {
-                                        name: "input-6",
-                                        label: "Label Text",
-                                        value: "Input text",
-                                        rules: [
-                                          function(v) {
-                                            return (
-                                              v.length <= 25 ||
-                                              "Max 25 characters"
+                                    _c(
+                                      "v-flex",
+                                      [
+                                        _c("h3", { staticClass: "display-3" }, [
+                                          _vm._v("Welcome to the site")
+                                        ]),
+                                        _vm._v(" "),
+                                        _c(
+                                          "span",
+                                          { staticClass: "subheading" },
+                                          [
+                                            _vm._v(
+                                              "Lorem ipsum dolor sit amet, pri veniam forensibus id. Vis maluisset molestiae id, ad semper lobortis cum. At impetus detraxit incorrupte usu, repudiare assueverit ex eum, ne nam essent vocent admodum."
                                             )
-                                          }
-                                        ],
-                                        counter: 25,
-                                        "single-line": ""
-                                      }
-                                    })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c("v-divider", {
+                                          staticClass: "my-3"
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "div",
+                                          { staticClass: "title mb-3" },
+                                          [
+                                            _vm._v(
+                                              "Check out our newest features!"
+                                            )
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            staticClass: "mx-0",
+                                            attrs: {
+                                              large: "",
+                                              color: "primary"
+                                            }
+                                          },
+                                          [_vm._v("See more")]
+                                        )
+                                      ],
+                                      1
+                                    )
                                   ],
                                   1
                                 )
                               ],
                               1
-                            ),
-                            _vm._v(" "),
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { lg6: "" } },
+                [
+                  _c("v-widget", { attrs: { title: "Coloring" } }, [
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-content" },
+                        slot: "widget-content"
+                      },
+                      [
+                        _c(
+                          "v-jumbotron",
+                          { attrs: { color: "primary", dark: "" } },
+                          [
                             _c(
-                              "v-layout",
-                              { attrs: { row: "" } },
+                              "v-container",
+                              { attrs: { "fill-height": "" } },
                               [
                                 _c(
-                                  "v-flex",
-                                  { attrs: { xs4: "" } },
-                                  [_c("v-subheader", [_vm._v("Append icon ")])],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs8: "" } },
+                                  "v-layout",
+                                  { attrs: { "align-center": "" } },
                                   [
-                                    _c("v-text-field", {
-                                      attrs: {
-                                        name: "input-7",
-                                        label: "Label Text",
-                                        value: "Input text",
-                                        "append-icon": "phone"
-                                      }
-                                    })
+                                    _c(
+                                      "v-flex",
+                                      { attrs: { "text-xs-center": "" } },
+                                      [
+                                        _c("h3", { staticClass: "display-3" }, [
+                                          _vm._v("Custom Color")
+                                        ])
+                                      ]
+                                    )
                                   ],
                                   1
                                 )
                               ],
                               1
-                            ),
-                            _vm._v(" "),
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { lg6: "" } },
+                [
+                  _c("v-widget", { attrs: { title: "Gradient" } }, [
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-content" },
+                        slot: "widget-content"
+                      },
+                      [
+                        _c("v-text-field", {
+                          attrs: { label: "Gradient" },
+                          model: {
+                            value: _vm.gradient,
+                            callback: function($$v) {
+                              _vm.gradient = $$v
+                            },
+                            expression: "gradient"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "v-jumbotron",
+                          { attrs: { gradient: _vm.gradient, dark: "" } },
+                          [
                             _c(
-                              "v-layout",
-                              { attrs: { row: "" } },
+                              "v-container",
+                              { attrs: { "fill-height": "" } },
                               [
                                 _c(
-                                  "v-flex",
-                                  { attrs: { xs4: "" } },
+                                  "v-layout",
+                                  { attrs: { "align-center": "" } },
                                   [
-                                    _c("v-subheader", [_vm._v("Prepend icon ")])
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs8: "" } },
-                                  [
-                                    _c("v-text-field", {
-                                      attrs: {
-                                        name: "input-7",
-                                        label: "Label Text",
-                                        value: "Input text",
-                                        "prepend-icon": "phone"
-                                      }
-                                    })
+                                    _c(
+                                      "v-flex",
+                                      { attrs: { "text-xs-center": "" } },
+                                      [
+                                        _c("h3", { staticClass: "display-3" }, [
+                                          _vm._v("Gradient")
+                                        ])
+                                      ]
+                                    )
                                   ],
                                   1
                                 )
                               ],
                               1
-                            ),
-                            _vm._v(" "),
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { lg6: "" } },
+                [
+                  _c("v-widget", { attrs: { title: "Gradient with image" } }, [
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-content" },
+                        slot: "widget-content"
+                      },
+                      [
+                        _c("v-text-field", {
+                          attrs: { label: "Gradient" },
+                          model: {
+                            value: _vm.gradient2,
+                            callback: function($$v) {
+                              _vm.gradient2 = $$v
+                            },
+                            expression: "gradient2"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "v-jumbotron",
+                          {
+                            attrs: {
+                              src: "/static/bg/16.jpg",
+                              gradient: _vm.gradient2,
+                              dark: ""
+                            }
+                          },
+                          [
                             _c(
-                              "v-layout",
-                              { attrs: { row: "" } },
+                              "v-container",
+                              { attrs: { "fill-height": "" } },
                               [
                                 _c(
-                                  "v-flex",
-                                  { attrs: { xs4: "" } },
+                                  "v-layout",
+                                  { attrs: { "align-center": "" } },
                                   [
-                                    _c("v-subheader", [
-                                      _vm._v("Prefix for dollar currency")
-                                    ])
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs8: "" } },
-                                  [
-                                    _c("v-text-field", {
-                                      attrs: {
-                                        label: "Amount",
-                                        value: "10.00",
-                                        prefix: "$"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-layout",
-                              { attrs: { row: "" } },
-                              [
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs4: "" } },
-                                  [
-                                    _c("v-subheader", [
-                                      _vm._v("Suffix for weight")
-                                    ])
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs8: "" } },
-                                  [
-                                    _c("v-text-field", {
-                                      attrs: {
-                                        label: "Weight",
-                                        value: "28.00",
-                                        suffix: "lbs"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-layout",
-                              { attrs: { row: "" } },
-                              [
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs4: "" } },
-                                  [
-                                    _c("v-subheader", [
-                                      _vm._v("Suffix for email domain")
-                                    ])
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs8: "" } },
-                                  [
-                                    _c("v-text-field", {
-                                      attrs: {
-                                        label: "Email address",
-                                        value: "example",
-                                        suffix: "@gmail.com"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-layout",
-                              { attrs: { row: "" } },
-                              [
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs4: "" } },
-                                  [
-                                    _c("v-subheader", [
-                                      _vm._v("Suffix for time zone")
-                                    ])
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs8: "" } },
-                                  [
-                                    _c("v-text-field", {
-                                      attrs: {
-                                        label: "Label Text",
-                                        value: "12:30:00",
-                                        type: "time",
-                                        suffix: "PST"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-layout",
-                              { attrs: { row: "" } },
-                              [
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs4: "" } },
-                                  [
-                                    _c("v-subheader", [
-                                      _vm._v("Input with mask")
-                                    ])
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs8: "" } },
-                                  [
-                                    _c("v-text-field", {
-                                      attrs: {
-                                        label: "Credit Card",
-                                        mask: "credit-card",
-                                        value: "4444444444444444"
-                                      }
-                                    })
+                                    _c(
+                                      "v-flex",
+                                      { attrs: { "text-xs-center": "" } },
+                                      [
+                                        _c("h3", { staticClass: "display-3" }, [
+                                          _vm._v("Gradient over Image")
+                                        ])
+                                      ]
+                                    )
                                   ],
                                   1
                                 )
@@ -1008,7 +606,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-71c8dc5e", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-200f2979", module.exports)
   }
 }
 

@@ -1,5 +1,53 @@
 webpackJsonp([45],{
 
+/***/ 112:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(646)
+/* template */
+var __vue_template__ = __webpack_require__(647)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "front_end/pages/layout/BottomSheets.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-5a20c7b1", Component.options)
+  } else {
+    hotAPI.reload("data-v-5a20c7b1", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
 /***/ 133:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -155,26 +203,13 @@ if (false) {
 
 /***/ }),
 
-/***/ 530:
+/***/ 646:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_VWidget__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -254,33 +289,18 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   data: function data() {
     return {
-      alert: {
-        showSuccess: true,
-        showError: true,
-        showWarnning: true,
-        showInfo: true
-      }
+      sheet: false,
+      tiles: [{ img: 'keep.png', title: 'Keep' }, { img: 'inbox.png', title: 'Inbox' }, { img: 'hangouts.png', title: 'Hangouts' }, { img: 'google.png', title: 'Google+' }]
     };
   },
 
-  computed: {
-    showReset: function showReset() {
-      return this.alert.showSuccess === this.alert.showError === this.alert.showWarnning === this.alert.showInfo === false;
-    }
-  },
-  methods: {
-    handleReset: function handleReset() {
-      this.alert.showError = true;
-      this.alert.showSuccess = true;
-      this.alert.showWarnning = true;
-      this.alert.showInfo = true;
-    }
-  }
+  computed: {},
+  methods: {}
 });
 
 /***/ }),
 
-/***/ 531:
+/***/ 647:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -289,7 +309,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "page-alerts" } },
+    { attrs: { id: "page-bottom-sheets" } },
     [
       _c(
         "v-container",
@@ -301,9 +321,9 @@ var render = function() {
             [
               _c(
                 "v-flex",
-                { attrs: { sm12: "", md6: "", sm6: "" } },
+                { attrs: { lg6: "" } },
                 [
-                  _c("v-widget", { attrs: { title: "Basic Usage" } }, [
+                  _c("v-widget", { attrs: { title: "Inset" } }, [
                     _c(
                       "div",
                       {
@@ -312,321 +332,232 @@ var render = function() {
                       },
                       [
                         _c(
-                          "v-alert",
-                          { attrs: { type: "success", value: true } },
-                          [
-                            _vm._v(
-                              "\n              This is a success alert.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          { attrs: { type: "info", value: true } },
-                          [
-                            _vm._v(
-                              "\n              This is a info alert.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          { attrs: { type: "warning", value: true } },
-                          [
-                            _vm._v(
-                              "\n              This is a warning alert.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          { attrs: { type: "error", value: true } },
-                          [
-                            _vm._v(
-                              "\n              This is a error alert.\n            "
-                            )
-                          ]
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { sm12: "", md6: "", sm6: "" } },
-                [
-                  _c("v-widget", { attrs: { title: "Custom Icons" } }, [
-                    _c(
-                      "div",
-                      {
-                        attrs: { slot: "widget-content" },
-                        slot: "widget-content"
-                      },
-                      [
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: {
-                              color: "success",
-                              icon: "new_releases",
-                              value: true
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a success alert with a custom icon.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: {
-                              color: "warning",
-                              value: true,
-                              icon: "message"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a warning alert with a custom icon.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: { color: "info", icon: "star", value: true }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a info alert with a custom icon.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          { attrs: { color: "error", value: true } },
-                          [
-                            _vm._v(
-                              "\n              This is an error alert with no icon.\n            "
-                            )
-                          ]
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { sm12: "", md6: "", sm6: "" } },
-                [
-                  _c("v-widget", { attrs: { title: "Outline Alerts" } }, [
-                    _c(
-                      "div",
-                      {
-                        attrs: { slot: "widget-content" },
-                        slot: "widget-content"
-                      },
-                      [
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: {
-                              outline: "",
-                              color: "success",
-                              icon: "check_circle",
-                              value: true
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a success alert.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: {
-                              outline: "",
-                              color: "info",
-                              icon: "info",
-                              value: true
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is an info alert.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: {
-                              outline: "",
-                              color: "warning",
-                              icon: "priority_high",
-                              value: true
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a warning alert.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: {
-                              outline: "",
-                              color: "error",
-                              icon: "warning",
-                              value: true
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a error alert.\n            "
-                            )
-                          ]
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { sm12: "", md6: "", sm6: "" } },
-                [
-                  _c("v-widget", { attrs: { title: "Closable Alerts" } }, [
-                    _c(
-                      "div",
-                      {
-                        attrs: { slot: "widget-content" },
-                        slot: "widget-content"
-                      },
-                      [
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: {
-                              type: "success",
-                              dismissible: "",
-                              transition: "scale-transition"
-                            },
-                            model: {
-                              value: _vm.alert.showSuccess,
-                              callback: function($$v) {
-                                _vm.$set(_vm.alert, "showSuccess", $$v)
-                              },
-                              expression: "alert.showSuccess"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a success alert that is closable with scale transition.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: { type: "error", dismissible: "" },
-                            model: {
-                              value: _vm.alert.showError,
-                              callback: function($$v) {
-                                _vm.$set(_vm.alert, "showError", $$v)
-                              },
-                              expression: "alert.showError"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a error alert that is closable.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: { type: "warning", dismissible: "" },
-                            model: {
-                              value: _vm.alert.showWarnning,
-                              callback: function($$v) {
-                                _vm.$set(_vm.alert, "showWarnning", $$v)
-                              },
-                              expression: "alert.showWarnning"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a warning alert that is closable.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: { type: "info", dismissible: "" },
-                            model: {
-                              value: _vm.alert.showInfo,
-                              callback: function($$v) {
-                                _vm.$set(_vm.alert, "showInfo", $$v)
-                              },
-                              expression: "alert.showInfo"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a info alert that is closable.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "text-xs-center" },
+                          "v-bottom-sheet",
+                          { attrs: { inset: "" } },
                           [
                             _c(
                               "v-btn",
                               {
-                                attrs: { color: "primary", dark: "" },
-                                on: { click: _vm.handleReset }
+                                attrs: {
+                                  slot: "activator",
+                                  color: "red",
+                                  dark: ""
+                                },
+                                slot: "activator"
                               },
-                              [_vm._v("Reset")]
+                              [_vm._v("Show player")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-card",
+                              { attrs: { tile: "" } },
+                              [
+                                _c("v-progress-linear", {
+                                  staticClass: "my-0",
+                                  attrs: { height: "3", value: 50 }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "v-list",
+                                  [
+                                    _c(
+                                      "v-list-tile",
+                                      [
+                                        _c(
+                                          "v-list-tile-content",
+                                          [
+                                            _c("v-list-tile-title", [
+                                              _vm._v("The Walker")
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("v-list-tile-sub-title", [
+                                              _vm._v("Fitz & The Trantrums")
+                                            ])
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c("v-spacer"),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-list-tile-action",
+                                          [
+                                            _c(
+                                              "v-btn",
+                                              { attrs: { icon: "" } },
+                                              [
+                                                _c("v-icon", [
+                                                  _vm._v("fast_rewind")
+                                                ])
+                                              ],
+                                              1
+                                            )
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-list-tile-action",
+                                          {
+                                            class: {
+                                              "mx-5":
+                                                _vm.$vuetify.breakpoint.mdAndUp
+                                            }
+                                          },
+                                          [
+                                            _c(
+                                              "v-btn",
+                                              { attrs: { icon: "" } },
+                                              [_c("v-icon", [_vm._v("pause")])],
+                                              1
+                                            )
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-list-tile-action",
+                                          {
+                                            class: {
+                                              "mr-3":
+                                                _vm.$vuetify.breakpoint.mdAndUp
+                                            }
+                                          },
+                                          [
+                                            _c(
+                                              "v-btn",
+                                              { attrs: { icon: "" } },
+                                              [
+                                                _c("v-icon", [
+                                                  _vm._v("fast_forward")
+                                                ])
+                                              ],
+                                              1
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
                             )
                           ],
                           1
                         )
                       ],
                       1
+                    )
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { lg6: "" } },
+                [
+                  _c("v-widget", { attrs: { title: "Inset" } }, [
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-content" },
+                        slot: "widget-content"
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "text-xs-center" },
+                          [
+                            _c(
+                              "v-bottom-sheet",
+                              {
+                                model: {
+                                  value: _vm.sheet,
+                                  callback: function($$v) {
+                                    _vm.sheet = $$v
+                                  },
+                                  expression: "sheet"
+                                }
+                              },
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: {
+                                      slot: "activator",
+                                      color: "purple",
+                                      dark: ""
+                                    },
+                                    slot: "activator"
+                                  },
+                                  [_vm._v("Click me")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-list",
+                                  [
+                                    _c("v-subheader", [_vm._v("Open in")]),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.tiles, function(tile) {
+                                      return _c(
+                                        "v-list-tile",
+                                        {
+                                          key: tile.title,
+                                          on: {
+                                            click: function($event) {
+                                              _vm.sheet = false
+                                            }
+                                          }
+                                        },
+                                        [
+                                          _c(
+                                            "v-list-tile-avatar",
+                                            [
+                                              _c(
+                                                "v-avatar",
+                                                {
+                                                  attrs: {
+                                                    size: "32px",
+                                                    tile: ""
+                                                  }
+                                                },
+                                                [
+                                                  _c("img", {
+                                                    attrs: {
+                                                      src:
+                                                        "/static/icon/" +
+                                                        tile.img,
+                                                      alt: tile.title
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            ],
+                                            1
+                                          ),
+                                          _vm._v(" "),
+                                          _c("v-list-tile-title", [
+                                            _vm._v(_vm._s(tile.title))
+                                          ])
+                                        ],
+                                        1
+                                      )
+                                    })
+                                  ],
+                                  2
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ]
                     )
                   ])
                 ],
@@ -648,57 +579,9 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-85902380", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-5a20c7b1", module.exports)
   }
 }
-
-/***/ }),
-
-/***/ 81:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(530)
-/* template */
-var __vue_template__ = __webpack_require__(531)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "front_end/admin/Users.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-85902380", Component.options)
-  } else {
-    hotAPI.reload("data-v-85902380", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
 
 /***/ })
 

@@ -1,14 +1,14 @@
 webpackJsonp([28],{
 
-/***/ 104:
+/***/ 106:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(614)
+var __vue_script__ = __webpack_require__(620)
 /* template */
-var __vue_template__ = __webpack_require__(615)
+var __vue_template__ = __webpack_require__(621)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "front_end/pages/ui/Progress.vue"
+Component.options.__file = "front_end/pages/ui/Tooltip.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1a044235", Component.options)
+    hotAPI.createRecord("data-v-b61041aa", Component.options)
   } else {
-    hotAPI.reload("data-v-1a044235", Component.options)
+    hotAPI.reload("data-v-b61041aa", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -203,46 +203,13 @@ if (false) {
 
 /***/ }),
 
-/***/ 614:
+/***/ 620:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_VWidget__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -325,33 +292,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   data: function data() {
     return {
-      interval: {},
-      value: 0
+      show: false
     };
   },
 
   computed: {},
-  beforeDestroy: function beforeDestroy() {
-    clearInterval(this.interval);
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    this.interval = setInterval(function () {
-      if (_this.value === 100) {
-        return _this.value === 0;
-      }
-      _this.value += 10;
-    }, 1000);
-  },
-
   methods: {}
-
 });
 
 /***/ }),
 
-/***/ 615:
+/***/ 621:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -360,7 +311,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "page-progress" } },
+    { attrs: { id: "page-tooltip" } },
     [
       _c(
         "v-container",
@@ -374,226 +325,80 @@ var render = function() {
                 "v-flex",
                 { attrs: { lg6: "" } },
                 [
-                  _c("v-widget", { attrs: { title: "Circular" } }, [
+                  _c("v-widget", { attrs: { title: "Basic Usage" } }, [
                     _c(
                       "div",
                       {
-                        staticClass: "text-xs-center",
                         attrs: { slot: "widget-content" },
                         slot: "widget-content"
                       },
                       [
-                        _c("v-progress-circular", {
-                          attrs: { value: 100, color: "blue-grey" }
-                        }),
-                        _vm._v(" "),
-                        _c("v-progress-circular", {
-                          attrs: { value: 80, color: "deep-orange lighten-2" }
-                        }),
-                        _vm._v(" "),
-                        _c("v-progress-circular", {
-                          attrs: { value: 60, color: "brown" }
-                        }),
-                        _vm._v(" "),
-                        _c("v-progress-circular", {
-                          attrs: { value: 40, color: "lime" }
-                        }),
-                        _vm._v(" "),
-                        _c("v-progress-circular", {
-                          attrs: { value: 20, color: "indigo darken-2" }
-                        })
-                      ],
-                      1
+                        _c(
+                          "div",
+                          { staticClass: "text-xs-center d-flex align-center" },
+                          [
+                            _c(
+                              "v-tooltip",
+                              { attrs: { bottom: "" } },
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: {
+                                      slot: "activator",
+                                      dark: "",
+                                      color: "primary"
+                                    },
+                                    slot: "activator"
+                                  },
+                                  [_vm._v("Button")]
+                                ),
+                                _vm._v(" "),
+                                _c("span", [_vm._v("Tooltip")])
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-tooltip",
+                              { attrs: { bottom: "" } },
+                              [
+                                _c(
+                                  "v-icon",
+                                  {
+                                    attrs: {
+                                      slot: "activator",
+                                      dark: "",
+                                      color: "primary"
+                                    },
+                                    slot: "activator"
+                                  },
+                                  [_vm._v("home")]
+                                ),
+                                _vm._v(" "),
+                                _c("span", [_vm._v("Tooltip")])
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("v-tooltip", { attrs: { bottom: "" } }, [
+                              _c(
+                                "span",
+                                {
+                                  attrs: { slot: "activator" },
+                                  slot: "activator"
+                                },
+                                [_vm._v("This text has a tooltip")]
+                              ),
+                              _vm._v(" "),
+                              _c("span", [_vm._v("Tooltip")])
+                            ])
+                          ],
+                          1
+                        )
+                      ]
                     )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "v-widget",
-                    { staticClass: "mt-3", attrs: { title: "Interminate" } },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "text-xs-center",
-                          attrs: { slot: "widget-content" },
-                          slot: "widget-content"
-                        },
-                        [
-                          _c("v-progress-circular", {
-                            attrs: { indeterminate: "", color: "primary" }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-circular", {
-                            attrs: { indeterminate: "", color: "red" }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-circular", {
-                            attrs: { indeterminate: "", color: "purple" }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-circular", {
-                            attrs: { indeterminate: "", color: "green" }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-circular", {
-                            attrs: { indeterminate: "", color: "amber" }
-                          })
-                        ],
-                        1
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-widget",
-                    { staticClass: "mt-3", attrs: { title: "Sizing" } },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "text-xs-center",
-                          attrs: { slot: "widget-content" },
-                          slot: "widget-content"
-                        },
-                        [
-                          _c("v-progress-circular", {
-                            attrs: {
-                              indeterminate: "",
-                              size: 50,
-                              color: "primary"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-circular", {
-                            attrs: { indeterminate: "", width: 3, color: "red" }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-circular", {
-                            attrs: {
-                              indeterminate: "",
-                              size: 70,
-                              width: 7,
-                              color: "purple"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-circular", {
-                            attrs: {
-                              indeterminate: "",
-                              width: 3,
-                              color: "green"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-circular", {
-                            attrs: {
-                              indeterminate: "",
-                              size: 50,
-                              color: "amber"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-widget",
-                    { staticClass: "mt-3", attrs: { title: "Rotate" } },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "text-xs-center",
-                          attrs: { slot: "widget-content" },
-                          slot: "widget-content"
-                        },
-                        [
-                          _c(
-                            "v-progress-circular",
-                            {
-                              attrs: {
-                                size: 100,
-                                width: 15,
-                                rotate: 360,
-                                value: _vm.value,
-                                color: "teal"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                " +
-                                  _vm._s(_vm.value) +
-                                  "\n              "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-progress-circular",
-                            {
-                              attrs: {
-                                size: 100,
-                                width: 15,
-                                rotate: -90,
-                                value: _vm.value,
-                                color: "primary"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                " +
-                                  _vm._s(_vm.value) +
-                                  "\n              "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-progress-circular",
-                            {
-                              attrs: {
-                                size: 100,
-                                width: 15,
-                                rotate: 90,
-                                value: _vm.value,
-                                color: "red"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                " +
-                                  _vm._s(_vm.value) +
-                                  "\n              "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-progress-circular",
-                            {
-                              attrs: {
-                                size: 100,
-                                width: 15,
-                                rotate: 180,
-                                value: _vm.value,
-                                color: "pink"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                " +
-                                  _vm._s(_vm.value) +
-                                  "\n              "
-                              )
-                            ]
-                          )
-                        ],
-                        1
-                      )
-                    ]
-                  )
+                  ])
                 ],
                 1
               ),
@@ -602,7 +407,7 @@ var render = function() {
                 "v-flex",
                 { attrs: { lg6: "" } },
                 [
-                  _c("v-widget", { attrs: { title: "Linear" } }, [
+                  _c("v-widget", { attrs: { title: "Alignment" } }, [
                     _c(
                       "div",
                       {
@@ -610,112 +415,215 @@ var render = function() {
                         slot: "widget-content"
                       },
                       [
-                        _c("v-progress-linear", {
-                          attrs: { value: "15", color: "primary" }
-                        }),
-                        _vm._v(" "),
-                        _c("v-progress-linear", {
-                          attrs: { value: "30", color: "red" }
-                        }),
-                        _vm._v(" "),
-                        _c("v-progress-linear", {
-                          attrs: { value: "50", color: "purple" }
-                        }),
-                        _vm._v(" "),
-                        _c("v-progress-linear", {
-                          attrs: { value: "70", color: "green" }
-                        }),
-                        _vm._v(" "),
-                        _c("v-progress-linear", {
-                          attrs: { value: "90", color: "amber" }
-                        })
+                        _c(
+                          "div",
+                          { staticClass: "text-xs-center" },
+                          [
+                            _c(
+                              "v-tooltip",
+                              { attrs: { left: "" } },
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: {
+                                      slot: "activator",
+                                      dark: "",
+                                      color: "primary"
+                                    },
+                                    slot: "activator"
+                                  },
+                                  [_vm._v("Left")]
+                                ),
+                                _vm._v(" "),
+                                _c("span", [_vm._v("Left tooltip")])
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-tooltip",
+                              { attrs: { top: "" } },
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: {
+                                      slot: "activator",
+                                      dark: "",
+                                      color: "primary"
+                                    },
+                                    slot: "activator"
+                                  },
+                                  [_vm._v("Top")]
+                                ),
+                                _vm._v(" "),
+                                _c("span", [_vm._v("Top tooltip")])
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-tooltip",
+                              { attrs: { bottom: "" } },
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: {
+                                      slot: "activator",
+                                      dark: "",
+                                      color: "primary"
+                                    },
+                                    slot: "activator"
+                                  },
+                                  [_vm._v("Bottom")]
+                                ),
+                                _vm._v(" "),
+                                _c("span", [_vm._v("Bottom tooltip")])
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-tooltip",
+                              { attrs: { right: "" } },
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: {
+                                      slot: "activator",
+                                      dark: "",
+                                      color: "primary"
+                                    },
+                                    slot: "activator"
+                                  },
+                                  [_vm._v("Right")]
+                                ),
+                                _vm._v(" "),
+                                _c("span", [_vm._v("Right tooltip")])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { lg6: "" } },
+                [
+                  _c("v-widget", { attrs: { title: "Icon Badge" } }, [
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-content" },
+                        slot: "widget-content"
+                      },
+                      [
+                        _c(
+                          "v-container",
+                          {
+                            staticClass: "text-xs-center",
+                            attrs: { fluid: "" }
+                          },
+                          [
+                            _c(
+                              "v-layout",
+                              {
+                                attrs: {
+                                  flex: "",
+                                  wrap: "",
+                                  row: "",
+                                  "justify-space-between": ""
+                                }
+                              },
+                              [
+                                _c(
+                                  "v-flex",
+                                  { attrs: { xs12: "" } },
+                                  [
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        nativeOn: {
+                                          click: function($event) {
+                                            _vm.show = !_vm.show
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("toggle")]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-flex",
+                                  { staticClass: "mt-5", attrs: { xs12: "" } },
+                                  [
+                                    _c(
+                                      "v-tooltip",
+                                      {
+                                        attrs: { top: "" },
+                                        model: {
+                                          value: _vm.show,
+                                          callback: function($$v) {
+                                            _vm.show = $$v
+                                          },
+                                          expression: "show"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            attrs: {
+                                              slot: "activator",
+                                              icon: ""
+                                            },
+                                            slot: "activator"
+                                          },
+                                          [
+                                            _c(
+                                              "v-icon",
+                                              {
+                                                attrs: {
+                                                  color: "grey lighten-1"
+                                                }
+                                              },
+                                              [_vm._v("shopping_cart")]
+                                            )
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c("span", [
+                                          _vm._v("Programmatic tooltip")
+                                        ])
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
                       ],
                       1
                     )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "v-widget",
-                    {
-                      staticClass: "mt-3",
-                      attrs: { title: "Linear indeterminate" }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          attrs: { slot: "widget-content" },
-                          slot: "widget-content"
-                        },
-                        [
-                          _c("v-progress-linear", {
-                            attrs: {
-                              indeterminate: "",
-                              value: "15",
-                              color: "primary"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-linear", {
-                            attrs: {
-                              indeterminate: "",
-                              value: "15",
-                              color: "pink"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-widget",
-                    { staticClass: "mt-3", attrs: { title: "Linear custom" } },
-                    [
-                      _c(
-                        "div",
-                        {
-                          attrs: { slot: "widget-content" },
-                          slot: "widget-content"
-                        },
-                        [
-                          _c("v-progress-linear", {
-                            attrs: {
-                              value: "15",
-                              height: "2",
-                              color: "secondary"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-linear", {
-                            attrs: {
-                              value: "30",
-                              height: "5",
-                              color: "success"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-linear", {
-                            attrs: { value: "45", height: "10", color: "info" }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-linear", {
-                            attrs: {
-                              value: "60",
-                              height: "15",
-                              color: "warning"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-linear", {
-                            attrs: { value: "75", height: "20", color: "error" }
-                          })
-                        ],
-                        1
-                      )
-                    ]
-                  )
+                  ])
                 ],
                 1
               )
@@ -735,7 +643,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1a044235", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-b61041aa", module.exports)
   }
 }
 

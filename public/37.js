@@ -1,53 +1,5 @@
 webpackJsonp([37],{
 
-/***/ 119:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(660)
-/* template */
-var __vue_template__ = __webpack_require__(661)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "front_end/pages/layout/Menus.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-94a0759c", Component.options)
-  } else {
-    hotAPI.reload("data-v-94a0759c", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
 /***/ 133:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -203,13 +155,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 660:
+/***/ 590:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_VWidget__);
+//
+//
 //
 //
 //
@@ -279,28 +233,16 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     VWidget: __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default.a
   },
   data: function data() {
-    return {
-      items: [{ title: 'Click Me' }, { title: 'Click Me' }, { title: 'Click Me' }, { title: 'Click Me 2' }],
-      nudge: {
-        top: 0,
-        bottom: 0,
-        left: 0,
-        right: 0
-      }
-    };
+    return {};
   },
 
   computed: {},
-  methods: {
-    handleClick: function handleClick(e) {
-      e.preventDefault();
-    }
-  }
+  methods: {}
 });
 
 /***/ }),
 
-/***/ 661:
+/***/ 591:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -309,7 +251,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "page-menus" } },
+    { attrs: { id: "pageBadge" } },
     [
       _c(
         "v-container",
@@ -321,216 +263,202 @@ var render = function() {
             [
               _c(
                 "v-flex",
-                { attrs: { lg12: "", sm12: "" } },
+                { attrs: { lg4: "", sm12: "" } },
                 [
                   _c("v-widget", { attrs: { title: "Basic Usage" } }, [
                     _c(
-                      "section",
+                      "div",
                       {
                         attrs: { slot: "widget-content" },
                         slot: "widget-content"
                       },
                       [
                         _c(
-                          "v-container",
-                          { attrs: { fluid: "" } },
+                          "div",
+                          { staticClass: "text-xs-center" },
                           [
                             _c(
-                              "v-layout",
-                              { attrs: { row: "", wrap: "" } },
+                              "v-badge",
+                              { attrs: { left: "" } },
                               [
                                 _c(
-                                  "v-flex",
+                                  "span",
+                                  { attrs: { slot: "badge" }, slot: "badge" },
+                                  [_vm._v("6")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-icon",
                                   {
-                                    staticClass: "text-xs-center",
-                                    attrs: { xs12: "" }
+                                    attrs: {
+                                      large: "",
+                                      color: "grey lighten-1"
+                                    }
                                   },
-                                  [
-                                    _c(
-                                      "v-menu",
-                                      {
-                                        attrs: {
-                                          "offset-y": "",
-                                          "nudge-bottom": _vm.nudge.bottom,
-                                          "nudge-left": _vm.nudge.left,
-                                          "nudge-right": _vm.nudge.right,
-                                          "nudge-top": _vm.nudge.top
-                                        }
-                                      },
-                                      [
-                                        _c(
-                                          "v-btn",
-                                          {
-                                            attrs: {
-                                              slot: "activator",
-                                              dark: "",
-                                              color: "primary"
-                                            },
-                                            slot: "activator"
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                      Menu Offset Bottom\n                    "
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "v-list",
-                                          _vm._l(_vm.items, function(
-                                            item,
-                                            key
-                                          ) {
-                                            return _c(
-                                              "v-list-tile",
-                                              {
-                                                key: key,
-                                                on: { click: _vm.handleClick }
-                                              },
-                                              [
-                                                _c("v-list-tile-title", [
-                                                  _vm._v(_vm._s(item.title))
-                                                ])
-                                              ],
-                                              1
-                                            )
-                                          })
-                                        )
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-menu",
-                                      { attrs: { "offset-y": "", top: "" } },
-                                      [
-                                        _c(
-                                          "v-btn",
-                                          {
-                                            attrs: {
-                                              slot: "activator",
-                                              dark: "",
-                                              color: "primary"
-                                            },
-                                            slot: "activator"
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                      Menu Offset Top\n                    "
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "v-list",
-                                          _vm._l(_vm.items, function(
-                                            item,
-                                            key
-                                          ) {
-                                            return _c(
-                                              "v-list-tile",
-                                              {
-                                                key: key,
-                                                on: { click: _vm.handleClick }
-                                              },
-                                              [
-                                                _c("v-list-tile-title", [
-                                                  _vm._v(_vm._s(item.title))
-                                                ])
-                                              ],
-                                              1
-                                            )
-                                          })
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs12: "" } },
-                                  [
-                                    _c("v-slider", {
-                                      attrs: { label: "Top offset", max: 50 },
-                                      model: {
-                                        value: _vm.nudge.top,
-                                        callback: function($$v) {
-                                          _vm.$set(_vm.nudge, "top", $$v)
-                                        },
-                                        expression: "nudge.top"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs12: "" } },
-                                  [
-                                    _c("v-slider", {
-                                      attrs: {
-                                        label: "Bottom offset",
-                                        max: 50
-                                      },
-                                      model: {
-                                        value: _vm.nudge.bottom,
-                                        callback: function($$v) {
-                                          _vm.$set(_vm.nudge, "bottom", $$v)
-                                        },
-                                        expression: "nudge.bottom"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs12: "" } },
-                                  [
-                                    _c("v-slider", {
-                                      attrs: { label: "Left offset", max: 50 },
-                                      model: {
-                                        value: _vm.nudge.left,
-                                        callback: function($$v) {
-                                          _vm.$set(_vm.nudge, "left", $$v)
-                                        },
-                                        expression: "nudge.left"
-                                      }
-                                    })
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-flex",
-                                  { attrs: { xs12: "" } },
-                                  [
-                                    _c("v-slider", {
-                                      attrs: { label: "Right offset", max: 50 },
-                                      model: {
-                                        value: _vm.nudge.right,
-                                        callback: function($$v) {
-                                          _vm.$set(_vm.nudge, "right", $$v)
-                                        },
-                                        expression: "nudge.right"
-                                      }
-                                    })
-                                  ],
-                                  1
+                                  [_vm._v("shopping_cart")]
                                 )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-badge",
+                              { attrs: { color: "red" } },
+                              [
+                                _c(
+                                  "span",
+                                  { attrs: { slot: "badge" }, slot: "badge" },
+                                  [_vm._v("!")]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-icon",
+                                  { attrs: { large: "", color: "grey" } },
+                                  [_vm._v("mail")]
+                                )
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("v-label", [_vm._v("Label")])
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { lg4: "", sm12: "" } },
+                [
+                  _c("v-widget", { attrs: { title: "Inline Badge" } }, [
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-content" },
+                        slot: "widget-content"
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "text-xs-center" },
+                          [
+                            _c("v-badge", { attrs: { left: "" } }, [
+                              _c(
+                                "span",
+                                { attrs: { slot: "badge" }, slot: "badge" },
+                                [_vm._v("2")]
+                              ),
+                              _vm._v(" "),
+                              _c("span", [_vm._v("Examples")])
+                            ]),
+                            _vm._v("\n              \n            "),
+                            _c(
+                              "v-badge",
+                              { attrs: { color: "green" } },
+                              [
+                                _c(
+                                  "v-icon",
+                                  {
+                                    attrs: {
+                                      slot: "badge",
+                                      dark: "",
+                                      small: ""
+                                    },
+                                    slot: "badge"
+                                  },
+                                  [_vm._v("list")]
+                                ),
+                                _vm._v(" "),
+                                _c("span", [_vm._v("Lists")])
                               ],
                               1
                             )
                           ],
                           1
                         )
-                      ],
-                      1
+                      ]
+                    )
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { lg4: "", sm12: "" } },
+                [
+                  _c("v-widget", { attrs: { title: "Icon Badge" } }, [
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-content" },
+                        slot: "widget-content"
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "text-xs-center" },
+                          [
+                            _c(
+                              "v-badge",
+                              { attrs: { left: "", color: "purple" } },
+                              [
+                                _c(
+                                  "v-icon",
+                                  {
+                                    attrs: {
+                                      slot: "badge",
+                                      dark: "",
+                                      small: ""
+                                    },
+                                    slot: "badge"
+                                  },
+                                  [_vm._v("layers")]
+                                ),
+                                _vm._v(" "),
+                                _c("span", [
+                                  _vm._v(
+                                    "\n                  MDI icon\n                "
+                                  )
+                                ])
+                              ],
+                              1
+                            ),
+                            _vm._v("\n                \n              "),
+                            _c(
+                              "v-badge",
+                              { attrs: { color: "orange" } },
+                              [
+                                _c(
+                                  "v-icon",
+                                  {
+                                    attrs: {
+                                      slot: "badge",
+                                      dark: "",
+                                      small: ""
+                                    },
+                                    slot: "badge"
+                                  },
+                                  [_vm._v("fa fa-apple")]
+                                ),
+                                _vm._v(" "),
+                                _c("span", [
+                                  _vm._v(
+                                    "\n                  Font Awesome icon\n                "
+                                  )
+                                ])
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ]
                     )
                   ])
                 ],
@@ -552,9 +480,57 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-94a0759c", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-6bde1ecb", module.exports)
   }
 }
+
+/***/ }),
+
+/***/ 94:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(590)
+/* template */
+var __vue_template__ = __webpack_require__(591)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "front_end/pages/ui/Badge.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6bde1ecb", Component.options)
+  } else {
+    hotAPI.reload("data-v-6bde1ecb", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
 
 /***/ })
 
