@@ -56,9 +56,9 @@ class AuthController extends Controller
                     unset($obj->guard_name);
                     unset($obj->created_at);
                     unset($obj->updated_at);
-                 }
+                }
 
-                // $data['Menu'] = UserPermissions::getFixes();
+                //$data['Menu'] = UserPermissions::getFixes();
                 $data['user'] = $user;
                 return response()->json(['code' => 200, 'data' => $data, 'meta' => $meta]);
             }

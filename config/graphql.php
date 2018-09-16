@@ -125,13 +125,13 @@ return [
     'schemas' => [
         'default' => [
             'query' => [
+                'acl' => App\GraphQL\Query\ACLQuery::class,
                 'users' => App\GraphQL\Query\UsersQuery::class,
-                'Roles' => App\GraphQL\Query\RolesQuery::class,
-                'login' => App\GraphQL\Query\UserLoginQuery::class
+                'login' => App\GraphQL\Query\UserLoginQuery::class,
+                'permissions' => App\GraphQL\Query\PermissionsQuery::class
             ],
             'mutation' => [
                 'createUser' => App\GraphQL\Mutation\CreateUsersMutation::class,
-                'createRole' => App\GraphQL\Mutation\CreateRolesMutation::class
             ]
         ],
         'secret' => [
@@ -191,8 +191,9 @@ return [
      * ]
      */
     'types' => [
+        'Roles' => App\GraphQL\Type\AclType::class,
         'User' => App\GraphQL\Type\UsersType::class,
-        'Roles' => App\GraphQL\Type\RolesType::class
+        'Permissions' => App\GraphQL\Type\PermissionsType::class
     ],
 
     /*

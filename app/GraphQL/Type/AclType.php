@@ -7,15 +7,15 @@ use GraphQL\Type\Definition\Type;
 use Folklore\GraphQL\Support\Type as BaseType;
 use GraphQL;
 
-class RolesType extends BaseType
+class AclType extends BaseType
 {
     protected $attributes = [
-        'name' => 'AvailableRoles',
-        'description' => 'A type'
+        'name' => 'Available Roles',
+        'description' => 'Get all available Roles'
     ];
 
     public function fields()
-    {
+    { // Roles, Permissions, Users
         return [
             'id' => [
                 'type' => Type::nonNull(Type::int()),
@@ -32,6 +32,19 @@ class RolesType extends BaseType
             'updated_at' => [
                 'type' => Type::string(),
                 'description' => 'Date a was updated'
+            ],
+
+            // Nested Resource
+            'permissions' => [
+                'args' => [
+                    'id' => [
+                        'type' => Type::int(),
+                    ],
+                    'first' => [
+                        'type' => Type::int(),
+                    ],
+                ],
+                'type' => Type::listOf(GraphQL::type('Permissions'))
             ]
         ];
     }

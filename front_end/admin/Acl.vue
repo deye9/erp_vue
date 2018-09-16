@@ -77,47 +77,62 @@
 </template>
 
 <script>
-import VWidget from "../components/VWidget";
-export default {
-  components: {
-    VWidget
-  },
-  data() {
-    return {
-      alert: {
-        showSuccess: true,
-        showError: true,
-        showWarnning: true,
-        showInfo: true
-      }
+    import VWidget from "../components/VWidget";
+    export default {
+        components: {
+            VWidget
+        },
+        data() {
+            return {
+                alert: {
+                    showSuccess: true,
+                    showError: true,
+                    showWarnning: true,
+                    showInfo: true
+                }
+            };
+        },
+        computed: {
+            showReset: function() {
+            return (
+                (((this.alert.showSuccess === this.alert.showError) ===
+                this.alert.showWarnning) ===
+                this.alert.showInfo) ===
+                false
+            );
+            }
+        },
+        methods: {
+            registerRole() {
+                alert("Register Roles");
+            },
+            setPermissions() {
+                alert("Set Permissions");
+            },
+            registerUsers() {
+                alert("Register Users");
+            }
+        },
+        created() {
+            // Issue a get command to get the roles and associated permissions.
+            // query acl {
+            //   acl {
+            //   	id
+            //     name
+            //     created_at
+            //     updated_at
+            //     permissions {
+            //       id
+            //       name
+            //       title
+            //       group
+            //       icon
+            //     }
+            //   }
+            // }
+        },
+        mounted() {
+            alert('mounted');
+        }
     };
-  },
-  computed: {
-    showReset: function() {
-      return (
-        (((this.alert.showSuccess === this.alert.showError) ===
-          this.alert.showWarnning) ===
-          this.alert.showInfo) ===
-        false
-      );
-    }
-  },
-  methods: {
-    registerRole() {
-      alert("Register Roles");
-    },
-    setPermissions() {
-      alert("Set Permissions");
-    },
-    registerUsers() {
-      alert("Register Users");
-    }
-  },
-  created() {
-      alert('created');
-  },
-  mounted() {
-      alert('mounted');
-  }
-};
 </script>

@@ -1,14 +1,14 @@
 webpackJsonp([32],{
 
-/***/ 104:
+/***/ 101:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(616)
+var __vue_script__ = __webpack_require__(606)
 /* template */
-var __vue_template__ = __webpack_require__(617)
+var __vue_template__ = __webpack_require__(607)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "front_end/pages/ui/Progress.vue"
+Component.options.__file = "front_end/pages/ui/Carousels.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1a044235", Component.options)
+    hotAPI.createRecord("data-v-664a8e3b", Component.options)
   } else {
-    hotAPI.reload("data-v-1a044235", Component.options)
+    hotAPI.reload("data-v-664a8e3b", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -203,92 +203,13 @@ if (false) {
 
 /***/ }),
 
-/***/ 616:
+/***/ 606:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_VWidget__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -325,33 +246,25 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   data: function data() {
     return {
-      interval: {},
-      value: 0
+      items: [{
+        src: '/static/nature/n1.jpeg'
+      }, {
+        src: '/static/nature/n2.jpeg'
+      }, {
+        src: '/static/nature/n3.jpeg'
+      }, {
+        src: '/static/nature/n4.jpeg'
+      }]
     };
   },
 
   computed: {},
-  beforeDestroy: function beforeDestroy() {
-    clearInterval(this.interval);
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    this.interval = setInterval(function () {
-      if (_this.value === 100) {
-        return _this.value === 0;
-      }
-      _this.value += 10;
-    }, 1000);
-  },
-
   methods: {}
-
 });
 
 /***/ }),
 
-/***/ 617:
+/***/ 607:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -360,7 +273,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "page-progress" } },
+    { attrs: { id: "page-carousels" } },
     [
       _c(
         "v-container",
@@ -372,237 +285,38 @@ var render = function() {
             [
               _c(
                 "v-flex",
-                { attrs: { lg6: "" } },
+                { attrs: { lg6: "", sm12: "", xs12: "" } },
                 [
-                  _c("v-widget", { attrs: { title: "Circular" } }, [
+                  _c("v-widget", { attrs: { title: "Basic Usage" } }, [
                     _c(
                       "div",
                       {
-                        staticClass: "text-xs-center",
                         attrs: { slot: "widget-content" },
                         slot: "widget-content"
                       },
                       [
-                        _c("v-progress-circular", {
-                          attrs: { value: 100, color: "blue-grey" }
-                        }),
-                        _vm._v(" "),
-                        _c("v-progress-circular", {
-                          attrs: { value: 80, color: "deep-orange lighten-2" }
-                        }),
-                        _vm._v(" "),
-                        _c("v-progress-circular", {
-                          attrs: { value: 60, color: "brown" }
-                        }),
-                        _vm._v(" "),
-                        _c("v-progress-circular", {
-                          attrs: { value: 40, color: "lime" }
-                        }),
-                        _vm._v(" "),
-                        _c("v-progress-circular", {
-                          attrs: { value: 20, color: "indigo darken-2" }
-                        })
+                        _c(
+                          "v-carousel",
+                          _vm._l(_vm.items, function(item, i) {
+                            return _c("v-carousel-item", {
+                              key: i,
+                              attrs: { src: item.src }
+                            })
+                          })
+                        )
                       ],
                       1
                     )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "v-widget",
-                    { staticClass: "mt-3", attrs: { title: "Interminate" } },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "text-xs-center",
-                          attrs: { slot: "widget-content" },
-                          slot: "widget-content"
-                        },
-                        [
-                          _c("v-progress-circular", {
-                            attrs: { indeterminate: "", color: "primary" }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-circular", {
-                            attrs: { indeterminate: "", color: "red" }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-circular", {
-                            attrs: { indeterminate: "", color: "purple" }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-circular", {
-                            attrs: { indeterminate: "", color: "green" }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-circular", {
-                            attrs: { indeterminate: "", color: "amber" }
-                          })
-                        ],
-                        1
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-widget",
-                    { staticClass: "mt-3", attrs: { title: "Sizing" } },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "text-xs-center",
-                          attrs: { slot: "widget-content" },
-                          slot: "widget-content"
-                        },
-                        [
-                          _c("v-progress-circular", {
-                            attrs: {
-                              indeterminate: "",
-                              size: 50,
-                              color: "primary"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-circular", {
-                            attrs: { indeterminate: "", width: 3, color: "red" }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-circular", {
-                            attrs: {
-                              indeterminate: "",
-                              size: 70,
-                              width: 7,
-                              color: "purple"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-circular", {
-                            attrs: {
-                              indeterminate: "",
-                              width: 3,
-                              color: "green"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-circular", {
-                            attrs: {
-                              indeterminate: "",
-                              size: 50,
-                              color: "amber"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-widget",
-                    { staticClass: "mt-3", attrs: { title: "Rotate" } },
-                    [
-                      _c(
-                        "div",
-                        {
-                          staticClass: "text-xs-center",
-                          attrs: { slot: "widget-content" },
-                          slot: "widget-content"
-                        },
-                        [
-                          _c(
-                            "v-progress-circular",
-                            {
-                              attrs: {
-                                size: 100,
-                                width: 15,
-                                rotate: 360,
-                                value: _vm.value,
-                                color: "teal"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                " +
-                                  _vm._s(_vm.value) +
-                                  "\n              "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-progress-circular",
-                            {
-                              attrs: {
-                                size: 100,
-                                width: 15,
-                                rotate: -90,
-                                value: _vm.value,
-                                color: "primary"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                " +
-                                  _vm._s(_vm.value) +
-                                  "\n              "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-progress-circular",
-                            {
-                              attrs: {
-                                size: 100,
-                                width: 15,
-                                rotate: 90,
-                                value: _vm.value,
-                                color: "red"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                " +
-                                  _vm._s(_vm.value) +
-                                  "\n              "
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-progress-circular",
-                            {
-                              attrs: {
-                                size: 100,
-                                width: 15,
-                                rotate: 180,
-                                value: _vm.value,
-                                color: "pink"
-                              }
-                            },
-                            [
-                              _vm._v(
-                                "\n                " +
-                                  _vm._s(_vm.value) +
-                                  "\n              "
-                              )
-                            ]
-                          )
-                        ],
-                        1
-                      )
-                    ]
-                  )
+                  ])
                 ],
                 1
               ),
               _vm._v(" "),
               _c(
                 "v-flex",
-                { attrs: { lg6: "" } },
+                { attrs: { lg6: "", sm12: "", xs12: "" } },
                 [
-                  _c("v-widget", { attrs: { title: "Linear" } }, [
+                  _c("v-widget", { attrs: { title: "Hide Controls" } }, [
                     _c(
                       "div",
                       {
@@ -610,112 +324,25 @@ var render = function() {
                         slot: "widget-content"
                       },
                       [
-                        _c("v-progress-linear", {
-                          attrs: { value: "15", color: "primary" }
-                        }),
-                        _vm._v(" "),
-                        _c("v-progress-linear", {
-                          attrs: { value: "30", color: "red" }
-                        }),
-                        _vm._v(" "),
-                        _c("v-progress-linear", {
-                          attrs: { value: "50", color: "purple" }
-                        }),
-                        _vm._v(" "),
-                        _c("v-progress-linear", {
-                          attrs: { value: "70", color: "green" }
-                        }),
-                        _vm._v(" "),
-                        _c("v-progress-linear", {
-                          attrs: { value: "90", color: "amber" }
-                        })
+                        _c(
+                          "v-carousel",
+                          {
+                            attrs: {
+                              "hide-controls": "",
+                              "hide-delimiters": ""
+                            }
+                          },
+                          _vm._l(_vm.items, function(item, i) {
+                            return _c("v-carousel-item", {
+                              key: i,
+                              attrs: { src: item.src }
+                            })
+                          })
+                        )
                       ],
                       1
                     )
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "v-widget",
-                    {
-                      staticClass: "mt-3",
-                      attrs: { title: "Linear indeterminate" }
-                    },
-                    [
-                      _c(
-                        "div",
-                        {
-                          attrs: { slot: "widget-content" },
-                          slot: "widget-content"
-                        },
-                        [
-                          _c("v-progress-linear", {
-                            attrs: {
-                              indeterminate: "",
-                              value: "15",
-                              color: "primary"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-linear", {
-                            attrs: {
-                              indeterminate: "",
-                              value: "15",
-                              color: "pink"
-                            }
-                          })
-                        ],
-                        1
-                      )
-                    ]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "v-widget",
-                    { staticClass: "mt-3", attrs: { title: "Linear custom" } },
-                    [
-                      _c(
-                        "div",
-                        {
-                          attrs: { slot: "widget-content" },
-                          slot: "widget-content"
-                        },
-                        [
-                          _c("v-progress-linear", {
-                            attrs: {
-                              value: "15",
-                              height: "2",
-                              color: "secondary"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-linear", {
-                            attrs: {
-                              value: "30",
-                              height: "5",
-                              color: "success"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-linear", {
-                            attrs: { value: "45", height: "10", color: "info" }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-linear", {
-                            attrs: {
-                              value: "60",
-                              height: "15",
-                              color: "warning"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("v-progress-linear", {
-                            attrs: { value: "75", height: "20", color: "error" }
-                          })
-                        ],
-                        1
-                      )
-                    ]
-                  )
+                  ])
                 ],
                 1
               )
@@ -735,7 +362,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1a044235", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-664a8e3b", module.exports)
   }
 }
 

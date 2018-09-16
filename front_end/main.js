@@ -41,10 +41,11 @@ Vue.use(Vuetify, {
 Vue.http.options.crossOrigin = true;
 // Vue.http.options.root = 'https://erp.dev/';
 // Vue.http.headers.common['Access-Control-Allow-Origin'] = 'https://erp.dev';
+Vue.http.headers.common['Accept-Encoding'] = 'gzip';
 Vue.http.headers.common['Accept'] = 'application/json';
 Vue.http.headers.common['Content-Type'] = 'application/json';
 Vue.http.headers.common['Access-Control-Request-Method'] = '*';
-Vue.http.headers.common['Authorization'] = 'Bearer ' + sessionStorage.getItem('id_token');
+Vue.http.headers.common['Authorization'] = 'Token ' + sessionStorage.getItem('id_token');
 Vue.http.headers.common['X-CSRF-TOKEN'] = document.getElementsByName('csrf-token')[0].getAttribute('content');
 
 // Bootstrap application components

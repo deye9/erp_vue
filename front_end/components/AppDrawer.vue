@@ -100,7 +100,6 @@ export default {
     computeLogo () {
       return '/static/m.png';
     },
-
     sideToolbarColor () {
       return this.$vuetify.options.extra.sideNav;
     }

@@ -142,7 +142,7 @@ export default [
         },
         name: 'components/permissions',
         component: function (resolve) {
-            require(['../admin/Permissions.vue'], resolve);
+            require(['../admin/acl.vue'], resolve);
         }
     },
     // {

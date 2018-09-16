@@ -1,53 +1,5 @@
 webpackJsonp([47],{
 
-/***/ 127:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(708)
-/* template */
-var __vue_template__ = __webpack_require__(709)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "front_end/pages/form/Steppers.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-22c1904c", Component.options)
-  } else {
-    hotAPI.reload("data-v-22c1904c", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
 /***/ 133:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -203,7 +155,55 @@ if (false) {
 
 /***/ }),
 
-/***/ 708:
+/***/ 733:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(734)
+/* template */
+var __vue_template__ = __webpack_require__(735)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "front_end/admin/acl.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-2065d03c", Component.options)
+  } else {
+    hotAPI.reload("data-v-2065d03c", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 734:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -282,26 +282,71 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    VWidget: __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default.a
-  },
-  data: function data() {
-    return {
-      step: 1,
-      e13: 1
-    };
-  },
+    components: {
+        VWidget: __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default.a
+    },
+    data: function data() {
+        return {
+            alert: {
+                showSuccess: true,
+                showError: true,
+                showWarnning: true,
+                showInfo: true
+            }
+        };
+    },
 
-  computed: {},
-  methods: {}
+    computed: {
+        showReset: function showReset() {
+            return this.alert.showSuccess === this.alert.showError === this.alert.showWarnning === this.alert.showInfo === false;
+        }
+    },
+    methods: {
+        registerRole: function registerRole() {
+            alert("Register Roles");
+        },
+        setPermissions: function setPermissions() {
+            alert("Set Permissions");
+        },
+        registerUsers: function registerUsers() {
+            alert("Register Users");
+        }
+    },
+    created: function created() {
+        // Issue a get command to get the roles and associated permissions.
+        // query acl {
+        //   acl {
+        //   	id
+        //     name
+        //     created_at
+        //     updated_at
+        //     permissions {
+        //       id
+        //       name
+        //       title
+        //       group
+        //       icon
+        //     }
+        //   }
+        // }
+    },
+    mounted: function mounted() {
+        alert('mounted');
+    }
 });
 
 /***/ }),
 
-/***/ 709:
+/***/ 735:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -310,7 +355,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "page-steppers" } },
+    { attrs: { id: "page-alerts" } },
     [
       _c(
         "v-container",
@@ -322,327 +367,297 @@ var render = function() {
             [
               _c(
                 "v-flex",
-                { attrs: { sm12: "" } },
+                { attrs: { sm12: "", md6: "", sm6: "" } },
                 [
-                  _c("v-subheader", [_vm._v("Horizontal Step ")]),
-                  _vm._v(" "),
-                  _c(
-                    "v-stepper",
-                    {
-                      model: {
-                        value: _vm.step,
-                        callback: function($$v) {
-                          _vm.step = $$v
-                        },
-                        expression: "step"
-                      }
-                    },
-                    [
-                      _c(
-                        "v-stepper-header",
-                        [
-                          _c(
-                            "v-stepper-step",
-                            { attrs: { step: "1", complete: _vm.step > 1 } },
-                            [_vm._v("Name of step 1")]
-                          ),
-                          _vm._v(" "),
-                          _c("v-divider"),
-                          _vm._v(" "),
-                          _c(
-                            "v-stepper-step",
-                            { attrs: { step: "2", complete: _vm.step > 2 } },
-                            [_vm._v("Name of step 2")]
-                          ),
-                          _vm._v(" "),
-                          _c("v-divider"),
-                          _vm._v(" "),
-                          _c("v-stepper-step", { attrs: { step: "3" } }, [
-                            _vm._v("Name of step 3")
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-stepper-items",
-                        [
-                          _c(
-                            "v-stepper-content",
-                            { attrs: { step: "1" } },
-                            [
-                              _c("v-card", {
-                                staticClass: "mb-5",
-                                attrs: {
-                                  color: "grey lighten-1",
-                                  height: "200px"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "v-btn",
-                                {
-                                  attrs: { color: "primary" },
-                                  nativeOn: {
-                                    click: function($event) {
-                                      _vm.step = 2
-                                    }
-                                  }
-                                },
-                                [_vm._v("Continue")]
-                              ),
-                              _vm._v(" "),
-                              _c("v-btn", { attrs: { flat: "" } }, [
-                                _vm._v("Cancel")
-                              ])
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-stepper-content",
-                            { attrs: { step: "2" } },
-                            [
-                              _c("v-card", {
-                                staticClass: "mb-5",
-                                attrs: {
-                                  color: "grey lighten-1",
-                                  height: "200px"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "v-btn",
-                                {
-                                  attrs: { color: "primary" },
-                                  nativeOn: {
-                                    click: function($event) {
-                                      _vm.step = 3
-                                    }
-                                  }
-                                },
-                                [_vm._v("Continue")]
-                              ),
-                              _vm._v(" "),
-                              _c("v-btn", { attrs: { flat: "" } }, [
-                                _vm._v("Cancel")
-                              ])
-                            ],
-                            1
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "v-stepper-content",
-                            { attrs: { step: "3" } },
-                            [
-                              _c("v-card", {
-                                staticClass: "mb-5",
-                                attrs: {
-                                  color: "grey lighten-1",
-                                  height: "200px"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "v-btn",
-                                {
-                                  attrs: { color: "primary" },
-                                  nativeOn: {
-                                    click: function($event) {
-                                      _vm.step = 1
-                                    }
-                                  }
-                                },
-                                [_vm._v("Continue")]
-                              ),
-                              _vm._v(" "),
-                              _c("v-btn", { attrs: { flat: "" } }, [
-                                _vm._v("Cancel")
-                              ])
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
+                  _c("v-widget", { attrs: { title: "Roles" } }, [
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-header-action" },
+                        slot: "widget-header-action"
+                      },
+                      [
+                        _c(
+                          "v-btn",
+                          {
+                            attrs: {
+                              fab: "",
+                              dark: "",
+                              small: "",
+                              color: "indigo",
+                              loading: _vm.loading
+                            },
+                            on: { click: _vm.registerRole }
+                          },
+                          [_c("v-icon", [_vm._v("add")])],
+                          1
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-content" },
+                        slot: "widget-content"
+                      },
+                      [
+                        _c(
+                          "v-alert",
+                          { attrs: { type: "success", value: true } },
+                          [
+                            _vm._v(
+                              "\n              This is a success alert.\n            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-alert",
+                          { attrs: { type: "info", value: true } },
+                          [
+                            _vm._v(
+                              "\n              This is a info alert.\n            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-alert",
+                          { attrs: { type: "warning", value: true } },
+                          [
+                            _vm._v(
+                              "\n              This is a warning alert.\n            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-alert",
+                          { attrs: { type: "error", value: true } },
+                          [
+                            _vm._v(
+                              "\n              This is a error alert.\n            "
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ])
                 ],
                 1
               ),
               _vm._v(" "),
               _c(
                 "v-flex",
-                { attrs: { sm12: "" } },
+                { attrs: { sm12: "", md6: "", sm6: "" } },
                 [
-                  _c("v-subheader", [_vm._v("Vertical Step ")]),
-                  _vm._v(" "),
-                  _c(
-                    "v-stepper",
-                    {
-                      attrs: { vertical: "" },
-                      model: {
-                        value: _vm.e13,
-                        callback: function($$v) {
-                          _vm.e13 = $$v
-                        },
-                        expression: "e13"
-                      }
-                    },
-                    [
-                      _c(
-                        "v-stepper-step",
-                        { attrs: { step: "1", complete: "" } },
-                        [_vm._v("\n            Name of step 1\n          ")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-stepper-content",
-                        { attrs: { step: "1" } },
-                        [
-                          _c("v-card", {
-                            staticClass: "mb-5",
-                            attrs: { color: "grey lighten-1", height: "200px" }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: { color: "primary" },
-                              nativeOn: {
-                                click: function($event) {
-                                  _vm.e13 = 2
-                                }
-                              }
+                  _c("v-widget", { attrs: { title: "Permissions" } }, [
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-header-action" },
+                        slot: "widget-header-action"
+                      },
+                      [
+                        _c(
+                          "v-btn",
+                          {
+                            attrs: {
+                              fab: "",
+                              dark: "",
+                              small: "",
+                              color: "indigo",
+                              loading: _vm.loading
                             },
-                            [_vm._v("Continue")]
-                          ),
-                          _vm._v(" "),
-                          _c("v-btn", { attrs: { flat: "" } }, [
-                            _vm._v("Cancel")
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-stepper-step",
-                        { attrs: { step: "2", complete: "" } },
-                        [_vm._v("Name of step 2")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-stepper-content",
-                        { attrs: { step: "2" } },
-                        [
-                          _c("v-card", {
-                            staticClass: "mb-5",
-                            attrs: { color: "grey lighten-1", height: "200px" }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: { color: "primary" },
-                              nativeOn: {
-                                click: function($event) {
-                                  _vm.e13 = 3
-                                }
-                              }
+                            on: { click: _vm.setPermissions }
+                          },
+                          [_c("v-icon", [_vm._v("add")])],
+                          1
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-content" },
+                        slot: "widget-content"
+                      },
+                      [
+                        _c(
+                          "v-alert",
+                          {
+                            attrs: {
+                              color: "success",
+                              icon: "new_releases",
+                              value: true
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                  This is a success alert with a custom icon.\n              "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-alert",
+                          {
+                            attrs: {
+                              color: "warning",
+                              value: true,
+                              icon: "message"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                  This is a warning alert with a custom icon.\n              "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-alert",
+                          {
+                            attrs: { color: "info", icon: "star", value: true }
+                          },
+                          [
+                            _vm._v(
+                              "\n                  This is a info alert with a custom icon.\n              "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-alert",
+                          { attrs: { color: "error", value: true } },
+                          [
+                            _vm._v(
+                              "\n                  This is an error alert with no icon.\n              "
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { lg12: "" } },
+                [
+                  _c("v-widget", { attrs: { title: "Users" } }, [
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-header-action" },
+                        slot: "widget-header-action"
+                      },
+                      [
+                        _c(
+                          "v-btn",
+                          {
+                            attrs: {
+                              fab: "",
+                              dark: "",
+                              small: "",
+                              color: "indigo",
+                              loading: _vm.loading
                             },
-                            [_vm._v("Continue")]
-                          ),
-                          _vm._v(" "),
-                          _c("v-btn", { attrs: { flat: "" } }, [
-                            _vm._v("Cancel")
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-stepper-step",
-                        {
-                          attrs: {
-                            step: "3",
-                            rules: [
-                              function() {
-                                return false
-                              }
-                            ]
-                          }
-                        },
-                        [
-                          _vm._v("\n            Ad templates\n            "),
-                          _c("small", [_vm._v("Alert message")])
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "v-stepper-content",
-                        { attrs: { step: "3" } },
-                        [
-                          _c("v-card", {
-                            staticClass: "mb-5",
-                            attrs: { color: "grey lighten-1", height: "200px" }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: { color: "primary" },
-                              nativeOn: {
-                                click: function($event) {
-                                  _vm.e13 = 4
-                                }
-                              }
-                            },
-                            [_vm._v("Continue")]
-                          ),
-                          _vm._v(" "),
-                          _c("v-btn", { attrs: { flat: "" } }, [
-                            _vm._v("Cancel")
-                          ])
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c("v-stepper-step", { attrs: { step: "4" } }, [
-                        _vm._v("View setup instructions")
-                      ]),
-                      _vm._v(" "),
-                      _c(
-                        "v-stepper-content",
-                        { attrs: { step: "4" } },
-                        [
-                          _c("v-card", {
-                            staticClass: "mb-5",
-                            attrs: { color: "grey lighten-1", height: "200px" }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "v-btn",
-                            {
-                              attrs: { color: "primary" },
-                              nativeOn: {
-                                click: function($event) {
-                                  _vm.e13 = 1
-                                }
-                              }
-                            },
-                            [_vm._v("Continue")]
-                          ),
-                          _vm._v(" "),
-                          _c("v-btn", { attrs: { flat: "" } }, [
-                            _vm._v("Cancel")
-                          ])
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
+                            on: { click: _vm.registerUsers }
+                          },
+                          [_c("v-icon", [_vm._v("add")])],
+                          1
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-content" },
+                        slot: "widget-content"
+                      },
+                      [
+                        _c(
+                          "v-alert",
+                          {
+                            attrs: {
+                              outline: "",
+                              color: "success",
+                              icon: "check_circle",
+                              value: true
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                  This is a success alert.\n              "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-alert",
+                          {
+                            attrs: {
+                              outline: "",
+                              color: "info",
+                              icon: "info",
+                              value: true
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                  This is an info alert.\n              "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-alert",
+                          {
+                            attrs: {
+                              outline: "",
+                              color: "warning",
+                              icon: "priority_high",
+                              value: true
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                  This is a warning alert.\n              "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-alert",
+                          {
+                            attrs: {
+                              outline: "",
+                              color: "error",
+                              icon: "warning",
+                              value: true
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n                  This is a error alert.\n              "
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ])
                 ],
                 1
               )
@@ -662,7 +677,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-22c1904c", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-2065d03c", module.exports)
   }
 }
 

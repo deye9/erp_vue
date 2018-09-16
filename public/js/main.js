@@ -12017,9 +12017,7 @@ var Menu = [{ header: 'Apps' }, {
   group: 'layout',
   component: 'layout',
   icon: 'view_compact',
-  items: [{ name: 'bottom-sheets', title: 'Bottom panels', component: 'components/bottom-sheets' }, { name: 'expansion-panels', title: 'Expansion panels', component: 'components/expansion-panels' }, { name: 'footer', title: 'Footer', component: 'components/footer' }, { name: 'lists', title: 'Lists', component: 'components/lists' }, { name: 'jumbotrons', title: 'Jumbotrons', badge: 'new', component: 'components/jumbotrons' }, { name: 'menus', title: 'Menus', component: 'components/menus' },
-  // { name: 'navigation-drawers', title: 'Navigation drawers', component: 'components/navigation-drawers' },
-  { name: 'tabs', title: 'Tabs', component: 'components/tabs' }, { name: 'toolbar', title: 'Toolbars', component: 'components/toolbar' }, { name: 'timeline', title: 'Timeline', component: 'components/timeline' }]
+  items: [{ name: 'bottom-sheets', title: 'Bottom panels', component: 'components/bottom-sheets' }, { name: 'expansion-panels', title: 'Expansion panels', component: 'components/expansion-panels' }, { name: 'footer', title: 'Footer', component: 'components/footer' }, { name: 'lists', title: 'Lists', component: 'components/lists' }, { name: 'jumbotrons', title: 'Jumbotrons', badge: 'new', component: 'components/jumbotrons' }, { name: 'menus', title: 'Menus', component: 'components/menus' }, { name: 'tabs', title: 'Tabs', component: 'components/tabs' }, { name: 'toolbar', title: 'Toolbars', component: 'components/toolbar' }, { name: 'timeline', title: 'Timeline', component: 'components/timeline' }]
 }, {
   title: 'Forms & Controls',
   group: 'forms',
@@ -12477,6 +12475,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_2_vuet
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.options.crossOrigin = true;
 // Vue.http.options.root = 'https://erp.dev/';
 // Vue.http.headers.common['Access-Control-Allow-Origin'] = 'https://erp.dev';
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.headers.common['Accept-Encoding'] = 'gzip';
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.headers.common['Accept'] = 'application/json';
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.headers.common['Content-Type'] = 'application/json';
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.headers.common['Access-Control-Request-Method'] = '*';
@@ -12517,7 +12516,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.use(__WEBPACK_IMPORTED_MODULE_1_vue_
 
 var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
   base: '/',
-  mode: 'hash',
+  mode: 'history',
   linkActiveClass: 'active',
   routes: __WEBPACK_IMPORTED_MODULE_2__paths__["a" /* default */]
 });
@@ -13269,10 +13268,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_AppFab___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_AppFab__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_PageHeader__ = __webpack_require__(37);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_PageHeader___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_PageHeader__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__api_menu__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_ThemeSettings__ = __webpack_require__(40);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_ThemeSettings___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__components_ThemeSettings__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__event__ = __webpack_require__(45);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_ThemeSettings__ = __webpack_require__(40);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_ThemeSettings___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_ThemeSettings__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__event__ = __webpack_require__(45);
 //
 //
 //
@@ -13323,7 +13321,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-
+//import menu from './api/menu';
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -13332,7 +13330,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
         AppToolbar: __WEBPACK_IMPORTED_MODULE_1__components_AppToolbar___default.a,
         AppFab: __WEBPACK_IMPORTED_MODULE_2__components_AppFab___default.a,
         PageHeader: __WEBPACK_IMPORTED_MODULE_3__components_PageHeader___default.a,
-        ThemeSettings: __WEBPACK_IMPORTED_MODULE_5__components_ThemeSettings___default.a
+        ThemeSettings: __WEBPACK_IMPORTED_MODULE_4__components_ThemeSettings___default.a
     },
     data: function data() {
         return {
@@ -13349,7 +13347,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     created: function created() {
         var _this = this;
 
-        __WEBPACK_IMPORTED_MODULE_6__event__["a" /* default */].forEach(function (item) {
+        __WEBPACK_IMPORTED_MODULE_5__event__["a" /* default */].forEach(function (item) {
             _this.$on(item.name, item.callback);
         });
         window.getApp = this;
@@ -39249,7 +39247,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'Home',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(19).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(75)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(52).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(75)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/login',
@@ -39258,7 +39256,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'Login',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(17).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(76)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(50).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(76)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/register',
@@ -39276,7 +39274,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'ForgotPassword',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(18).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(78)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(51).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(78)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/reset',
@@ -39285,7 +39283,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'Reset',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(16).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(79)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(49).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(79)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/admin/roles',
@@ -39294,7 +39292,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/roles',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(50).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(80)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(46).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(80)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/admin/users',
@@ -39303,7 +39301,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/users',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(49).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(81)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(45).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(81)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/admin/metadata',
@@ -39312,7 +39310,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/metadata',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(52).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(82)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(48).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(82)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/admin/acl',
@@ -39321,7 +39319,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/permissions',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(51).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(83)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(47).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(733)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 },
 // {
@@ -39364,7 +39362,7 @@ if (inBrowser && window.Vue) {
         };
     },
     component: function component(resolve) {
-        __webpack_require__.e/* require */(26).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(85)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(22).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(85)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/chat',
@@ -39440,7 +39438,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/alerts',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(39).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(92)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(35).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(92)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/components/avatar',
@@ -39449,7 +39447,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/avatars',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(38).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(93)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(34).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(93)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/components/badge',
@@ -39458,7 +39456,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/badges',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(37).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(94)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(33).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(94)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/components/button',
@@ -39467,7 +39465,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/buttons',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(22).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(95)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(18).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(95)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/components/parallax',
@@ -39476,7 +39474,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/parallax',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(33).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(96)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(29).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(96)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/components/snackbar',
@@ -39485,7 +39483,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/snackbar',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(30).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(97)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(26).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(97)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/components/chip',
@@ -39503,7 +39501,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/cards',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(21).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(99)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(17).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(99)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/components/table',
@@ -39521,7 +39519,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/carousels',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(36).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(101)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(32).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(101)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/components/dialog',
@@ -39530,7 +39528,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/dialogs',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(35).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(102)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(31).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(102)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/components/icon',
@@ -39539,7 +39537,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/icons',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(20).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(103)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(16).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(103)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/components/progress',
@@ -39548,7 +39546,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/progress',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(32).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(104)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(28).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(104)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/components/slider',
@@ -39557,7 +39555,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/sliders',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(31).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(105)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(27).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(105)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/components/tooltip',
@@ -39566,7 +39564,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/tooltips',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(28).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(106)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(24).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(106)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/components/pagination',
@@ -39575,7 +39573,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/paginations',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(34).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(107)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(30).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(107)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/pickers/datepicker',
@@ -39611,7 +39609,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'pickers/timepicker',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(29).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(111)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(25).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(111)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/layout/bottomsheets',
@@ -39620,7 +39618,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/bottom-sheets',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(45).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(112)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(41).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(112)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/layout/expansion-panel',
@@ -39629,7 +39627,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/expansion-panels',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(44).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(113)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(40).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(113)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/layout/footer',
@@ -39638,7 +39636,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/footer',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(43).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(114)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(39).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(114)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/layout/timeline',
@@ -39656,7 +39654,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/lists',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(25).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(116)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(21).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(116)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/layout/toolbar',
@@ -39665,7 +39663,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/toolbar',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(23).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(117)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(19).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(117)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/layout/jumbotron',
@@ -39674,7 +39672,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/jumbotrons',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(42).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(118)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(38).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(118)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/layout/menu',
@@ -39683,7 +39681,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/menus',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(41).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(119)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(37).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(119)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/layout/navigation-drawer',
@@ -39692,7 +39690,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/navigation-drawers',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(24).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(120)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(20).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(120)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/layout/tabs',
@@ -39701,7 +39699,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/tabs',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(40).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(121)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(36).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(121)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/forms/basic',
@@ -39719,7 +39717,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/selects',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(27).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(123)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(23).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(123)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/forms/editor',
@@ -39737,7 +39735,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/selection-controls',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(48).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(125)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(44).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(125)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/forms/text-fields',
@@ -39746,7 +39744,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/text-fields',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(46).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(126)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(42).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(126)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/forms/steppers',
@@ -39755,7 +39753,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/steppers',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(47).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(127)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(43).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(127)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/widgets/social',

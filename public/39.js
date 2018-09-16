@@ -1,5 +1,53 @@
 webpackJsonp([39],{
 
+/***/ 114:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(648)
+/* template */
+var __vue_template__ = __webpack_require__(649)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "front_end/pages/layout/Footers.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-3cfc18f6", Component.options)
+  } else {
+    hotAPI.reload("data-v-3cfc18f6", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
 /***/ 133:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -155,13 +203,39 @@ if (false) {
 
 /***/ }),
 
-/***/ 586:
+/***/ 648:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_VWidget__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -254,33 +328,27 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   data: function data() {
     return {
-      alert: {
-        showSuccess: true,
-        showError: true,
-        showWarnning: true,
-        showInfo: true
-      }
+      icons: ['fa-facebook', 'fa-twitter', 'fa-google-plus', 'fa-linkedin', 'fa-instagram'],
+      rows: [{
+        title: 'Company Name',
+        children: ['Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing elit']
+      }, {
+        title: 'Products',
+        children: ['MDBootstrap', 'MDWordPress', 'BrandFlow', 'Bootstrap Angular']
+      }, {
+        title: 'Useful Links',
+        children: ['Your account', 'Become an Affiliate', 'Shipping Rates', 'Helper']
+      }]
     };
   },
 
-  computed: {
-    showReset: function showReset() {
-      return this.alert.showSuccess === this.alert.showError === this.alert.showWarnning === this.alert.showInfo === false;
-    }
-  },
-  methods: {
-    handleReset: function handleReset() {
-      this.alert.showError = true;
-      this.alert.showSuccess = true;
-      this.alert.showWarnning = true;
-      this.alert.showInfo = true;
-    }
-  }
+  computed: {},
+  methods: {}
 });
 
 /***/ }),
 
-/***/ 587:
+/***/ 649:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -289,7 +357,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "page-alerts" } },
+    { attrs: { id: "page-footers" } },
     [
       _c(
         "v-container",
@@ -301,9 +369,9 @@ var render = function() {
             [
               _c(
                 "v-flex",
-                { attrs: { sm12: "", md6: "", sm6: "" } },
+                { attrs: { lg12: "" } },
                 [
-                  _c("v-widget", { attrs: { title: "Basic Usage" } }, [
+                  _c("v-widget", { attrs: { title: "Default" } }, [
                     _c(
                       "div",
                       {
@@ -312,43 +380,16 @@ var render = function() {
                       },
                       [
                         _c(
-                          "v-alert",
-                          { attrs: { type: "success", value: true } },
+                          "v-footer",
+                          { staticClass: "pa-3" },
                           [
-                            _vm._v(
-                              "\n              This is a success alert.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          { attrs: { type: "info", value: true } },
-                          [
-                            _vm._v(
-                              "\n              This is a info alert.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          { attrs: { type: "warning", value: true } },
-                          [
-                            _vm._v(
-                              "\n              This is a warning alert.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          { attrs: { type: "error", value: true } },
-                          [
-                            _vm._v(
-                              "\n              This is a error alert.\n            "
-                            )
-                          ]
+                            _c("v-spacer"),
+                            _vm._v(" "),
+                            _c("div", [
+                              _vm._v("© " + _vm._s(new Date().getFullYear()))
+                            ])
+                          ],
+                          1
                         )
                       ],
                       1
@@ -360,9 +401,9 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-flex",
-                { attrs: { sm12: "", md6: "", sm6: "" } },
+                { attrs: { lg12: "" } },
                 [
-                  _c("v-widget", { attrs: { title: "Custom Icons" } }, [
+                  _c("v-widget", { attrs: { title: "With icon" } }, [
                     _c(
                       "div",
                       {
@@ -371,256 +412,274 @@ var render = function() {
                       },
                       [
                         _c(
-                          "v-alert",
-                          {
-                            attrs: {
-                              color: "success",
-                              icon: "new_releases",
-                              value: true
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a success alert with a custom icon.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: {
-                              color: "warning",
-                              value: true,
-                              icon: "message"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a warning alert with a custom icon.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: { color: "info", icon: "star", value: true }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a info alert with a custom icon.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          { attrs: { color: "error", value: true } },
-                          [
-                            _vm._v(
-                              "\n              This is an error alert with no icon.\n            "
-                            )
-                          ]
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { sm12: "", md6: "", sm6: "" } },
-                [
-                  _c("v-widget", { attrs: { title: "Outline Alerts" } }, [
-                    _c(
-                      "div",
-                      {
-                        attrs: { slot: "widget-content" },
-                        slot: "widget-content"
-                      },
-                      [
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: {
-                              outline: "",
-                              color: "success",
-                              icon: "check_circle",
-                              value: true
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a success alert.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: {
-                              outline: "",
-                              color: "info",
-                              icon: "info",
-                              value: true
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is an info alert.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: {
-                              outline: "",
-                              color: "warning",
-                              icon: "priority_high",
-                              value: true
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a warning alert.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: {
-                              outline: "",
-                              color: "error",
-                              icon: "warning",
-                              value: true
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a error alert.\n            "
-                            )
-                          ]
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { sm12: "", md6: "", sm6: "" } },
-                [
-                  _c("v-widget", { attrs: { title: "Closable Alerts" } }, [
-                    _c(
-                      "div",
-                      {
-                        attrs: { slot: "widget-content" },
-                        slot: "widget-content"
-                      },
-                      [
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: {
-                              type: "success",
-                              dismissible: "",
-                              transition: "scale-transition"
-                            },
-                            model: {
-                              value: _vm.alert.showSuccess,
-                              callback: function($$v) {
-                                _vm.$set(_vm.alert, "showSuccess", $$v)
-                              },
-                              expression: "alert.showSuccess"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a success alert that is closable with scale transition.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: { type: "error", dismissible: "" },
-                            model: {
-                              value: _vm.alert.showError,
-                              callback: function($$v) {
-                                _vm.$set(_vm.alert, "showError", $$v)
-                              },
-                              expression: "alert.showError"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a error alert that is closable.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: { type: "warning", dismissible: "" },
-                            model: {
-                              value: _vm.alert.showWarnning,
-                              callback: function($$v) {
-                                _vm.$set(_vm.alert, "showWarnning", $$v)
-                              },
-                              expression: "alert.showWarnning"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a warning alert that is closable.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: { type: "info", dismissible: "" },
-                            model: {
-                              value: _vm.alert.showInfo,
-                              callback: function($$v) {
-                                _vm.$set(_vm.alert, "showInfo", $$v)
-                              },
-                              expression: "alert.showInfo"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a info alert that is closable.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "text-xs-center" },
+                          "v-footer",
+                          { attrs: { height: "auto" } },
                           [
                             _c(
-                              "v-btn",
+                              "v-card",
                               {
-                                attrs: { color: "primary", dark: "" },
-                                on: { click: _vm.handleReset }
+                                staticClass:
+                                  "indigo lighten-1 white--text text-xs-center",
+                                attrs: { flat: "", tile: "" }
                               },
-                              [_vm._v("Reset")]
+                              [
+                                _c(
+                                  "v-card-text",
+                                  _vm._l(_vm.icons, function(icon) {
+                                    return _c(
+                                      "v-btn",
+                                      {
+                                        key: icon,
+                                        staticClass: "mx-3 white--text",
+                                        attrs: { icon: "" }
+                                      },
+                                      [
+                                        _c(
+                                          "v-icon",
+                                          { attrs: { size: "24px" } },
+                                          [_vm._v(_vm._s(icon))]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  })
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-card-text",
+                                  { staticClass: "white--text pt-0" },
+                                  [
+                                    _vm._v(
+                                      "\n                    Phasellus feugiat arcu sapien, et iaculis ipsum elementum sit amet. Mauris cursus commodo interdum. Praesent ut risus eget metus luctus accumsan id ultrices nunc. Sed at orci sed massa consectetur dignissim a sit amet dui. Duis commodo vitae velit et faucibus. Morbi vehicula lacinia malesuada. Nulla placerat augue vel ipsum ultrices, cursus iaculis dui sollicitudin. Vestibulum eu ipsum vel diam elementum tempor vel ut orci. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n                  "
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-card-text",
+                                  { staticClass: "white--text" },
+                                  [
+                                    _vm._v("\n                    ©2018 — "),
+                                    _c("strong", [_vm._v("Vuetify")])
+                                  ]
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { lg12: "" } },
+                [
+                  _c("v-widget", { attrs: { title: "Complex layout" } }, [
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-content" },
+                        slot: "widget-content"
+                      },
+                      [
+                        _c(
+                          "v-footer",
+                          { attrs: { height: "auto" } },
+                          [
+                            _c(
+                              "v-card",
+                              { attrs: { flat: "", tile: "" } },
+                              [
+                                _c(
+                                  "v-card-title",
+                                  { staticClass: "teal white--text" },
+                                  [
+                                    _c(
+                                      "strong",
+                                      { staticClass: "subheading" },
+                                      [
+                                        _vm._v(
+                                          "Get connected with us on social networks!"
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("v-spacer"),
+                                    _vm._v(" "),
+                                    _vm._l(_vm.icons, function(icon) {
+                                      return _c(
+                                        "v-btn",
+                                        {
+                                          key: icon,
+                                          staticClass: "mx-3",
+                                          attrs: { icon: "", dark: "" }
+                                        },
+                                        [
+                                          _c(
+                                            "v-icon",
+                                            { attrs: { size: "24px" } },
+                                            [_vm._v(_vm._s(icon))]
+                                          )
+                                        ],
+                                        1
+                                      )
+                                    })
+                                  ],
+                                  2
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-card-text",
+                                  { staticClass: "grey lighten-3" },
+                                  [
+                                    _c(
+                                      "v-layout",
+                                      [
+                                        _vm._l(_vm.rows, function(col, i) {
+                                          return _c(
+                                            "v-flex",
+                                            { key: i, attrs: { xs3: "" } },
+                                            [
+                                              _c("span", {
+                                                staticClass: "body-2",
+                                                domProps: {
+                                                  textContent: _vm._s(
+                                                    col.title.toUpperCase()
+                                                  )
+                                                }
+                                              }),
+                                              _vm._v(" "),
+                                              _vm._l(col.children, function(
+                                                child,
+                                                i
+                                              ) {
+                                                return _c("div", {
+                                                  key: i,
+                                                  domProps: {
+                                                    textContent: _vm._s(child)
+                                                  }
+                                                })
+                                              })
+                                            ],
+                                            2
+                                          )
+                                        }),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-flex",
+                                          {
+                                            attrs: {
+                                              xs3: "",
+                                              layout: "",
+                                              column: ""
+                                            }
+                                          },
+                                          [
+                                            _c(
+                                              "span",
+                                              { staticClass: "body-2" },
+                                              [_vm._v("CONTACT")]
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              [
+                                                _c(
+                                                  "v-icon",
+                                                  {
+                                                    staticClass: "mr-3",
+                                                    attrs: { size: "18px" }
+                                                  },
+                                                  [_vm._v("fa-home")]
+                                                ),
+                                                _vm._v(
+                                                  "\n                        New York, NY 10012, US\n                      "
+                                                )
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              [
+                                                _c(
+                                                  "v-icon",
+                                                  {
+                                                    staticClass: "mr-3",
+                                                    attrs: { size: "18px" }
+                                                  },
+                                                  [_vm._v("fa-envelope")]
+                                                ),
+                                                _vm._v(
+                                                  "\n                        info@example.com\n                      "
+                                                )
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              [
+                                                _c(
+                                                  "v-icon",
+                                                  {
+                                                    staticClass: "mr-3",
+                                                    attrs: { size: "18px" }
+                                                  },
+                                                  [_vm._v("fa-phone")]
+                                                ),
+                                                _vm._v(
+                                                  "\n                        + 01 234 567 88\n                      "
+                                                )
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "div",
+                                              [
+                                                _c(
+                                                  "v-icon",
+                                                  {
+                                                    staticClass: "mr-3",
+                                                    attrs: { size: "18px" }
+                                                  },
+                                                  [_vm._v("fa-print")]
+                                                ),
+                                                _vm._v(
+                                                  "\n                        + 01 234 567 89\n                      "
+                                                )
+                                              ],
+                                              1
+                                            )
+                                          ]
+                                        )
+                                      ],
+                                      2
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-card-actions",
+                                  {
+                                    staticClass: "grey lighten-2 justify-center"
+                                  },
+                                  [
+                                    _vm._v("\n                  ©2018 — "),
+                                    _c("strong", [_vm._v("Vuetify")])
+                                  ]
+                                )
+                              ],
+                              1
                             )
                           ],
                           1
@@ -648,57 +707,9 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-d274eff8", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-3cfc18f6", module.exports)
   }
 }
-
-/***/ }),
-
-/***/ 92:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(586)
-/* template */
-var __vue_template__ = __webpack_require__(587)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "front_end/pages/ui/Alert.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-d274eff8", Component.options)
-  } else {
-    hotAPI.reload("data-v-d274eff8", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
 
 /***/ })
 

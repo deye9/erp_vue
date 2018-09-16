@@ -42,7 +42,6 @@ class UserLoginQuery extends Query
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-        //\Log::info(json_encode($args));
         $user = User::where('email', $args['email'])->first();
         try {
             $token = JWTAuth::fromUser($user, [

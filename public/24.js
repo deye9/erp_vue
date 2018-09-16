@@ -1,22 +1,18 @@
 webpackJsonp([24],{
 
-/***/ 120:
+/***/ 106:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(664)
-}
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(666)
+var __vue_script__ = __webpack_require__(618)
 /* template */
-var __vue_template__ = __webpack_require__(667)
+var __vue_template__ = __webpack_require__(619)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
-var __vue_styles__ = injectStyle
+var __vue_styles__ = null
 /* scopeId */
 var __vue_scopeId__ = null
 /* moduleIdentifier (server only) */
@@ -29,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "front_end/pages/layout/NavigationDrawers.vue"
+Component.options.__file = "front_end/pages/ui/Tooltip.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -38,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-b0c765a8", Component.options)
+    hotAPI.createRecord("data-v-b61041aa", Component.options)
   } else {
-    hotAPI.reload("data-v-b0c765a8", Component.options)
+    hotAPI.reload("data-v-b61041aa", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -207,55 +203,39 @@ if (false) {
 
 /***/ }),
 
-/***/ 664:
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(665);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(3)("22113d84", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b0c765a8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/stylus-loader/index.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NavigationDrawers.vue", function() {
-     var newContent = require("!!../../../node_modules/css-loader/index.js!../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-b0c765a8\",\"scoped\":false,\"hasInlineConfig\":true}!../../../node_modules/stylus-loader/index.js!../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./NavigationDrawers.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-
-/***/ 665:
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.application--example {\n  position: relative;\n  -webkit-transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  transition: 0.3s cubic-bezier(0.25, 0.8, 0.5, 1);\n  overflow: hidden;\n  z-index: 0;\n}\n.application--example > .container {\n  min-height: 350px;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-
-/***/ 666:
+/***/ 618:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_VWidget__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -312,10 +292,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   data: function data() {
     return {
-      drawer: true,
-      miniDrawer: false,
-      items: [{ title: 'Home', icon: 'dashboard' }, { title: 'About', icon: 'question_answer' }],
-      right: null
+      show: false
     };
   },
 
@@ -325,7 +302,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 667:
+/***/ 619:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -334,11 +311,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "page-badges" } },
+    { attrs: { id: "page-tooltip" } },
     [
       _c(
         "v-container",
-        { attrs: { "grid-list-lg": "", fluid: "" } },
+        { attrs: { "grid-list-xl": "", fluid: "" } },
         [
           _c(
             "v-layout",
@@ -346,7 +323,7 @@ var render = function() {
             [
               _c(
                 "v-flex",
-                { attrs: { xs12: "" } },
+                { attrs: { lg6: "" } },
                 [
                   _c("v-widget", { attrs: { title: "Basic Usage" } }, [
                     _c(
@@ -358,149 +335,174 @@ var render = function() {
                       [
                         _c(
                           "div",
-                          { staticClass: "application--example" },
+                          { staticClass: "text-xs-center d-flex align-center" },
                           [
                             _c(
-                              "v-container",
-                              { staticClass: "application--example-container" },
+                              "v-tooltip",
+                              { attrs: { bottom: "" } },
                               [
                                 _c(
-                                  "v-layout",
-                                  { attrs: { "justify-center": "" } },
-                                  [
-                                    _c(
-                                      "v-btn",
-                                      {
-                                        attrs: { dark: "", color: "pink" },
-                                        on: {
-                                          click: function($event) {
-                                            $event.stopPropagation()
-                                            _vm.drawer = !_vm.drawer
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Toggle")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-btn",
-                                      {
-                                        attrs: { dark: "", color: "pink" },
-                                        on: {
-                                          click: function($event) {
-                                            $event.stopPropagation()
-                                            _vm.miniDrawer = !_vm.miniDrawer
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Mini Drawer")]
-                                    )
-                                  ],
-                                  1
-                                )
+                                  "v-btn",
+                                  {
+                                    attrs: {
+                                      slot: "activator",
+                                      dark: "",
+                                      color: "primary"
+                                    },
+                                    slot: "activator"
+                                  },
+                                  [_vm._v("Button")]
+                                ),
+                                _vm._v(" "),
+                                _c("span", [_vm._v("Tooltip")])
                               ],
                               1
                             ),
                             _vm._v(" "),
                             _c(
-                              "v-navigation-drawer",
-                              {
-                                attrs: {
-                                  absolute: "",
-                                  "mini-variant": _vm.miniDrawer
-                                },
-                                model: {
-                                  value: _vm.drawer,
-                                  callback: function($$v) {
-                                    _vm.drawer = $$v
-                                  },
-                                  expression: "drawer"
-                                }
-                              },
+                              "v-tooltip",
+                              { attrs: { bottom: "" } },
                               [
                                 _c(
-                                  "v-toolbar",
+                                  "v-icon",
                                   {
-                                    staticClass: "transparent",
-                                    attrs: { flat: "" }
+                                    attrs: {
+                                      slot: "activator",
+                                      dark: "",
+                                      color: "primary"
+                                    },
+                                    slot: "activator"
                                   },
-                                  [
-                                    _c(
-                                      "v-list",
-                                      { staticClass: "pa-0" },
-                                      [
-                                        _c(
-                                          "v-list-tile",
-                                          { attrs: { avatar: "" } },
-                                          [
-                                            _c("v-list-tile-avatar", [
-                                              _c("img", {
-                                                attrs: {
-                                                  src:
-                                                    "https://randomuser.me/api/portraits/men/85.jpg"
-                                                }
-                                              })
-                                            ]),
-                                            _vm._v(" "),
-                                            _c(
-                                              "v-list-tile-content",
-                                              [
-                                                _c("v-list-tile-title", [
-                                                  _vm._v("John Leider")
-                                                ])
-                                              ],
-                                              1
-                                            )
-                                          ],
-                                          1
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  ],
-                                  1
+                                  [_vm._v("home")]
                                 ),
                                 _vm._v(" "),
+                                _c("span", [_vm._v("Tooltip")])
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c("v-tooltip", { attrs: { bottom: "" } }, [
+                              _c(
+                                "span",
+                                {
+                                  attrs: { slot: "activator" },
+                                  slot: "activator"
+                                },
+                                [_vm._v("This text has a tooltip")]
+                              ),
+                              _vm._v(" "),
+                              _c("span", [_vm._v("Tooltip")])
+                            ])
+                          ],
+                          1
+                        )
+                      ]
+                    )
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { lg6: "" } },
+                [
+                  _c("v-widget", { attrs: { title: "Alignment" } }, [
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-content" },
+                        slot: "widget-content"
+                      },
+                      [
+                        _c(
+                          "div",
+                          { staticClass: "text-xs-center" },
+                          [
+                            _c(
+                              "v-tooltip",
+                              { attrs: { left: "" } },
+                              [
                                 _c(
-                                  "v-list",
-                                  { staticClass: "pt-0", attrs: { dense: "" } },
-                                  [
-                                    _c("v-divider"),
-                                    _vm._v(" "),
-                                    _vm._l(_vm.items, function(item) {
-                                      return _c(
-                                        "v-list-tile",
-                                        {
-                                          key: item.title,
-                                          attrs: { href: "#" }
-                                        },
-                                        [
-                                          _c(
-                                            "v-list-tile-action",
-                                            [
-                                              _c("v-icon", [
-                                                _vm._v(_vm._s(item.icon))
-                                              ])
-                                            ],
-                                            1
-                                          ),
-                                          _vm._v(" "),
-                                          _c(
-                                            "v-list-tile-content",
-                                            [
-                                              _c("v-list-tile-title", [
-                                                _vm._v(_vm._s(item.title))
-                                              ])
-                                            ],
-                                            1
-                                          )
-                                        ],
-                                        1
-                                      )
-                                    })
-                                  ],
-                                  2
-                                )
+                                  "v-btn",
+                                  {
+                                    attrs: {
+                                      slot: "activator",
+                                      dark: "",
+                                      color: "primary"
+                                    },
+                                    slot: "activator"
+                                  },
+                                  [_vm._v("Left")]
+                                ),
+                                _vm._v(" "),
+                                _c("span", [_vm._v("Left tooltip")])
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-tooltip",
+                              { attrs: { top: "" } },
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: {
+                                      slot: "activator",
+                                      dark: "",
+                                      color: "primary"
+                                    },
+                                    slot: "activator"
+                                  },
+                                  [_vm._v("Top")]
+                                ),
+                                _vm._v(" "),
+                                _c("span", [_vm._v("Top tooltip")])
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-tooltip",
+                              { attrs: { bottom: "" } },
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: {
+                                      slot: "activator",
+                                      dark: "",
+                                      color: "primary"
+                                    },
+                                    slot: "activator"
+                                  },
+                                  [_vm._v("Bottom")]
+                                ),
+                                _vm._v(" "),
+                                _c("span", [_vm._v("Bottom tooltip")])
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-tooltip",
+                              { attrs: { right: "" } },
+                              [
+                                _c(
+                                  "v-btn",
+                                  {
+                                    attrs: {
+                                      slot: "activator",
+                                      dark: "",
+                                      color: "primary"
+                                    },
+                                    slot: "activator"
+                                  },
+                                  [_vm._v("Right")]
+                                ),
+                                _vm._v(" "),
+                                _c("span", [_vm._v("Right tooltip")])
                               ],
                               1
                             )
@@ -508,6 +510,118 @@ var render = function() {
                           1
                         )
                       ]
+                    )
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { lg6: "" } },
+                [
+                  _c("v-widget", { attrs: { title: "Icon Badge" } }, [
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-content" },
+                        slot: "widget-content"
+                      },
+                      [
+                        _c(
+                          "v-container",
+                          {
+                            staticClass: "text-xs-center",
+                            attrs: { fluid: "" }
+                          },
+                          [
+                            _c(
+                              "v-layout",
+                              {
+                                attrs: {
+                                  flex: "",
+                                  wrap: "",
+                                  row: "",
+                                  "justify-space-between": ""
+                                }
+                              },
+                              [
+                                _c(
+                                  "v-flex",
+                                  { attrs: { xs12: "" } },
+                                  [
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        nativeOn: {
+                                          click: function($event) {
+                                            _vm.show = !_vm.show
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("toggle")]
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-flex",
+                                  { staticClass: "mt-5", attrs: { xs12: "" } },
+                                  [
+                                    _c(
+                                      "v-tooltip",
+                                      {
+                                        attrs: { top: "" },
+                                        model: {
+                                          value: _vm.show,
+                                          callback: function($$v) {
+                                            _vm.show = $$v
+                                          },
+                                          expression: "show"
+                                        }
+                                      },
+                                      [
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            attrs: {
+                                              slot: "activator",
+                                              icon: ""
+                                            },
+                                            slot: "activator"
+                                          },
+                                          [
+                                            _c(
+                                              "v-icon",
+                                              {
+                                                attrs: {
+                                                  color: "grey lighten-1"
+                                                }
+                                              },
+                                              [_vm._v("shopping_cart")]
+                                            )
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c("span", [
+                                          _vm._v("Programmatic tooltip")
+                                        ])
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
+                      ],
+                      1
                     )
                   ])
                 ],
@@ -529,7 +643,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-b0c765a8", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-b61041aa", module.exports)
   }
 }
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Traits\UserAuthTrait;
 use App\Traits\RestResponseTrait;
 use App\Traits\AuthValidationTrait;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -12,7 +13,7 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 
 class Controller extends BaseController
 {
-    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, RestResponseTrait, AuthValidationTrait;
+    use AuthorizesRequests, DispatchesJobs, ValidatesRequests, RestResponseTrait, AuthValidationTrait, UserAuthTrait;
 
     // HttpStatusCode Constants.
     public const SWITCHING_PROTOCOLS = 101;

@@ -14,18 +14,31 @@ class GraphQLController extends Controller
 {
     protected $tag = 'GraphQL Controller ';
 
-    public function GraphQueries(Request $request) {
+    public function Queries(Request $request) {
         // Log::info($request->all());
         // Log::info($request->input());
         // Log::info(json_decode($request->getContent(), true));
+
+        \Log::info($this->getAuthUser());
+
         $query = $request->input('query');
         $schema = GraphQL::schema();
         $result = Graph::execute($schema, $query);
         return response()->json($result);
     }
 
-    public function GraphMutations(Request $request) {
+    public function Mutations(Request $request) {
+        $query = $request->input('mutations');
+        $schema = GraphQL::schema();
+        $result = Graph::execute($schema, $query);
+        return response()->json($result);
+    }
 
+    public function Subscriptions(Request $request) {
+        $query = $request->input('subscriptions');
+        $schema = GraphQL::schema();
+        $result = Graph::execute($schema, $query);
+        return response()->json($result);
     }
 
 }

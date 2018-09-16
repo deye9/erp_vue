@@ -1,14 +1,14 @@
 webpackJsonp([31],{
 
-/***/ 105:
+/***/ 102:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(618)
+var __vue_script__ = __webpack_require__(608)
 /* template */
-var __vue_template__ = __webpack_require__(619)
+var __vue_template__ = __webpack_require__(609)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -25,7 +25,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "front_end/pages/ui/Slider.vue"
+Component.options.__file = "front_end/pages/ui/Dialogs.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -34,9 +34,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-1407bae9", Component.options)
+    hotAPI.createRecord("data-v-75776753", Component.options)
   } else {
-    hotAPI.reload("data-v-1407bae9", Component.options)
+    hotAPI.reload("data-v-75776753", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true
@@ -203,13 +203,134 @@ if (false) {
 
 /***/ }),
 
-/***/ 618:
+/***/ 608:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_VWidget__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -276,14 +397,19 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   data: function data() {
     return {
-      slider1: 0,
-      slider2: 0,
-      slider3: 0,
-      media1: 0,
-      media2: 0,
-      ex1: { label: 'color', val: 25, color: 'orange darken-3' },
-      ex2: { label: 'track-color', val: 75, color: 'green lighten-1' },
-      ex3: { label: 'thumb-color', val: 50, color: 'red' }
+      basic: {
+        dialog: false
+      },
+      fullscreen: {
+        dialog: false,
+        notifications: false,
+        sound: true,
+        widgets: false
+      },
+      scrollable: {
+        name: '',
+        dialog: false
+      }
     };
   },
 
@@ -293,7 +419,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 619:
+/***/ 609:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -302,11 +428,11 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "page-sliders" } },
+    { attrs: { id: "page-dialogs" } },
     [
       _c(
         "v-container",
-        { attrs: { "grid-list-lg": "", fluid: "" } },
+        { attrs: { "grid-list-xl": "", fluid: "" } },
         [
           _c(
             "v-layout",
@@ -314,7 +440,7 @@ var render = function() {
             [
               _c(
                 "v-flex",
-                { attrs: { xs12: "" } },
+                { attrs: { lg4: "" } },
                 [
                   _c("v-widget", { attrs: { title: "Basic Usage" } }, [
                     _c(
@@ -324,177 +450,807 @@ var render = function() {
                         slot: "widget-content"
                       },
                       [
-                        _c("v-subheader", [_vm._v("Default")]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "container" }, [
-                          _c("div", { staticClass: "layout column" }, [
+                        _c(
+                          "v-dialog",
+                          {
+                            attrs: { persistent: "", "max-width": "500px" },
+                            model: {
+                              value: _vm.basic.dialog,
+                              callback: function($$v) {
+                                _vm.$set(_vm.basic, "dialog", $$v)
+                              },
+                              expression: "basic.dialog"
+                            }
+                          },
+                          [
                             _c(
-                              "div",
-                              { staticClass: "flex" },
-                              [
-                                _c("v-slider", {
-                                  attrs: { step: "0" },
-                                  model: {
-                                    value: _vm.slider1,
-                                    callback: function($$v) {
-                                      _vm.slider1 = $$v
-                                    },
-                                    expression: "slider1"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("v-subheader", [_vm._v("Disabled")]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "container" }, [
-                          _c("div", { staticClass: "layout column" }, [
+                              "v-btn",
+                              {
+                                attrs: {
+                                  slot: "activator",
+                                  color: "primary",
+                                  dark: ""
+                                },
+                                slot: "activator"
+                              },
+                              [_vm._v("Open Dialog")]
+                            ),
+                            _vm._v(" "),
                             _c(
-                              "div",
-                              { staticClass: "flex" },
+                              "v-card",
                               [
-                                _c("v-slider", {
-                                  attrs: { step: "0", disabled: "" },
-                                  model: {
-                                    value: _vm.slider2,
-                                    callback: function($$v) {
-                                      _vm.slider2 = $$v
-                                    },
-                                    expression: "slider2"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("v-subheader", [
-                          _vm._v("Concreate step (Drag the slider) ")
-                        ]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "container" }, [
-                          _c("div", { staticClass: "layout column" }, [
-                            _c(
-                              "div",
-                              { staticClass: "flex" },
-                              [
-                                _c("v-slider", {
-                                  attrs: {
-                                    placeholder: "step",
-                                    color: "pink",
-                                    max: 255,
-                                    "thumb-label": "",
-                                    step: "10",
-                                    ticks: ""
-                                  },
-                                  model: {
-                                    value: _vm.slider3,
-                                    callback: function($$v) {
-                                      _vm.slider3 = $$v
-                                    },
-                                    expression: "slider3"
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("v-subheader", [_vm._v("With Icon ")]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "container" }, [
-                          _c("div", { staticClass: "layout column" }, [
-                            _c(
-                              "div",
-                              { staticClass: "flex" },
-                              [
-                                _c("v-slider", {
-                                  attrs: { "prepend-icon": "volume_up" },
-                                  model: {
-                                    value: _vm.media1,
-                                    callback: function($$v) {
-                                      _vm.media1 = $$v
-                                    },
-                                    expression: "media1"
-                                  }
-                                }),
+                                _c("v-card-title", [
+                                  _c("span", { staticClass: "headline" }, [
+                                    _vm._v("User Profile")
+                                  ])
+                                ]),
                                 _vm._v(" "),
-                                _c("v-slider", {
-                                  attrs: { "prepend-icon": "volume_down" },
-                                  model: {
-                                    value: _vm.media2,
-                                    callback: function($$v) {
-                                      _vm.media2 = $$v
-                                    },
-                                    expression: "media2"
-                                  }
-                                })
+                                _c("v-divider"),
+                                _vm._v(" "),
+                                _c(
+                                  "v-card-text",
+                                  [
+                                    _c(
+                                      "v-container",
+                                      { attrs: { "grid-list-md": "" } },
+                                      [
+                                        _c(
+                                          "v-layout",
+                                          { attrs: { wrap: "" } },
+                                          [
+                                            _c(
+                                              "v-flex",
+                                              {
+                                                attrs: {
+                                                  xs12: "",
+                                                  sm6: "",
+                                                  md4: ""
+                                                }
+                                              },
+                                              [
+                                                _c("v-text-field", {
+                                                  attrs: {
+                                                    label: "Legal first name",
+                                                    required: ""
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-flex",
+                                              {
+                                                attrs: {
+                                                  xs12: "",
+                                                  sm6: "",
+                                                  md4: ""
+                                                }
+                                              },
+                                              [
+                                                _c("v-text-field", {
+                                                  attrs: {
+                                                    label: "Legal middle name",
+                                                    hint:
+                                                      "example of helper text only on focus"
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-flex",
+                                              {
+                                                attrs: {
+                                                  xs12: "",
+                                                  sm6: "",
+                                                  md4: ""
+                                                }
+                                              },
+                                              [
+                                                _c("v-text-field", {
+                                                  attrs: {
+                                                    label: "Legal last name",
+                                                    hint:
+                                                      "example of persistent helper text",
+                                                    "persistent-hint": "",
+                                                    required: ""
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-flex",
+                                              { attrs: { xs12: "" } },
+                                              [
+                                                _c("v-text-field", {
+                                                  attrs: {
+                                                    label: "Email",
+                                                    required: ""
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-flex",
+                                              { attrs: { xs12: "" } },
+                                              [
+                                                _c("v-text-field", {
+                                                  attrs: {
+                                                    label: "Password",
+                                                    type: "password",
+                                                    required: ""
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-flex",
+                                              { attrs: { xs12: "", sm6: "" } },
+                                              [
+                                                _c("v-select", {
+                                                  attrs: {
+                                                    label: "Age",
+                                                    required: "",
+                                                    items: [
+                                                      "0-17",
+                                                      "18-29",
+                                                      "30-54",
+                                                      "54+"
+                                                    ]
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            ),
+                                            _vm._v(" "),
+                                            _c(
+                                              "v-flex",
+                                              { attrs: { xs12: "", sm6: "" } },
+                                              [
+                                                _c("v-select", {
+                                                  attrs: {
+                                                    label: "Interests",
+                                                    multiple: "",
+                                                    autocomplete: "",
+                                                    chips: "",
+                                                    items: [
+                                                      "Skiing",
+                                                      "Ice hockey",
+                                                      "Soccer",
+                                                      "Basketball",
+                                                      "Hockey",
+                                                      "Reading",
+                                                      "Writing",
+                                                      "Coding",
+                                                      "Basejump"
+                                                    ]
+                                                  }
+                                                })
+                                              ],
+                                              1
+                                            )
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c("small", [
+                                      _vm._v("*indicates required field")
+                                    ])
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "v-card-actions",
+                                  [
+                                    _c("v-spacer"),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        attrs: {
+                                          color: "blue darken-1",
+                                          flat: ""
+                                        },
+                                        nativeOn: {
+                                          click: function($event) {
+                                            _vm.basic.dialog = false
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("Close")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        attrs: {
+                                          color: "blue darken-1",
+                                          flat: ""
+                                        },
+                                        nativeOn: {
+                                          click: function($event) {
+                                            _vm.basic.dialog = false
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("Save")]
+                                    )
+                                  ],
+                                  1
+                                )
                               ],
                               1
                             )
-                          ])
-                        ]),
-                        _vm._v(" "),
-                        _c("v-subheader", [_vm._v("Custom color")]),
-                        _vm._v(" "),
-                        _c("div", { staticClass: "container" }, [
-                          _c("div", { staticClass: "layout column" }, [
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { xl4: "" } },
+                [
+                  _c("v-widget", { attrs: { title: "Fullscreen Dialog" } }, [
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-content" },
+                        slot: "widget-content"
+                      },
+                      [
+                        _c(
+                          "v-dialog",
+                          {
+                            attrs: {
+                              fullscreen: "",
+                              transition: "dialog-bottom-transition",
+                              overlay: false
+                            },
+                            model: {
+                              value: _vm.fullscreen.dialog,
+                              callback: function($$v) {
+                                _vm.$set(_vm.fullscreen, "dialog", $$v)
+                              },
+                              expression: "fullscreen.dialog"
+                            }
+                          },
+                          [
                             _c(
-                              "div",
-                              { staticClass: "flex" },
+                              "v-btn",
+                              {
+                                attrs: {
+                                  slot: "activator",
+                                  color: "primary",
+                                  dark: ""
+                                },
+                                slot: "activator"
+                              },
+                              [_vm._v("Open Dialog")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-card",
                               [
-                                _c("v-slider", {
-                                  attrs: {
-                                    label: _vm.ex1.label,
-                                    color: _vm.ex1.color
-                                  },
-                                  model: {
-                                    value: _vm.ex1.val,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.ex1, "val", $$v)
-                                    },
-                                    expression: "ex1.val"
-                                  }
-                                }),
+                                _c(
+                                  "v-toolbar",
+                                  { attrs: { dark: "", color: "primary" } },
+                                  [
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        attrs: { icon: "", dark: "" },
+                                        nativeOn: {
+                                          click: function($event) {
+                                            _vm.fullscreen.dialog = false
+                                          }
+                                        }
+                                      },
+                                      [_c("v-icon", [_vm._v("close")])],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c("v-toolbar-title", [_vm._v("Settings")]),
+                                    _vm._v(" "),
+                                    _c("v-spacer"),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-toolbar-items",
+                                      [
+                                        _c(
+                                          "v-btn",
+                                          {
+                                            attrs: { dark: "", flat: "" },
+                                            nativeOn: {
+                                              click: function($event) {
+                                                _vm.dialog = false
+                                              }
+                                            }
+                                          },
+                                          [_vm._v("Save")]
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                ),
                                 _vm._v(" "),
-                                _c("v-slider", {
-                                  attrs: {
-                                    label: _vm.ex2.label,
-                                    "track-color": _vm.ex2.color
+                                _c(
+                                  "v-list",
+                                  {
+                                    attrs: { "three-line": "", subheader: "" }
                                   },
-                                  model: {
-                                    value: _vm.ex2.val,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.ex2, "val", $$v)
-                                    },
-                                    expression: "ex2.val"
-                                  }
-                                }),
+                                  [
+                                    _c("v-subheader", [
+                                      _vm._v("User Controls")
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-tile",
+                                      { attrs: { avatar: "" } },
+                                      [
+                                        _c(
+                                          "v-list-tile-content",
+                                          [
+                                            _c("v-list-tile-title", [
+                                              _vm._v("Content filtering")
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("v-list-tile-sub-title", [
+                                              _vm._v(
+                                                "Set the content filtering level to restrict apps that can be downloaded"
+                                              )
+                                            ])
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-tile",
+                                      { attrs: { avatar: "" } },
+                                      [
+                                        _c(
+                                          "v-list-tile-content",
+                                          [
+                                            _c("v-list-tile-title", [
+                                              _vm._v("Password")
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("v-list-tile-sub-title", [
+                                              _vm._v(
+                                                "Require password for purchase or use password to restrict purchase"
+                                              )
+                                            ])
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                ),
                                 _vm._v(" "),
-                                _c("v-slider", {
-                                  attrs: {
-                                    label: _vm.ex3.label,
-                                    "thumb-color": _vm.ex3.color,
-                                    "thumb-label": ""
+                                _c("v-divider"),
+                                _vm._v(" "),
+                                _c(
+                                  "v-list",
+                                  {
+                                    attrs: { "three-line": "", subheader: "" }
                                   },
-                                  model: {
-                                    value: _vm.ex3.val,
-                                    callback: function($$v) {
-                                      _vm.$set(_vm.ex3, "val", $$v)
-                                    },
-                                    expression: "ex3.val"
-                                  }
-                                })
+                                  [
+                                    _c("v-subheader", [_vm._v("General")]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-tile",
+                                      { attrs: { avatar: "" } },
+                                      [
+                                        _c(
+                                          "v-list-tile-action",
+                                          [
+                                            _c("v-checkbox", {
+                                              model: {
+                                                value:
+                                                  _vm.fullscreen.notifications,
+                                                callback: function($$v) {
+                                                  _vm.$set(
+                                                    _vm.fullscreen,
+                                                    "notifications",
+                                                    $$v
+                                                  )
+                                                },
+                                                expression:
+                                                  "fullscreen.notifications"
+                                              }
+                                            })
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-list-tile-content",
+                                          [
+                                            _c("v-list-tile-title", [
+                                              _vm._v("Notifications")
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("v-list-tile-sub-title", [
+                                              _vm._v(
+                                                "Notify me about updates to apps or games that I downloaded"
+                                              )
+                                            ])
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-tile",
+                                      { attrs: { avatar: "" } },
+                                      [
+                                        _c(
+                                          "v-list-tile-action",
+                                          [
+                                            _c("v-checkbox", {
+                                              model: {
+                                                value: _vm.fullscreen.sound,
+                                                callback: function($$v) {
+                                                  _vm.$set(
+                                                    _vm.fullscreen,
+                                                    "sound",
+                                                    $$v
+                                                  )
+                                                },
+                                                expression: "fullscreen.sound"
+                                              }
+                                            })
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-list-tile-content",
+                                          [
+                                            _c("v-list-tile-title", [
+                                              _vm._v("Sound")
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("v-list-tile-sub-title", [
+                                              _vm._v(
+                                                "Auto-update apps at any time. Data charges may apply"
+                                              )
+                                            ])
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-list-tile",
+                                      { attrs: { avatar: "" } },
+                                      [
+                                        _c(
+                                          "v-list-tile-action",
+                                          [
+                                            _c("v-checkbox", {
+                                              model: {
+                                                value: _vm.fullscreen.widgets,
+                                                callback: function($$v) {
+                                                  _vm.$set(
+                                                    _vm.fullscreen,
+                                                    "widgets",
+                                                    $$v
+                                                  )
+                                                },
+                                                expression: "fullscreen.widgets"
+                                              }
+                                            })
+                                          ],
+                                          1
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "v-list-tile-content",
+                                          [
+                                            _c("v-list-tile-title", [
+                                              _vm._v("Auto-add widgets")
+                                            ]),
+                                            _vm._v(" "),
+                                            _c("v-list-tile-sub-title", [
+                                              _vm._v(
+                                                "Automatically add home screen widgets"
+                                              )
+                                            ])
+                                          ],
+                                          1
+                                        )
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                )
                               ],
                               1
                             )
-                          ])
-                        ])
+                          ],
+                          1
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { xl4: "" } },
+                [
+                  _c("v-widget", { attrs: { title: "Scrollable Dialog" } }, [
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-content" },
+                        slot: "widget-content"
+                      },
+                      [
+                        _c(
+                          "v-dialog",
+                          {
+                            attrs: { scrollable: "", "max-width": "300px" },
+                            model: {
+                              value: _vm.scrollable.dialog,
+                              callback: function($$v) {
+                                _vm.$set(_vm.scrollable, "dialog", $$v)
+                              },
+                              expression: "scrollable.dialog"
+                            }
+                          },
+                          [
+                            _c(
+                              "v-btn",
+                              {
+                                attrs: {
+                                  slot: "activator",
+                                  color: "primary",
+                                  dark: ""
+                                },
+                                slot: "activator"
+                              },
+                              [_vm._v("Open Dialog")]
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "v-card",
+                              [
+                                _c("v-card-title", [_vm._v("Select Country")]),
+                                _vm._v(" "),
+                                _c("v-divider"),
+                                _vm._v(" "),
+                                _c(
+                                  "v-card-text",
+                                  [
+                                    _c(
+                                      "v-radio-group",
+                                      {
+                                        attrs: { column: "" },
+                                        model: {
+                                          value: _vm.scrollable.name,
+                                          callback: function($$v) {
+                                            _vm.$set(
+                                              _vm.scrollable,
+                                              "name",
+                                              $$v
+                                            )
+                                          },
+                                          expression: "scrollable.name"
+                                        }
+                                      },
+                                      [
+                                        _c("v-radio", {
+                                          attrs: {
+                                            label: "Bahamas, The",
+                                            value: "bahamas"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("v-radio", {
+                                          attrs: {
+                                            label: "Bahrain",
+                                            value: "bahrain"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("v-radio", {
+                                          attrs: {
+                                            label: "Bangladesh",
+                                            value: "bangladesh"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("v-radio", {
+                                          attrs: {
+                                            label: "Barbados",
+                                            value: "barbados"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("v-radio", {
+                                          attrs: {
+                                            label: "Belarus",
+                                            value: "belarus"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("v-radio", {
+                                          attrs: {
+                                            label: "Belgium",
+                                            value: "belgium"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("v-radio", {
+                                          attrs: {
+                                            label: "Belize",
+                                            value: "belize"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("v-radio", {
+                                          attrs: {
+                                            label: "Benin",
+                                            value: "benin"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("v-radio", {
+                                          attrs: {
+                                            label: "Bhutan",
+                                            value: "bhutan"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("v-radio", {
+                                          attrs: {
+                                            label: "Bolivia",
+                                            value: "bolivia"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("v-radio", {
+                                          attrs: {
+                                            label: "Bosnia and Herzegovina",
+                                            value: "bosnia"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("v-radio", {
+                                          attrs: {
+                                            label: "Botswana",
+                                            value: "botswana"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("v-radio", {
+                                          attrs: {
+                                            label: "Brazil",
+                                            value: "brazil"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("v-radio", {
+                                          attrs: {
+                                            label: "Brunei",
+                                            value: "brunei"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("v-radio", {
+                                          attrs: {
+                                            label: "Bulgaria",
+                                            value: "bulgaria"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("v-radio", {
+                                          attrs: {
+                                            label: "Burkina Faso",
+                                            value: "burkina"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("v-radio", {
+                                          attrs: {
+                                            label: "Burma",
+                                            value: "burma"
+                                          }
+                                        }),
+                                        _vm._v(" "),
+                                        _c("v-radio", {
+                                          attrs: {
+                                            label: "Burundi",
+                                            value: "burundi"
+                                          }
+                                        })
+                                      ],
+                                      1
+                                    )
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c("v-divider"),
+                                _vm._v(" "),
+                                _c(
+                                  "v-card-actions",
+                                  [
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        attrs: {
+                                          color: "blue darken-1",
+                                          flat: ""
+                                        },
+                                        nativeOn: {
+                                          click: function($event) {
+                                            _vm.scrollable.dialog = false
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("Close")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "v-btn",
+                                      {
+                                        attrs: {
+                                          color: "blue darken-1",
+                                          flat: ""
+                                        },
+                                        nativeOn: {
+                                          click: function($event) {
+                                            _vm.scrollable.dialog = false
+                                          }
+                                        }
+                                      },
+                                      [_vm._v("Save")]
+                                    )
+                                  ],
+                                  1
+                                )
+                              ],
+                              1
+                            )
+                          ],
+                          1
+                        )
                       ],
                       1
                     )
@@ -518,7 +1274,7 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-1407bae9", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-75776753", module.exports)
   }
 }
 

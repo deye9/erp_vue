@@ -6,9 +6,9 @@ webpackJsonp([59],{
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(606)
+var __vue_script__ = __webpack_require__(604)
 /* template */
-var __vue_template__ = __webpack_require__(607)
+var __vue_template__ = __webpack_require__(605)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -470,7 +470,7 @@ var getUser = function getUser(limit) {
 
 /***/ }),
 
-/***/ 606:
+/***/ 604:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -688,7 +688,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 607:
+/***/ 605:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

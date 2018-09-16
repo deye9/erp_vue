@@ -27,12 +27,16 @@ Route::post('/signin',  [
 
 Route::group(['middleware' => 'tenancy.enforce'], function () {
 
-    Route::get('/mutations',  [
-        'uses' => 'GraphQLController@GraphMutations',
+    Route::get('/queries',  [
+        'uses' => 'GraphQLController@Queries',
     ]);
 
-    Route::post('/queries',  [
-        'uses' => 'GraphQLController@GraphQueries',
+    Route::post('/mutations',  [
+        'uses' => 'GraphQLController@Mutations',
+    ]);
+
+    Route::post('/subscriptions',  [
+        'uses' => 'GraphQLController@Subscriptions',
     ]);
 
     Route::post('/forgotpassword',  [

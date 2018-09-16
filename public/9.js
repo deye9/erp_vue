@@ -6,9 +6,9 @@ webpackJsonp([9],{
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(652)
+var __vue_script__ = __webpack_require__(650)
 /* template */
-var __vue_template__ = __webpack_require__(653)
+var __vue_template__ = __webpack_require__(651)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -1345,7 +1345,7 @@ var getChatById = function getChatById(uuid) {
 
 /***/ }),
 
-/***/ 216:
+/***/ 214:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1938,7 +1938,7 @@ var getFile = function getFile(limit) {
 
 /***/ }),
 
-/***/ 217:
+/***/ 215:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1977,7 +1977,7 @@ var getPost = function getPost(limit) {
 
 /***/ }),
 
-/***/ 218:
+/***/ 216:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2053,13 +2053,13 @@ var SinData = range(1, 12).map(function (i) {
 
 /***/ }),
 
-/***/ 237:
+/***/ 235:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__VCircle_css__ = __webpack_require__(238);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__VCircle_css__ = __webpack_require__(236);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__VCircle_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__VCircle_css__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuetify_es5_mixins_colorable__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuetify_es5_mixins_colorable__ = __webpack_require__(238);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vuetify_es5_mixins_colorable___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vuetify_es5_mixins_colorable__);
 
 
@@ -2106,11 +2106,11 @@ var SinData = range(1, 12).map(function (i) {
 
 /***/ }),
 
-/***/ 238:
+/***/ 236:
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(239);
+var content = __webpack_require__(237);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -2157,7 +2157,7 @@ if(false) {
 
 /***/ }),
 
-/***/ 239:
+/***/ 237:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(1)(false);
@@ -2172,7 +2172,7 @@ exports.push([module.i, ".circle {\n  border-radius: 3px;\n  padding: 0.25em 0.4
 
 /***/ }),
 
-/***/ 240:
+/***/ 238:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2243,17 +2243,17 @@ exports.default = _vue2.default.extend({
 
 /***/ }),
 
-/***/ 242:
+/***/ 240:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__user__ = __webpack_require__(140);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__activity__ = __webpack_require__(243);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__activity__ = __webpack_require__(241);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__chat__ = __webpack_require__(198);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__file__ = __webpack_require__(216);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__file__ = __webpack_require__(214);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__mail__ = __webpack_require__(188);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__post__ = __webpack_require__(217);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__chart__ = __webpack_require__(218);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__post__ = __webpack_require__(215);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__chart__ = __webpack_require__(216);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__project__ = __webpack_require__(196);
 // implement your own methods in here, if your data is coming from A rest API
 
@@ -2296,7 +2296,7 @@ exports.default = _vue2.default.extend({
 
 /***/ }),
 
-/***/ 243:
+/***/ 241:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -2338,15 +2338,15 @@ var getActivity = function getActivity(limit) {
 
 /***/ }),
 
-/***/ 652:
+/***/ 650:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_VWidget__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api__ = __webpack_require__(242);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_circle_VCircle_js__ = __webpack_require__(237);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api__ = __webpack_require__(240);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_circle_VCircle_js__ = __webpack_require__(235);
 //
 //
 //
@@ -2480,7 +2480,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 653:
+/***/ 651:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {

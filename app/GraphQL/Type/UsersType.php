@@ -52,4 +52,9 @@ class UsersType extends BaseType
     {
         return (string) $root->created_at;
     }
+
+    protected function resolveUpdatedAtField($root, $args)
+    {
+      return (string) $root->updated_at;
+    }
 }

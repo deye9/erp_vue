@@ -107,14 +107,13 @@ export default {
             context.error = false;
 
             sessionStorage.setItem('id_token', response.data.meta.token);
-            Vue.http.headers.common['Authorization'] = 'Bearer ' + sessionStorage.getItem('id_token');
+            Vue.http.headers.common['Authorization'] = 'Token ' + sessionStorage.getItem('id_token');
 
             this.buildmenu(response.data);
             router.push({
                 name: 'Dashboard'
             });
         }, (response) => {
-            console.log('Error = ' + response);
             context.error = true;
         });
     },

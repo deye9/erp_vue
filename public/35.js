@@ -1,53 +1,5 @@
 webpackJsonp([35],{
 
-/***/ 102:
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-var normalizeComponent = __webpack_require__(0)
-/* script */
-var __vue_script__ = __webpack_require__(610)
-/* template */
-var __vue_template__ = __webpack_require__(611)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "front_end/pages/ui/Dialogs.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-75776753", Component.options)
-  } else {
-    hotAPI.reload("data-v-75776753", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
 /***/ 133:
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -203,108 +155,13 @@ if (false) {
 
 /***/ }),
 
-/***/ 610:
+/***/ 584:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget__ = __webpack_require__(133);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_VWidget__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -397,29 +254,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
   },
   data: function data() {
     return {
-      basic: {
-        dialog: false
-      },
-      fullscreen: {
-        dialog: false,
-        notifications: false,
-        sound: true,
-        widgets: false
-      },
-      scrollable: {
-        name: '',
-        dialog: false
+      alert: {
+        showSuccess: true,
+        showError: true,
+        showWarnning: true,
+        showInfo: true
       }
     };
   },
 
-  computed: {},
-  methods: {}
+  computed: {
+    showReset: function showReset() {
+      return this.alert.showSuccess === this.alert.showError === this.alert.showWarnning === this.alert.showInfo === false;
+    }
+  },
+  methods: {
+    handleReset: function handleReset() {
+      this.alert.showError = true;
+      this.alert.showSuccess = true;
+      this.alert.showWarnning = true;
+      this.alert.showInfo = true;
+    }
+  }
 });
 
 /***/ }),
 
-/***/ 611:
+/***/ 585:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -428,7 +289,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { attrs: { id: "page-dialogs" } },
+    { attrs: { id: "page-alerts" } },
     [
       _c(
         "v-container",
@@ -440,7 +301,7 @@ var render = function() {
             [
               _c(
                 "v-flex",
-                { attrs: { lg4: "" } },
+                { attrs: { sm12: "", md6: "", sm6: "" } },
                 [
                   _c("v-widget", { attrs: { title: "Basic Usage" } }, [
                     _c(
@@ -451,250 +312,43 @@ var render = function() {
                       },
                       [
                         _c(
-                          "v-dialog",
-                          {
-                            attrs: { persistent: "", "max-width": "500px" },
-                            model: {
-                              value: _vm.basic.dialog,
-                              callback: function($$v) {
-                                _vm.$set(_vm.basic, "dialog", $$v)
-                              },
-                              expression: "basic.dialog"
-                            }
-                          },
+                          "v-alert",
+                          { attrs: { type: "success", value: true } },
                           [
-                            _c(
-                              "v-btn",
-                              {
-                                attrs: {
-                                  slot: "activator",
-                                  color: "primary",
-                                  dark: ""
-                                },
-                                slot: "activator"
-                              },
-                              [_vm._v("Open Dialog")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-card",
-                              [
-                                _c("v-card-title", [
-                                  _c("span", { staticClass: "headline" }, [
-                                    _vm._v("User Profile")
-                                  ])
-                                ]),
-                                _vm._v(" "),
-                                _c("v-divider"),
-                                _vm._v(" "),
-                                _c(
-                                  "v-card-text",
-                                  [
-                                    _c(
-                                      "v-container",
-                                      { attrs: { "grid-list-md": "" } },
-                                      [
-                                        _c(
-                                          "v-layout",
-                                          { attrs: { wrap: "" } },
-                                          [
-                                            _c(
-                                              "v-flex",
-                                              {
-                                                attrs: {
-                                                  xs12: "",
-                                                  sm6: "",
-                                                  md4: ""
-                                                }
-                                              },
-                                              [
-                                                _c("v-text-field", {
-                                                  attrs: {
-                                                    label: "Legal first name",
-                                                    required: ""
-                                                  }
-                                                })
-                                              ],
-                                              1
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "v-flex",
-                                              {
-                                                attrs: {
-                                                  xs12: "",
-                                                  sm6: "",
-                                                  md4: ""
-                                                }
-                                              },
-                                              [
-                                                _c("v-text-field", {
-                                                  attrs: {
-                                                    label: "Legal middle name",
-                                                    hint:
-                                                      "example of helper text only on focus"
-                                                  }
-                                                })
-                                              ],
-                                              1
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "v-flex",
-                                              {
-                                                attrs: {
-                                                  xs12: "",
-                                                  sm6: "",
-                                                  md4: ""
-                                                }
-                                              },
-                                              [
-                                                _c("v-text-field", {
-                                                  attrs: {
-                                                    label: "Legal last name",
-                                                    hint:
-                                                      "example of persistent helper text",
-                                                    "persistent-hint": "",
-                                                    required: ""
-                                                  }
-                                                })
-                                              ],
-                                              1
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "v-flex",
-                                              { attrs: { xs12: "" } },
-                                              [
-                                                _c("v-text-field", {
-                                                  attrs: {
-                                                    label: "Email",
-                                                    required: ""
-                                                  }
-                                                })
-                                              ],
-                                              1
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "v-flex",
-                                              { attrs: { xs12: "" } },
-                                              [
-                                                _c("v-text-field", {
-                                                  attrs: {
-                                                    label: "Password",
-                                                    type: "password",
-                                                    required: ""
-                                                  }
-                                                })
-                                              ],
-                                              1
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "v-flex",
-                                              { attrs: { xs12: "", sm6: "" } },
-                                              [
-                                                _c("v-select", {
-                                                  attrs: {
-                                                    label: "Age",
-                                                    required: "",
-                                                    items: [
-                                                      "0-17",
-                                                      "18-29",
-                                                      "30-54",
-                                                      "54+"
-                                                    ]
-                                                  }
-                                                })
-                                              ],
-                                              1
-                                            ),
-                                            _vm._v(" "),
-                                            _c(
-                                              "v-flex",
-                                              { attrs: { xs12: "", sm6: "" } },
-                                              [
-                                                _c("v-select", {
-                                                  attrs: {
-                                                    label: "Interests",
-                                                    multiple: "",
-                                                    autocomplete: "",
-                                                    chips: "",
-                                                    items: [
-                                                      "Skiing",
-                                                      "Ice hockey",
-                                                      "Soccer",
-                                                      "Basketball",
-                                                      "Hockey",
-                                                      "Reading",
-                                                      "Writing",
-                                                      "Coding",
-                                                      "Basejump"
-                                                    ]
-                                                  }
-                                                })
-                                              ],
-                                              1
-                                            )
-                                          ],
-                                          1
-                                        )
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c("small", [
-                                      _vm._v("*indicates required field")
-                                    ])
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-card-actions",
-                                  [
-                                    _c("v-spacer"),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-btn",
-                                      {
-                                        attrs: {
-                                          color: "blue darken-1",
-                                          flat: ""
-                                        },
-                                        nativeOn: {
-                                          click: function($event) {
-                                            _vm.basic.dialog = false
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Close")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-btn",
-                                      {
-                                        attrs: {
-                                          color: "blue darken-1",
-                                          flat: ""
-                                        },
-                                        nativeOn: {
-                                          click: function($event) {
-                                            _vm.basic.dialog = false
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Save")]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
+                            _vm._v(
+                              "\n              This is a success alert.\n            "
                             )
-                          ],
-                          1
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-alert",
+                          { attrs: { type: "info", value: true } },
+                          [
+                            _vm._v(
+                              "\n              This is a info alert.\n            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-alert",
+                          { attrs: { type: "warning", value: true } },
+                          [
+                            _vm._v(
+                              "\n              This is a warning alert.\n            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-alert",
+                          { attrs: { type: "error", value: true } },
+                          [
+                            _vm._v(
+                              "\n              This is a error alert.\n            "
+                            )
+                          ]
                         )
                       ],
                       1
@@ -706,9 +360,9 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-flex",
-                { attrs: { xl4: "" } },
+                { attrs: { sm12: "", md6: "", sm6: "" } },
                 [
-                  _c("v-widget", { attrs: { title: "Fullscreen Dialog" } }, [
+                  _c("v-widget", { attrs: { title: "Custom Icons" } }, [
                     _c(
                       "div",
                       {
@@ -717,289 +371,57 @@ var render = function() {
                       },
                       [
                         _c(
-                          "v-dialog",
+                          "v-alert",
                           {
                             attrs: {
-                              fullscreen: "",
-                              transition: "dialog-bottom-transition",
-                              overlay: false
-                            },
-                            model: {
-                              value: _vm.fullscreen.dialog,
-                              callback: function($$v) {
-                                _vm.$set(_vm.fullscreen, "dialog", $$v)
-                              },
-                              expression: "fullscreen.dialog"
+                              color: "success",
+                              icon: "new_releases",
+                              value: true
                             }
                           },
                           [
-                            _c(
-                              "v-btn",
-                              {
-                                attrs: {
-                                  slot: "activator",
-                                  color: "primary",
-                                  dark: ""
-                                },
-                                slot: "activator"
-                              },
-                              [_vm._v("Open Dialog")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-card",
-                              [
-                                _c(
-                                  "v-toolbar",
-                                  { attrs: { dark: "", color: "primary" } },
-                                  [
-                                    _c(
-                                      "v-btn",
-                                      {
-                                        attrs: { icon: "", dark: "" },
-                                        nativeOn: {
-                                          click: function($event) {
-                                            _vm.fullscreen.dialog = false
-                                          }
-                                        }
-                                      },
-                                      [_c("v-icon", [_vm._v("close")])],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c("v-toolbar-title", [_vm._v("Settings")]),
-                                    _vm._v(" "),
-                                    _c("v-spacer"),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-toolbar-items",
-                                      [
-                                        _c(
-                                          "v-btn",
-                                          {
-                                            attrs: { dark: "", flat: "" },
-                                            nativeOn: {
-                                              click: function($event) {
-                                                _vm.dialog = false
-                                              }
-                                            }
-                                          },
-                                          [_vm._v("Save")]
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list",
-                                  {
-                                    attrs: { "three-line": "", subheader: "" }
-                                  },
-                                  [
-                                    _c("v-subheader", [
-                                      _vm._v("User Controls")
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-tile",
-                                      { attrs: { avatar: "" } },
-                                      [
-                                        _c(
-                                          "v-list-tile-content",
-                                          [
-                                            _c("v-list-tile-title", [
-                                              _vm._v("Content filtering")
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("v-list-tile-sub-title", [
-                                              _vm._v(
-                                                "Set the content filtering level to restrict apps that can be downloaded"
-                                              )
-                                            ])
-                                          ],
-                                          1
-                                        )
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-tile",
-                                      { attrs: { avatar: "" } },
-                                      [
-                                        _c(
-                                          "v-list-tile-content",
-                                          [
-                                            _c("v-list-tile-title", [
-                                              _vm._v("Password")
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("v-list-tile-sub-title", [
-                                              _vm._v(
-                                                "Require password for purchase or use password to restrict purchase"
-                                              )
-                                            ])
-                                          ],
-                                          1
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c("v-divider"),
-                                _vm._v(" "),
-                                _c(
-                                  "v-list",
-                                  {
-                                    attrs: { "three-line": "", subheader: "" }
-                                  },
-                                  [
-                                    _c("v-subheader", [_vm._v("General")]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-tile",
-                                      { attrs: { avatar: "" } },
-                                      [
-                                        _c(
-                                          "v-list-tile-action",
-                                          [
-                                            _c("v-checkbox", {
-                                              model: {
-                                                value:
-                                                  _vm.fullscreen.notifications,
-                                                callback: function($$v) {
-                                                  _vm.$set(
-                                                    _vm.fullscreen,
-                                                    "notifications",
-                                                    $$v
-                                                  )
-                                                },
-                                                expression:
-                                                  "fullscreen.notifications"
-                                              }
-                                            })
-                                          ],
-                                          1
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "v-list-tile-content",
-                                          [
-                                            _c("v-list-tile-title", [
-                                              _vm._v("Notifications")
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("v-list-tile-sub-title", [
-                                              _vm._v(
-                                                "Notify me about updates to apps or games that I downloaded"
-                                              )
-                                            ])
-                                          ],
-                                          1
-                                        )
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-tile",
-                                      { attrs: { avatar: "" } },
-                                      [
-                                        _c(
-                                          "v-list-tile-action",
-                                          [
-                                            _c("v-checkbox", {
-                                              model: {
-                                                value: _vm.fullscreen.sound,
-                                                callback: function($$v) {
-                                                  _vm.$set(
-                                                    _vm.fullscreen,
-                                                    "sound",
-                                                    $$v
-                                                  )
-                                                },
-                                                expression: "fullscreen.sound"
-                                              }
-                                            })
-                                          ],
-                                          1
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "v-list-tile-content",
-                                          [
-                                            _c("v-list-tile-title", [
-                                              _vm._v("Sound")
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("v-list-tile-sub-title", [
-                                              _vm._v(
-                                                "Auto-update apps at any time. Data charges may apply"
-                                              )
-                                            ])
-                                          ],
-                                          1
-                                        )
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-list-tile",
-                                      { attrs: { avatar: "" } },
-                                      [
-                                        _c(
-                                          "v-list-tile-action",
-                                          [
-                                            _c("v-checkbox", {
-                                              model: {
-                                                value: _vm.fullscreen.widgets,
-                                                callback: function($$v) {
-                                                  _vm.$set(
-                                                    _vm.fullscreen,
-                                                    "widgets",
-                                                    $$v
-                                                  )
-                                                },
-                                                expression: "fullscreen.widgets"
-                                              }
-                                            })
-                                          ],
-                                          1
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "v-list-tile-content",
-                                          [
-                                            _c("v-list-tile-title", [
-                                              _vm._v("Auto-add widgets")
-                                            ]),
-                                            _vm._v(" "),
-                                            _c("v-list-tile-sub-title", [
-                                              _vm._v(
-                                                "Automatically add home screen widgets"
-                                              )
-                                            ])
-                                          ],
-                                          1
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
+                            _vm._v(
+                              "\n              This is a success alert with a custom icon.\n            "
                             )
-                          ],
-                          1
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-alert",
+                          {
+                            attrs: {
+                              color: "warning",
+                              value: true,
+                              icon: "message"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n              This is a warning alert with a custom icon.\n            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-alert",
+                          {
+                            attrs: { color: "info", icon: "star", value: true }
+                          },
+                          [
+                            _vm._v(
+                              "\n              This is a info alert with a custom icon.\n            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-alert",
+                          { attrs: { color: "error", value: true } },
+                          [
+                            _vm._v(
+                              "\n              This is an error alert with no icon.\n            "
+                            )
+                          ]
                         )
                       ],
                       1
@@ -1011,9 +433,9 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-flex",
-                { attrs: { xl4: "" } },
+                { attrs: { sm12: "", md6: "", sm6: "" } },
                 [
-                  _c("v-widget", { attrs: { title: "Scrollable Dialog" } }, [
+                  _c("v-widget", { attrs: { title: "Outline Alerts" } }, [
                     _c(
                       "div",
                       {
@@ -1022,231 +444,183 @@ var render = function() {
                       },
                       [
                         _c(
-                          "v-dialog",
+                          "v-alert",
                           {
-                            attrs: { scrollable: "", "max-width": "300px" },
-                            model: {
-                              value: _vm.scrollable.dialog,
-                              callback: function($$v) {
-                                _vm.$set(_vm.scrollable, "dialog", $$v)
-                              },
-                              expression: "scrollable.dialog"
+                            attrs: {
+                              outline: "",
+                              color: "success",
+                              icon: "check_circle",
+                              value: true
                             }
                           },
+                          [
+                            _vm._v(
+                              "\n              This is a success alert.\n            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-alert",
+                          {
+                            attrs: {
+                              outline: "",
+                              color: "info",
+                              icon: "info",
+                              value: true
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n              This is an info alert.\n            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-alert",
+                          {
+                            attrs: {
+                              outline: "",
+                              color: "warning",
+                              icon: "priority_high",
+                              value: true
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n              This is a warning alert.\n            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-alert",
+                          {
+                            attrs: {
+                              outline: "",
+                              color: "error",
+                              icon: "warning",
+                              value: true
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n              This is a error alert.\n            "
+                            )
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  ])
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _c(
+                "v-flex",
+                { attrs: { sm12: "", md6: "", sm6: "" } },
+                [
+                  _c("v-widget", { attrs: { title: "Closable Alerts" } }, [
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-content" },
+                        slot: "widget-content"
+                      },
+                      [
+                        _c(
+                          "v-alert",
+                          {
+                            attrs: {
+                              type: "success",
+                              dismissible: "",
+                              transition: "scale-transition"
+                            },
+                            model: {
+                              value: _vm.alert.showSuccess,
+                              callback: function($$v) {
+                                _vm.$set(_vm.alert, "showSuccess", $$v)
+                              },
+                              expression: "alert.showSuccess"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n              This is a success alert that is closable with scale transition.\n            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-alert",
+                          {
+                            attrs: { type: "error", dismissible: "" },
+                            model: {
+                              value: _vm.alert.showError,
+                              callback: function($$v) {
+                                _vm.$set(_vm.alert, "showError", $$v)
+                              },
+                              expression: "alert.showError"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n              This is a error alert that is closable.\n            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-alert",
+                          {
+                            attrs: { type: "warning", dismissible: "" },
+                            model: {
+                              value: _vm.alert.showWarnning,
+                              callback: function($$v) {
+                                _vm.$set(_vm.alert, "showWarnning", $$v)
+                              },
+                              expression: "alert.showWarnning"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n              This is a warning alert that is closable.\n            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "v-alert",
+                          {
+                            attrs: { type: "info", dismissible: "" },
+                            model: {
+                              value: _vm.alert.showInfo,
+                              callback: function($$v) {
+                                _vm.$set(_vm.alert, "showInfo", $$v)
+                              },
+                              expression: "alert.showInfo"
+                            }
+                          },
+                          [
+                            _vm._v(
+                              "\n              This is a info alert that is closable.\n            "
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "text-xs-center" },
                           [
                             _c(
                               "v-btn",
                               {
-                                attrs: {
-                                  slot: "activator",
-                                  color: "primary",
-                                  dark: ""
-                                },
-                                slot: "activator"
+                                attrs: { color: "primary", dark: "" },
+                                on: { click: _vm.handleReset }
                               },
-                              [_vm._v("Open Dialog")]
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "v-card",
-                              [
-                                _c("v-card-title", [_vm._v("Select Country")]),
-                                _vm._v(" "),
-                                _c("v-divider"),
-                                _vm._v(" "),
-                                _c(
-                                  "v-card-text",
-                                  [
-                                    _c(
-                                      "v-radio-group",
-                                      {
-                                        attrs: { column: "" },
-                                        model: {
-                                          value: _vm.scrollable.name,
-                                          callback: function($$v) {
-                                            _vm.$set(
-                                              _vm.scrollable,
-                                              "name",
-                                              $$v
-                                            )
-                                          },
-                                          expression: "scrollable.name"
-                                        }
-                                      },
-                                      [
-                                        _c("v-radio", {
-                                          attrs: {
-                                            label: "Bahamas, The",
-                                            value: "bahamas"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("v-radio", {
-                                          attrs: {
-                                            label: "Bahrain",
-                                            value: "bahrain"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("v-radio", {
-                                          attrs: {
-                                            label: "Bangladesh",
-                                            value: "bangladesh"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("v-radio", {
-                                          attrs: {
-                                            label: "Barbados",
-                                            value: "barbados"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("v-radio", {
-                                          attrs: {
-                                            label: "Belarus",
-                                            value: "belarus"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("v-radio", {
-                                          attrs: {
-                                            label: "Belgium",
-                                            value: "belgium"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("v-radio", {
-                                          attrs: {
-                                            label: "Belize",
-                                            value: "belize"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("v-radio", {
-                                          attrs: {
-                                            label: "Benin",
-                                            value: "benin"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("v-radio", {
-                                          attrs: {
-                                            label: "Bhutan",
-                                            value: "bhutan"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("v-radio", {
-                                          attrs: {
-                                            label: "Bolivia",
-                                            value: "bolivia"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("v-radio", {
-                                          attrs: {
-                                            label: "Bosnia and Herzegovina",
-                                            value: "bosnia"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("v-radio", {
-                                          attrs: {
-                                            label: "Botswana",
-                                            value: "botswana"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("v-radio", {
-                                          attrs: {
-                                            label: "Brazil",
-                                            value: "brazil"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("v-radio", {
-                                          attrs: {
-                                            label: "Brunei",
-                                            value: "brunei"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("v-radio", {
-                                          attrs: {
-                                            label: "Bulgaria",
-                                            value: "bulgaria"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("v-radio", {
-                                          attrs: {
-                                            label: "Burkina Faso",
-                                            value: "burkina"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("v-radio", {
-                                          attrs: {
-                                            label: "Burma",
-                                            value: "burma"
-                                          }
-                                        }),
-                                        _vm._v(" "),
-                                        _c("v-radio", {
-                                          attrs: {
-                                            label: "Burundi",
-                                            value: "burundi"
-                                          }
-                                        })
-                                      ],
-                                      1
-                                    )
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c("v-divider"),
-                                _vm._v(" "),
-                                _c(
-                                  "v-card-actions",
-                                  [
-                                    _c(
-                                      "v-btn",
-                                      {
-                                        attrs: {
-                                          color: "blue darken-1",
-                                          flat: ""
-                                        },
-                                        nativeOn: {
-                                          click: function($event) {
-                                            _vm.scrollable.dialog = false
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Close")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "v-btn",
-                                      {
-                                        attrs: {
-                                          color: "blue darken-1",
-                                          flat: ""
-                                        },
-                                        nativeOn: {
-                                          click: function($event) {
-                                            _vm.scrollable.dialog = false
-                                          }
-                                        }
-                                      },
-                                      [_vm._v("Save")]
-                                    )
-                                  ],
-                                  1
-                                )
-                              ],
-                              1
+                              [_vm._v("Reset")]
                             )
                           ],
                           1
@@ -1274,9 +648,57 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-75776753", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-d274eff8", module.exports)
   }
 }
+
+/***/ }),
+
+/***/ 92:
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(0)
+/* script */
+var __vue_script__ = __webpack_require__(584)
+/* template */
+var __vue_template__ = __webpack_require__(585)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "front_end/pages/ui/Alert.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-d274eff8", Component.options)
+  } else {
+    hotAPI.reload("data-v-d274eff8", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
 
 /***/ })
 
