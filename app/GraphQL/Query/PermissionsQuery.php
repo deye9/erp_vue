@@ -36,7 +36,6 @@ class PermissionsQuery extends Query
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-
         $permissions = Role::all();
 
         if(isset($args['id'])) {
@@ -46,18 +45,6 @@ class PermissionsQuery extends Query
         if(isset($args['name'])) {
             $permissions = Role::findByName($args['name'])->permissions->all();
         }
-
-        // // Read all the permissions from the file System.
-        // $path = realpath('../front_end/api/menu.js');
-        // $string = file_get_contents($path);
-        // preg_match_all("~\{(?:[^{}]|(?R))*\}~", $string, $matches);
-
-        // $count = count($matches[0]) - 1;
-        // for($i = 0; $i < $count; $i++) {
-        //     $cell = $matches[0][$i];
-        //     \Log::info($cell['name']);
-        // }
-        // //\Log::info($matches['name']);
 
         return $permissions;
     }

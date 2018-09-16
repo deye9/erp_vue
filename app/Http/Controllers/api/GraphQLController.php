@@ -15,11 +15,12 @@ class GraphQLController extends Controller
     protected $tag = 'GraphQL Controller ';
 
     public function Queries(Request $request) {
-        // Log::info($request->all());
-        // Log::info($request->input());
-        // Log::info(json_decode($request->getContent(), true));
-
-        \Log::info($this->getAuthUser());
+        if ($this->getAuthUser()['statusCode'] !== 200) {
+            return response()->json([
+                'error' => $this->getAuthUser()['error'],
+                'statusCode' => (int)401
+            ], 401);
+        }
 
         $query = $request->input('query');
         $schema = GraphQL::schema();
@@ -28,6 +29,13 @@ class GraphQLController extends Controller
     }
 
     public function Mutations(Request $request) {
+        if ($this->getAuthUser()['statusCode'] !== 200) {
+            return response()->json([
+                'error' => $this->getAuthUser()['error'],
+                'statusCode' => (int)401
+            ], 401);
+        }
+
         $query = $request->input('mutations');
         $schema = GraphQL::schema();
         $result = Graph::execute($schema, $query);
@@ -35,6 +43,13 @@ class GraphQLController extends Controller
     }
 
     public function Subscriptions(Request $request) {
+        if ($this->getAuthUser()['statusCode'] !== 200) {
+            return response()->json([
+                'error' => $this->getAuthUser()['error'],
+                'statusCode' => (int)401
+            ], 401);
+        }
+
         $query = $request->input('subscriptions');
         $schema = GraphQL::schema();
         $result = Graph::execute($schema, $query);

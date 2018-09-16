@@ -47,6 +47,11 @@ class PermissionsType extends BaseType
         ];
     }
 
+    protected function resolveComponentField($root, $args)
+    {
+      return (string) $root->component;
+    }
+
     protected function resolveCreatedAtField($root, $args)
     {
       return (string) $root->created_at;

@@ -16,3 +16,4 @@ tenancy.json
 .env.cleaver
 mix-manifest.json
 details.txt
+.DS_Store

@@ -9,25 +9,43 @@ use Illuminate\Support\Facades\Validator;
 
 trait UserAuthTrait
 {
-
     /**
         ** Get User from access token.
     **/
-    public function getUser() {
-        $user = JWTAuth::toUser($token);
-    }
-
     public function getAuthUser() {
         try {
             $token = $this->getBearerToken();
             if (!$user = JWTAuth::toUser($token)) {
-                return null;
+                return [
+                    'error' => 'Not Authorized!',
+                    'statusCode' => (int)401
+                ];
             } else {
-                return JWTAuth::toUser($token);
+                return [
+                    'statusCode' => (int)200,
+                    'user' => JWTAuth::toUser($token)
+                ];
             }
+        } catch (TokenExpiredException $e) {
+            return [
+                'error' => 'Token Expired!',
+                'statusCode' => (int)401
+            ];
+        } catch (TokenInvalidException $e) {
+            return [
+                'error' => 'Not Authorized!',
+                'statusCode' => (int)401
+            ];
+        } catch (JWTException $e) {
+            return [
+                'error' => 'Not Authorized!',
+                'statusCode' => (int)401
+            ];
         } catch (Exception $e) {
-            Log::info($e->getMessage());
-            return null;
+            return [
+                'error' => 'Not Authorized!',
+                'statusCode' => (int)401
+            ];
         }
     }
 

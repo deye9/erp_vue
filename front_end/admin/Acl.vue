@@ -115,6 +115,8 @@
         },
         created() {
             // Issue a get command to get the roles and associated permissions.
+            // query {acl{id,name,permissions{id,name,title,group,icon,component}}}
+
             // query acl {
             //   acl {
             //   	id
