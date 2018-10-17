@@ -40,12 +40,18 @@ if (mix.inProduction()) {
     mix.disableNotifications();
 } else {
     mix.browserSync({
-        proxy: 'https://pentaville.erp.dev',
-        host: 'localhost',
+        host: 'erp.dev',
+        proxy: 'https://erp.dev',
         port: 1981,
+        https: {
+            key:
+                '/Users/andelatsm/.valet/Certificates/erp.dev.key',
+            cert:
+                '/Users/andelatsm/.valet/Certificates/erp.dev.crt'
+        },
         open: 'external',
         notify: false,
-        //reload: false,
+        reload: false,
         reloadDelay: 10000, // Delay for 10 seconds before reloading / injecting the file change event.
         proxyReq: [
             function(proxyReq) {

@@ -155,7 +155,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 528:
+/***/ 530:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -280,7 +280,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 529:
+/***/ 531:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -648,21 +648,21 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-85fae716", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-85902380", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 80:
+/***/ 81:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(528)
+var __vue_script__ = __webpack_require__(530)
 /* template */
-var __vue_template__ = __webpack_require__(529)
+var __vue_template__ = __webpack_require__(531)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -679,7 +679,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "front_end/admin/Roles.vue"
+Component.options.__file = "front_end/admin/Users.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -688,9 +688,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-85fae716", Component.options)
+    hotAPI.createRecord("data-v-85902380", Component.options)
   } else {
-    hotAPI.reload("data-v-85fae716", Component.options)
+    hotAPI.reload("data-v-85902380", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true

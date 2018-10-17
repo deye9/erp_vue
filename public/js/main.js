@@ -11963,89 +11963,6 @@ module.exports = Vue;
 
 /***/ }),
 /* 6 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-var Menu = [{ header: 'Apps' }, {
-  title: 'Dashboard',
-  group: 'apps',
-  icon: 'dashboard',
-  name: 'Dashboard'
-}, {
-  title: "Administration",
-  group: "admin",
-  component: "admin",
-  icon: "filter_vintage",
-  items: [{ name: "roles", title: "Roles", component: "components/roles" }, { name: "users", title: "Users", component: "components/users" }, { name: "metadata", title: "Metadata", component: "components/metadata" }, { name: "access control", title: "Access Control", component: "components/permissions" }]
-}, {
-  title: 'Chat',
-  group: 'apps',
-  icon: 'chat_bubble',
-  target: '_blank',
-  name: 'Chat'
-}, {
-  title: 'Inbox',
-  group: 'apps',
-  name: 'Mail',
-  target: '_blank',
-  icon: 'email'
-}, {
-  title: 'Media',
-  group: 'apps',
-  name: 'Media',
-  icon: 'perm_media'
-}, {
-  title: 'Widgets',
-  group: 'widgets',
-  component: 'widgets',
-  icon: 'widgets',
-  items: [{ name: 'social', title: 'Social', component: 'components/social' }, { name: 'statistic', title: 'Statistic', badge: 'new', component: 'components/statistic' }, { name: 'chart', title: 'Chart', component: 'components/chart' }, { name: 'list', title: 'List', component: 'components/widget-list' }]
-}, { header: 'UI Elements' }, {
-  title: 'General',
-  group: 'components',
-  component: 'components',
-  icon: 'tune',
-  items: [{ name: 'alerts', title: 'Alerts', component: 'components/alerts' }, { name: 'avatars', title: 'Avatars', component: 'components/avatars' }, { name: 'badges', title: 'Badges', component: 'components/badges' }, { name: 'buttons', title: 'Buttons', component: 'components/buttons' }, { name: 'cards', title: 'Cards', component: 'components/cards' }, { name: 'carousels', title: 'Carousels', component: 'components/carousels' }, { name: 'chips', title: 'Chips', component: 'components/chips' }, { name: 'dialogs', title: 'Dialogs', component: 'components/dialogs' }, { name: 'icons', title: 'Icons', component: 'components/icons' }, { name: 'tables', title: 'Data Tables', component: 'components/tables' }, { name: 'parallax', title: 'Parallax  image', component: 'components/parallax' }, { name: 'snackbar', title: 'Snackbar', component: 'components/snackbar' }, { name: 'progress', title: 'Progress', component: 'components/progress' }, { name: 'slider', title: 'Slider', component: 'components/sliders' }, { name: 'tooltip', title: 'Tooltip', component: 'components/tooltips' }, { name: 'pagination', title: 'Pagination', component: 'components/paginations' }, { name: 'typography', title: 'Typography', component: 'components/typography' }, { name: 'color', title: 'Color', component: 'components/color' }]
-}, {
-  title: 'Pickers',
-  group: 'pickers',
-  component: 'picker',
-  icon: 'filter_vintage',
-  items: [{ name: 'timepicker', title: 'Timepicker', component: 'pickers/timepicker' }, { name: 'datepicker', title: 'Datepicker', component: 'pickers/datepicker' }]
-}, {
-  title: 'Layout',
-  group: 'layout',
-  component: 'layout',
-  icon: 'view_compact',
-  items: [{ name: 'bottom-sheets', title: 'Bottom panels', component: 'components/bottom-sheets' }, { name: 'expansion-panels', title: 'Expansion panels', component: 'components/expansion-panels' }, { name: 'footer', title: 'Footer', component: 'components/footer' }, { name: 'lists', title: 'Lists', component: 'components/lists' }, { name: 'jumbotrons', title: 'Jumbotrons', badge: 'new', component: 'components/jumbotrons' }, { name: 'menus', title: 'Menus', component: 'components/menus' }, { name: 'tabs', title: 'Tabs', component: 'components/tabs' }, { name: 'toolbar', title: 'Toolbars', component: 'components/toolbar' }, { name: 'timeline', title: 'Timeline', component: 'components/timeline' }]
-}, {
-  title: 'Forms & Controls',
-  group: 'forms',
-  component: 'forms',
-  icon: 'edit',
-  items: [{ name: 'basic', title: 'General', component: 'components/basic-forms' }, { name: 'selects', title: 'Selects', badge: 'new', component: 'components/selects' }, { name: 'selection-controls', title: 'Selection Controls', component: 'components/selection-controls' }, { name: 'text-fields', title: 'Text Fields', component: 'components/text-fields' }, { name: 'steppers', title: 'Steppers', component: 'components/steppers' }, { name: 'editors', title: 'Editors', component: 'components/editors' }]
-}, { divider: true }, { header: 'Extras' }, {
-  title: 'Pages',
-  group: 'extra',
-  icon: 'list',
-  items: [{ name: 'Login', title: 'Login', component: 'Login' }, { name: '404', title: '404', component: 'NotFound' }, { name: '403', title: '403', component: 'AccessDenied' }, { name: '500', title: '500', component: 'ServerError' }]
-}];
-
-// reorder menu
-Menu.forEach(function (item) {
-  if (item.items) {
-    item.items.sort(function (x, y) {
-      var textA = x.title.toUpperCase();
-      var textB = y.title.toUpperCase();
-      return textA < textB ? -1 : textA > textB ? 1 : 0;
-    });
-  }
-});
-
-/* harmony default export */ __webpack_exports__["a"] = (Menu);
-
-/***/ }),
-/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -12376,6 +12293,89 @@ exports.default = Object.freeze({
 //# sourceMappingURL=colors.js.map
 
 /***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var Menu = [{ header: "Apps" }, { divider: true }, {
+  title: "Dashboard",
+  group: "apps",
+  icon: "dashboard",
+  name: "Dashboard"
+}, {
+  title: "Administration",
+  group: "admin",
+  component: "admin",
+  icon: "filter_vintage",
+  items: [{ name: "roles", title: "Roles", component: "components/roles" }, { name: "users", title: "Users", component: "components/users" }, { name: "metadata", title: "Metadata", component: "components/metadata" }, { name: "access control", title: "Access Control", component: "components/permissions" }]
+}, {
+  title: "Chat",
+  group: "apps",
+  icon: "chat_bubble",
+  target: "_blank",
+  name: "Chat"
+}, {
+  title: "Inbox",
+  group: "apps",
+  name: "Mail",
+  target: "_blank",
+  icon: "email"
+}, {
+  title: "Media",
+  group: "apps",
+  name: "Media",
+  icon: "perm_media"
+}, {
+  title: "Widgets",
+  group: "widgets",
+  component: "widgets",
+  icon: "widgets",
+  items: [{ name: "social", title: "Social", component: "components/social" }, { name: "statistic", title: "Statistic", badge: "new", component: "components/statistic" }, { name: "chart", title: "Chart", component: "components/chart" }, { name: "list", title: "List", component: "components/widget-list" }]
+}, { header: "UI Elements" }, {
+  title: "General",
+  group: "components",
+  component: "components",
+  icon: "tune",
+  items: [{ name: "alerts", title: "Alerts", component: "components/alerts" }, { name: "avatars", title: "Avatars", component: "components/avatars" }, { name: "badges", title: "Badges", component: "components/badges" }, { name: "buttons", title: "Buttons", component: "components/buttons" }, { name: "cards", title: "Cards", component: "components/cards" }, { name: "carousels", title: "Carousels", component: "components/carousels" }, { name: "chips", title: "Chips", component: "components/chips" }, { name: "dialogs", title: "Dialogs", component: "components/dialogs" }, { name: "icons", title: "Icons", component: "components/icons" }, { name: "tables", title: "Data Tables", component: "components/tables" }, { name: "parallax", title: "Parallax  image", component: "components/parallax" }, { name: "snackbar", title: "Snackbar", component: "components/snackbar" }, { name: "progress", title: "Progress", component: "components/progress" }, { name: "slider", title: "Slider", component: "components/sliders" }, { name: "tooltip", title: "Tooltip", component: "components/tooltips" }, { name: "pagination", title: "Pagination", component: "components/paginations" }, { name: "typography", title: "Typography", component: "components/typography" }, { name: "color", title: "Color", component: "components/color" }]
+}, {
+  title: "Pickers",
+  group: "pickers",
+  component: "picker",
+  icon: "filter_vintage",
+  items: [{ name: "timepicker", title: "Timepicker", component: "pickers/timepicker" }, { name: "datepicker", title: "Datepicker", component: "pickers/datepicker" }]
+}, {
+  title: "Layout",
+  group: "layout",
+  component: "layout",
+  icon: "view_compact",
+  items: [{ name: "bottom-sheets", title: "Bottom panels", component: "components/bottom-sheets" }, { name: "expansion-panels", title: "Expansion panels", component: "components/expansion-panels" }, { name: "footer", title: "Footer", component: "components/footer" }, { name: "lists", title: "Lists", component: "components/lists" }, { name: "jumbotrons", title: "Jumbotrons", badge: "new", component: "components/jumbotrons" }, { name: "menus", title: "Menus", component: "components/menus" }, { name: "tabs", title: "Tabs", component: "components/tabs" }, { name: "toolbar", title: "Toolbars", component: "components/toolbar" }, { name: "timeline", title: "Timeline", component: "components/timeline" }]
+}, {
+  title: "Forms & Controls",
+  group: "forms",
+  component: "forms",
+  icon: "edit",
+  items: [{ name: "basic", title: "General", component: "components/basic-forms" }, { name: "selects", title: "Selects", badge: "new", component: "components/selects" }, { name: "selection-controls", title: "Selection Controls", component: "components/selection-controls" }, { name: "text-fields", title: "Text Fields", component: "components/text-fields" }, { name: "steppers", title: "Steppers", component: "components/steppers" }, { name: "editors", title: "Editors", component: "components/editors" }]
+}, { divider: true }, { header: "Extras" }, {
+  title: "Pages",
+  group: "extra",
+  icon: "list",
+  items: [{ name: "Login", title: "Login", component: "Login" }, { name: "404", title: "404", component: "NotFound" }, { name: "403", title: "403", component: "AccessDenied" }, { name: "500", title: "500", component: "ServerError" }]
+}];
+
+// reorder menu
+Menu.forEach(function (item) {
+  if (item.items) {
+    item.items.sort(function (x, y) {
+      var textA = x.title.toUpperCase();
+      var textB = y.title.toUpperCase();
+      return textA < textB ? -1 : textA > textB ? 1 : 0;
+    });
+  }
+});
+
+/* harmony default export */ __webpack_exports__["a"] = (Menu);
+
+/***/ }),
 /* 8 */
 /***/ (function(module, exports) {
 
@@ -12428,7 +12428,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__theme_default_css__ = __webpack_require__(63);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__theme_default_css___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__theme_default_css__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vee_validate__ = __webpack_require__(65);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuetify_es5_util_colors__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuetify_es5_util_colors__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuetify_es5_util_colors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_vuetify_es5_util_colors__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_lodash_truncate__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_lodash_truncate___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_lodash_truncate__);
@@ -12479,7 +12479,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.headers.common['Accept-Encoding
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.headers.common['Accept'] = 'application/json';
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.headers.common['Content-Type'] = 'application/json';
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.headers.common['Access-Control-Request-Method'] = '*';
-__WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.headers.common['Authorization'] = 'Bearer ' + sessionStorage.getItem('id_token');
+__WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.headers.common['Authorization'] = 'Token ' + sessionStorage.getItem('id_token');
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.http.headers.common['X-CSRF-TOKEN'] = document.getElementsByName('csrf-token')[0].getAttribute('content');
 
 // Bootstrap application components
@@ -12521,7 +12521,7 @@ var router = new __WEBPACK_IMPORTED_MODULE_1_vue_router__["a" /* default */]({
   routes: __WEBPACK_IMPORTED_MODULE_2__paths__["a" /* default */]
 });
 
-// router gards
+// router guards
 router.beforeEach(function (to, from, next) {
   __WEBPACK_IMPORTED_MODULE_3_nprogress___default.a.start();
   next();
@@ -13458,7 +13458,7 @@ exports.push([module.i, "\n#appDrawer {\n  overflow: hidden;\n}\n#appDrawer .dra
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_menu__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_menu__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_perfect_scrollbar__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_vue_perfect_scrollbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_vue_perfect_scrollbar__);
 //
@@ -14628,7 +14628,7 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_menu__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__api_menu__ = __webpack_require__(7);
 //
 //
 //
@@ -14855,7 +14855,7 @@ exports.push([module.i, "\n.color-option--label[data-v-3b32264b] {\n  position: 
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuetify_es5_util_colors__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuetify_es5_util_colors__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuetify_es5_util_colors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuetify_es5_util_colors__);
 //
 //
@@ -39292,7 +39292,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/roles',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(46).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(80)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(47).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(80)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/admin/users',
@@ -39301,7 +39301,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/users',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(45).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(81)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(46).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(81)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/admin/metadata',
@@ -39319,7 +39319,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/permissions',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(47).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(733)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(45).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(83)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 },
 // {

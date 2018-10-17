@@ -155,7 +155,7 @@ if (false) {
 
 /***/ }),
 
-/***/ 530:
+/***/ 534:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -240,47 +240,67 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  components: {
-    VWidget: __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default.a
-  },
-  data: function data() {
-    return {
-      alert: {
-        showSuccess: true,
-        showError: true,
-        showWarnning: true,
-        showInfo: true
-      }
-    };
-  },
+    components: {
+        VWidget: __WEBPACK_IMPORTED_MODULE_0__components_VWidget___default.a
+    },
+    data: function data() {
+        return {
+            alert: {
+                showSuccess: true,
+                showError: true,
+                showWarnning: true,
+                showInfo: true
+            }
+        };
+    },
 
-  computed: {
-    showReset: function showReset() {
-      return this.alert.showSuccess === this.alert.showError === this.alert.showWarnning === this.alert.showInfo === false;
+    computed: {
+        showReset: function showReset() {
+            return this.alert.showSuccess === this.alert.showError === this.alert.showWarnning === this.alert.showInfo === false;
+        }
+    },
+    methods: {
+        registerRole: function registerRole() {
+            alert("Register Roles");
+        },
+        setPermissions: function setPermissions() {
+            alert("Set Permissions");
+        },
+        registerUsers: function registerUsers() {
+            alert("Register Users");
+        }
+    },
+    created: function created() {
+        // Issue a get command to get the roles and associated permissions.
+        // query {acl{id,name,permissions{id,name,title,group,icon,component}}}
+
+        // query acl {
+        //   acl {
+        //   	id
+        //     name
+        //     created_at
+        //     updated_at
+        //     permissions {
+        //       id
+        //       name
+        //       title
+        //       group
+        //       icon
+        //     }
+        //   }
+        // }
+    },
+    mounted: function mounted() {
+        alert('mounted');
     }
-  },
-  methods: {
-    handleReset: function handleReset() {
-      this.alert.showError = true;
-      this.alert.showSuccess = true;
-      this.alert.showWarnning = true;
-      this.alert.showInfo = true;
-    }
-  }
 });
 
 /***/ }),
 
-/***/ 531:
+/***/ 535:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -303,7 +323,33 @@ var render = function() {
                 "v-flex",
                 { attrs: { sm12: "", md6: "", sm6: "" } },
                 [
-                  _c("v-widget", { attrs: { title: "Basic Usage" } }, [
+                  _c("v-widget", { attrs: { title: "Roles" } }, [
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-header-action" },
+                        slot: "widget-header-action"
+                      },
+                      [
+                        _c(
+                          "v-btn",
+                          {
+                            attrs: {
+                              fab: "",
+                              dark: "",
+                              small: "",
+                              color: "indigo",
+                              loading: _vm.loading
+                            },
+                            on: { click: _vm.registerRole }
+                          },
+                          [_c("v-icon", [_vm._v("add")])],
+                          1
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
                     _c(
                       "div",
                       {
@@ -362,7 +408,33 @@ var render = function() {
                 "v-flex",
                 { attrs: { sm12: "", md6: "", sm6: "" } },
                 [
-                  _c("v-widget", { attrs: { title: "Custom Icons" } }, [
+                  _c("v-widget", { attrs: { title: "Permissions" } }, [
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-header-action" },
+                        slot: "widget-header-action"
+                      },
+                      [
+                        _c(
+                          "v-btn",
+                          {
+                            attrs: {
+                              fab: "",
+                              dark: "",
+                              small: "",
+                              color: "indigo",
+                              loading: _vm.loading
+                            },
+                            on: { click: _vm.setPermissions }
+                          },
+                          [_c("v-icon", [_vm._v("add")])],
+                          1
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
                     _c(
                       "div",
                       {
@@ -381,7 +453,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n              This is a success alert with a custom icon.\n            "
+                              "\n                  This is a success alert with a custom icon.\n              "
                             )
                           ]
                         ),
@@ -397,7 +469,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n              This is a warning alert with a custom icon.\n            "
+                              "\n                  This is a warning alert with a custom icon.\n              "
                             )
                           ]
                         ),
@@ -409,7 +481,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n              This is a info alert with a custom icon.\n            "
+                              "\n                  This is a info alert with a custom icon.\n              "
                             )
                           ]
                         ),
@@ -419,7 +491,7 @@ var render = function() {
                           { attrs: { color: "error", value: true } },
                           [
                             _vm._v(
-                              "\n              This is an error alert with no icon.\n            "
+                              "\n                  This is an error alert with no icon.\n              "
                             )
                           ]
                         )
@@ -433,9 +505,35 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "v-flex",
-                { attrs: { sm12: "", md6: "", sm6: "" } },
+                { attrs: { lg12: "" } },
                 [
-                  _c("v-widget", { attrs: { title: "Outline Alerts" } }, [
+                  _c("v-widget", { attrs: { title: "Users" } }, [
+                    _c(
+                      "div",
+                      {
+                        attrs: { slot: "widget-header-action" },
+                        slot: "widget-header-action"
+                      },
+                      [
+                        _c(
+                          "v-btn",
+                          {
+                            attrs: {
+                              fab: "",
+                              dark: "",
+                              small: "",
+                              color: "indigo",
+                              loading: _vm.loading
+                            },
+                            on: { click: _vm.registerUsers }
+                          },
+                          [_c("v-icon", [_vm._v("add")])],
+                          1
+                        )
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
                     _c(
                       "div",
                       {
@@ -455,7 +553,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n              This is a success alert.\n            "
+                              "\n                  This is a success alert.\n              "
                             )
                           ]
                         ),
@@ -472,7 +570,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n              This is an info alert.\n            "
+                              "\n                  This is an info alert.\n              "
                             )
                           ]
                         ),
@@ -489,7 +587,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n              This is a warning alert.\n            "
+                              "\n                  This is a warning alert.\n              "
                             )
                           ]
                         ),
@@ -506,124 +604,9 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n              This is a error alert.\n            "
+                              "\n                  This is a error alert.\n              "
                             )
                           ]
-                        )
-                      ],
-                      1
-                    )
-                  ])
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c(
-                "v-flex",
-                { attrs: { sm12: "", md6: "", sm6: "" } },
-                [
-                  _c("v-widget", { attrs: { title: "Closable Alerts" } }, [
-                    _c(
-                      "div",
-                      {
-                        attrs: { slot: "widget-content" },
-                        slot: "widget-content"
-                      },
-                      [
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: {
-                              type: "success",
-                              dismissible: "",
-                              transition: "scale-transition"
-                            },
-                            model: {
-                              value: _vm.alert.showSuccess,
-                              callback: function($$v) {
-                                _vm.$set(_vm.alert, "showSuccess", $$v)
-                              },
-                              expression: "alert.showSuccess"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a success alert that is closable with scale transition.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: { type: "error", dismissible: "" },
-                            model: {
-                              value: _vm.alert.showError,
-                              callback: function($$v) {
-                                _vm.$set(_vm.alert, "showError", $$v)
-                              },
-                              expression: "alert.showError"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a error alert that is closable.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: { type: "warning", dismissible: "" },
-                            model: {
-                              value: _vm.alert.showWarnning,
-                              callback: function($$v) {
-                                _vm.$set(_vm.alert, "showWarnning", $$v)
-                              },
-                              expression: "alert.showWarnning"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a warning alert that is closable.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "v-alert",
-                          {
-                            attrs: { type: "info", dismissible: "" },
-                            model: {
-                              value: _vm.alert.showInfo,
-                              callback: function($$v) {
-                                _vm.$set(_vm.alert, "showInfo", $$v)
-                              },
-                              expression: "alert.showInfo"
-                            }
-                          },
-                          [
-                            _vm._v(
-                              "\n              This is a info alert that is closable.\n            "
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "text-xs-center" },
-                          [
-                            _c(
-                              "v-btn",
-                              {
-                                attrs: { color: "primary", dark: "" },
-                                on: { click: _vm.handleReset }
-                              },
-                              [_vm._v("Reset")]
-                            )
-                          ],
-                          1
                         )
                       ],
                       1
@@ -648,21 +631,21 @@ module.exports = { render: render, staticRenderFns: staticRenderFns }
 if (false) {
   module.hot.accept()
   if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-85902380", module.exports)
+    require("vue-hot-reload-api")      .rerender("data-v-2065d03c", module.exports)
   }
 }
 
 /***/ }),
 
-/***/ 81:
+/***/ 83:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(530)
+var __vue_script__ = __webpack_require__(534)
 /* template */
-var __vue_template__ = __webpack_require__(531)
+var __vue_template__ = __webpack_require__(535)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */
@@ -679,7 +662,7 @@ var Component = normalizeComponent(
   __vue_scopeId__,
   __vue_module_identifier__
 )
-Component.options.__file = "front_end/admin/Users.vue"
+Component.options.__file = "front_end/admin/acl.vue"
 
 /* hot reload */
 if (false) {(function () {
@@ -688,9 +671,9 @@ if (false) {(function () {
   if (!hotAPI.compatible) return
   module.hot.accept()
   if (!module.hot.data) {
-    hotAPI.createRecord("data-v-85902380", Component.options)
+    hotAPI.createRecord("data-v-2065d03c", Component.options)
   } else {
-    hotAPI.reload("data-v-85902380", Component.options)
+    hotAPI.reload("data-v-2065d03c", Component.options)
   }
   module.hot.dispose(function (data) {
     disposed = true

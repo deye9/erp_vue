@@ -116,7 +116,7 @@ var actions = {
             context.error = false;
 
             sessionStorage.setItem('id_token', response.data.meta.token);
-            __WEBPACK_IMPORTED_MODULE_1__main_js__["default"].http.headers.common['Authorization'] = 'Bearer ' + sessionStorage.getItem('id_token');
+            __WEBPACK_IMPORTED_MODULE_1__main_js__["default"].http.headers.common['Authorization'] = 'Token ' + sessionStorage.getItem('id_token');
 
             _this2.buildmenu(response.data);
             __WEBPACK_IMPORTED_MODULE_0__router__["a" /* default */].push({
