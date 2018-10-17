@@ -13,7 +13,7 @@ const router =  new Router({
   routes: paths
 });
 
-// router gards
+// router guards
 router.beforeEach((to, from, next) => {
   NProgress.start();
   next();

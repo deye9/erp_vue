@@ -1,5 +1,6 @@
-# SchoolERP
-A multi-tenant Laravel ERP app for School Management - https://github.com/deye9/schoolerp.git
+# SaaSERP [Software As A Service Enterprise Resource Planner]
+
+A multi-tenant Laravel ERP app for SME's - https://github.com/deye9/erp.git
 
 Part 0 - [Writing a full-featured multi-tenant Laravel app from scratch](https://medium.com/@ashokgelal/writing-a-full-featured-multi-tenant-laravel-app-from-scratch-a0e1a7350d9d)
 
