@@ -15,7 +15,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui shrink-to-fit=no">
     <title>{{ config('app.name', 'Welcome to ERP') }}</title>
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" type="text/css">
     @yield('styles')
     <link href="{{ asset('css/main.css') }}" rel="stylesheet">
 </head>
@@ -29,11 +28,14 @@
                 <img src="https://cdn.vuetifyjs.com/images/logos/v-alt.svg" height="30px" width="30px" class="d-inline-block align-top" alt="Brand Image" title="Brand Image" />
                 {{ config('app.name', ' ') }}
             </a>
-            <ul class="nav justify-content-end">
+            <ul class="nav navbar-nav justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="#">
+                    <button type="button" class="btn btn-info" data-toggle="modal" data-target="#ModalSignup">
+                        <span> Sign up </span>
+                    </button>
+                    {{-- <a id="sidebarCollapse" href="#" class="nav-link">
                         Sign up
-                    </a>
+                    </a> --}}
                 </li>
             </ul>
         </nav>
@@ -54,43 +56,70 @@
             </div>
         </footer>
 
+        <!-- Modal -->
+        <div class="modal fade" id="ModalSignup" tabindex="-1" role="dialog" aria-labelledby="ModalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header bg-dark">
+                        <h5 class="modal-title" style="color:#fff;" id="ModalTitle"> Create an Account </h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="form-group">
+                            <label for="inputEmail4">Your Name</label>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                                <div class="input-group-append">
+                                    <span class="input-group-text" id="basic-addon2">{{'@'.env('TENANCY_DEFAULT_HOSTNAME')}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="email">Email Address</label>
+                                <input type="email" class="form-control" id="email" placeholder="Email">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="confirmEmail">Confirm Email</label>
+                                <input type="email" class="form-control" id="confirmEmail" placeholder="Confirm Email">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" placeholder="Email">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="confirmPassword">Confirm Password</label>
+                                <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm Password">
+                            </div>
+                        </div>
+                        <div class="form-group checkbox">
+                            <input id="AgreementCheckbox" type="checkbox">
+                            <label for="AgreementCheckbox">I agree to the terms and conditions.</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary"> Sign Me Up </button>
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
     <script>
-        toastr.options = {
-            "closeButton": true,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": true,
-            "positionClass": "toast-top-right",
-            "preventDuplicates": true,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
-        };
-        var js_schoolerp = {
-            toastType : {
-                Info: 'info',
-                Error: 'error',
-                Success: 'success',
-                Warning: 'warning'
-            },
-            toastTitle: 'School ERP Notification Service'
-        };
-        function Notify(toastType, toastMessage) {
-            toastr[toastType](toastMessage, js_schoolerp.toastTitle);
-        }
+        $(document).ready(function()
+        {
+
+        });
     </script>
     @yield('scripts')
 
