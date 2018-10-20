@@ -1,7 +1,3 @@
-<?php
-    use Carbon\Carbon;
-?>
-
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
 
@@ -15,9 +11,8 @@
     <title>{{ config('app.name', 'Welcome to School ERP') }}</title>
     <link rel="shortcut icon" href="/static/m.png" type="image/x-icon">
     <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700%7CMaterial+Icons' rel="stylesheet">
-    <!-- <link href="{{ asset('css/main.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
-    @yield('styles')-->
+    @yield('styles')
 </head>
 
 <body>

@@ -1,6 +1,6 @@
 const Menu = [
-  { header: "Apps" },
-  { divider: true },
+//   { header: "Apps" },
+//   { divider: true },
   {
     title: "Dashboard",
     group: "apps",

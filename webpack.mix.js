@@ -51,8 +51,8 @@ if (mix.inProduction()) {
         },
         open: 'external',
         notify: false,
-        reload: false,
-        reloadDelay: 10000, // Delay for 10 seconds before reloading / injecting the file change event.
+        reload: true,
+        // reloadDelay: 10000, // Delay for 10 seconds before reloading / injecting the file change event.
         proxyReq: [
             function(proxyReq) {
                 proxyReq.setHeader('Access-Control-Allow-Origin', '*');

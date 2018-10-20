@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import Vuex from 'vuex';
 import App from './App';
 import Vuetify from 'vuetify';
 import router from './router';
@@ -15,6 +16,7 @@ Vue.config.productionTip = false;
 
 // Global filters
 Vue.filter('truncate', Truncate);
+Vue.use(Vuex);
 Vue.use(VueResource);
 Vue.use(VeeValidate, { fieldsBagName: 'formFields' });
 Vue.use(Vuetify, {
@@ -51,9 +53,19 @@ Vue.http.headers.common['X-CSRF-TOKEN'] = document.getElementsByName('csrf-token
 // Bootstrap application components
 export default Vue;
 
+var store = new Vuex.Store({
+    strict: process.env.NODE_ENV !== 'production',
+    state: {
+      status: '',
+      message: '',
+      tenant: tenant
+    },
+});
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
+  store,
   router: router,
   components: { App },
   template: '<App/>'

@@ -1,15 +1,11 @@
 <template>
     <v-app id="home">
         <v-toolbar dark color="primary" dense>
-            <a href="#/home" class="d-flex router-link-active">
-                <img src='https://cdn.vuetifyjs.com/images/logos/v-alt.svg' height='38px' width='38px'>
+            <a href="/home" class="d-flex router-link-active">
+                <img :src="tenant.logo" height='38px' width='38px'>
             </a>
-            <v-toolbar-title class="white--text">Welcome to Pentaville.</v-toolbar-title>
+            <v-toolbar-title class="white--text">Welcome to {{tenant.name}}.</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-toolbar-items>
-                <v-btn flat @click="Login">Login</v-btn>
-                <v-btn flat>Register</v-btn>
-            </v-toolbar-items>
         </v-toolbar>
         <v-container fluid fill-height>
             <v-layout align-center justify-center>
@@ -23,6 +19,11 @@
 
 <script>
     export default {
+        computed:  {
+            tenant() {
+                return this.$store.state.tenant
+            }
+        },
         methods: {
             Login () {
                 this.$router.push({ path: '/login' });

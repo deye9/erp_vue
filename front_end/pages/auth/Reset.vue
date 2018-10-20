@@ -1,15 +1,11 @@
 <template>
     <v-app id="reset" class="primary">
         <v-toolbar dark color="primary" dense>
-            <a href="#/home" class="d-flex router-link-active">
-                <img src='https://cdn.vuetifyjs.com/images/logos/v-alt.svg' height='38px' width='38px'>
+            <a href="/home" class="d-flex router-link-active">
+                <img :src="tenant.logo" height='38px' width='38px'>
             </a>
-            <v-toolbar-title class="white--text">Welcome to Pentaville.</v-toolbar-title>
+            <v-toolbar-title class="white--text">Welcome to {{tenant.name}}.</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-toolbar-items>
-                <v-btn flat @click="Login">Login</v-btn>
-                <v-btn flat @click="Register">Register</v-btn>
-            </v-toolbar-items>
         </v-toolbar>
         <v-content>
             <v-container fluid fill-height>
@@ -21,7 +17,7 @@
                         <v-card class="elevation-1 pa-3">
                         <v-card-text>
                             <div class="layout column align-center">
-                                <img src="/static/m.png" alt="Pentaville Schools" width="120" height="120">
+                                <img :src="tenant.logo" :alt="tenant.name" width="120" height="120">
                                 <h3 class="flex my-4 primary--text align-center">Reset your Password</h3>
                             </div>
                             <v-form>
@@ -53,6 +49,11 @@
                 loading: false,
                 err_message: '',
                 password_confirmation: null
+            }
+        },
+        computed:  {
+            tenant() {
+                return this.$store.state.tenant
             }
         },
         methods: {

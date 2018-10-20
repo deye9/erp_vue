@@ -265,10 +265,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -280,6 +276,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             loading: false,
             err_message: ''
         };
+    },
+    computed: {
+        tenant: function tenant() {
+            return this.$store.state.tenant;
+        }
     },
     methods: {
         login: function login() {
@@ -322,38 +323,20 @@ var render = function() {
             "a",
             {
               staticClass: "d-flex router-link-active",
-              attrs: { href: "#/home" }
+              attrs: { href: "/home" }
             },
             [
               _c("img", {
-                attrs: {
-                  src: "https://cdn.vuetifyjs.com/images/logos/v-alt.svg",
-                  height: "38px",
-                  width: "38px"
-                }
+                attrs: { src: _vm.tenant.logo, height: "38px", width: "38px" }
               })
             ]
           ),
           _vm._v(" "),
           _c("v-toolbar-title", { staticClass: "white--text" }, [
-            _vm._v("Welcome to Pentaville.")
+            _vm._v("Welcome to " + _vm._s(_vm.tenant.name) + ".")
           ]),
           _vm._v(" "),
-          _c("v-spacer"),
-          _vm._v(" "),
-          _c(
-            "v-toolbar-items",
-            [
-              _c("v-btn", { attrs: { flat: "" } }, [_vm._v("Login")]),
-              _vm._v(" "),
-              _c(
-                "v-btn",
-                { attrs: { flat: "" }, on: { click: _vm.Register } },
-                [_vm._v("Register")]
-              )
-            ],
-            1
-          )
+          _c("v-spacer")
         ],
         1
       ),
@@ -404,8 +387,8 @@ var render = function() {
                                 [
                                   _c("img", {
                                     attrs: {
-                                      src: "/static/m.png",
-                                      alt: "Pentaville Schools",
+                                      src: _vm.tenant.logo,
+                                      alt: _vm.tenant.name,
                                       width: "120",
                                       height: "120"
                                     }
@@ -417,7 +400,11 @@ var render = function() {
                                       staticClass:
                                         "flex my-4 primary--text align-center"
                                     },
-                                    [_vm._v("Pentaville Schools")]
+                                    [
+                                      _vm._v(
+                                        " " + _vm._s(_vm.tenant.name) + " "
+                                      )
+                                    ]
                                   )
                                 ]
                               ),

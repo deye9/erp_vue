@@ -8,5 +8,8 @@
 @endsection
 
 @section('scripts')
+    <script>
+        var tenant = {!! json_encode($tenant) !!};
+    </script>
     <script src="{{ asset('js/main.js') }}"></script>
 @stop

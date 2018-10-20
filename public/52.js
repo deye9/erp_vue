@@ -203,7 +203,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\nh1[data-v-1866c182] {\n  font-size: 150px;\n  line-height: 150px;\n  font-weight: 700;\n  color: #252932;\n  text-shadow: rgba(61, 61, 61, 0.3) 1px 1px, rgba(61, 61, 61, 0.2) 2px 2px, rgba(61, 61, 61, 0.3) 3px 3px;\n  /* style=\"color: #636b6f;\" */\n}\n", ""]);
+exports.push([module.i, "\nh1[data-v-1866c182] {\n  font-size: 150px;\n  font-weight: 700;\n  color: #252932;\n  line-height: 150px;\n  text-shadow: rgba(61, 61, 61, 0.3) 1px 1px, rgba(61, 61, 61, 0.2) 2px 2px, rgba(61, 61, 61, 0.3) 3px 3px;\n  /* style=\"color: #636b6f;\" */\n}\n", ""]);
 
 // exports
 
@@ -251,6 +251,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+    computed: {
+        tenant: function tenant() {
+            return this.$store.state.tenant;
+        }
+    },
     methods: {
         Login: function Login() {
             this.$router.push({ path: '/login' });
@@ -290,21 +295,17 @@ var render = function() {
             "a",
             {
               staticClass: "d-flex router-link-active",
-              attrs: { href: "#/home" }
+              attrs: { href: "/home" }
             },
             [
               _c("img", {
-                attrs: {
-                  src: "https://cdn.vuetifyjs.com/images/logos/v-alt.svg",
-                  height: "38px",
-                  width: "38px"
-                }
+                attrs: { src: _vm.tenant.logo, height: "38px", width: "38px" }
               })
             ]
           ),
           _vm._v(" "),
           _c("v-toolbar-title", { staticClass: "white--text" }, [
-            _vm._v("Pentaville Schools.")
+            _vm._v(" Welcome to " + _vm._s(_vm.tenant.name) + " ")
           ]),
           _vm._v(" "),
           _c("v-spacer"),
@@ -337,12 +338,12 @@ var render = function() {
             { attrs: { "align-center": "", "justify-center": "" } },
             [
               _c("div", { staticClass: "text-md-center" }, [
-                _c("h1", [_vm._v("Pentaville Schools.")]),
+                _c("h1", [_vm._v(" " + _vm._s(_vm.tenant.name) + " ")]),
                 _vm._v(" "),
                 _c("br"),
                 _vm._v(" "),
                 _c("h2", { staticClass: "my-3 headline" }, [
-                  _vm._v("Pride in Excellence")
+                  _vm._v(" " + _vm._s(_vm.tenant.catch_phase) + " ")
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "links" }, [
