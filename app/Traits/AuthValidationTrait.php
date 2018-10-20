@@ -12,9 +12,9 @@ trait AuthValidationTrait
     */
     public function registerTenant($request) {
         $rule = [
-            'name'   => 'required|string|max:100',
-            'password'  => 'required|string|min:6',
-            'email'  => 'required|string|email|max:255'
+            'password' => 'required|string|min:6',
+            'email' => 'required|string|email|max:255',
+            'abbreviation' => 'required|string|max:100'
         ];
         return Validator::make($request, $rule);
     }

@@ -44,19 +44,25 @@
 //   return text;
 // }
 
+function validateEmail(userinput)
+{
+    var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
+    return (!pattern.test(userinput) ? false : true);
+}
+
 function toPascalCase(str) {
     return str.toLowerCase().replace(/\b[a-z]/g, function(txtVal) {
         return txtVal.toUpperCase();
     });
-};
+}
 
 const randomElement = (arr = []) => {
     return arr[Math.floor(Math.random() * arr.length)];
-};
+}
 
 const kebab =  (str) => {
     return (str || '').replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-};
+}
 
 const toggleFullScreen = () => {
     let doc = window.document;
@@ -71,7 +77,7 @@ const toggleFullScreen = () => {
     else {
       cancelFullScreen.call(doc);
     }
-};
+}
 
 export default {
     randomElement,

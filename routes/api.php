@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 Route::group(['prefix' => 'tenant'], function() {
-    Route::post('/registerschool', 'ValidateController@register')->name('register');
+    Route::post('/register', 'ValidateController@register')->name('register');
     Route::get('/isavailable/{name}', 'ValidateController@isavailable')->name('isavailable');
 });
 

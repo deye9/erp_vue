@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Notifications\TenantCreated;
-use App\Http\Validations\AuthValidation;
+// use App\Traits\AuthValidationTrait;
 
 class ValidateController extends Controller
 {
@@ -21,26 +21,16 @@ class ValidateController extends Controller
     public function register(Request $request) {
         try
         {
-            $name = $request->input('name');
             $email = $request->input('email');
             $password = $request->input('password');
-
-            if (Tenant::tenantExists($name)) {
-                $msg = "{$name} already exists. " . $this::SCHOOL_NAME_UNAVAILABLE;
-                Log::error("[ " . $this->tag . '::School Registration ]: ' . $msg);
-
-                return $this->jsonResponse([
-                    'status' => "Error",
-                    'message' => $msg
-                ], $this::BAD_REQUEST);
-            }
+            $abbreviation = $request->input('abbreviation');
 
             // Validate the request.
-            $validator = AuthValidation::registerTenant($request->all());
+            $validator = $this->registerTenant($request->all());
 
             if ($validator->fails())
             {
-                $msg = $this::ERROR_CREATING_SCHOOL . " [{$name}].";
+                $msg = $this::ERROR_CREATING_TENANT . " [{$abbreviation}].";
                 Log::info('[ ' . $this->tag . '::New Tenant Registration Error]: ' . json_encode($validator->failed()));
 
                 return $this->jsonResponse([
@@ -50,8 +40,18 @@ class ValidateController extends Controller
                 ], $this::BAD_REQUEST);
             }
 
+            if (Tenant::tenantExists($abbreviation)) {
+                $msg = "{$abbreviation} already exists. " . $this::NAME_UNAVAILABLE;
+                Log::error("[ " . $this->tag . '::Tenant Registration ]: ' . $msg);
+
+                return $this->jsonResponse([
+                    'status' => "Error",
+                    'message' => $msg
+                ], $this::BAD_REQUEST);
+            }
+
             // Create the Tenant as requested.
-            $tenant = Tenant::registerTenant($name, $email, $password);
+            $tenant = Tenant::registerTenant($abbreviation, $email, $password);
 
             // Make a call to register the URL with CloudFlare if need be.
 
@@ -60,18 +60,19 @@ class ValidateController extends Controller
 
             // Build out the message for the end user.
             $msg = nl2br("Hi, {$email} \r\n\r\n");
-            $msg .= nl2br("Your School <strong>" . strtoupper($name) . "</strong> has been successfully registered and is now accessible via https://{$tenant->hostname->fqdn}.\r\n\r\n");
+            $msg .= nl2br("Your Company <strong>" . strtoupper($abbreviation) . "</strong> has been successfully registered and is now accessible via https://{$tenant->hostname->fqdn}.\r\n\r\n");
             $msg .= nl2br("Admin {$email} has also been invited!\r\n\r\n");
-            $msg .= nl2br("Do remember to share this url https://{$tenant->hostname->fqdn} with all staffs and students.\r\n\r\n");
+            $msg .= nl2br("Do remember to share this url https://{$tenant->hostname->fqdn} with all people who need to access the application.\r\n\r\n");
             $msg .= nl2br("Also do not forget to setup access rights for all parties.\r\n\r\n");
 
             return $this->jsonResponse([
+                'message' => $msg,
                 'status' => 'Success',
-                'message' => $msg
+                'url' => 'https://' .$tenant->hostname->fqdn
             ], $this::OK);
         }
         catch (Exception $e) {
-            Log::error($this->tag . '::School Registration Failed ' . $e->getMessage());
+            Log::error($this->tag . '::Tenant Registration Failed ' . $e->getMessage());
             return $this->jsonResponse([
                 'status' => 'Error',
                 'message' => $e->getMessage()
@@ -80,7 +81,7 @@ class ValidateController extends Controller
     }
 
     /**
-     * Confirm if the proposed School name is available for usage.
+     * Confirm if the proposed Company name is available for usage.
      *
      * @return A valid Json Object.
     */
@@ -91,19 +92,19 @@ class ValidateController extends Controller
             if (empty(trim($name))) {
                 return $this->jsonResponse([
                     'err_status' => 'Error',
-                    'err_message' => 'Invalid School Name specified.'
+                    'err_message' => 'Invalid Name specified.'
                 ], $this::BAD_REQUEST);
             }
 
             if (!preg_match("/^([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/",$name)) {
                 return $this->jsonResponse([
                     'err_status' => 'Error',
-                    'err_message' => 'Invalid School Name specified.'
+                    'err_message' => 'Invalid Name specified.'
                 ], $this::BAD_REQUEST);
             }
 
             if (Tenant::tenantExists($name)) {
-                $msg = "{$name} already exists. " . $this::SCHOOL_NAME_UNAVAILABLE;
+                $msg = "{$name} already exists. " . $this::NAME_UNAVAILABLE;
                 Log::error("[ " . $this->tag . '::Is HostName Available ]: ' . $msg);
 
                 return $this->jsonResponse([
@@ -114,7 +115,7 @@ class ValidateController extends Controller
 
             return $this->jsonResponse([
                 'status' => 'Success',
-                'message' => $this::SCHOOL_NAME_AVAILABLE
+                'message' => $this::NAME_AVAILABLE
             ], $this::OK);
         }
         catch (Exception $e) {

@@ -57,9 +57,9 @@ class Controller extends BaseController
     public const HTTP_VERSION_NOT_SUPPORTED = 505;
 
     // Response Message Constants
-    public const SCHOOL_NAME_AVAILABLE = 'School Name is available.';
-    public const SCHOOL_NAME_UNAVAILABLE = 'Please choose another Name or Abbreviation.';
-    public const ERROR_CREATING_SCHOOL = 'An error occurred while trying to create your School';
+    public const NAME_AVAILABLE = 'Name is available.';
+    public const NAME_UNAVAILABLE = 'Please choose another Name or Abbreviation.';
+    public const ERROR_CREATING_TENANT = 'An error occurred while trying to create your School';
     public const EMAIL_INVALID = 'Looks like the email you supplied is not a valid email address.';
 
     public const USER_LOGIN_ERROR = 'An error occurred while trying to authenticate the user. Kindly re-confirm your Credentials.';

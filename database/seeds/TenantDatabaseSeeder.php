@@ -27,9 +27,9 @@ class TenantDatabaseSeeder extends Seeder
         $adminRole->givePermissionTo($dashboard);
         $adminRole->givePermissionTo($adminPermissions);
 
-        Role::create(['name' => 'student']);
-        Role::create(['name' => 'staff']);
-        Role::create(['name' => 'hod']);
+        // Role::create(['name' => 'student']);
+        // Role::create(['name' => 'staff']);
+        // Role::create(['name' => 'hod']);
 
         // add a default guest role
         Role::create(['name' => 'guest']);
