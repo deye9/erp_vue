@@ -1,6 +1,6 @@
 webpackJsonp([58],{
 
-/***/ 140:
+/***/ 141:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -422,7 +422,7 @@ var getUser = function getUser(limit) {
 
 /***/ }),
 
-/***/ 188:
+/***/ 189:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -430,7 +430,7 @@ var getUser = function getUser(limit) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MailMenu; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return getMailById; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return getMailByType; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__user__ = __webpack_require__(140);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__user__ = __webpack_require__(141);
 
 
 var MailItem = [{
@@ -676,14 +676,14 @@ var getMailByType = function getMailByType(type) {
 
 /***/ }),
 
-/***/ 580:
+/***/ 581:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_perfect_scrollbar__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue_perfect_scrollbar___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vue_perfect_scrollbar__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_mail__ = __webpack_require__(188);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__api_mail__ = __webpack_require__(189);
 //
 //
 //
@@ -841,7 +841,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /***/ }),
 
-/***/ 581:
+/***/ 582:
 /***/ (function(module, exports, __webpack_require__) {
 
 var render = function() {
@@ -1105,15 +1105,15 @@ if (false) {
 
 /***/ }),
 
-/***/ 90:
+/***/ 91:
 /***/ (function(module, exports, __webpack_require__) {
 
 var disposed = false
 var normalizeComponent = __webpack_require__(0)
 /* script */
-var __vue_script__ = __webpack_require__(580)
+var __vue_script__ = __webpack_require__(581)
 /* template */
-var __vue_template__ = __webpack_require__(581)
+var __vue_template__ = __webpack_require__(582)
 /* template functional */
 var __vue_template_functional__ = false
 /* styles */

@@ -16,12 +16,12 @@ class Metadata extends Model implements Auditable
      *
      * @var array
     */
-    protected $fillable = [ 'key', 'value', 'category', ];
+    protected $fillable = [ 'key', 'value', ];
 
     /**
      * Attributes to include in the Audit.
      *
      * @var array
     */
-    protected $auditInclude = [ 'key', 'value', 'category', ];
+    protected $auditInclude = [ 'key', 'value', ];
 }
