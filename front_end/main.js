@@ -55,13 +55,36 @@ Vue.http.headers.common['X-CSRF-TOKEN'] = document.getElementsByName('csrf-token
 // Bootstrap application components
 export default Vue;
 
-var store = new Vuex.Store({
+const store = new Vuex.Store({
     strict: process.env.NODE_ENV !== 'production',
     state: {
-      status: '',
-      message: '',
-      tenant: tenant
+        status: '',
+        message: '',
+        snack: {
+            show: false,
+            text: '',
+            color: '',
+        },
+        tenant: tenant
     },
+    mutations: {
+        Snackbar (state, payload) {
+            state.snack.show = true;
+            state.snack.text = payload.text;
+            state.snack.color = payload.color;
+        },
+        updatetenant (state, payload) {
+            state.tenant.logo = payload.logo;
+            state.tenant.name = payload.companyname;
+        },
+        response (state, payload) {
+          state.message = payload.message;
+          state.status = payload.status.toLowerCase();
+          // Automatically Load the notification page whenever called.
+          // app.setActiveView('notification');
+          //appData.activeview = 'notification';
+        }
+    }
 });
 
 /* eslint-disable no-new */

@@ -2,18 +2,16 @@
 <div id="themeSetting">
   <v-toolbar color="blue" dark>
     <v-toolbar-title>
-      Theme Settings
+        Color Options
     </v-toolbar-title>
   </v-toolbar>
   <v-container>
     <v-layout column>
       <v-flex>
-        <v-subheader class="px-1 my-2">
-          Color Option
-        </v-subheader>
         <div class="color-option">
           <v-layout wrap>
             <label class="color-option--label flex xs6 pa-1" v-for="(option,index) in themeColorOptions" :key="index">
+                <h4>{{option.key}}</h4>
               <input type="radio" name="color" v-bind:value="option.key" v-model="themeColor">
               <span class="color-option--item bg">
                 <span class="overlay">
@@ -69,14 +67,14 @@ export default {
             sideManu: 'white'
           }
         },
-        // {
-        //   key: 'lightBlue',
-        //   value: {
-        //     sideNav: 'blue',
-        //     mainNav: 'white',
-        //     sideManu: 'blue lighten-1'
-        //   }
-        // },
+        {
+          key: 'lightBlue',
+          value: {
+            sideNav: 'blue',
+            mainNav: 'white',
+            sideManu: 'blue lighten-1'
+          }
+        },
         {
           key: 'teal',
           value: {
@@ -148,7 +146,6 @@ export default {
     themeColor: {
       handler (val) {
         this.$vuetify.theme.primary = this.colors[val].base;
-
       },
       immediate: true
     },

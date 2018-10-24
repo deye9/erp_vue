@@ -7,7 +7,7 @@
             <v-stepper-header>
               <v-stepper-step step="1" :complete="step > 1"> Company Details </v-stepper-step>
               <v-divider></v-divider>
-              <v-stepper-step step="2" :complete="step > 2"> Setup branches </v-stepper-step>
+              <v-stepper-step step="2" :complete="step > 2"> Theme Settings </v-stepper-step>
               <v-divider></v-divider>
               <v-stepper-step step="3"> Official Documents </v-stepper-step>
             </v-stepper-header>
@@ -71,9 +71,7 @@
                 <v-btn color="primary" @click.native="step = 2">Continue</v-btn>
               </v-stepper-content>
               <v-stepper-content step="2">
-                <p>
-                    <button type="button" class="btn btn-primary float-right"> Register New Branch Office. </button>
-                </p>
+                <theme-settings></theme-settings>
                 <v-btn color="primary" @click.native="step = 1"> Previous </v-btn>
                 <v-btn color="primary" @click.native="step = 3"> Continue </v-btn>
               </v-stepper-content>
@@ -86,6 +84,7 @@
           </v-stepper>
         </v-flex>
       </v-layout>
+
     </v-container>
   <br/>Debug: {{registration}}
   </div>
@@ -93,12 +92,15 @@
 
 <script>
     import VWidget from '../components/VWidget';
+    import ThemeSettings from '../components/ThemeSettings';
     export default {
         components: {
-            VWidget
+            VWidget,
+            ThemeSettings
         },
         data: () => ({
             step: 1,
+            widget: VWidget,
             registration: {
                 logo: null,
                 email: null,
@@ -144,21 +146,16 @@
             upload() {
                 if (this.$data.registration.logo !== null)
                 {
-                    tenant.logo = this.$data.registration.logo;
-                    axios.post('/api/base64upload', {image: this.$data.registration.logo})
+                    axios.post('/api/base64upload', {image: this.registration.logo})
                         .then(response => {
                             if (response.data.success) {
-                                alert(response.data.success);
+                                this.$store.commit('updatetenant', this.registration);
+                                this.$store.commit('Snackbar', {color: 'blue', text: response.data.success, show: true});
                             }
                         }
                     );
                 } else {
-                    alert('Kindly select a valid image to upload.');
-                    // this.snackbar = {
-                    //     show: true,
-                    //     color: 'green',
-                    //     text: 'Kindly select a valid image to upload.'
-                    // };
+                    this.$store.commit('Snackbar', {color: 'red', text: 'Kindly select a valid image to upload.', show: true});
                 }
             },
             submit() {

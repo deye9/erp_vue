@@ -7,7 +7,7 @@
             <div slot="widget-content">
             <v-footer class="pa-3">
               <v-spacer></v-spacer>
-              <div>&copy; {{ new Date().getFullYear() }}</div>
+              <div>&copy; {{ new Date().getFullYear() }} TEST </div>
             </v-footer>
             </div>
           </v-widget>
@@ -116,21 +116,21 @@ export default {
   },
   data () {
     return {
-      icons: ['fa-facebook', 'fa-twitter', 'fa-google-plus', 'fa-linkedin', 'fa-instagram'],
-      rows: [
-        {
-          title: 'Company Name',
-          children: ['Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing elit']
-        },
-        {
-          title: 'Products',
-          children: ['MDBootstrap', 'MDWordPress', 'BrandFlow', 'Bootstrap Angular']
-        },
-        {
-          title: 'Useful Links',
-          children: ['Your account', 'Become an Affiliate', 'Shipping Rates', 'Helper']
-        }
-      ]
+        icons: ['fa-facebook', 'fa-twitter', 'fa-google-plus', 'fa-linkedin', 'fa-instagram'],
+        rows: [
+            {
+            title: 'Company Name',
+            children: ['Here you can use rows and columns here to organize your footer content. Lorem ipsum dolor sit amet, consectetur adipisicing elit']
+            },
+            {
+            title: 'Products',
+            children: ['MDBootstrap', 'MDWordPress', 'BrandFlow', 'Bootstrap Angular']
+            },
+            {
+            title: 'Useful Links',
+            children: ['Your account', 'Become an Affiliate', 'Shipping Rates', 'Helper']
+            }
+        ]
     };
   },
   computed: {

@@ -13372,7 +13372,30 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
   state: {
     status: '',
     message: '',
+    snack: {
+      show: false,
+      text: '',
+      color: ''
+    },
     tenant: tenant
+  },
+  mutations: {
+    Snackbar: function Snackbar(state, payload) {
+      state.snack.show = true;
+      state.snack.text = payload.text;
+      state.snack.color = payload.color;
+    },
+    updatetenant: function updatetenant(state, payload) {
+      state.tenant.logo = payload.logo;
+      state.tenant.name = payload.companyname;
+    },
+    response: function response(state, payload) {
+      state.message = payload.message;
+      state.status = payload.status.toLowerCase();
+      // Automatically Load the notification page whenever called.
+      // app.setActiveView('notification');
+      //appData.activeview = 'notification';
+    }
   }
 });
 
@@ -14920,16 +14943,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_AppFab___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__components_AppFab__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_PageHeader__ = __webpack_require__(45);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_PageHeader___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__components_PageHeader__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_ThemeSettings__ = __webpack_require__(48);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_ThemeSettings___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4__components_ThemeSettings__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__event__ = __webpack_require__(53);
-//
-//
-//
-//
-//
-//
-//
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__event__ = __webpack_require__(53);
 //
 //
 //
@@ -14975,46 +14989,33 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 //import menu from './api/menu';
 
-
 /* harmony default export */ __webpack_exports__["default"] = ({
     components: {
         AppDrawer: __WEBPACK_IMPORTED_MODULE_0__components_AppDrawer___default.a,
         AppToolbar: __WEBPACK_IMPORTED_MODULE_1__components_AppToolbar___default.a,
         AppFab: __WEBPACK_IMPORTED_MODULE_2__components_AppFab___default.a,
-        PageHeader: __WEBPACK_IMPORTED_MODULE_3__components_PageHeader___default.a,
-        ThemeSettings: __WEBPACK_IMPORTED_MODULE_4__components_ThemeSettings___default.a
+        PageHeader: __WEBPACK_IMPORTED_MODULE_3__components_PageHeader___default.a
     },
     data: function data() {
         return {
-            expanded: true,
-            rightDrawer: false,
-            snackbar: {
-                show: false,
-                text: '',
-                color: ''
-            }
+            expanded: true
         };
     },
     computed: {
-        tenant: function tenant() {
-            return this.$store.state.tenant;
+        snackbar: function snackbar() {
+            return this.$store.state.snack;
         }
     },
     created: function created() {
         var _this = this;
 
-        __WEBPACK_IMPORTED_MODULE_5__event__["a" /* default */].forEach(function (item) {
+        __WEBPACK_IMPORTED_MODULE_4__event__["a" /* default */].forEach(function (item) {
             _this.$on(item.name, item.callback);
         });
         window.getApp = this;
     },
 
-    methods: {
-        openThemeSettings: function openThemeSettings() {
-            this.$vuetify.goTo(0);
-            this.rightDrawer = !this.rightDrawer;
-        }
-    }
+    methods: {}
 });
 
 /***/ }),
@@ -16391,446 +16392,11 @@ if (false) {
 }
 
 /***/ }),
-/* 48 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var disposed = false
-function injectStyle (ssrContext) {
-  if (disposed) return
-  __webpack_require__(49)
-}
-var normalizeComponent = __webpack_require__(1)
-/* script */
-var __vue_script__ = __webpack_require__(51)
-/* template */
-var __vue_template__ = __webpack_require__(52)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-3b32264b"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "front_end/components/ThemeSettings.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-3b32264b", Component.options)
-  } else {
-    hotAPI.reload("data-v-3b32264b", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 49 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(50);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var update = __webpack_require__(4)("5dd43fd2", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3b32264b\",\"scoped\":true,\"hasInlineConfig\":true}!../../node_modules/stylus-loader/index.js!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ThemeSettings.vue", function() {
-     var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-3b32264b\",\"scoped\":true,\"hasInlineConfig\":true}!../../node_modules/stylus-loader/index.js!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./ThemeSettings.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 50 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(2)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.color-option--label[data-v-3b32264b] {\n  position: relative;\n  display: block;\n  cursor: pointer;\n}\n.color-option--label input[type=\"radio\"][data-v-3b32264b] {\n  display: none;\n}\n.color-option--label input[type=\"radio\"]+span[data-v-3b32264b] {\n  position: relative;\n}\n.color-option--label input[type=\"radio\"]+span>.overlay[data-v-3b32264b] {\n  display: none;\n  position: absolute;\n  top: 0;\n  bottom: 0;\n  right: 0;\n  left: 0;\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0,0,0,0.3);\n  text-align: center;\n  line-height: 30px;\n  color: #fff;\n}\n.color-option--label input[type=\"radio\"]:checked+span>.overlay[data-v-3b32264b] {\n  display: block;\n}\n.color-option--label .bg[data-v-3b32264b] {\n  background-color: #f1f1f1;\n}\n.color-option--item[data-v-3b32264b] {\n  overflow: hidden;\n  display: block;\n  -webkit-box-shadow: 0 0 2px rgba(0,0,0,0.1);\n          box-shadow: 0 0 2px rgba(0,0,0,0.1);\n  margin-bottom: 15px;\n}\n.color-option--item--header[data-v-3b32264b] {\n  height: 10px;\n}\n.color-option--item>span[data-v-3b32264b] {\n  display: block;\n  float: left;\n  width: 50%;\n  height: 20px;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 51 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuetify_es5_util_colors__ = __webpack_require__(8);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vuetify_es5_util_colors___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_vuetify_es5_util_colors__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-
-/* harmony default export */ __webpack_exports__["default"] = ({
-  data: function data() {
-    return {
-      themeColor: 'indigo',
-      sideBarOption: 'light',
-      colors: __WEBPACK_IMPORTED_MODULE_0_vuetify_es5_util_colors___default.a
-    };
-  },
-
-  computed: {
-    themeColorOptions: function themeColorOptions() {
-      return [{
-        key: 'blue',
-        value: {
-          sideNav: 'blue',
-          mainNav: 'blue',
-          sideManu: 'white'
-        }
-      },
-      // {
-      //   key: 'lightBlue',
-      //   value: {
-      //     sideNav: 'blue',
-      //     mainNav: 'white',
-      //     sideManu: 'blue lighten-1'
-      //   }
-      // },
-      {
-        key: 'teal',
-        value: {
-          sideNav: 'teal',
-          mainNav: 'teal',
-          sideManu: 'white'
-        }
-      }, {
-        key: 'red',
-        value: {
-          sideNav: 'red',
-          mainNav: 'red',
-          sideManu: 'white'
-        }
-      }, {
-        key: 'orange',
-        value: {
-          sideNav: 'orange',
-          mainNav: 'orange',
-          sideManu: 'white'
-        }
-      }, {
-        key: 'purple',
-        value: {
-          sideNav: 'purple',
-          mainNav: 'purple',
-          sideManu: 'white'
-        }
-      }, {
-        key: 'indigo',
-        value: {
-          sideNav: 'indigo',
-          mainNav: 'indigo',
-          sideManu: 'white'
-        }
-      }, {
-        key: 'cyan',
-        value: {
-          sideNav: 'cyan',
-          mainNav: 'cyan',
-          sideManu: 'white'
-        }
-      }, {
-        key: 'pink',
-        value: {
-          sideNav: 'pink',
-          mainNav: 'pink',
-          sideManu: 'white'
-        }
-      }, {
-        key: 'green',
-        value: {
-          sideNav: 'green',
-          mainNav: 'green',
-          sideManu: 'white'
-        }
-      }];
-    }
-  },
-  watch: {
-    themeColor: {
-      handler: function handler(val) {
-        this.$vuetify.theme.primary = this.colors[val].base;
-      },
-
-      immediate: true
-    },
-    sideBarOption: {
-      handler: function handler(val) {
-        this.$vuetify.dark = val === 'dark';
-      },
-
-      immediate: true
-    }
-  }
-
-});
-
-/***/ }),
-/* 52 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { attrs: { id: "themeSetting" } },
-    [
-      _c(
-        "v-toolbar",
-        { attrs: { color: "blue", dark: "" } },
-        [_c("v-toolbar-title", [_vm._v("\n      Theme Settings\n    ")])],
-        1
-      ),
-      _vm._v(" "),
-      _c(
-        "v-container",
-        [
-          _c(
-            "v-layout",
-            { attrs: { column: "" } },
-            [
-              _c(
-                "v-flex",
-                [
-                  _c("v-subheader", { staticClass: "px-1 my-2" }, [
-                    _vm._v("\n          Color Option\n        ")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "color-option" },
-                    [
-                      _c(
-                        "v-layout",
-                        { attrs: { wrap: "" } },
-                        _vm._l(_vm.themeColorOptions, function(option, index) {
-                          return _c(
-                            "label",
-                            {
-                              key: index,
-                              staticClass: "color-option--label flex xs6 pa-1"
-                            },
-                            [
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.themeColor,
-                                    expression: "themeColor"
-                                  }
-                                ],
-                                attrs: { type: "radio", name: "color" },
-                                domProps: {
-                                  value: option.key,
-                                  checked: _vm._q(_vm.themeColor, option.key)
-                                },
-                                on: {
-                                  change: function($event) {
-                                    _vm.themeColor = option.key
-                                  }
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c(
-                                "span",
-                                { staticClass: "color-option--item bg" },
-                                [
-                                  _c("span", { staticClass: "overlay" }, [
-                                    _c(
-                                      "span",
-                                      { staticClass: "material-icons" },
-                                      [_vm._v("check")]
-                                    )
-                                  ]),
-                                  _vm._v(" "),
-                                  _c("span", {
-                                    staticClass:
-                                      "color-option--item--header sideNav",
-                                    class: option.value.sideNav
-                                  }),
-                                  _vm._v(" "),
-                                  _c("span", {
-                                    staticClass:
-                                      "color-option--item--header mainNav",
-                                    class: option.value.mainNav
-                                  }),
-                                  _vm._v(" "),
-                                  _c("span", {
-                                    staticClass: "sideMenu",
-                                    class: option.value.sideManu
-                                  })
-                                ]
-                              )
-                            ]
-                          )
-                        })
-                      )
-                    ],
-                    1
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "theme-options" },
-                    [
-                      _c("v-subheader", { staticClass: "px-1 my-2" }, [
-                        _vm._v("\n            Sidebar Option\n          ")
-                      ]),
-                      _vm._v(" "),
-                      _c("v-divider"),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        { staticClass: "my-3" },
-                        [
-                          _c(
-                            "v-btn-toggle",
-                            {
-                              model: {
-                                value: _vm.sideBarOption,
-                                callback: function($$v) {
-                                  _vm.sideBarOption = $$v
-                                },
-                                expression: "sideBarOption"
-                              }
-                            },
-                            [
-                              _c(
-                                "v-btn",
-                                { attrs: { flat: "", value: "dark" } },
-                                [
-                                  _vm._v(
-                                    "\n                Dark\n              "
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "v-btn",
-                                { attrs: { flat: "", value: "light" } },
-                                [
-                                  _vm._v(
-                                    "\n                Light\n              "
-                                  )
-                                ]
-                              )
-                            ],
-                            1
-                          )
-                        ],
-                        1
-                      )
-                    ],
-                    1
-                  )
-                ],
-                1
-              )
-            ],
-            1
-          )
-        ],
-        1
-      )
-    ],
-    1
-  )
-}
-var staticRenderFns = []
-render._withStripped = true
-module.exports = { render: render, staticRenderFns: staticRenderFns }
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-3b32264b", module.exports)
-  }
-}
-
-/***/ }),
+/* 48 */,
+/* 49 */,
+/* 50 */,
+/* 51 */,
+/* 52 */,
 /* 53 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -16935,13 +16501,7 @@ var render = function() {
                       },
                       [
                         _c("span", { staticClass: "caption text-center" }, [
-                          _vm._v(
-                            " © " +
-                              _vm._s(new Date().getFullYear()) +
-                              " " +
-                              _vm._s(_vm.tenant.name) +
-                              " "
-                          )
+                          _vm._v(" © " + _vm._s(new Date().getFullYear()) + " ")
                         ])
                       ]
                     )
@@ -16949,49 +16509,7 @@ var render = function() {
                   1
                 ),
                 _vm._v(" "),
-                _c("app-fab"),
-                _vm._v(" "),
-                _c(
-                  "v-btn",
-                  {
-                    staticClass: "setting-fab",
-                    attrs: {
-                      small: "",
-                      fab: "",
-                      dark: "",
-                      falt: "",
-                      fixed: "",
-                      top: "top",
-                      right: "right",
-                      color: "red"
-                    },
-                    on: { click: _vm.openThemeSettings }
-                  },
-                  [_c("v-icon", [_vm._v("settings")])],
-                  1
-                ),
-                _vm._v(" "),
-                _c(
-                  "v-navigation-drawer",
-                  {
-                    staticClass: "setting-drawer",
-                    attrs: {
-                      temporary: "",
-                      right: "",
-                      "hide-overlay": "",
-                      fixed: ""
-                    },
-                    model: {
-                      value: _vm.rightDrawer,
-                      callback: function($$v) {
-                        _vm.rightDrawer = $$v
-                      },
-                      expression: "rightDrawer"
-                    }
-                  },
-                  [_c("theme-settings")],
-                  1
-                )
+                _c("app-fab")
               ],
               1
             )
