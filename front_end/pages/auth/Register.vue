@@ -4,7 +4,10 @@
             <a href="/home" class="d-flex router-link-active">
                 <img :src="tenant.logo" height='38px' width='38px'>
             </a>
-            <v-toolbar-title class="white--text">Welcome to {{tenant.name}}.</v-toolbar-title>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="/home">
+                <v-toolbar-title class="white--text"> Welcome to {{tenant.name}} </v-toolbar-title>
+            </a>
             <v-spacer></v-spacer>
         </v-toolbar>
         <v-container fluid fill-height>

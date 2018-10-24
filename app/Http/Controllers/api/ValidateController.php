@@ -2,12 +2,14 @@
 
 namespace App\Http\Controllers\api;
 
+use Carbon\Carbon;
 use App\Models\Tenant;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Notifications\TenantCreated;
-// use App\Traits\AuthValidationTrait;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class ValidateController extends Controller
 {
@@ -124,6 +126,41 @@ class ValidateController extends Controller
                 'status' => 'Error',
                 'message' => $e->getMessage()
             ], $this::INTERNAL_SERVER_ERROR);
+        }
+    }
+
+    public function base64upload(Request $request)
+    {
+        // Make the needed directory inside the tenant folder if it does not exists.
+        if (!Storage::exists('/images'))
+        {
+            $directories = Storage::disk('tenant')->makeDirectory('images');
+        }
+
+        $validator = Validator::make($request->all(), [
+            'image' => 'required|image64:jpeg,jpg,png'
+        ]);
+
+        if ($validator->fails())
+        {
+            return response()->json([
+                'errors'=>$validator->errors()
+            ]);
+        }
+        else
+        {
+            $imageData = $request->get('image');
+            $fileName = Carbon::now()->timestamp . '_' . uniqid() . '.' . explode('/', explode(':', substr($imageData, 0, strpos($imageData, ';')))[1])[1];
+
+            $resize = \Image::make($request->get('image'))->encode('jpg',80);
+            $store  = Storage::disk('tenant')->put('/images/' . $fileName, $resize, 'public');
+            $url    = Storage::url('images/' . $fileName);
+
+            \Log::info($url);
+            return response()->json([
+                'filename' => $url,
+                'success' => 'You have successfully uploaded an image'], 200
+            );
         }
     }
 }

@@ -16,6 +16,8 @@ const Menu = [
         { name: "roles", title: "Roles", component: "components/roles" },
         { name: "users", title: "Users", component: "components/users" },
         { name: "metadata", title: "Metadata", component: "components/metadata" },
+        { name: "admin branch", title: "Branch", component: "admin/branch" },
+        { name: "admin profile", title: "Profile", component: "admin/admin_profile" },
         { name: "access control", title: "Access Control", component: "components/permissions" },
     ]
   },

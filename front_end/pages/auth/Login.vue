@@ -4,7 +4,10 @@
         <a href="/home" class="d-flex router-link-active">
             <img :src="tenant.logo" height='38px' width='38px'>
         </a>
-        <v-toolbar-title class="white--text">Welcome to {{tenant.name}}.</v-toolbar-title>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="/home">
+            <v-toolbar-title class="white--text"> Welcome to {{tenant.name}} </v-toolbar-title>
+        </a>
         <v-spacer></v-spacer>
     </v-toolbar>
     <v-content>
@@ -26,7 +29,7 @@
                     </v-form>
                 </v-card-text>
                 <v-card-actions>
-                    <!-- <v-btn icon>
+                    <v-btn icon>
                         <v-icon color="blue">fa fa-facebook-square fa-lg</v-icon>
                     </v-btn>
                     <v-btn icon>
@@ -34,7 +37,9 @@
                     </v-btn>
                     <v-btn icon>
                         <v-icon color="light-blue">fa fa-twitter fa-lg</v-icon>
-                    </v-btn> -->
+                    </v-btn>
+                </v-card-actions>
+                <v-card-actions>
                     <v-btn flat @click="ForgotPassword">Forgot Password</v-btn>
                     <v-spacer></v-spacer>
                     <v-btn block color="primary" @click="login" :loading="loading">Login</v-btn>

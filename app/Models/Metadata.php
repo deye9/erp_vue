@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use OwenIt\Auditing\Contracts\Auditable;
@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Metadata extends Model implements Auditable
 {
-    use \OwenIt\Auditing\Auditable;
+    use \OwenIt\Auditing\Auditable, UsesTenantConnection;
 
     /**
      * The attributes that are mass assignable.
@@ -24,4 +24,9 @@ class Metadata extends Model implements Auditable
      * @var array
     */
     protected $auditInclude = [ 'key', 'value', ];
+
+    public static function IsProfileValid()
+    {
+        return false;
+    }
 }

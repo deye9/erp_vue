@@ -6,9 +6,9 @@ use JWTAuth;
 use JWTFactory;
 use Carbon\Carbon;
 use App\Models\User;
-use App\Models\UserPermissions;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\UserPermissions;
 //use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Controllers\Controller;
@@ -38,28 +38,32 @@ class AuthController extends Controller
                 $user = User::find($user->id);
                 $permissons = $user->getAllPermissions();
 
-                // Unset all un-needed properties.
-                unset($user->id);
-                unset($user->created_at);
-                unset($user->updated_at);
-                unset($user->permissions);
+                // Check if the user is an Admin and if all Admin data is good to go.
+                $data['user'] = $user;
+                $meta['IsAdmin'] = $user->hasRole('admin');
+                $meta['IsProfileValid'] = \App\Models\Metadata::IsProfileValid();
 
-                foreach ($user->roles as $role) {
-                    unset($role->pivot);
-                    unset($role->created_at);
-                    unset($role->updated_at);
-                    unset($role->guard_name);
-                }
+                // // Unset all un-needed properties.
+                // unset($user->id);
+                // unset($user->created_at);
+                // unset($user->updated_at);
+                // unset($user->permissions);
 
-                foreach ($permissons as $obj) {
-                    unset($obj->pivot);
-                    unset($obj->guard_name);
-                    unset($obj->created_at);
-                    unset($obj->updated_at);
-                }
+                // foreach ($user->roles as $role) {
+                //     unset($role->pivot);
+                //     unset($role->created_at);
+                //     unset($role->updated_at);
+                //     unset($role->guard_name);
+                // }
+
+                // foreach ($permissons as $obj) {
+                //     unset($obj->pivot);
+                //     unset($obj->guard_name);
+                //     unset($obj->created_at);
+                //     unset($obj->updated_at);
+                // }
 
                 //$data['Menu'] = UserPermissions::getFixes();
-                $data['user'] = $user;
                 return response()->json(['code' => 200, 'data' => $data, 'meta' => $meta]);
             }
         } catch (Exception $e) {

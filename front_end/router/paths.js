@@ -145,6 +145,26 @@ export default [
             require(['../admin/acl.vue'], resolve);
         }
     },
+    {
+        path: '/admin/branch',
+        meta: {
+            breadcrumb: true
+        },
+        name: 'admin/branch',
+        component: function (resolve) {
+            require(['../admin/branch.vue'], resolve);
+        }
+    },
+    {
+        path: '/admin/profile',
+        meta: {
+            breadcrumb: true
+        },
+        name: 'admin/admin_profile',
+        component: function (resolve) {
+            require(['../admin/profile.vue'], resolve);
+        }
+    },
     // {
     //     path: '/widgets/social',
     //     meta: {

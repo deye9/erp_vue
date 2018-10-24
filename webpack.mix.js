@@ -25,14 +25,14 @@ mix.copy([
 
 // Copy the needed css files to the public/css folder
 mix.copy([
-    'resources/assets/css/main.css', 'vendor/twbs/bootstrap/dist/css/bootstrap.min.css',
-    'vendor/components/font-awesome/css/fontawesome.min.css'
+    'vendor/twbs/bootstrap/dist/css/bootstrap.min.css', 'vendor/components/font-awesome/css/fontawesome.min.css'
 ], 'public/css');
 
 // Copy the needed Js file for the auth front end
 mix.js('front_end/main.js', 'public/js');
 // mix.js('front_end/tenantauth.js', 'public/js');
 
+mix.copyDirectory('resources/assets/css', 'public/css');
 mix.copyDirectory('node_modules/@fortawesome', 'front_end/components/@fortawesome');
 
 if (mix.inProduction()) {
@@ -52,6 +52,7 @@ if (mix.inProduction()) {
         open: 'external',
         notify: false,
         reload: true,
+        reloadOnRestart: true,
         // reloadDelay: 10000, // Delay for 10 seconds before reloading / injecting the file change event.
         proxyReq: [
             function(proxyReq) {
