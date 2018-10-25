@@ -156,7 +156,6 @@ class ValidateController extends Controller
             $store  = Storage::disk('tenant')->put('/images/' . $fileName, $resize, 'public');
             $url    = Storage::url('images/' . $fileName);
 
-            \Log::info($url);
             return response()->json([
                 'filename' => $url,
                 'success' => 'You have successfully uploaded an image'], 200

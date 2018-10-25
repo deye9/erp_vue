@@ -5,13 +5,18 @@
         <v-flex sm12>
           <v-stepper v-model="step">
             <v-stepper-header>
-              <v-stepper-step step="1" :complete="step > 1"> Company Details </v-stepper-step>
-              <v-divider></v-divider>
-              <v-stepper-step step="2" :complete="step > 2"> Theme Settings </v-stepper-step>
-              <v-divider></v-divider>
-              <v-stepper-step step="3"> Official Documents </v-stepper-step>
+                <v-stepper-step step="1" :complete="step > 1">
+                    Company Details
+                </v-stepper-step>
+                <v-divider></v-divider>
+                <v-stepper-step step="2" :complete="step > 2">
+                    Theme Settings
+                </v-stepper-step>
+                <v-divider></v-divider>
+                <v-stepper-step step="3">
+                    Official Documents
+                </v-stepper-step>
             </v-stepper-header>
-
             <v-stepper-items>
               <v-stepper-content step="1">
                 <div class="row">
@@ -71,7 +76,7 @@
                 <v-btn color="primary" @click.native="step = 2">Continue</v-btn>
               </v-stepper-content>
               <v-stepper-content step="2">
-                <theme-settings></theme-settings>
+                <theme-settings v-on:ColorOptions="getColorOptions"></theme-settings>
                 <v-btn color="primary" @click.native="step = 1"> Previous </v-btn>
                 <v-btn color="primary" @click.native="step = 3"> Continue </v-btn>
               </v-stepper-content>
@@ -100,14 +105,19 @@
         },
         data: () => ({
             step: 1,
-            widget: VWidget,
+            // widget: VWidget,
             registration: {
                 logo: null,
                 email: null,
                 website: null,
+                logourl: null,
                 publicinfo: null,
                 catchphase: null,
                 companyname: null,
+                theme: {
+                    themeColor: null,
+                    sideBarOption: null,
+                },
             }
         }),
         computed:  {
@@ -119,6 +129,11 @@
             }
         },
         methods:{
+            // Triggered when `ColorOptions` event is emitted by the child.
+            getColorOptions (value) {
+                this.registration.theme.themeColor = value.themeColor;
+                this.registration.theme.sideBarOption = value.sideBarOption;
+            },
             onLogoChange(e) {
                 var Rlogo = this.$data.registration;
                 let files = e.target.files || e.dataTransfer.files;
@@ -129,7 +144,7 @@
                 var file_type = file.type.split('/')[0] + "/";
                 if (allowed_mimeTypes.toLowerCase().indexOf(file_type) === -1)
                 {
-                    alert("Only Image file formats are allowed.");
+                    this.$store.commit('Snackbar', {color: 'red', text: 'Only Image file formats are allowed.', show: true});
                     return false;
                 }
                 var reader = new FileReader();
@@ -140,16 +155,18 @@
                     logo.style.width = '36px';
                     logo.style.height = '36px';
                     logo.src = event.target.result;
-                    Rlogo.logo =  event.target.result;
+                    Rlogo.logo = event.target.result;
                 }.bind(Rlogo);
             },
             upload() {
                 if (this.$data.registration.logo !== null)
                 {
-                    axios.post('/api/base64upload', {image: this.registration.logo})
+                    axios.post('/api/base64upload', {image: this.$data.registration.logo})
                         .then(response => {
                             if (response.data.success) {
-                                this.$store.commit('updatetenant', this.registration);
+                                this.registration.logourl = response.data.filename;
+                                this.$store.commit('updatetenant', this.$data.registration);
+                                this.$data.registration.logo = null;
                                 this.$store.commit('Snackbar', {color: 'blue', text: response.data.success, show: true});
                             }
                         }
@@ -160,7 +177,7 @@
             },
             submit() {
               if (this.$refs.form.validate()) {
-                alert('Data is valid');
+                this.$store.commit('Snackbar', {color: 'red', text: 'Data is valid.', show: true});
               }
             }
         }
