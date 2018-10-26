@@ -1,0 +1,77 @@
+extend type Query {
+    me: User @auth
+    metadata(id: ID @eq): Metadata @find(model: "App\\Models\\Metadata")
+    metadatas: [Metadata!]! @paginate(type: "paginator" model: "App\\Models\\Metadata")
+}
+
+extend type Mutation {
+    updateMetadata (input: UpdateMetadataInput!): Metadata @update(flatten: true model: "App\\Models\\Metadata")
+    deleteMetadata (input: DeleteMetadataInput!): Metadata @delete(flatten: true model: "App\\Models\\Metadata")
+    createMetadata (input: CreateMetadataInput!): Metadata @create(flatten: true model: "App\\Models\\Metadata")
+}
+
+type Metadata {
+    id: ID
+    key: String!
+    value: String!
+    created_at: DateTime!
+    updated_at: DateTime
+}
+
+input CreateMetadataInput
+{
+    key: String @rules(apply: ["required"])
+    value: String @rules(apply: ["required"])
+}
+
+input UpdateMetadataInput
+{
+    id: ID! @rules(apply: ["required"])
+    key: String
+    value: String
+}
+
+input DeleteMetadataInput {
+    id: ID! @rules(apply: ["required"])
+}
+
+# mutation {
+#    deleteMetadata(input: {id: 12}){
+#     id
+#   }
+# }
+
+# mutation {
+#    createMetadata(input:{ key: "tt" value: "{\"id\":12, \"Name\":\"Adegbenga Adeye\"}"}) {
+#      id
+#      key
+#      value
+#    }
+# }
+
+# mutation {
+#     updateMetadata(input: {id: "14", key: "Company Profile"}) {
+#       id
+#       key
+#       value
+#     }
+# }
+
+# {
+#   metadatas(count:2, page:3) {
+#     data {
+#     id
+#     key
+#     value
+#   }
+# }
+# }
+
+# {
+#   metadata(id:14) {
+#     id
+#     key
+#     value
+# 	}
+# }
+

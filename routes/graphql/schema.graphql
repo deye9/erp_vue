@@ -32,4 +32,4 @@ type User {
     updated_at: DateTime!
 }
 
-#import types/*.graphql
+#import admin/*.graphql
