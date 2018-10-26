@@ -9,7 +9,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Metadata extends Model implements Auditable
 {
-    use \OwenIt\Auditing\Auditable, UsesTenantConnection;
+    use UsesTenantConnection, \OwenIt\Auditing\Auditable;
 
     /**
      * The attributes that are mass assignable.

@@ -87,11 +87,10 @@
               </v-stepper-content>
             </v-stepper-items>
           </v-stepper>
+        <br/>Debug: {{registration}}
         </v-flex>
       </v-layout>
-
     </v-container>
-  <br/>Debug: {{registration}}
   </div>
 </template>
 

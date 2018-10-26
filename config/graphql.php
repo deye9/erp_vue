@@ -128,11 +128,16 @@ return [
                 'acl' => App\GraphQL\Query\ACLQuery::class,
                 'users' => App\GraphQL\Query\UsersQuery::class,
                 'login' => App\GraphQL\Query\UserLoginQuery::class,
+                'metadata' => App\GraphQL\Query\MetadataQuery::class,
                 'permissions' => App\GraphQL\Query\PermissionsQuery::class
             ],
             'mutation' => [
                 'createUser' => App\GraphQL\Mutation\CreateUsersMutation::class,
-            ]
+                'createMetadata' => App\GraphQL\Mutation\createMetadataMutation::class,
+            ],
+            'types' => [
+                'Metadata' => \App\GraphQL\Type\MetadataType::class,
+            ],
         ],
         'secret' => [
             'query' => [
