@@ -36,20 +36,13 @@ class createMetadataMutation extends Mutation
 
     public function resolve($root, $args, $context, ResolveInfo $info)
     {
-
-        \Log::info($args);
         return Metadata::create($args);
-
-        // return [
-        //     'id' => 0,
-        //     'key' => $args['key'],
-        //     'value' => $args['value']
-        // ];
     }
 }
 
 // mutation {
 //     createMetadata(key: "Testing", value: "sdsdf") {
+//       id
 //       key
 //       value
 //     }
