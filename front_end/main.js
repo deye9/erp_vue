@@ -2,15 +2,23 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import App from './App';
 import axios from 'axios';
+import './theme/default.css';
 import Vuetify from 'vuetify';
 import router from './router';
-import 'font-awesome/css/font-awesome.css';
-import './theme/default.css';
+import VueApollo from "vue-apollo";
 //import './theme/default.styl';
 import VeeValidate from 'vee-validate';
-import colors from 'vuetify/es5/util/colors';
 import Truncate from 'lodash.truncate';
 import VueResource from 'vue-resource';
+import ApolloClient from "apollo-boost";
+import 'font-awesome/css/font-awesome.css';
+import colors from 'vuetify/es5/util/colors';
+
+const apolloProvider = new VueApollo({
+    defaultClient: new ApolloClient({
+        uri: "/graphql"
+    })
+});
 
 Vue.config.devtools = true;
 Vue.config.productionTip = false;
@@ -19,6 +27,7 @@ Vue.config.productionTip = false;
 window.axios = axios;
 Vue.filter('truncate', Truncate);
 Vue.use(Vuex);
+Vue.use(VueApollo);
 Vue.use(VueResource);
 Vue.use(VeeValidate, { fieldsBagName: 'formFields' });
 Vue.use(Vuetify, {
@@ -89,9 +98,13 @@ const store = new Vuex.Store({
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
-  store,
-  router: router,
-  components: { App },
-  template: '<App/>'
+    el: '#app',
+    store,
+    router: router,
+    apolloProvider,
+    components: { App },
+    template: '<App/>',
+    apollo: {
+        // Apollo specific options
+    },
 });

@@ -87,7 +87,9 @@
               </v-stepper-content>
             </v-stepper-items>
           </v-stepper>
-        <br/>Debug: {{registration}}
+        <br/>
+        Debug: {{registration}}
+        <br />
         </v-flex>
       </v-layout>
     </v-container>
@@ -95,6 +97,7 @@
 </template>
 
 <script>
+    import gql from 'graphql-tag';
     import VWidget from '../components/VWidget';
     import ThemeSettings from '../components/ThemeSettings';
     export default {
@@ -104,7 +107,6 @@
         },
         data: () => ({
             step: 1,
-            // widget: VWidget,
             registration: {
                 logo: null,
                 email: null,
@@ -175,11 +177,63 @@
                 }
             },
             submit() {
-              if (this.$refs.form.validate()) {
-                this.$store.commit('Snackbar', {color: 'red', text: 'Data is valid.', show: true});
-              }
+                // We save the user input in case of an error
+                const newTag = this.newTag;
+
+                // We clear it early to give the UI a snappy feel
+                this.newTag = '';
+
+                // Call to the graphql mutation
+                this.$apollo.mutate({
+                    // Mutation Query
+                    mutation: gql`mutation($label: CreateMetadataInput!) {createMetadata(input: $label) {id, key, value }}`,
+                    // Parameters
+                    variables: {
+                        label: {key: "Company Profile", value: JSON.stringify(this.$data.registration)}
+                    },
+                    // // Update the cache with the result
+                    // // The query will be updated with the optimistic response and then with the real result of the mutation
+                    // update: (store, { data: { newTag } }) => {
+                    //     // Read the data from our cache for this query.
+                    //     const data = store.readQuery({ query: TAGS_QUERY })
+                    //     // Add our tag from the mutation to the end
+                    //     data.tags.push(newTag)
+                    //     // Write our data back to the cache.
+                    //     store.writeQuery({ query: TAGS_QUERY, data })
+                    // },
+
+                    // Optimistic UI
+                    // Will be treated as a 'fake' result as soon as the request is made so that the UI can react quickly and the user be happy
+                    optimisticResponse: {
+                        __typename: 'Mutation',
+                        createMetadata: {
+                            id: -1,
+                            key: '',
+                            value: '',
+                            __typename: 'Metadata',
+                        },
+                    },
+                }).then((data) => {
+                    this.$store.commit('Snackbar', {color: 'blue', text: 'Profile has been successfully setup.', show: true});
+                }).catch((error) => {
+                    this.$store.commit('Snackbar', {color: 'blue', text: 'An error occurred while setting up your profile. Kindly try again.', show: true});
+                    // We restore the initial user input
+                    this.newTag = newTag
+                });
+            //   if (this.$refs.form.validate()) {
+            //     this.$store.commit('Snackbar', {color: 'red', text: 'Data is valid.', show: true});
+            //   }
             }
-        }
+        },
+        // apollo: {
+        //     $query: {
+        //       loadingKey: 'loading',
+        //     },
+        //     // Query with parameters
+        //     ping: {
+        //         query: gql`{metadata(id:26) {id, key, value}}`,
+        //     },
+        // }
     };
 </script>
 

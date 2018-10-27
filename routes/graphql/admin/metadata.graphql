@@ -68,7 +68,7 @@ input DeleteMetadataInput {
 # }
 
 # {
-#   metadata(id:14) {
+#   metadata(id:26) {
 #     id
 #     key
 #     value
