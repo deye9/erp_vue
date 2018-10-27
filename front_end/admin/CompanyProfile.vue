@@ -88,7 +88,8 @@
             </v-stepper-items>
           </v-stepper>
         <br/>
-        Debug: {{registration}}
+        Debug: {{metadata}}
+
         <br />
         </v-flex>
       </v-layout>
@@ -101,11 +102,32 @@
     import VWidget from '../components/VWidget';
     import ThemeSettings from '../components/ThemeSettings';
     export default {
+        apollo: {
+            // Query with parameters
+            registration() {
+                return {
+                    query: gql`query getCompanyProfile($details: String!) { registration(key: $details) { id, value }}`,
+                    variables() {
+                        return {
+                            details: "Company Profile",
+                        }
+                    },
+                    update(data) {
+                        this.$data.id = data.registration.id;
+                        return JSON.parse(data.registration.value)
+                    },
+                    error(error) {
+                        this.$store.commit('Snackbar', {color: 'red', text: 'We\'ve got an error!\n' + error, show: true});
+                    },
+                }
+            },
+        },
         components: {
             VWidget,
             ThemeSettings
         },
         data: () => ({
+            id: 0,
             step: 1,
             registration: {
                 logo: null,
@@ -177,6 +199,7 @@
                 }
             },
             submit() {
+                // mutation { updateMetadata(input: {id: "14", key: "Company Profile"}) { id, key, value }}
                 // We save the user input in case of an error
                 const newTag = this.newTag;
 
@@ -186,7 +209,7 @@
                 // Call to the graphql mutation
                 this.$apollo.mutate({
                     // Mutation Query
-                    mutation: gql`mutation($label: CreateMetadataInput!) {createMetadata(input: $label) {id, key, value }}`,
+                    mutation: gql`mutation($label: CreateMetadataInput!) { createMetadata(input: $label) { id, key, value } }`,
                     // Parameters
                     variables: {
                         label: {key: "Company Profile", value: JSON.stringify(this.$data.registration)}
@@ -207,10 +230,10 @@
                     optimisticResponse: {
                         __typename: 'Mutation',
                         createMetadata: {
-                            id: -1,
-                            key: '',
+                            id: 1,
+                            key: 'Company Profile',
                             value: '',
-                            __typename: 'Metadata',
+                            __typename: 'Registration',
                         },
                     },
                 }).then((data) => {
@@ -225,15 +248,6 @@
             //   }
             }
         },
-        // apollo: {
-        //     $query: {
-        //       loadingKey: 'loading',
-        //     },
-        //     // Query with parameters
-        //     ping: {
-        //         query: gql`{metadata(id:26) {id, key, value}}`,
-        //     },
-        // }
     };
 </script>
 

@@ -14,12 +14,6 @@ import ApolloClient from "apollo-boost";
 import 'font-awesome/css/font-awesome.css';
 import colors from 'vuetify/es5/util/colors';
 
-const apolloProvider = new VueApollo({
-    defaultClient: new ApolloClient({
-        uri: "/graphql"
-    })
-});
-
 Vue.config.devtools = true;
 Vue.config.productionTip = false;
 
@@ -94,6 +88,19 @@ const store = new Vuex.Store({
           //appData.activeview = 'notification';
         }
     }
+});
+
+const apolloProvider = new VueApollo({
+    defaultClient: new ApolloClient({
+        uri: "/graphql"
+    }),
+    defaultOptions: {
+        // apollo options applied to all queries in components
+        $query: {
+            loadingKey: 'loading',
+            fetchPolicy: 'cache-and-network',
+        },
+    },
 });
 
 /* eslint-disable no-new */

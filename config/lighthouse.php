@@ -36,7 +36,7 @@ return [
     */
     'route' => [
         'prefix' => '',
-        // 'middleware' => ['web','api'],    // [ 'loghttp']
+        //'middleware' => ['web','api'],    // [ 'loghttp']
     ],
 
     /*

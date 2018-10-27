@@ -1,6 +1,6 @@
 extend type Query {
     me: User @auth
-    metadata(id: ID @eq): Metadata @find(model: "App\\Models\\Metadata")
+    registration(id: ID @eq key: String): Metadata @find(model: "App\\Models\\Metadata")
     metadatas: [Metadata!]! @paginate(type: "paginator" model: "App\\Models\\Metadata")
 }
 
@@ -35,43 +35,8 @@ input DeleteMetadataInput {
     id: ID! @rules(apply: ["required"])
 }
 
-# mutation {
-#    deleteMetadata(input: {id: 12}){
-#     id
-#   }
-# }
-
-# mutation {
-#    createMetadata(input:{ key: "tt" value: "{\"id\":12, \"Name\":\"Adegbenga Adeye\"}"}) {
-#      id
-#      key
-#      value
-#    }
-# }
-
-# mutation {
-#     updateMetadata(input: {id: "14", key: "Company Profile"}) {
-#       id
-#       key
-#       value
-#     }
-# }
-
-# {
-#   metadatas(count:2, page:3) {
-#     data {
-#     id
-#     key
-#     value
-#   }
-# }
-# }
-
-# {
-#   metadata(id:26) {
-#     id
-#     key
-#     value
-# 	}
-# }
-
+interface MutationResponse {
+  code: String!
+  success: Boolean!
+  message: String!
+}

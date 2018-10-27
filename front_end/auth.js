@@ -114,7 +114,7 @@ export default {
             if (response.data.meta.IsAdmin === true && response.data.meta.IsProfileValid === false) {
                 // Redirect to force admin to setup profile.
                 router.push({
-                    name: 'admin/admin_profile'
+                    name: 'admin/company_profile'
                 });
             } else if (response.data.meta.IsAdmin === false && response.data.meta.IsProfileValid === false) {
                 // Deny access till profile is valid.

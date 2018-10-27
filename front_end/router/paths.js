@@ -160,9 +160,9 @@ export default [
         meta: {
             breadcrumb: true
         },
-        name: 'admin/admin_profile',
+        name: 'admin/company_profile',
         component: function (resolve) {
-            require(['../admin/profile.vue'], resolve);
+            require(['../admin/CompanyProfile.vue'], resolve);
         }
     },
     // {

@@ -24633,7 +24633,7 @@ var Menu = [
   group: "admin",
   component: "admin",
   icon: "filter_vintage",
-  items: [{ name: "roles", title: "Roles", component: "components/roles" }, { name: "users", title: "Users", component: "components/users" }, { name: "metadata", title: "Metadata", component: "components/metadata" }, { name: "admin branch", title: "Branch", component: "admin/branch" }, { name: "admin profile", title: "Profile", component: "admin/admin_profile" }, { name: "access control", title: "Access Control", component: "components/permissions" }]
+  items: [{ name: "roles", title: "Roles", component: "components/roles" }, { name: "users", title: "Users", component: "components/users" }, { name: "metadata", title: "Metadata", component: "components/metadata" }, { name: "admin branch", title: "Branch", component: "admin/branch" }, { name: "admin profile", title: "Company Profile", component: "admin/company_profile" }, { name: "access control", title: "Access Control", component: "components/permissions" }]
 }, {
   title: "Chat",
   group: "apps",
@@ -30779,12 +30779,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 
 
-var apolloProvider = new __WEBPACK_IMPORTED_MODULE_7_vue_apollo__["a" /* default */]({
-    defaultClient: new __WEBPACK_IMPORTED_MODULE_11_apollo_boost__["a" /* default */]({
-        uri: "/graphql"
-    })
-});
-
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.config.devtools = true;
 __WEBPACK_IMPORTED_MODULE_0_vue___default.a.config.productionTip = false;
 
@@ -30856,6 +30850,19 @@ var store = new __WEBPACK_IMPORTED_MODULE_1_vuex__["a" /* default */].Store({
             // Automatically Load the notification page whenever called.
             // app.setActiveView('notification');
             //appData.activeview = 'notification';
+        }
+    }
+});
+
+var apolloProvider = new __WEBPACK_IMPORTED_MODULE_7_vue_apollo__["a" /* default */]({
+    defaultClient: new __WEBPACK_IMPORTED_MODULE_11_apollo_boost__["a" /* default */]({
+        uri: "/graphql"
+    }),
+    defaultOptions: {
+        // apollo options applied to all queries in components
+        $query: {
+            loadingKey: 'loading',
+            fetchPolicy: 'cache-and-network'
         }
     }
 });
@@ -59177,7 +59184,7 @@ if (inBrowser && window.Vue) {
     meta: {
         breadcrumb: true
     },
-    name: 'admin/admin_profile',
+    name: 'admin/company_profile',
     component: function component(resolve) {
         __webpack_require__.e/* require */(5).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(300)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
