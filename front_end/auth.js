@@ -75,12 +75,12 @@ export default {
         // sessionStorage.setItem("permittedMenu", HtmlMenu);
     },
     check() {
-        var token = sessionStorage.getItem('id_token');
-        if (token !== null) {
-            Vue.http.get(actions.check + token).then((response) => {
-                this.buildmenu(response.data);
-            });
-        }
+        // var token = sessionStorage.getItem('id_token');
+        // if (token !== null) {
+        //     Vue.http.get(actions.check + token).then((response) => {
+        //         this.buildmenu(response.data);
+        //     });
+        // }
     },
     mountresetcomponents() {
         router.push({
@@ -110,9 +110,23 @@ export default {
             Vue.http.headers.common['Authorization'] = 'Token ' + sessionStorage.getItem('id_token');
 
             this.buildmenu(response.data);
-            router.push({
-                name: 'Dashboard'
-            });
+
+            if (response.data.meta.IsAdmin === true && response.data.meta.IsProfileValid === false) {
+                // Redirect to force admin to setup profile.
+                router.push({
+                    name: 'admin/company_profile'
+                });
+            } else if (response.data.meta.IsAdmin === false && response.data.meta.IsProfileValid === false) {
+                // Deny access till profile is valid.
+                router.push({
+                    name: 'AccessDenied'
+                });
+            } else {
+                // We are good here.
+                router.push({
+                    name: 'Dashboard'
+                });
+            }
         }, (response) => {
             context.error = true;
         });

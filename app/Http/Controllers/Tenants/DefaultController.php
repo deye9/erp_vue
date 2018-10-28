@@ -32,7 +32,7 @@ class DefaultController extends Controller
     {
         $data = [];
         $data['name'] = 'Andela';
-        $data['catch_phase'] = 'When brilliance and opportunity meet';
+        $data['catch_phase'] = 'When brilliance and opportunity meet.';
         $data['logo'] = 'https://media.cdn.gradconnection.com/uploads/c4aa0069-1948-440f-bace-0792744eea59-andela_logo.png';
         return view(($this->getTenantName() === '') ? 'welcome' : 'tenants.welcome', ['tenant' => $data]);
     }

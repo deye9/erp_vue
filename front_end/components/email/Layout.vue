@@ -104,14 +104,14 @@ export default {
     replayDialog: null,
     menus: MailMenu,
     items: [
-      {
-        icon: 'account_circle',
-        href: '#',
-        title: 'Profile',
-        click: (e) => {
-          console.log(e);
-        }
-      },
+    //   {
+    //     icon: 'account_circle',
+    //     href: '/admin/profile',
+    //     title: 'Profile',
+    //     click: (e) => {
+    //       console.log(e);
+    //     }
+    //   },
       {
         icon: 'settings',
         href: '#',

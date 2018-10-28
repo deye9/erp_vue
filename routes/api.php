@@ -25,6 +25,8 @@ Route::post('/signin',  [
     'uses' => 'AuthController@signin',
 ]);
 
+Route::post('/base64upload', 'ValidateController@base64upload')->name('base64upload');
+
 Route::group(['middleware' => 'tenancy.enforce'], function () {
 
     Route::get('/queries',  [

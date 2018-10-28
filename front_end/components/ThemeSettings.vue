@@ -2,18 +2,16 @@
 <div id="themeSetting">
   <v-toolbar color="blue" dark>
     <v-toolbar-title>
-      Theme Settings
+        Color Options
     </v-toolbar-title>
   </v-toolbar>
   <v-container>
     <v-layout column>
       <v-flex>
-        <v-subheader class="px-1 my-2">
-          Color Option
-        </v-subheader>
         <div class="color-option">
           <v-layout wrap>
             <label class="color-option--label flex xs6 pa-1" v-for="(option,index) in themeColorOptions" :key="index">
+                <h4>{{option.key}}</h4>
               <input type="radio" name="color" v-bind:value="option.key" v-model="themeColor">
               <span class="color-option--item bg">
                 <span class="overlay">
@@ -27,9 +25,11 @@
           </v-layout>
         </div>
         <div class="theme-options">
-          <v-subheader class="px-1 my-2">
-            Sidebar Option
-          </v-subheader>
+            <v-toolbar color="blue" dark>
+                <v-toolbar-title>
+                    Sidebar Option
+                </v-toolbar-title>
+            </v-toolbar>
           <v-divider></v-divider>
           <div class="my-3">
             <v-btn-toggle v-model="sideBarOption">
@@ -49,118 +49,119 @@
 </template>
 
 <script>
-import colors from 'vuetify/es5/util/colors';
-export default {
-  data () {
-    return {
-      themeColor: 'indigo',
-      sideBarOption: 'light',
-      colors: colors
-    };
-  },
-  computed: {
-    themeColorOptions () {
-      return [
-        {
-          key: 'blue',
-          value: {
-            sideNav: 'blue',
-            mainNav: 'blue',
-            sideManu: 'white'
-          }
+    import colors from 'vuetify/es5/util/colors';
+    export default {
+        data () {
+            return {
+                themeColor: 'indigo',
+                sideBarOption: 'light',
+                colors: colors
+            };
         },
-        // {
-        //   key: 'lightBlue',
-        //   value: {
-        //     sideNav: 'blue',
-        //     mainNav: 'white',
-        //     sideManu: 'blue lighten-1'
-        //   }
-        // },
-        {
-          key: 'teal',
-          value: {
-            sideNav: 'teal',
-            mainNav: 'teal',
-            sideManu: 'white'
-          }
+        methods: { },
+        computed: {
+            themeColorOptions () {
+                return [
+                    {
+                    key: 'blue',
+                    value: {
+                        sideNav: 'blue',
+                        mainNav: 'blue',
+                        sideManu: 'white'
+                    }
+                    },
+                    {
+                    key: 'lightBlue',
+                    value: {
+                        sideNav: 'blue',
+                        mainNav: 'white',
+                        sideManu: 'blue lighten-1'
+                    }
+                    },
+                    {
+                    key: 'teal',
+                    value: {
+                        sideNav: 'teal',
+                        mainNav: 'teal',
+                        sideManu: 'white'
+                    }
+                    },
+                    {
+                    key: 'red',
+                    value: {
+                        sideNav: 'red',
+                        mainNav: 'red',
+                        sideManu: 'white'
+                    }
+                    },
+                    {
+                    key: 'orange',
+                    value: {
+                        sideNav: 'orange',
+                        mainNav: 'orange',
+                        sideManu: 'white'
+                    }
+                    },
+                    {
+                    key: 'purple',
+                    value: {
+                        sideNav: 'purple',
+                        mainNav: 'purple',
+                        sideManu: 'white'
+                    }
+                    },
+                    {
+                    key: 'indigo',
+                    value: {
+                        sideNav: 'indigo',
+                        mainNav: 'indigo',
+                        sideManu: 'white'
+                    }
+                    },
+                    {
+                    key: 'cyan',
+                    value: {
+                        sideNav: 'cyan',
+                        mainNav: 'cyan',
+                        sideManu: 'white'
+                    }
+                    },
+                    {
+                    key: 'pink',
+                    value: {
+                        sideNav: 'pink',
+                        mainNav: 'pink',
+                        sideManu: 'white'
+                    }
+                    },
+                    {
+                    key: 'green',
+                    value: {
+                        sideNav: 'green',
+                        mainNav: 'green',
+                        sideManu: 'white'
+                    }
+                    }
+                ];
+            },
         },
-        {
-          key: 'red',
-          value: {
-            sideNav: 'red',
-            mainNav: 'red',
-            sideManu: 'white'
-          }
-        },
-        {
-          key: 'orange',
-          value: {
-            sideNav: 'orange',
-            mainNav: 'orange',
-            sideManu: 'white'
-          }
-        },
-        {
-          key: 'purple',
-          value: {
-            sideNav: 'purple',
-            mainNav: 'purple',
-            sideManu: 'white'
-          }
-        },
-        {
-          key: 'indigo',
-          value: {
-            sideNav: 'indigo',
-            mainNav: 'indigo',
-            sideManu: 'white'
-          }
-        },
-        {
-          key: 'cyan',
-          value: {
-            sideNav: 'cyan',
-            mainNav: 'cyan',
-            sideManu: 'white'
-          }
-        },
-        {
-          key: 'pink',
-          value: {
-            sideNav: 'pink',
-            mainNav: 'pink',
-            sideManu: 'white'
-          }
-        },
-        {
-          key: 'green',
-          value: {
-            sideNav: 'green',
-            mainNav: 'green',
-            sideManu: 'white'
-          }
+        watch: {
+            themeColor: {
+                handler (val) {
+                    this.$vuetify.theme.primary = this.colors[val].base;
+                    this.$emit('ColorOptions', {themeColor: this.themeColor, sideBarOption: this.sideBarOption});
+                },
+                immediate: true
+            },
+            sideBarOption: {
+                handler (val) {
+                    this.$vuetify.dark = (val === 'dark');
+                    this.$emit('ColorOptions', {themeColor: this.themeColor, sideBarOption: val});
+                },
+                immediate: true,
+            }
         }
-      ];
-    }
-  },
-  watch: {
-    themeColor: {
-      handler (val) {
-        this.$vuetify.theme.primary = this.colors[val].base;
-
-      },
-      immediate: true
-    },
-    sideBarOption: {
-      handler (val) {
-        this.$vuetify.dark = (val === 'dark');
-      },
-      immediate: true
-    }
-  },
-
-};
+    };
 </script>
 
 <style lang="stylus" scoped>

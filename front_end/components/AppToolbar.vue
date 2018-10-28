@@ -61,7 +61,7 @@ export default {
     items: [
       {
         icon: 'account_circle',
-        href: '#',
+        href: '/admin/profile',
         title: 'Profile',
         click: (e) => {
           console.log(e);
