@@ -53,7 +53,7 @@
                         </div>
                         <div class="form-group row">
                             <label for="LogoUpload" class="col-4 col-form-label"> Logo </label>
-                            <div class="col-8 input-group mb-3 upload-wrapper">
+                            <div class="col-8 input-group mb-3">
                                 <div class="input-group-prepend">
                                     <div class="float-left previewImg">
                                         <img :src="logo" class="img-responsive center-block" alt="Logo holder" style="width:36px;height:36px;" id="imgPreview" name="imgPreview">
@@ -63,9 +63,10 @@
                                         <i class="fas fa-upload"></i>
                                     </span>
                                 </div>
-                                <input type="text" id="fake_input" class="form-control form-style-fake" placeholder="Choose your Logo" readonly>
-                                <input type="file" v-on:change="onLogoChange" class="form-control" accept="image/*" id="LogoUpload" name="LogoUpload">
-
+                                <div class="upload-btn-wrapper">
+                                    <button id="uploadInfo" name="uploadInfo" class="btn">Choose your Logo</button>
+                                    <input type="file" v-on:change="onLogoChange" class="form-control" accept="image/*" id="LogoUpload" name="LogoUpload" placeholder="Choose your Logo">
+                                </div>
                                 <div class="float-right">
                                     <button class="btn btn-success btn-block" @click="upload">Upload</button>
                                 </div>
@@ -83,14 +84,10 @@
               <v-stepper-content step="3">
                 <v-card color="grey lighten-1" class="mb-5" height="200px"></v-card>
                 <v-btn color="primary" @click.native="step = 2"> Previous</v-btn>
-                <v-btn color="primary" @click="submit">Save</v-btn>
+                <v-btn id="SaveData" color="primary" @click="submit">Save</v-btn>
               </v-stepper-content>
             </v-stepper-items>
           </v-stepper>
-        <br/>
-        Debug: {{metadata}}
-
-        <br />
         </v-flex>
       </v-layout>
     </v-container>
@@ -133,7 +130,6 @@
                 logo: null,
                 email: null,
                 website: null,
-                logourl: null,
                 publicinfo: null,
                 catchphase: null,
                 companyname: null,
@@ -143,7 +139,7 @@
                 },
             }
         }),
-        computed:  {
+        computed: {
             logo() {
                 return '/images/question_mark.svg';
             },
@@ -180,6 +176,8 @@
                     logo.src = event.target.result;
                     Rlogo.logo = event.target.result;
                 }.bind(Rlogo);
+
+                document.getElementById('uploadInfo').innerText = document.getElementById("LogoUpload").value;
             },
             upload() {
                 if (this.$data.registration.logo !== null)
@@ -187,9 +185,8 @@
                     axios.post('/api/base64upload', {image: this.$data.registration.logo})
                         .then(response => {
                             if (response.data.success) {
-                                this.registration.logourl = response.data.filename;
+                                this.registration.logo = response.data.filename;
                                 this.$store.commit('updatetenant', this.$data.registration);
-                                this.$data.registration.logo = null;
                                 this.$store.commit('Snackbar', {color: 'blue', text: response.data.success, show: true});
                             }
                         }
@@ -199,7 +196,9 @@
                 }
             },
             submit() {
-                // mutation { updateMetadata(input: {id: "14", key: "Company Profile"}) { id, key, value }}
+                var button = document.getElementById("SaveData");
+                button.disabled = true;
+
                 // We save the user input in case of an error
                 const newTag = this.newTag;
 
@@ -207,45 +206,60 @@
                 this.newTag = '';
 
                 // Call to the graphql mutation
-                this.$apollo.mutate({
-                    // Mutation Query
-                    mutation: gql`mutation($label: CreateMetadataInput!) { createMetadata(input: $label) { id, key, value } }`,
-                    // Parameters
-                    variables: {
-                        label: {key: "Company Profile", value: JSON.stringify(this.$data.registration)}
-                    },
-                    // // Update the cache with the result
-                    // // The query will be updated with the optimistic response and then with the real result of the mutation
-                    // update: (store, { data: { newTag } }) => {
-                    //     // Read the data from our cache for this query.
-                    //     const data = store.readQuery({ query: TAGS_QUERY })
-                    //     // Add our tag from the mutation to the end
-                    //     data.tags.push(newTag)
-                    //     // Write our data back to the cache.
-                    //     store.writeQuery({ query: TAGS_QUERY, data })
-                    // },
-
-                    // Optimistic UI
-                    // Will be treated as a 'fake' result as soon as the request is made so that the UI can react quickly and the user be happy
-                    optimisticResponse: {
-                        __typename: 'Mutation',
-                        createMetadata: {
-                            id: 1,
-                            key: 'Company Profile',
-                            value: '',
-                            __typename: 'Registration',
+                if (this.$data.id >= 1) {
+                    this.$apollo.mutate({
+                        // Mutation Query
+                        mutation: gql`mutation($label: UpdateMetadataInput!) { updateMetadata(input: $label) { id, key, value } }`,
+                        // Parameters
+                        variables: {
+                            label: {'id': this.$data.id, key: "Company Profile", value: JSON.stringify(this.$data.registration)}
                         },
-                    },
-                }).then((data) => {
-                    this.$store.commit('Snackbar', {color: 'blue', text: 'Profile has been successfully setup.', show: true});
-                }).catch((error) => {
-                    this.$store.commit('Snackbar', {color: 'blue', text: 'An error occurred while setting up your profile. Kindly try again.', show: true});
-                    // We restore the initial user input
-                    this.newTag = newTag
-                });
-            //   if (this.$refs.form.validate()) {
-            //     this.$store.commit('Snackbar', {color: 'red', text: 'Data is valid.', show: true});
-            //   }
+                        // Optimistic UI. Will be treated as a 'fake' result as soon as the request is made so that the UI can react quickly and the user be happy
+                        optimisticResponse: {
+                            __typename: 'Mutation',
+                            updateMetadata: {
+                                id: 1,
+                                key: 'Company Profile',
+                                value: '',
+                                __typename: 'Registration',
+                            },
+                        },
+                    }).then((data) => {
+                        this.$store.commit('Snackbar', {color: 'blue', text: 'Profile has been successfully setup.', show: true});
+                    }).catch((error) => {
+                        this.$store.commit('Snackbar', {color: 'blue', text: 'An error occurred while setting up your profile. Kindly try again.', show: true});
+                        // We restore the initial user input
+                        this.newTag = newTag
+                    });
+                } else {
+                    this.$apollo.mutate({
+                        // Mutation Query
+                        mutation: gql`mutation($label: CreateMetadataInput!) { createMetadata(input: $label) { id, key, value } }`,
+                        // Parameters
+                        variables: {
+                            label: {key: "Company Profile", value: JSON.stringify(this.$data.registration)}
+                        },
+                        // Optimistic UI. Will be treated as a 'fake' result as soon as the request is made so that the UI can react quickly and the user be happy
+                        optimisticResponse: {
+                            __typename: 'Mutation',
+                            createMetadata: {
+                                id: 0,
+                                key: 'Company Profile',
+                                value: '',
+                                __typename: 'Registration',
+                            }
+                        },
+                    }).then((data) => {
+                        button.disabled = false;
+                        this.$store.commit('Snackbar', {color: 'blue', text: 'Profile has been successfully setup.', show: true});
+                    }).catch((error) => {
+                        button.disabled = false;
+                        this.$store.commit('Snackbar', {color: 'blue', text: 'An error occurred while setting up your profile. Kindly try again.', show: true});
+
+                        // We restore the initial user input
+                        this.newTag = newTag
+                    });
+                }
             }
         },
     };
@@ -256,23 +270,20 @@
         line-height: 1.7;
     }
 
-    .form-style-fake {
-        top:0px;
-        position:relative;
-        height: calc(2.35rem + 4px);
-    }
-
-    .upload-wrapper {
-        margin-top: 20px;
+    .upload-btn-wrapper {
+        width: 75%;
         overflow: hidden;
         position: relative;
+        display: inline-block;
+        border: 1px solid gray;
+        background-color: #e9ecef;
     }
 
-    .upload-wrapper input[type=file] {
+    .upload-btn-wrapper input[type=file] {
+        top: 0;
+        left: 0;
+        opacity: 0;
         font-size: 100px;
         position: absolute;
-        left: 0;
-        top: 0;
-        opacity: 0;
     }
 </style>

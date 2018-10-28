@@ -1,6 +1,6 @@
 extend type Query {
     me: User @auth
-    registration(id: ID @eq key: String): Metadata @find(model: "App\\Models\\Metadata")
+    registration(id: ID @eq key: String @eq): Metadata @find(model: "App\\Models\\Metadata")
     metadatas: [Metadata!]! @paginate(type: "paginator" model: "App\\Models\\Metadata")
 }
 
