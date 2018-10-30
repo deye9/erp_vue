@@ -141,7 +141,7 @@
         }),
         computed: {
             logo() {
-                return '/images/question_mark.svg';
+                return (this.$data.registration.logo === null) ? this.$data.registration.logo : '/images/question_mark.svg';
             },
             tenant() {
                 return this.$store.state.tenant;
