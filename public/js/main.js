@@ -32655,6 +32655,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
     computed: {
         snackbar: function snackbar() {
             return this.$store.state.snack;
+        },
+        isDark: function isDark() {
+            return tenant.theme.sideBarOption === 'dark';
         }
     },
     created: function created() {
@@ -32881,14 +32884,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
       _this.drawer = !_this.drawer;
     });
     this.$vuetify.dark = tenant.theme.sideBarOption === 'dark';
-    var element = document.getElementById("appDrawer");
-    if (tenant.theme.sideBarOption === 'dark') {
-      element.classList.add("theme--dark");
-      element.classList.remove("theme--light");
-    } else {
-      element.classList.add("theme--light");
-      element.classList.remove("theme--dark");
-    }
   },
 
   methods: {
@@ -34129,7 +34124,10 @@ var render = function() {
         ? [
             _c(
               "v-app",
-              { staticClass: "app", attrs: { id: "inspire" } },
+              {
+                staticClass: "app",
+                attrs: { id: "inspire", dark: _vm.isDark }
+              },
               [
                 _c("app-drawer", { staticClass: "app--drawer" }),
                 _vm._v(" "),

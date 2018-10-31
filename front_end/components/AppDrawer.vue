@@ -101,14 +101,6 @@ export default {
             this.drawer = (!this.drawer);
         });
         this.$vuetify.dark = (tenant.theme.sideBarOption === 'dark');
-        var element = document.getElementById("appDrawer");
-        if (tenant.theme.sideBarOption === 'dark') {
-            element.classList.add("theme--dark");
-            element.classList.remove("theme--light");
-        } else {
-            element.classList.add("theme--light");
-            element.classList.remove("theme--dark");
-        }
   },
   methods: {
         genChildTarget (item, subItem) {
