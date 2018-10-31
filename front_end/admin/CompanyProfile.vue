@@ -67,6 +67,7 @@
                                     <button id="uploadInfo" name="uploadInfo" class="btn">Choose your Logo</button>
                                     <input type="file" v-on:change="onLogoChange" class="form-control" accept="image/*" id="LogoUpload" name="LogoUpload" placeholder="Choose your Logo">
                                 </div>
+                                <!-- <input name="file" type="file" class="file-upload" data-cloudinary-field="image_id" data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}"/> -->
                                 <div class="float-right">
                                     <button class="btn btn-success btn-block" @click="upload">Upload</button>
                                 </div>
@@ -141,7 +142,7 @@
         }),
         computed: {
             logo() {
-                return '/images/question_mark.svg';
+                return (this.$data.registration.logo === null) ? '/images/question_mark.svg' : this.$data.registration.logo ;
             },
             tenant() {
                 return this.$store.state.tenant;

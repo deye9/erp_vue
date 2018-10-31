@@ -6,7 +6,7 @@
             </a>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="/home">
-                <v-toolbar-title class="white--text"> Welcome to {{tenant.name}} </v-toolbar-title>
+                <v-toolbar-title class="white--text"> Welcome to {{tenant.companyname}} </v-toolbar-title>
             </a>
             <v-spacer></v-spacer>
         </v-toolbar>
@@ -20,7 +20,7 @@
                         <v-card class="elevation-1 pa-3">
                         <v-card-text>
                             <div class="layout column align-center">
-                                <img :src="tenant.logo" :alt="tenant.name" width="120" height="120">
+                                <img :src="tenant.logo" :alt="tenant.companyname" width="120" height="120">
                                 <h3 class="flex my-4 primary--text align-center">Reset your Password</h3>
                             </div>
                             <v-form>

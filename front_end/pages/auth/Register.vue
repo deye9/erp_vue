@@ -6,7 +6,7 @@
             </a>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="/home">
-                <v-toolbar-title class="white--text"> Welcome to {{tenant.name}} </v-toolbar-title>
+                <v-toolbar-title class="white--text"> Welcome to {{tenant.companyname}} </v-toolbar-title>
             </a>
             <v-spacer></v-spacer>
         </v-toolbar>

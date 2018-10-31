@@ -27,6 +27,12 @@ class Metadata extends Model implements Auditable
 
     public static function IsProfileValid()
     {
-        return false;
+        $res = Metadata::where('key', '=', 'Company Profile')->exists();
+        return ($res == 1) ? true : false;
+    }
+
+    public static function GetProfile() {
+        // Remember to check for null just in case it fails.
+       return Metadata::where('key', '=', 'Company Profile')->first();
     }
 }

@@ -11,7 +11,7 @@ import VeeValidate from 'vee-validate';
 import Truncate from 'lodash.truncate';
 import VueResource from 'vue-resource';
 import ApolloClient from "apollo-boost";
-import 'font-awesome/css/font-awesome.css';
+// import 'font-awesome/css/font-awesome.css';
 import colors from 'vuetify/es5/util/colors';
 
 Vue.config.devtools = true;
@@ -25,11 +25,6 @@ Vue.use(VueApollo);
 Vue.use(VueResource);
 Vue.use(VeeValidate, { fieldsBagName: 'formFields' });
 Vue.use(Vuetify, {
-  // theme: {
-  //   primary: colors.indigo.base, // #E53935
-  //   secondary: colors.indigo.lighten4, // #FFCDD2
-  //   accent: colors.indigo.base // #3F51B5
-  // },
   options: {
     themeVariations: ['primary', 'secondary', 'accent'],
     extra: {
@@ -78,7 +73,7 @@ const store = new Vuex.Store({
         },
         updatetenant (state, payload) {
             state.tenant.logo = payload.logo;
-            state.tenant.name = payload.companyname;
+            state.tenant.companyname = payload.companyname;
         },
         response (state, payload) {
           state.message = payload.message;
