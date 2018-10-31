@@ -53,6 +53,7 @@
     export default {
         data () {
             return {
+                colorCode: '',
                 themeColor: 'indigo',
                 sideBarOption: 'light',
                 colors: colors
@@ -148,15 +149,16 @@
         watch: {
             themeColor: {
                 handler (val) {
+                    this.colorCode = this.colors[val].base;
                     this.$vuetify.theme.primary = this.colors[val].base;
-                    this.$emit('ColorOptions', {themeColor: this.themeColor, sideBarOption: this.sideBarOption});
+                    this.$emit('ColorOptions', {themeColor: this.themeColor + '[' + this.colorCode + ']', sideBarOption: this.sideBarOption});
                 },
                 immediate: true
             },
             sideBarOption: {
                 handler (val) {
                     this.$vuetify.dark = (val === 'dark');
-                    this.$emit('ColorOptions', {themeColor: this.themeColor, sideBarOption: val});
+                    this.$emit('ColorOptions', {themeColor: this.themeColor + '[' + this.colorCode + ']', sideBarOption: val});
                 },
                 immediate: true,
             }

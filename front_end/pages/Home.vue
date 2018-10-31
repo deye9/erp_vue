@@ -6,7 +6,7 @@
             </a>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="/home">
-                <v-toolbar-title class="white--text"> Welcome to {{tenant.name}} </v-toolbar-title>
+                <v-toolbar-title class="white--text"> Welcome to {{tenant.companyname}} </v-toolbar-title>
             </a>
             <v-spacer></v-spacer>
             <v-toolbar-items>
@@ -17,9 +17,9 @@
         <v-container fluid fill-height>
             <v-layout align-center justify-center>
                 <div class="text-md-center">
-                    <h1 class="mainheader"> {{tenant.name}} </h1>
+                    <h1 class="mainheader"> {{tenant.companyname}} </h1>
                     <br />
-                    <h2 class="my-3 headline"> {{tenant.catch_phase}} </h2>
+                    <h2 class="my-3 headline"> {{tenant.catchphase}} </h2>
                 </div>
             </v-layout>
         </v-container>

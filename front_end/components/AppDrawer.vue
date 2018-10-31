@@ -1,16 +1,9 @@
 <template>
-  <v-navigation-drawer
-    id="appDrawer"
-    :mini-variant.sync="mini"
-    fixed
-    :dark="$vuetify.dark"
-    app
-    v-model="drawer"
-    width="260">
+  <v-navigation-drawer id="appDrawer" :mini-variant.sync="mini" fixed :dark="$vuetify.dark" app v-model="drawer" width="260">
     <v-toolbar color="primary darken-1" dark>
-      <img v-bind:src="computeLogo" height="36" :alt="tenant.name">
+      <img v-bind:src="computeLogo" height="36" :alt="tenant.companyname">
       <v-toolbar-title class="ml-0 pl-3">
-        <span class="hidden-sm-and-down">{{tenant.name}}</span>
+        <span class="hidden-sm-and-down">{{tenant.companyname}}</span>
       </v-toolbar-title>
     </v-toolbar>
     <vue-perfect-scrollbar class="drawer-menu--scroll" :settings="scrollSettings">
@@ -97,34 +90,39 @@ export default {
       return true;
     },
     computeLogo () {
-      return this.$store.state.tenant.logo;
-    },
-    sideToolbarColor () {
-      return this.$vuetify.options.extra.sideNav;
+        return this.$store.state.tenant.logo;
     },
     tenant() {
         return this.$store.state.tenant;
     }
   },
   created () {
-    window.getApp.$on('APP_DRAWER_TOGGLED', () => {
-      this.drawer = (!this.drawer);
-    });
+        window.getApp.$on('APP_DRAWER_TOGGLED', () => {
+            this.drawer = (!this.drawer);
+        });
+        this.$vuetify.dark = (tenant.theme.sideBarOption === 'dark');
+        var element = document.getElementById("appDrawer");
+        if (tenant.theme.sideBarOption === 'dark') {
+            element.classList.add("theme--dark");
+            element.classList.remove("theme--light");
+        } else {
+            element.classList.add("theme--light");
+            element.classList.remove("theme--dark");
+        }
   },
   methods: {
-    genChildTarget (item, subItem) {
-      if (subItem.href) return;
-      if (subItem.component) {
-        return {
-          name: subItem.component,
-        };
-      }
-      return { name: `${item.group}/${(subItem.name)}` };
-    },
+        genChildTarget (item, subItem) {
+            if (subItem.href) return;
+            if (subItem.component) {
+                return {
+                    name: subItem.component,
+                };
+            }
+            return { name: `${item.group}/${(subItem.name)}` };
+        },
   }
 };
 </script>
-
 
 <style lang="stylus">
 #appDrawer

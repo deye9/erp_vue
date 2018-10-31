@@ -30,10 +30,15 @@ class DefaultController extends Controller
     */
     public function index()
     {
-        $data = [];
-        $data['name'] = 'Andela';
-        $data['catch_phase'] = 'When brilliance and opportunity meet.';
-        $data['logo'] = 'https://media.cdn.gradconnection.com/uploads/c4aa0069-1948-440f-bace-0792744eea59-andela_logo.png';
-        return view(($this->getTenantName() === '') ? 'welcome' : 'tenants.welcome', ['tenant' => $data]);
+        $tenant_name = $this->getTenantName();
+        $data = json_decode(\App\Models\Metadata::GetProfile()['value']);
+
+        if (is_null($data)) {
+            $data['catchphase'] = '';
+            $data['companyname'] = $tenant_name;
+            $data['logo'] = '/images/question_mark.svg';
+            $data['theme'] = ['themeColor' => "blue[#2196f3]", 'sideBarOption' => 'light'];
+        }
+        return view(($tenant_name === '') ? 'welcome' : 'tenants.welcome', ['tenant' => $data]);
     }
 }
