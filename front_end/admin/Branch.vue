@@ -1,134 +1,185 @@
 <template>
-  <div id="page-steppers">
-    <v-container grid-list-xl fluid>
-      <v-layout row wrap>
-        <v-flex sm12>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group row">
-                        <label for="companyname" class="col-4 col-form-label"> Company Name <i style="color:red;">*</i> </label>
-                        <div class="col-8">
-                            <input id="companyname" name="companyname" placeholder="Company Name" class="form-control" required="required" type="text">
+    <div id="page-alerts">
+        <v-container grid-list-xl fluid>
+            <v-layout row wrap>
+                <v-flex lg12>
+                    <v-widget title="Branch Offices...">
+                        <div slot="widget-content">
+                            <v-layout wrap justify-space-around align-center class="ma-0">
+                                <v-form v-model="valid" ref="form" lazy-validation>
+                                    <v-layout row wrap>
+                                        <v-flex lg12 sm12>
+                                            <v-text-field label="Title" name="title" placeholder="Enter Title" v-model="title"></v-text-field>
+                                        </v-flex>
+                                        <v-flex sm6 lg6>
+                                            <v-menu
+                                            class="pr-2"
+                                            ref="statDate"
+                                            lazy
+                                            :close-on-content-click="false"
+                                            v-model="startDateMenu"
+                                            transition="scale-transition"
+                                            offset-y
+                                            full-width
+                                            :nudge-bottom="-22"
+                                            max-width="290px"
+                                            :return-value.sync="startDate"
+                                            >
+                                            <v-text-field
+                                                slot="activator"
+                                                label="Start Date"
+                                                v-model="startDate"
+                                                append-icon="event"
+                                                readonly
+                                            ></v-text-field>
+                                            <v-date-picker v-model="startDate" no-title scrollable>
+                                                <v-spacer></v-spacer>
+                                                <v-btn flat color="primary" @click="startDateMenu = false">Cancel</v-btn>
+                                                <v-btn flat color="primary" @click="$refs.statDate.save(startDate)">OK</v-btn>
+                                            </v-date-picker>
+                                            </v-menu>
+                                        </v-flex>
+                                        <v-flex sm6 lg6>
+                                            <v-menu
+                                            ref="startTime"
+                                            lazy
+                                            :close-on-content-click="false"
+                                            v-model="startTimeMenu"
+                                            transition="scale-transition"
+                                            offset-y
+                                            full-width
+                                            :nudge-bottom="-24"
+                                            max-width="290px"
+                                            :return-value.sync="startTime"
+                                            >
+                                            <v-text-field
+                                                slot="activator"
+                                                label="Start Time"
+                                                v-model="startTime"
+                                                append-icon="access_time"
+                                                readonly
+                                            ></v-text-field>
+                                            <v-time-picker v-model="startTime">
+                                                <v-spacer></v-spacer>
+                                                <v-btn flat color="primary" @click="startTimeMenu = false">Cancel</v-btn>
+                                                <v-btn flat color="primary" @click="$refs.startTime.save(startTime)">OK</v-btn>
+                                            </v-time-picker>
+                                            </v-menu>
+                                        </v-flex>
+                                        <v-flex sm6 lg6>
+                                            <v-menu
+                                            ref="endDate"
+                                            lazy
+                                            class="pr-2"
+                                            :close-on-content-click="false"
+                                            v-model="endDateMenu"
+                                            transition="scale-transition"
+                                            offset-y
+                                            full-width
+                                            :nudge-bottom="-22"
+                                            min-width="290px"
+                                            :return-value.sync="endDate"
+                                            >
+                                            <v-text-field
+                                                slot="activator"
+                                                label="End Date"
+                                                v-model="endDate"
+                                                append-icon="event"
+                                                readonly
+                                            ></v-text-field>
+                                            <v-date-picker v-model="endDate" no-title scrollable>
+                                                <v-spacer></v-spacer>
+                                                <v-btn flat color="primary" @click="endDateMenu = false">Cancel</v-btn>
+                                                <v-btn flat color="primary" @click="$refs.endDate.save(endDate)">OK</v-btn>
+                                            </v-date-picker>
+                                            </v-menu>
+                                        </v-flex>
+                                        <v-flex sm6 lg6>
+                                            <v-menu
+                                            ref="endTime"
+                                            lazy
+                                            :close-on-content-click="false"
+                                            v-model="endTimeMenu"
+                                            transition="scale-transition"
+                                            offset-y
+                                            full-width
+                                            :nudge-bottom="-24"
+                                            max-width="290px"
+                                            :return-value.sync="endTime"
+                                            >
+                                            <v-text-field
+                                                slot="activator"
+                                                label="End Time"
+                                                v-model="endTime"
+                                                append-icon="access_time"
+                                                readonly
+                                            ></v-text-field>
+                                            <v-time-picker v-model="endTime" >
+                                                <v-spacer></v-spacer>
+                                                <v-btn flat color="primary" @click="endTimeMenu = false">Cancel</v-btn>
+                                                <v-btn flat color="primary" @click="$refs.endTime.save(endTime)">OK</v-btn>
+                                            </v-time-picker>
+                                            </v-menu>
+                                        </v-flex>
+                                        <v-flex lg12 sm12>
+                                            <v-text-field textarea label="Description">
+
+                                            </v-text-field>
+                                        </v-flex>
+                                        <v-spacer></v-spacer>
+                                        </v-layout>
+                                    </v-form>
+                            </v-layout>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="catchphase" class="col-4 col-form-label"> Catch Phase </label>
-                        <div class="col-8">
-                            <input id="catchphase" name="catchphase" placeholder="Catch Phase" class="form-control" type="text">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="email" class="col-4 col-form-label"> Official Email <i style="color:red;">*</i> </label>
-                        <div class="col-8">
-                            <input id="email" name="email" placeholder="Email" class="form-control" required="required" type="text">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="website" class="col-4 col-form-label"> Website </label>
-                        <div class="col-8">
-                            <input id="website" name="website" placeholder="Website" class="form-control" type="text">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="publicinfo" class="col-4 col-form-label"> Public Info </label>
-                        <div class="col-8">
-                            <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="publicinfo" class="col-4 col-form-label"> Logo </label>
-                        <div class="col-8 input-group input-group-lg upload-wrapper">
-                            <div class="input-group-prepend">
-                                <div class="float-left previewImg">
-                                    <img class="img-responsive center-block" id="imgPreview" src="/images/question_mark.svg" alt="Logo holder" style="width:36px;height:36px;" />
-                                </div>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <span class="input-group-text">
-                                    <i class="fas fa-upload"></i>
-                                </span>
-                            </div>
-                            <input type="text" id="fake_input" class="form-control form-style-fake" style="width:60%;" placeholder="Choose your Logo" readonly>
-                            <input type="file" id="LogoUpload" name="LogoUpload" accept="image/*" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <v-btn color="primary" @click.native="step = 2">Continue</v-btn>
-        </v-flex>
-      </v-layout>
-    </v-container>
-  </div>
+                    </v-widget>
+                </v-flex>
+            </v-layout>
+        </v-container>
+    </div>
 </template>
 
 <script>
-import VWidget from '../components/VWidget';
-export default {
-  components: {
-    VWidget
-  },
-  data () {
-    return {
-      step: 1,
-      e13: 1,
+    import VWidget from '../components/VWidget';
+    export default {
+    components: {
+        VWidget
+    },
+    data: () => ({
+        messages: [
+        {
+            avatar: 'https://avatars0.githubusercontent.com/u/9064066?v=4&s=460',
+            name: 'John Leider',
+            title: 'Welcome to Vuetify.js!',
+            excerpt: 'Thank you for joining our community...'
+        },
+        {
+            color: 'red',
+            icon: 'people',
+            name: 'Social',
+            new: 1,
+            total: 3,
+            title: 'Twitter'
+        },
+        {
+            color: 'teal',
+            icon: 'local_offer',
+            name: 'Promos',
+            new: 2,
+            total: 4,
+            title: 'Shop your way',
+            exceprt: 'New deals available, Join Today'
+        }
+        ],
+        slider: 56,
+        tile: false,
+        lorem: 'Lorem ipsum dolor sit amet, at aliquam vivendum vel, everti delicatissimi cu eos. Dico iuvaret debitis mel an, et cum zril menandri. Eum in consul legimus accusam. Ea dico abhorreant duo, quo illum minimum incorrupte no, nostro voluptaria sea eu. Suas eligendi ius at, at nemore equidem est. Sed in error hendrerit, in consul constituam cum.'
+    }),
+    computed: {
+        avatarSize () {
+        return `${this.slider}px`;
+        }
+    },
+    methods: {
+    }
     };
-  },
-  computed: {
-  },
-  methods: {
-  }
-};
-
-    $(document).ready(function() {
-        // FileList object
-        var files = "";
-
-        $("#LogoUpload").change(function(evt) {
-            var file = evt.target.files[0];
-            var allowed_mimeTypes = "image/";
-            var file_type = file.type.split('/')[0] + "/";
-            if (allowed_mimeTypes.toLowerCase().indexOf(file_type) === -1)
-            {
-                alert("Only Image file formats are allowed.");
-                $("#LogoUpload").val("");
-                return false;
-            }
-
-            var reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = function(event) {
-                $('#imgPreview').attr('src', event.target.result);
-                $('#imgPreview').attr('width', '36px');
-                $('#imgPreview').attr('height', '36px');
-            };
-        });
-    });
 </script>
-
-<style lang="stylus" scoped>
-    .form-style-fake{position:relative;top:0px;width:90%;}
-
-    .upload-wrapper {
-        margin-top: 20px;
-        overflow: hidden;
-        position: relative;
-    }
-
-    .btn-upload {
-        border: 2px solid gray;
-        color: gray;
-        background-color: white;
-        padding: 8px 20px;
-        border-radius: 8px;
-        font-size: 20px;
-        font-weight: bold;
-        width: 100%;
-    }
-
-    .upload-wrapper input[type=file] {
-        font-size: 100px;
-        position: absolute;
-        left: 0;
-        top: 0;
-        opacity: 0;
-    }
-</style>

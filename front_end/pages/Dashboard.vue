@@ -63,9 +63,7 @@
                   ['series[1].type', 'bar'],
                   ['series[1].areaStyle', {}],
                 ]"
-                height="400px"
-                width="100%"
-                >
+                height="400px" width="100%">
                 </e-chart>
             </div>
           </v-widget>
@@ -84,9 +82,7 @@
                   ['series[0].avoidLabelOverlap', true],
                   ['series[0].radius', ['50%', '70%']],
                 ]"
-                height="400px"
-                width="100%"
-                >
+                height="400px" width="100%">
                 </e-chart>
             </div>
           </v-widget>

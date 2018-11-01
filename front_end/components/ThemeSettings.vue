@@ -54,9 +54,9 @@
         data () {
             return {
                 colorCode: '',
-                themeColor: 'indigo',
-                sideBarOption: 'light',
-                colors: colors
+                colors: colors,
+                themeColor: null,
+                sideBarOption: null,
             };
         },
         methods: { },
@@ -149,9 +149,11 @@
         watch: {
             themeColor: {
                 handler (val) {
-                    this.colorCode = this.colors[val].base;
-                    this.$vuetify.theme.primary = this.colors[val].base;
-                    this.$emit('ColorOptions', {themeColor: this.themeColor + '[' + this.colorCode + ']', sideBarOption: this.sideBarOption});
+                    if (val !== null) {
+                        this.colorCode = this.colors[val].base;
+                        this.$vuetify.theme.primary = this.colors[val].base;
+                        this.$emit('ColorOptions', {themeColor: this.themeColor + '[' + this.colorCode + ']', sideBarOption: this.sideBarOption});
+                    }
                 },
                 immediate: true
             },
@@ -161,6 +163,13 @@
                     this.$emit('ColorOptions', {themeColor: this.themeColor + '[' + this.colorCode + ']', sideBarOption: val});
                 },
                 immediate: true,
+            }
+        },
+        mounted() {
+            var matches = tenant.theme.themeColor.match(/\[(.*?)\]/);
+            if (matches) {
+                this.$data.themeColor = matches[0];
+                this.$data.sideBarOption = tenant.theme.sideBarOption;
             }
         }
     };

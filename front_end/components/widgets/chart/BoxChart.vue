@@ -8,18 +8,14 @@
       </div>
     </v-card-title>
     <v-img class="white--text">
-      <e-chart
-      :path-option="computeChartOption"
-      height="308px"
-      width="100%"
-      >
+      <e-chart :path-option="computeChartOption" height="308px" width="100%">
       </e-chart>
     </v-img>
   </v-card>
 </template>
 
 <script>
-import EChart from '../../../components/chart/echart';
+import EChart from '../../chart/echart';
 import Material from 'vuetify/es5/util/colors';
 
 export default {

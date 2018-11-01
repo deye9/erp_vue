@@ -1,7 +1,7 @@
 <template>
   <div id="appRoot">
     <template v-if="!$route.meta.public">
-      <v-app id="inspire" class="app" :dark="isDark">
+      <v-app id="inspire" class="app">
         <app-drawer class="app--drawer"></app-drawer>
         <app-toolbar class="app--toolbar"></app-toolbar>
         <v-content>
@@ -56,9 +56,6 @@
         computed:  {
             snackbar() {
                 return this.$store.state.snack;
-            },
-            isDark() {
-                return (tenant.theme.sideBarOption === this.$vuetify.dark);
             }
         },
         created () {

@@ -11,7 +11,7 @@ import VeeValidate from 'vee-validate';
 import Truncate from 'lodash.truncate';
 import VueResource from 'vue-resource';
 import ApolloClient from "apollo-boost";
-// import 'font-awesome/css/font-awesome.css';
+import 'font-awesome/css/font-awesome.css';
 import colors from 'vuetify/es5/util/colors';
 
 Vue.config.devtools = true;

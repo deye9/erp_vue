@@ -95,7 +95,6 @@
   </div>
 </template>
 
-<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
 <script>
     import gql from 'graphql-tag';
     import VWidget from '../components/VWidget';
@@ -167,12 +166,11 @@
                     const formData = new FormData()
                     formData.append('file', this.$data.registration.logo);
                     formData.append('upload_preset', this.cloudinary.uploadPreset);
-                    formData.append('tags', this.tenant.companyname);
+                    formData.append('tags', this.cloudinary.resourceType + "'s for " + this.tenant.companyname);
 
                     axios.post(this.clUrl, formData)
                         .then(response => {
                             if (response.status === 200) {
-                                console.log(response.data);
                                 this.registration.logo = response.data.secure_url;
                                 this.$store.commit('updatetenant', this.$data.registration);
                                 this.$store.commit('Snackbar', {color: 'blue', text: 'Image has been successfully uploaded.', show: true});
