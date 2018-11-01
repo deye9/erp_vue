@@ -58,7 +58,7 @@
                 return this.$store.state.snack;
             },
             isDark() {
-                return (tenant.theme.sideBarOption === 'dark');
+                return (tenant.theme.sideBarOption === this.$vuetify.dark);
             }
         },
         created () {

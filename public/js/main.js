@@ -32657,7 +32657,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
             return this.$store.state.snack;
         },
         isDark: function isDark() {
-            return tenant.theme.sideBarOption === 'dark';
+            return tenant.theme.sideBarOption === this.$vuetify.dark;
         }
     },
     created: function created() {

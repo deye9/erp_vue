@@ -22,13 +22,24 @@ return [
          * used have to implement their respective contracts and
          * either extend the SystemModel or use the trait
          * UsesSystemConnection.
-        */
+         */
 
         // Must implement \Hyn\Tenancy\Contracts\Hostname
         'hostname' => \Hyn\Tenancy\Models\Hostname::class,
 
         // Must implement \Hyn\Tenancy\Contracts\Website
         'website' => \Hyn\Tenancy\Models\Website::class
+    ],
+    /**
+     * The package middleware. Removing a middleware here will disable it.
+     * You can of course extend/replace them or add your own.
+     */
+    'middleware' => [
+        // The eager identification middleware.
+        \Hyn\Tenancy\Middleware\EagerIdentification::class,
+
+        // The hostname actions middleware (redirects, https, maintenance).
+        \Hyn\Tenancy\Middleware\HostnameActions::class,
     ],
     'website' => [
         /**
@@ -134,7 +145,7 @@ return [
          * Abort application execution in case no hostname was identified. This will throw a
          * 404 not found in case the tenant hostname was not resolved.
          */
-        'abort-without-identified-hostname' => env('ABORT_WITHOUT_IDENTIFIED_HOSTNAME', false),
+        'abort-without-identified-hostname' => env('TENANCY_ABORT_WITHOUT_HOSTNAME', false),
 
         /**
          * Time to cache hostnames in minutes. Set to false to disable.
@@ -173,8 +184,11 @@ return [
         /**
          * The tenant division mode specifies to what database websites will be
          * connecting. The default setup is to use a new database per tenant.
+         * If using PostgreSQL, a new schema per tenant in the same database can
+         * be setup, by optionally setting division mode to 'schema'.
          * In case you prefer to use the same database with a table prefix,
          * set the mode to 'prefix'.
+         * To implement a custom division mode, set this to 'bypass'.
          *
          * @see src/Database/Connection.php
          */
@@ -205,6 +219,7 @@ return [
          * running artisan commands that fire seeding.
          *
          * @info requires tenant-migrations-path in order to seed newly created websites.
+         * @info seeds stored in `database/seeds/tenants` need to be configured in your composer.json classmap.
          *
          * @warn specify a valid fully qualified class name.
          */
@@ -263,10 +278,10 @@ return [
          * @info Useful for overriding the connection of third party packages.
          */
         'force-tenant-connection-of-models' => [
-//            App\Models\User::class
+//            App\User::class
         ],
         'force-system-connection-of-models' => [
-//            App\Models\User::class
+//            App\User::class
         ],
     ],
 
@@ -357,7 +372,7 @@ return [
         ],
         'views' => [
             /**
-             * Adds the vendor directory of the tenant inside the application.
+             * Enables reading views from tenant directories.
              */
             'enabled' => true,
 
@@ -371,7 +386,7 @@ return [
 
             /**
              * If `namespace` is set to null (thus using the global namespace)
-             * make it override the global views. Disable to
+             * make it override the global views. Disable by setting to false.
              */
             'override-global' => true,
         ]

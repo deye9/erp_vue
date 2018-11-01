@@ -64,12 +64,12 @@
                                     </span>
                                 </div>
                                 <div class="upload-btn-wrapper">
-                                    <button id="uploadInfo" name="uploadInfo" class="btn">Choose your Logo</button>
+                                    <button id="uploadInfo" name="uploadInfo"  style="color:black;" class="btn">Choose your Logo</button>
+                                    <!-- <input type="file" v-on:change="upload($event.target.files)" class="form-control" accept="image/*" placeholder="Choose your Logo"> -->
                                     <input type="file" v-on:change="onLogoChange" class="form-control" accept="image/*" id="LogoUpload" name="LogoUpload" placeholder="Choose your Logo">
                                 </div>
-                                <!-- <input name="file" type="file" class="file-upload" data-cloudinary-field="image_id" data-form-data="{ 'transformation': {'crop':'limit','tags':'samples','width':3000,'height':2000}}"/> -->
                                 <div class="float-right">
-                                    <button class="btn btn-success btn-block" @click="upload">Upload</button>
+                                    <button id="Btnupload" name="Btnupload" class="btn btn-success btn-block" @click="upload">Upload</button>
                                 </div>
                             </div>
                         </div>
@@ -95,6 +95,7 @@
   </div>
 </template>
 
+<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
 <script>
     import gql from 'graphql-tag';
     import VWidget from '../components/VWidget';
@@ -127,6 +128,11 @@
         data: () => ({
             id: 0,
             step: 1,
+            cloudinary: {
+                cloudName: 'deye9',
+                resourceType: 'image',
+                uploadPreset: 'qwh6athb'
+            },
             registration: {
                 logo: null,
                 email: null,
@@ -146,9 +152,37 @@
             },
             tenant() {
                 return this.$store.state.tenant;
-            }
+            },
+            clUrl() {
+                return `https://api.cloudinary.com/v1_1/${this.cloudinary.cloudName}/${this.cloudinary.resourceType}/upload`
+            },
         },
         methods:{
+            upload() {
+                var button = document.getElementById("Btnupload");
+                button.disabled = true;
+
+                if (this.$data.registration.logo !== null)
+                {
+                    const formData = new FormData()
+                    formData.append('file', this.$data.registration.logo);
+                    formData.append('upload_preset', this.cloudinary.uploadPreset);
+                    formData.append('tags', this.tenant.companyname);
+
+                    axios.post(this.clUrl, formData)
+                        .then(response => {
+                            if (response.status === 200) {
+                                console.log(response.data);
+                                this.registration.logo = response.data.secure_url;
+                                this.$store.commit('updatetenant', this.$data.registration);
+                                this.$store.commit('Snackbar', {color: 'blue', text: 'Image has been successfully uploaded.', show: true});
+                                button.disabled = false;
+                            }
+                    })
+                } else {
+                    this.$store.commit('Snackbar', {color: 'red', text: 'Kindly select a valid image to upload.', show: true});
+                }
+            },
             // Triggered when `ColorOptions` event is emitted by the child.
             getColorOptions (value) {
                 this.registration.theme.themeColor = value.themeColor;
@@ -180,22 +214,22 @@
 
                 document.getElementById('uploadInfo').innerText = document.getElementById("LogoUpload").value;
             },
-            upload() {
-                if (this.$data.registration.logo !== null)
-                {
-                    axios.post('/api/base64upload', {image: this.$data.registration.logo})
-                        .then(response => {
-                            if (response.data.success) {
-                                this.registration.logo = response.data.filename;
-                                this.$store.commit('updatetenant', this.$data.registration);
-                                this.$store.commit('Snackbar', {color: 'blue', text: response.data.success, show: true});
-                            }
-                        }
-                    );
-                } else {
-                    this.$store.commit('Snackbar', {color: 'red', text: 'Kindly select a valid image to upload.', show: true});
-                }
-            },
+            //upload() {
+                // if (this.$data.registration.logo !== null)
+                // {
+                //     axios.post('/api/base64upload', {image: this.$data.registration.logo})
+                //         .then(response => {
+                //             if (response.data.success) {
+                //                 this.registration.logo = response.data.filename;
+                //                 this.$store.commit('updatetenant', this.$data.registration);
+                //                 this.$store.commit('Snackbar', {color: 'blue', text: response.data.success, show: true});
+                //             }
+                //         }
+                //     );
+                // } else {
+                //     this.$store.commit('Snackbar', {color: 'red', text: 'Kindly select a valid image to upload.', show: true});
+                // }
+            //},
             submit() {
                 var button = document.getElementById("SaveData");
                 button.disabled = true;

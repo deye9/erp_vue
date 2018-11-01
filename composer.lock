@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e7cba582af593f9f7c77da4151c0ceda",
+    "content-hash": "f81bc2ed3c3caac6931aad2741c8d648",
     "packages": [
         {
             "name": "components/font-awesome",
@@ -696,27 +696,27 @@
         },
         {
             "name": "hyn/multi-tenant",
-            "version": "5.2.7",
+            "version": "5.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/hyn/multi-tenant.git",
-                "reference": "833b6e9ee7b53e6e6cb3abf650fe8ab7a1541a59"
+                "reference": "f1f68a257e71ea565a998d89c0119781788159c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/hyn/multi-tenant/zipball/833b6e9ee7b53e6e6cb3abf650fe8ab7a1541a59",
-                "reference": "833b6e9ee7b53e6e6cb3abf650fe8ab7a1541a59",
+                "url": "https://api.github.com/repos/hyn/multi-tenant/zipball/f1f68a257e71ea565a998d89c0119781788159c0",
+                "reference": "f1f68a257e71ea565a998d89c0119781788159c0",
                 "shasum": ""
             },
             "require": {
                 "doctrine/dbal": "~2.5",
-                "laravel/framework": "5.6.*",
+                "laravel/framework": "5.6.* | 5.7.*",
                 "php": "7.*",
                 "phpseclib/phpseclib": "~2.0",
                 "ramsey/uuid": "^3.5"
             },
             "require-dev": {
-                "laravel/laravel": "5.6.*",
+                "laravel/laravel": "5.6.* | 5.7.*",
                 "mockery/mockery": "^0.9.9",
                 "phpunit/phpunit": "~7.0",
                 "symfony/dom-crawler": "~3.1"
@@ -758,7 +758,7 @@
                 "saas",
                 "tenancy"
             ],
-            "time": "2018-08-30T08:51:17+00:00"
+            "time": "2018-10-29T14:47:54+00:00"
         },
         {
             "name": "intervention/image",
