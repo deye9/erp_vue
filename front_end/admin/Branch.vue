@@ -14,12 +14,7 @@
                                 <v-form ref="form" lazy-validation>
                                     <v-layout row wrap>
                                         <v-flex sm6 lg6>
-                                            <div class="input-group mb-3">
-                                                <div class="input-group-prepend">
-                                                    <v-chip label>https://{{tenant.companyname}}_</v-chip>
-                                                </div>
-                                                <v-text-field :suffix="setDomain" label="Url" v-model="branch.branchCode" v-validate="'required'" data-vv-name="branchUrl" :error-messages="errors.collect('branchUrl')" required></v-text-field>
-                                            </div>
+                                            <v-text-field class="tolower" :suffix="setDomain" label="Url" v-model="branch.branchUrl" :hint="`https://${tenant.companyname.toLowerCase()}_${branch.branchUrl}${setDomain}`" v-validate="'required'" data-vv-name="branchUrl" :error-messages="errors.collect('branchUrl')" required></v-text-field>
                                         </v-flex>
                                         <v-flex sm6 lg6>
                                             <v-text-field label="Branch Name" v-model="branch.branchName" v-validate="'required'" data-vv-name="branchName" :error-messages="errors.collect('branchName')" required></v-text-field>
@@ -31,7 +26,8 @@
                                             <v-combobox label="Parent Office" autocomplete required :items="currencies" item-text="name" item-value="symbol" v-model="branch.ReportsTo"></v-combobox>
                                         </v-flex>
                                         <v-flex sm6 lg6>
-                                            <v-combobox label="Currency"  autocomplete required :items="currencies" v-model="branch.currency" item-text="name" item-value="symbol"></v-combobox>
+                                            <v-combobox label="Currency" autocomplete required :items="currencies" v-model="branch.currency"
+                                            item-text="name" item-value="symbol" :hint="`${branch.currency.name}, ${branch.currency.symbol}`" persistent-hint return-object></v-combobox>
                                         </v-flex>
 
                                         <v-flex sm6 lg6>
@@ -111,7 +107,7 @@
                 state: null,
                 country: null,
                 endTime: null,
-                currency: null,
+                currency: { name: 'Nigerian Naira', symbol: '₦' },
                 officeID: null,
                 ReportsTo: null,
                 startTime: null,
@@ -130,7 +126,7 @@
             },
             setDomain() {
                 var str = window.location.hostname.split(".");
-                return '.' + str.splice(1,2).join(".");
+                return '.' + str.splice(1,2).join(".").toLowerCase();
             },
         },
         methods: {
@@ -143,3 +139,9 @@
         },
     };
 </script>
+
+<style scoped>
+    .tolower{
+        text-transform: lowercase;
+    }
+</style>
