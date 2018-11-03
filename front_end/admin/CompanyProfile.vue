@@ -69,7 +69,10 @@
                                     <input type="file" v-on:change="onLogoChange" class="form-control" accept="image/*" id="LogoUpload" name="LogoUpload" placeholder="Choose your Logo">
                                 </div>
                                 <div class="float-right">
-                                    <button id="Btnupload" name="Btnupload" class="btn btn-success btn-block" @click="upload">Upload</button>
+                                    <button id="Btnupload" name="Btnupload" class="btn btn-success btn-block" disabled @click="upload">
+                                        Upload
+                                        <v-icon right dark>cloud_upload</v-icon>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -96,6 +99,7 @@
 </template>
 
 <script>
+    var button = document.getElementById("Btnupload");
     import gql from 'graphql-tag';
     import VWidget from '../components/VWidget';
     import ThemeSettings from '../components/ThemeSettings';
@@ -174,7 +178,6 @@
                                 this.registration.logo = response.data.secure_url;
                                 this.$store.commit('updatetenant', this.$data.registration);
                                 this.$store.commit('Snackbar', {color: 'blue', text: 'Image has been successfully uploaded.', show: true});
-                                button.disabled = false;
                             }
                     })
                 } else {
@@ -210,6 +213,8 @@
                     Rlogo.logo = event.target.result;
                 }.bind(Rlogo);
 
+                var button = document.getElementById("Btnupload");
+                button.removeAttribute("disabled");
                 document.getElementById('uploadInfo').innerText = document.getElementById("LogoUpload").value;
             },
             //upload() {
@@ -304,7 +309,7 @@
     }
 
     .upload-btn-wrapper {
-        width: 75%;
+        width: 70%;
         overflow: hidden;
         position: relative;
         display: inline-block;

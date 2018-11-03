@@ -145,6 +145,9 @@
                     }
                 ];
             },
+            tenant() {
+                return this.$store.state.tenant
+            },
         },
         watch: {
             themeColor: {
@@ -165,12 +168,10 @@
                 immediate: true,
             }
         },
-        mounted() {
-            var matches = tenant.theme.themeColor.match(/\[(.*?)\]/);
-            if (matches) {
-                this.$data.themeColor = matches[0];
-                this.$data.sideBarOption = tenant.theme.sideBarOption;
-            }
+        created() {
+            var theme = this.tenant.theme.themeColor;
+            this.$data.sideBarOption = this.tenant.theme.sideBarOption;
+            this.$data.themeColor = theme.slice(0, theme.indexOf("["));
         }
     };
 </script>

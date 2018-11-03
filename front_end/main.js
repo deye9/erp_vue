@@ -63,7 +63,7 @@ const store = new Vuex.Store({
             text: '',
             color: '',
         },
-        tenant: tenant
+        tenant: _tenant
     },
     mutations: {
         Snackbar (state, payload) {

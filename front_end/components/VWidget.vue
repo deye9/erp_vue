@@ -10,6 +10,9 @@
       <v-card-text :class="contentBg">
         <slot name="widget-content"></slot>
       </v-card-text>
+      <v-card-actions>
+        <slot name="widget-footer-action"></slot>
+     </v-card-actions>
     </v-card>
   </div>
 </template>

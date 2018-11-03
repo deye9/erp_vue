@@ -12,7 +12,7 @@
           </div>
            <!-- App Footer -->
           <v-footer height="auto" class="white pa-3 app--footer">
-             <span class="caption text-center"> &copy; {{ new Date().getFullYear() }} </span> <!--{{tenant.companyname}}  -->
+             <span class="caption text-center"> &copy; {{ new Date().getFullYear() }} {{this.tenant.companyname}}</span>
             <!-- <v-spacer></v-spacer>
             <span class="caption mr-1"> Make With Love </span> <v-icon color="pink" small>favorite</v-icon> -->
           </v-footer>
@@ -56,14 +56,17 @@
         computed:  {
             snackbar() {
                 return this.$store.state.snack;
-            }
+            },
+            tenant() {
+                return this.$store.state.tenant
+            },
         },
         created () {
-            var matches = tenant.theme.themeColor.match(/\[(.*?)\]/);
+            var matches = this.tenant.theme.themeColor.match(/\[(.*?)\]/);
             if (matches) {
                 this.$vuetify.theme.primary = matches[1];
+                this.$vuetify.dark = (this.tenant.theme.sideBarOption === 'dark');
             }
-            this.$vuetify.dark = (tenant.theme.sideBarOption === 'dark');
             AppEvents.forEach(item => {
                 this.$on(item.name, item.callback);
             });
