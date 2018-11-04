@@ -28,7 +28,7 @@ class MetadatatMutator {
             if (is_null($data)) {
                 $meta = Metadata::create($args['input']);
             } else {
-                $meta = null;
+                $meta = 123;
                 \Log::info($args);
                 // $data = json_decode($data['value']);
                 // \Log::info(json_decode($data['value']));

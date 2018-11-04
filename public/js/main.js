@@ -30919,145 +30919,6 @@ router.afterEach(function (to, from) {
 /* 129 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var disposed = false
-var normalizeComponent = __webpack_require__(18)
-/* script */
-var __vue_script__ = __webpack_require__(148)
-/* template */
-var __vue_template__ = __webpack_require__(150)
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = null
-/* scopeId */
-var __vue_scopeId__ = null
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-var Component = normalizeComponent(
-  __vue_script__,
-  __vue_template__,
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "front_end/components/widgets/list/NotificationList.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-58ca0e99", Component.options)
-  } else {
-    hotAPI.reload("data-v-58ca0e99", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-/* 130 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-
-// export function camel (str) {
-//   const camel = (str || '').replace(/-([^-])/g, g => g[1].toUpperCase());
-
-//   return capitalize(camel);
-// }
-
-// export function camelActual (str) {
-//   return (str || '').replace(/-(\w)/g, (_, c) => (c ? c.toUpperCase() : ''));
-// }
-
-// export function kebab (str) {
-//   return (str || '').replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-// }
-
-// export function capitalize (str) {
-//   str = str || '';
-
-//   return `${str.substr(0, 1).toUpperCase()}${str.slice(1)}`;
-// }
-
-// export function findProduct (store, id) {
-//   return store.state.store.products.find(p => p.id === id);
-// }
-
-// export function isOnSale (variants) {
-//   return variants.some(variant => {
-//     return parseFloat(variant.price) < parseFloat(variant.compareAtPrice);
-//   });
-// }
-
-// export function randomNumber (min, max) {
-//   return Math.floor(Math.random() * max) + min;
-// }
-
-// export function randomString (length = 5) {
-//   let text = '';
-//   const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
-//   for (let i = 0; i < length; i++) {
-//     text += possible.charAt(Math.floor(Math.random() * possible.length));
-//   }
-
-//   return text;
-// }
-
-function validateEmail(userinput) {
-    var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
-    return !pattern.test(userinput) ? false : true;
-}
-
-function toPascalCase(str) {
-    return str.toLowerCase().replace(/\b[a-z]/g, function (txtVal) {
-        return txtVal.toUpperCase();
-    });
-}
-
-var randomElement = function randomElement() {
-    var arr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-
-    return arr[Math.floor(Math.random() * arr.length)];
-};
-
-var kebab = function kebab(str) {
-    return (str || '').replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-};
-
-var toggleFullScreen = function toggleFullScreen() {
-    var doc = window.document;
-    var docEl = doc.documentElement;
-
-    var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
-    var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
-
-    if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
-        requestFullScreen.call(docEl);
-    } else {
-        cancelFullScreen.call(doc);
-    }
-};
-
-/* harmony default export */ __webpack_exports__["a"] = ({
-    randomElement: randomElement,
-    toggleFullScreen: toggleFullScreen,
-    kebab: kebab
-});
-
-/***/ }),
-/* 131 */
-/***/ (function(module, exports, __webpack_require__) {
-
 var parser = __webpack_require__(20);
 
 var parse = parser.parse;
@@ -31239,6 +31100,145 @@ gql.disableExperimentalFragmentVariables = disableExperimentalFragmentVariables;
 
 module.exports = gql;
 
+
+/***/ }),
+/* 130 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+var normalizeComponent = __webpack_require__(18)
+/* script */
+var __vue_script__ = __webpack_require__(148)
+/* template */
+var __vue_template__ = __webpack_require__(150)
+/* template functional */
+var __vue_template_functional__ = false
+/* styles */
+var __vue_styles__ = null
+/* scopeId */
+var __vue_scopeId__ = null
+/* moduleIdentifier (server only) */
+var __vue_module_identifier__ = null
+var Component = normalizeComponent(
+  __vue_script__,
+  __vue_template__,
+  __vue_template_functional__,
+  __vue_styles__,
+  __vue_scopeId__,
+  __vue_module_identifier__
+)
+Component.options.__file = "front_end/components/widgets/list/NotificationList.vue"
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-58ca0e99", Component.options)
+  } else {
+    hotAPI.reload("data-v-58ca0e99", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 131 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+
+// export function camel (str) {
+//   const camel = (str || '').replace(/-([^-])/g, g => g[1].toUpperCase());
+
+//   return capitalize(camel);
+// }
+
+// export function camelActual (str) {
+//   return (str || '').replace(/-(\w)/g, (_, c) => (c ? c.toUpperCase() : ''));
+// }
+
+// export function kebab (str) {
+//   return (str || '').replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+// }
+
+// export function capitalize (str) {
+//   str = str || '';
+
+//   return `${str.substr(0, 1).toUpperCase()}${str.slice(1)}`;
+// }
+
+// export function findProduct (store, id) {
+//   return store.state.store.products.find(p => p.id === id);
+// }
+
+// export function isOnSale (variants) {
+//   return variants.some(variant => {
+//     return parseFloat(variant.price) < parseFloat(variant.compareAtPrice);
+//   });
+// }
+
+// export function randomNumber (min, max) {
+//   return Math.floor(Math.random() * max) + min;
+// }
+
+// export function randomString (length = 5) {
+//   let text = '';
+//   const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+//   for (let i = 0; i < length; i++) {
+//     text += possible.charAt(Math.floor(Math.random() * possible.length));
+//   }
+
+//   return text;
+// }
+
+function validateEmail(userinput) {
+    var pattern = /^\b[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b$/i;
+    return !pattern.test(userinput) ? false : true;
+}
+
+function toPascalCase(str) {
+    return str.toLowerCase().replace(/\b[a-z]/g, function (txtVal) {
+        return txtVal.toUpperCase();
+    });
+}
+
+var randomElement = function randomElement() {
+    var arr = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
+
+    return arr[Math.floor(Math.random() * arr.length)];
+};
+
+var kebab = function kebab(str) {
+    return (str || '').replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+};
+
+var toggleFullScreen = function toggleFullScreen() {
+    var doc = window.document;
+    var docEl = doc.documentElement;
+
+    var requestFullScreen = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+    var cancelFullScreen = doc.exitFullscreen || doc.mozCancelFullScreen || doc.webkitExitFullscreen || doc.msExitFullscreen;
+
+    if (!doc.fullscreenElement && !doc.mozFullScreenElement && !doc.webkitFullscreenElement && !doc.msFullscreenElement) {
+        requestFullScreen.call(docEl);
+    } else {
+        cancelFullScreen.call(doc);
+    }
+};
+
+/* harmony default export */ __webpack_exports__["a"] = ({
+    randomElement: randomElement,
+    toggleFullScreen: toggleFullScreen,
+    kebab: kebab
+});
 
 /***/ }),
 /* 132 */
@@ -33249,9 +33249,9 @@ module.exports = Component.exports
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_widgets_list_NotificationList__ = __webpack_require__(129);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_widgets_list_NotificationList__ = __webpack_require__(130);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__components_widgets_list_NotificationList___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__components_widgets_list_NotificationList__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util__ = __webpack_require__(130);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__util__ = __webpack_require__(131);
 //
 //
 //
@@ -59179,7 +59179,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'admin/branch',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(15).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(299)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(6).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(299)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/admin/profile',
@@ -59240,7 +59240,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'Chat',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(13).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(303)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(14).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(303)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     },
     redirect: {
         path: '/chat/messaging'
@@ -59254,7 +59254,7 @@ if (inBrowser && window.Vue) {
         props: true,
         components: {
             default: function _default(resolve) {
-                __webpack_require__.e/* require */(7).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(304)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+                __webpack_require__.e/* require */(8).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(304)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
             }
         }
     }, {
@@ -59265,7 +59265,7 @@ if (inBrowser && window.Vue) {
         name: 'ChatContact',
         components: {
             default: function _default(resolve) {
-                __webpack_require__.e/* require */(6).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(305)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+                __webpack_require__.e/* require */(7).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(305)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
             }
         }
     }]
@@ -59469,7 +59469,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/color',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(8).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(327)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(9).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(327)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/pickers/timepicker',
@@ -59514,7 +59514,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/timeline',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(10).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(332)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(11).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(332)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/layout/list',
@@ -59595,7 +59595,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/editors',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(12).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(341)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(13).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(341)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/forms/selection-controls',
@@ -59640,7 +59640,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/widget-post',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(14).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(346)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(15).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(346)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/widgets/statistic',
@@ -59649,7 +59649,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/statistic',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(11).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(347)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(12).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(347)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }, {
     path: '/widgets/chart',
@@ -59667,7 +59667,7 @@ if (inBrowser && window.Vue) {
     },
     name: 'components/widget-list',
     component: function component(resolve) {
-        __webpack_require__.e/* require */(9).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(349)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
+        __webpack_require__.e/* require */(10).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(349)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
 }]);
 
@@ -69570,7 +69570,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_apollo_link_http__ = __webpack_require__(239);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_apollo_link_state__ = __webpack_require__(242);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_apollo_link_error__ = __webpack_require__(274);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_graphql_tag__ = __webpack_require__(131);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_graphql_tag__ = __webpack_require__(129);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_graphql_tag___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_graphql_tag__);
 /* unused harmony reexport gql */
 /* unused harmony reexport HttpLink */

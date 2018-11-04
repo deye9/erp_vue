@@ -2,7 +2,7 @@ extend type Query {
     me: User @auth
     metadatas: [Metadata!]! @paginate(type: "paginator" model: "App\\Models\\Metadata")
     registration(id: ID @eq key: String @eq): Metadata @find(model: "App\\Models\\Metadata")
-    branches(id: ID @eq key: String @eq): Metadata @find(model: "App\\Models\\Metadata" resolver: "App\\Http\\GraphQL\\Queries\\BranchQuery@fixKey")
+    branches(id: ID @eq key: String @eq): Metadata @field(resolver: "App\\Http\\GraphQL\\Queries\\MetadataQuery@fixKey")
 }
 
 extend type Mutation {

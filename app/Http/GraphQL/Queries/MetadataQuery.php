@@ -2,10 +2,11 @@
 
 namespace App\Http\GraphQL\Queries;
 
+use App\Models\Metadata;
 use GraphQL\Type\Definition\ResolveInfo;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
 
-class BranchQuery
+class MetadataQuery
 {
     /**
      * Return a value for the field.
@@ -17,8 +18,9 @@ class BranchQuery
      *
      * @return mixed
      */
-    public function fixKey($rootValue, array $args, GraphQLContext $context = null, ResolveInfo $resolveInfo)
+    public function fixKey($rootValue, array $args, GraphQLContext $context = null, ResolveInfo $resolveInfo) : Metadata
     {
-        \Log::info(json_encode($args));
+        $key = strtolower($args['key']);
+        return Metadata::whereRaw("lower(key) = lower('" . $key . "')")->first();
     }
 }
