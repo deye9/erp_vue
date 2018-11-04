@@ -237,12 +237,6 @@
                 var button = document.getElementById("SaveData");
                 button.disabled = true;
 
-                // We save the user input in case of an error
-                const newTag = this.newTag;
-
-                // We clear it early to give the UI a snappy feel
-                this.newTag = '';
-
                 // Call to the graphql mutation
                 if (this.$data.id >= 1) {
                     this.$apollo.mutate({
@@ -266,8 +260,6 @@
                         this.$store.commit('Snackbar', {color: 'blue', text: 'Profile has been successfully setup.', show: true});
                     }).catch((error) => {
                         this.$store.commit('Snackbar', {color: 'blue', text: 'An error occurred while setting up your profile. Kindly try again.', show: true});
-                        // We restore the initial user input
-                        this.newTag = newTag
                     });
                 } else {
                     this.$apollo.mutate({
@@ -293,9 +285,6 @@
                     }).catch((error) => {
                         button.disabled = false;
                         this.$store.commit('Snackbar', {color: 'blue', text: 'An error occurred while setting up your profile. Kindly try again.', show: true});
-
-                        // We restore the initial user input
-                        this.newTag = newTag
                     });
                 }
             }

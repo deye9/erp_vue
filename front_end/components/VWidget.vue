@@ -11,6 +11,7 @@
         <slot name="widget-content"></slot>
       </v-card-text>
       <v-card-actions>
+        <v-spacer></v-spacer>
         <slot name="widget-footer-action"></slot>
      </v-card-actions>
     </v-card>

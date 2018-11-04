@@ -31,8 +31,7 @@ Vue.use(Vuetify, {
       mainToolbar: {
         color: 'primary',
       },
-      sideToolbar: {
-      },
+      sideToolbar: {},
       sideNav: 'primary',
       mainNav: 'primary lighten-1',
       bodyBg: '',

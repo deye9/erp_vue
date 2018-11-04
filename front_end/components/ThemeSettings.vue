@@ -168,11 +168,11 @@
                 immediate: true,
             }
         },
-        created() {
-            var theme = this.tenant.theme.themeColor;
-            this.$data.sideBarOption = this.tenant.theme.sideBarOption;
-            this.$data.themeColor = theme.slice(0, theme.indexOf("["));
-        }
+        // created() {
+            // var theme = this.tenant.theme.themeColor;
+            // this.$data.sideBarOption = this.tenant.theme.sideBarOption;
+            // this.$data.themeColor = theme.slice(0, theme.indexOf("["));
+        // }
     };
 </script>
 

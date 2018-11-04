@@ -33,6 +33,11 @@ class Metadata extends Model implements Auditable
 
     public static function GetProfile() {
         // Remember to check for null just in case it fails.
-       return Metadata::where('key', '=', 'Company Profile')->first();
+       return Metadata::whereRaw("lower(key) = lower('Company Profile')")->first();
+    }
+
+    public static function GetBranches() {
+        // Remember to check for null just in case it fails.
+       return Metadata::whereRaw("lower(key) = lower('BRANCH')")->first();
     }
 }

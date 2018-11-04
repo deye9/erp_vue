@@ -21,8 +21,6 @@
                                         </v-flex>
 
                                         <v-flex sm6 lg6>
-                                            <!-- <v-combobox label="Parent Office" autocomplete :loading="loading" chips required :rules="[() => select.length > 0 || 'You must choose at least one']"
-                                            :search-input.sync="search" :items="Currencies" v-model="ReportsTo" :error-messages="['Please select an option']" item-text="country" item-value="abbr"></v-combobox> -->
                                             <v-combobox label="Parent Office" autocomplete required :items="currencies" item-text="name" item-value="symbol" v-model="branch.ReportsTo"></v-combobox>
                                         </v-flex>
                                         <v-flex sm6 lg6>
@@ -68,36 +66,52 @@
                                     </v-form>
                             </v-layout>
                         </div>
-                        <div slot="widget-footer-action" class="float-right">
-                            <v-pagination v-model="page" :length="paginationLength" circle total-visible="7"></v-pagination>
-                            <v-btn color="primary" dark>
-                                Register
-                                <v-icon dark right>check_circle</v-icon>
-                            </v-btn>
-                            <v-btn color="error" dark>
-                                Delete
-                                <v-icon dark right>delete</v-icon>
-                            </v-btn>
-                            <v-btn dark @click="clearForm">
-                                Cancel
-                                <v-icon right>remove_circle</v-icon>
-                            </v-btn>
+                        <div slot="widget-footer-action">
+                            <footer-toolbar :paginationLength=7 :totalVisible=10
+                                deferSave displaySave saveName="Register Branch" v-on:saveDeferred="saveFormData"
+                                deferDelete v-on:deleteDeferred="deleteFormData"
+                                deferClear v-on:clearDeferred="clearFormData">
+                            </footer-toolbar>
                         </div>
                     </v-widget>
                 </v-flex>
             </v-layout>
         </v-container>
-<br />{{branch}}
+<br />
+{{branch}}
     </div>
 </template>
 
 <script>
+    import gql from 'graphql-tag';
     import Currencies  from '../api/currencies';
     import VWidget from '../components/VWidget';
+    import FooterToolbar from '../components/helpers/Footer';
 
     export default {
+         apollo: {
+            // Query with parameters
+            registration() {
+                return {
+                    query: gql`query getBranches($details: String!) { branches(key: $details) { id, value }}`,
+                    variables() {
+                        return {
+                            details: "branch",
+                        }
+                    },
+                    update(data) {
+                        this.$data.id = data.registration.id;
+                        return JSON.parse(data.registration.value)
+                    },
+                    error(error) {
+                        this.$store.commit('Snackbar', {color: 'red', text: 'We\'ve got an error!\n' + error, show: true});
+                    },
+                }
+            },
+        },
         components: {
-            VWidget
+            VWidget,
+            FooterToolbar
         },
         data: () => ({
             page: 1,
@@ -107,16 +121,15 @@
                 state: null,
                 country: null,
                 endTime: null,
-                currency: { name: 'Nigerian Naira', symbol: '₦' },
-                officeID: null,
+                BranchId: null,
                 ReportsTo: null,
                 startTime: null,
                 branchUrl: null,
                 branchName: null,
+                currency: { name: 'Nigerian Naira', symbol: '₦' },
             },
             modal: false,
             endTimeMenu: false,
-            paginationLength: 0,
             startTimeMenu: false,
             currencies: Currencies,
         }),
@@ -133,8 +146,74 @@
             closeDialog() {
                 this.$parent.isActive = false;
             },
-            clearForm() {
-                alert(12);
+            clearFormData() {
+                for (var key in this.branch) {
+                    if (key !== 'currency')
+                    {
+                        this.branch[key] = null;
+                    } else {
+                        this.currency = { name: 'Nigerian Naira', symbol: '₦' };
+                    }
+                }
+            },
+            saveFormData() {
+                // var button = document.getElementById("SaveData");
+                // button.disabled = true;
+
+                // Call to the graphql mutation
+                if (this.$data.id >= 1) {
+                    this.$apollo.mutate({
+                        // Mutation Query
+                        mutation: gql`mutation($label: UpdateMetadataInput!) { updateMetadata(input: $label) { id, key, value } }`,
+                        // Parameters
+                        variables: {
+                            label: {'id': this.$data.id, key: "Branch", value: JSON.stringify(this.$data.branch)}
+                        },
+                        // Optimistic UI. Will be treated as a 'fake' result as soon as the request is made so that the UI can react quickly and the user be happy
+                        optimisticResponse: {
+                            __typename: 'Mutation',
+                            updateMetadata: {
+                                id: 1,
+                                key: 'Branch',
+                                value: '',
+                                __typename: 'Branch Registration',
+                            },
+                        },
+                    }).then((data) => {
+                        this.$store.commit('Snackbar', {color: 'blue', text: 'Branch has been successfully registered.', show: true});
+                    }).catch((error) => {
+                        this.$store.commit('Snackbar', {color: 'blue', text: 'An error occurred while setting up your branch. Kindly try again.', show: true});
+                    });
+                } else {
+                    this.$data.branch.BranchId = 1;
+                    this.$apollo.mutate({
+                        // Mutation Query
+                        mutation: gql`mutation($label: CreateMetadataInput!) { createMetadata(input: $label) { id, key, value } }`,
+                        // Parameters
+                        variables: {
+                            label: {key: "Branch", value: JSON.stringify(this.$data.branch)}
+                        },
+                        // Optimistic UI. Will be treated as a 'fake' result as soon as the request is made so that the UI can react quickly and the user be happy
+                        optimisticResponse: {
+                            __typename: 'Mutation',
+                            createMetadata: {
+                                id: 0,
+                                key: 'Branch',
+                                value: '',
+                                __typename: 'Branch Registration',
+                            }
+                        },
+                    }).then((data) => {
+                        // button.disabled = false;
+                        this.$store.commit('Snackbar', {color: 'blue', text: 'Branch has been successfully registered.', show: true});
+                    }).catch((error) => {
+                        // button.disabled = false;
+                        this.$store.commit('Snackbar', {color: 'blue', text: 'An error occurred while setting up your branch. Kindly try again.', show: true});
+                    });
+                }
+            },
+            deleteFormData() {
+                alert('Delete');
             }
         },
     };
