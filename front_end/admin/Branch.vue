@@ -68,9 +68,8 @@
                         </div>
                         <div slot="widget-footer-action">
                             <footer-toolbar :TotalRecords="branches.length" @pageChanged="onpageChange"
-                                deferSave displaySave saveName="Register Branch" v-on:saveDeferred="saveFormData"
-                                deferDelete v-on:deleteDeferred="deleteFormData"
-                                deferClear v-on:clearDeferred="clearFormData">
+                                displaySave v-on:saveDeferred="saveFormData"
+                                v-on:deleteDeferred="deleteFormData" v-on:clearDeferred="clearFormData">
                             </footer-toolbar>
                         </div>
                     </v-widget>
@@ -143,14 +142,12 @@
             },
         },
         methods: {
-            onpageChange(pageNos) {
-                this.$data.id = this.$data.branches[pageNos - 1]['id'];
-                this.$data.branch = JSON.parse(this.$data.branches[pageNos - 1]['value']);
-            },
             closeDialog() {
                 this.$parent.isActive = false;
             },
             clearFormData() {
+                this.$data.id = 0;
+                this.$data.page = 1;
                 for (var key in this.branch) {
                     if (key !== 'currency')
                     {
@@ -163,33 +160,95 @@
             saveFormData() {
                 // var button = document.getElementById("SaveData");
                 // button.disabled = true
+
+                // Call to the graphql mutation
+                if (this.$data.id >= 1) {
+                    this.$apollo.mutate({
+                        // Mutation Query
+                        mutation: gql`mutation($label: UpdateMetadataInput!) { updateMetadata(input: $label) { id, key, value } }`,
+                        // Parameters
+                        variables: {
+                            label: {'id': this.$data.id, key: "Branch", value: JSON.stringify(this.$data.branch)}
+                        },
+                        // Optimistic UI. Will be treated as a 'fake' result as soon as the request is made so that the UI can react quickly and the user be happy
+                        optimisticResponse: {
+                            __typename: 'Mutation',
+                            updateMetadata: {
+                                id: this.$data.id,
+                                key: 'Branch',
+                                value: '',
+                                __typename: 'Metadata',
+                            },
+                        },
+                    }).then((data) => {
+                        // button.disabled = false;
+                        this.clearFormData();
+                        this.$store.commit('Snackbar', {color: 'blue', text: 'Branch has been successfully updated.', show: true});
+                    }).catch((error) => {
+                        // button.disabled = false;
+                        this.$store.commit('Snackbar', {color: 'blue', text: 'An error occurred while setting up your branch. Kindly try again.', show: true});
+                    });
+                } else {
+                    this.$apollo.mutate({
+                        // Mutation Query
+                        mutation: gql`mutation($label: CreateMetadataInput!) { createMetadata(input: $label) { id, key, value } }`,
+                        // Parameters
+                        variables: {
+                            label: {key: "Branch", value: JSON.stringify(this.$data.branch)}
+                        },
+                        // Optimistic UI. Will be treated as a 'fake' result as soon as the request is made so that the UI can react quickly and the user be happy
+                        optimisticResponse: {
+                            __typename: 'Mutation',
+                            createMetadata: {
+                                id: 0,
+                                key: 'Branch',
+                                value: '',
+                                __typename: 'Metadata',
+                            }
+                        },
+                    }).then((data) => {
+                        // button.disabled = false;
+                        this.clearFormData();
+                        this.$store.commit('Snackbar', {color: 'blue', text: 'Branch has been successfully registered.', show: true});
+                    }).catch((error) => {
+                        // button.disabled = false;
+                        this.$store.commit('Snackbar', {color: 'blue', text: 'An error occurred while setting up your branch. Kindly try again.', show: true});
+                    });
+                }
+            },
+            deleteFormData() {
                 this.$apollo.mutate({
                     // Mutation Query
-                    mutation: gql`mutation($label: CreateMetadataInput!) { createMetadata(input: $label) { id, key, value } }`,
+                    mutation: gql`mutation($label: DeleteMetadataInput!) { deleteMetadata(input: $label) { id } }`,
                     // Parameters
                     variables: {
-                        label: {key: "Branch", value: JSON.stringify(this.$data.branch)}
+                        label: {'id': this.$data.id}
                     },
                     // Optimistic UI. Will be treated as a 'fake' result as soon as the request is made so that the UI can react quickly and the user be happy
                     optimisticResponse: {
                         __typename: 'Mutation',
-                        createMetadata: {
-                            id: 0,
+                        deleteMetadata: {
+                            id: this.$data.id,
                             key: 'Branch',
                             value: '',
-                            __typename: 'Branch Registration',
-                        }
+                            __typename: 'Metadata',
+                        },
                     },
                 }).then((data) => {
                     // button.disabled = false;
-                    this.$store.commit('Snackbar', {color: 'blue', text: 'Branch has been successfully registered.', show: true});
+                    delete this.$data.branches[this.$data.page];
+                    FooterToolbar.TotalRecords = this.$data.branches.length;
+                    this.clearFormData();
+                    this.$store.commit('Snackbar', {color: 'blue', text: 'Branch has been successfully updated.', show: true});
                 }).catch((error) => {
                     // button.disabled = false;
-                    this.$store.commit('Snackbar', {color: 'blue', text: 'An error occurred while setting up your branch. Kindly try again.', show: true});
+                    this.$store.commit('Snackbar', {color: 'blue', text: 'An error occurred while deleting the branch. Kindly try again.', show: true});
                 });
             },
-            deleteFormData() {
-                alert('Delete');
+            onpageChange(pageNos) {
+                this.$data.page = pageNos - 1;
+                this.$data.id = this.$data.branches[this.$data.page]['id'];
+                this.$data.branch = JSON.parse(this.$data.branches[this.$data.page]['value']);
             }
         },
     };

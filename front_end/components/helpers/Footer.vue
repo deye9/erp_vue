@@ -1,13 +1,13 @@
 <template>
     <div>
-        <v-pagination v-model="page" :length="paginationLength" circle :total-visible="totalVisible" @input="onPageChange" dark></v-pagination>
+        <v-pagination v-model="page" :length="paginationLength" :total-visible="totalVisible" @input="onpageChange" dark circle></v-pagination>
 
-        <v-btn :color="saveClass" dark @click="addRecord" v-show="displaySave">
+        <v-btn :color="saveClass" dark @click="$emit('saveDeferred')" v-show="displaySave">
             {{saveName}}
             <v-icon dark right>{{saveIcon}}</v-icon>
         </v-btn>
 
-        <v-btn :color="deleteClass" dark @click="deleteRecord" v-show="displayDelete">
+        <v-btn :color="deleteClass" dark @click="$emit('deleteDeferred')" v-show="displayDelete">
             {{deleteName}}
             <v-icon dark right>{{deleteIcon}}</v-icon>
         </v-btn>
@@ -23,21 +23,13 @@
     import gql from 'graphql-tag';
     export default {
         props: {
-            saveName: {
-                type: String,
-                default: 'Register'
-            },
-            saveIcon: {
-                type: String,
-                default: 'check_circle'
+            dataset: {
+                type: Object,
+                default: null
             },
             saveClass: {
                 type: String,
                 default: 'primary'
-            },
-            deferSave: {
-                type: Boolean,
-                default: false
             },
             deleteName: {
                 type: String,
@@ -51,10 +43,6 @@
                 type: String,
                 default: 'error'
             },
-            deferDelete: {
-                type: Boolean,
-                default: false
-            },
             clearName: {
                 type: String,
                 default: 'Clear'
@@ -63,23 +51,7 @@
                 type: String,
                 default: 'remove_circle'
             },
-            deferClear: {
-                type: Boolean,
-                default: false
-            },
-            dataset: {
-                type: Object,
-                default: null
-            },
             displaySave: {
-                type: Boolean,
-                default: false
-            },
-            displayDelete: {
-                type: Boolean,
-                default: false
-            },
-            displayClear: {
                 type: Boolean,
                 default: false
             },
@@ -90,7 +62,11 @@
         },
         data () {
             return {
-                page: 1
+                page: 1,
+                saveIcon: 'save',
+                displayClear: false,
+                displayDelete: false,
+                saveName: 'Add Record'
             }
         },
         computed: {
@@ -107,6 +83,11 @@
         },
         methods: {
             clearForm() {
+                this.$data.page = 1;
+                this.$data.saveIcon = "save";
+                this.$data.displayClear = false;
+                this.$data.displayDelete = false;
+                this.$data.saveName = "Add Record";
                 if (this.deferClear) {
                     this.$emit('clearDeferred');
                 } else {
@@ -115,36 +96,12 @@
                     }
                 }
             },
-            addRecord() {
-                if (this.deferSave) {
-                    this.$emit('saveDeferred');
-                } else {
-                    // for (var key in this.dataset) {
-                    //     if (key !== 'currency')
-                    //     {
-                    //         this.dataset[key] = null;
-                    //     } else {
-                    //         this.dataset.currency = { name: 'Nigerian Naira', symbol: '₦' };
-                    //     }
-                    // }
-                }
-            },
-            deleteRecord() {
-                if (this.deferDelete) {
-                    this.$emit('deleteDeferred');
-                } else {
-                    // for (var key in this.dataset) {
-                    //     if (key !== 'currency')
-                    //     {
-                    //         this.dataset[key] = null;
-                    //     } else {
-                    //         this.dataset.currency = { name: 'Nigerian Naira', symbol: '₦' };
-                    //     }
-                    // }
-                }
-            },
-            onPageChange(newPage) {
-                this.$emit('pageChanged', newPage);
+            onpageChange(pageNos) {
+                this.$data.saveIcon = "update";
+                this.$data.displayClear = true;
+                this.$data.displayDelete = true;
+                this.$emit('pageChanged', pageNos);
+                this.$data.saveName = "Update Record";
             }
         },
     }

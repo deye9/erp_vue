@@ -253,7 +253,7 @@
                                 id: 1,
                                 key: 'Company Profile',
                                 value: '',
-                                __typename: 'Registration',
+                                __typename: 'Metadata',
                             },
                         },
                     }).then((data) => {
@@ -276,7 +276,7 @@
                                 id: 0,
                                 key: 'Company Profile',
                                 value: '',
-                                __typename: 'Registration',
+                                __typename: 'Metadata',
                             }
                         },
                     }).then((data) => {
