@@ -40,4 +40,8 @@ class Metadata extends Model implements Auditable
         // Remember to check for null just in case it fails.
        return Metadata::whereRaw("lower(key) = lower('BRANCH')")->first();
     }
+
+    public function keyFilter() {
+        \Log::info(12);
+    }
 }

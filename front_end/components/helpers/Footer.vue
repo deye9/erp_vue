@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-pagination v-model="page" :length="paginationLength" circle :total-visible="totalVisible" v-show="displayPagination"></v-pagination>
+        <v-pagination v-model="page" :length="paginationLength" circle :total-visible="totalVisible" @input="onPageChange" dark></v-pagination>
 
         <v-btn :color="saveClass" dark @click="addRecord" v-show="displaySave">
             {{saveName}}
@@ -16,12 +16,10 @@
             {{clearName}}
             <v-icon right>{{clearIcon}}</v-icon>
         </v-btn>
-
     </div>
 </template>
 
 <script>
-
     import gql from 'graphql-tag';
     export default {
         props: {
@@ -73,10 +71,6 @@
                 type: Object,
                 default: null
             },
-            totalVisible: {
-                default: 7,
-                type: Number
-            },
             displaySave: {
                 type: Boolean,
                 default: false
@@ -89,14 +83,27 @@
                 type: Boolean,
                 default: false
             },
-            displayPagination: {
-                type: Boolean,
-                default: false
-            },
-            paginationLength: {
+            TotalRecords: {
                 default: 0,
                 type: Number
+            }
+        },
+        data () {
+            return {
+                page: 1
+            }
+        },
+        computed: {
+            totalVisible() {
+                if (this.TotalRecords <= 9) {
+                    return this.TotalRecords;
+                } else {
+                    return 10;
+                }
             },
+            paginationLength() {
+                return this.TotalRecords;
+            }
         },
         methods: {
             clearForm() {
@@ -135,7 +142,10 @@
                     //     }
                     // }
                 }
+            },
+            onPageChange(newPage) {
+                this.$emit('pageChanged', newPage);
             }
-        }
+        },
     }
 </script>

@@ -13,6 +13,7 @@ import VueResource from 'vue-resource';
 import ApolloClient from "apollo-boost";
 import 'font-awesome/css/font-awesome.css';
 import colors from 'vuetify/es5/util/colors';
+import 'material-design-icons-iconfont/dist/material-design-icons.css'; // Ensure you are using css-loader
 
 Vue.config.devtools = true;
 Vue.config.productionTip = false;
@@ -92,7 +93,7 @@ const apolloProvider = new VueApollo({
         // apollo options applied to all queries in components
         $query: {
             loadingKey: 'loading',
-            fetchPolicy: 'cache-and-network',
+            // fetchPolicy: 'cache-and-network',
         },
     },
 });
