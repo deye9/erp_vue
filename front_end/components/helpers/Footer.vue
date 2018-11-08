@@ -2,12 +2,12 @@
     <div>
         <v-pagination v-model="page" :length="paginationLength" :total-visible="totalVisible" @input="onpageChange" dark circle></v-pagination>
 
-        <v-btn :color="saveClass" dark @click="$emit('saveDeferred')" v-show="displaySave">
+        <v-btn :color="saveClass" dark @click="$emit('saveDeferred');" v-show="displaySave">
             {{saveName}}
             <v-icon dark right>{{saveIcon}}</v-icon>
         </v-btn>
 
-        <v-btn :color="deleteClass" dark @click="$emit('deleteDeferred')" v-show="displayDelete">
+        <v-btn :color="deleteClass" dark @click="$emit('deleteDeferred');" v-show="displayDelete">
             {{deleteName}}
             <v-icon dark right>{{deleteIcon}}</v-icon>
         </v-btn>
@@ -60,15 +60,13 @@
                 type: Number
             }
         },
-        data () {
-            return {
-                page: 1,
-                saveIcon: 'save',
-                displayClear: false,
-                displayDelete: false,
-                saveName: 'Add Record'
-            }
-        },
+        data: () => ({
+            page: 1,
+            saveIcon: 'save',
+            displayClear: false,
+            displayDelete: false,
+            saveName: 'Add Record'
+        }),
         computed: {
             totalVisible() {
                 if (this.TotalRecords <= 9) {

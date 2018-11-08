@@ -68,16 +68,13 @@
                         </div>
                         <div slot="widget-footer-action">
                             <footer-toolbar :TotalRecords="branches.length" @pageChanged="onpageChange"
-                                displaySave v-on:saveDeferred="saveFormData"
-                                v-on:deleteDeferred="deleteFormData" v-on:clearDeferred="clearFormData">
+                                displaySave v-on:saveDeferred="saveFormData" v-on:deleteDeferred="deleteFormData" v-on:clearDeferred="clearFormData">
                             </footer-toolbar>
                         </div>
                     </v-widget>
                 </v-flex>
             </v-layout>
         </v-container>
-<br />
-{{branch}}
     </div>
 </template>
 
@@ -186,7 +183,7 @@
                         this.$store.commit('Snackbar', {color: 'blue', text: 'Branch has been successfully updated.', show: true});
                     }).catch((error) => {
                         // button.disabled = false;
-                        this.$store.commit('Snackbar', {color: 'blue', text: 'An error occurred while setting up your branch. Kindly try again.', show: true});
+                        this.$store.commit('Snackbar', {color: 'red', text: 'An error occurred while setting up your branch. Kindly try again.', show: true});
                     });
                 } else {
                     this.$apollo.mutate({
@@ -212,7 +209,7 @@
                         this.$store.commit('Snackbar', {color: 'blue', text: 'Branch has been successfully registered.', show: true});
                     }).catch((error) => {
                         // button.disabled = false;
-                        this.$store.commit('Snackbar', {color: 'blue', text: 'An error occurred while setting up your branch. Kindly try again.', show: true});
+                        this.$store.commit('Snackbar', {color: 'red', text: error.message.replace("GraphQL error: ", ''), show: true});
                     });
                 }
             },
@@ -242,7 +239,7 @@
                     this.$store.commit('Snackbar', {color: 'blue', text: 'Branch has been successfully updated.', show: true});
                 }).catch((error) => {
                     // button.disabled = false;
-                    this.$store.commit('Snackbar', {color: 'blue', text: 'An error occurred while deleting the branch. Kindly try again.', show: true});
+                    this.$store.commit('Snackbar', {color: 'red', text: 'An error occurred while deleting the branch. Kindly try again.', show: true});
                 });
             },
             onpageChange(pageNos) {

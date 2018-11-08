@@ -8,9 +8,9 @@ extend type Query {
 }
 
 extend type Mutation {
-    createMetadata (input: CreateMetadataInput!): Metadata @create(flatten: true model: "App\\Models\\Metadata")
-    updateMetadata (input: UpdateMetadataInput!): Metadata @update(flatten: true model: "App\\Models\\Metadata")
-    deleteMetadata (input: DeleteMetadataInput!): Metadata @delete(flatten: true model: "App\\Models\\Metadata")
+    createMetadata (input: CreateMetadataInput!): Metadata @field(resolver: "App\\Http\\GraphQL\\Mutations\\MetadatatMutator@create")
+    updateMetadata (input: UpdateMetadataInput!): Metadata @field(resolver: "App\\Http\\GraphQL\\Mutations\\MetadatatMutator@update")
+    deleteMetadata (input: DeleteMetadataInput!): Metadata @field(resolver: "App\\Http\\GraphQL\\Mutations\\MetadatatMutator@delete")
 }
 
 type Metadata {

@@ -41,6 +41,20 @@ class Metadata extends Model implements Auditable
        return Metadata::whereRaw("lower(key) = lower('BRANCH')")->first();
     }
 
+    public static function getBranch($branchName) {
+        return Metadata::where('value->branchName', '=', $branchName)->first();
+    }
+
+    public static function branchExists($branchName): string {
+        $res = Metadata::where('value->branchName', '=', $branchName)->exists();
+        return (boolval($res) ? 'true' : 'false');
+    }
+
+    public static function branchUrlExists($branchUrl): string {
+        $res = Metadata::where('value->branchUrl', '=', $branchUrl)->exists();
+        return (boolval($res) ? 'true' : 'false');
+    }
+
     public function keyFilter() {
         \Log::info(12);
     }

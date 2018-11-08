@@ -27,7 +27,7 @@ class MetadataQuery
         }
         else if(isset($args['BranchName']))
         {
-            return Metadata::where('value->branchName', '=', $args['BranchName'])->first();
+            return Metadata::getBranch($args['BranchName']);
         }
     }
 
