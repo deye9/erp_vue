@@ -2,14 +2,16 @@
 
 namespace App\Http\GraphQL\Mutations;
 
+use DB;
 use App\Models\User;
 use App\Models\Tenant;
 use App\Models\Metadata;
 use App\Notifications\TenantCreated;
 use GraphQL\Type\Definition\ResolveInfo;
+use Hyn\Tenancy\Traits\UsesTenantConnection;
 use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
 
-class MetadatatMutator
+class MetadataMutator
 {
     /**
      * Return a value for the field.
@@ -41,16 +43,14 @@ class MetadatatMutator
                 $hostname = app(\Hyn\Tenancy\Environment::class)->hostname();
 
                 // Create the branch and assign a URL to them.
-                if (isset($hostname))
-                {
+                if (isset($hostname)) {
                     // Get FQDN (Fully-Qualified Domain Name) by current hostname
                     $fqdn = $hostname->fqdn;
                     $FQDN = explode('.', $fqdn, 2);
 
                     $name = $FQDN[0] . '_' . $value->branchUrl;
                     if (Tenant::tenantExists($name)) {
-                        \Log::info("A tenant with name '{$name}' already exists.");
-                        return $meta;
+                        throw new \GraphQL\Error\Error("Branch URL '{$value->branchUrl}' already assigned.");
                     }
 
                     $tenant = Tenant::registerTenant($name, $email, $password);
@@ -59,7 +59,7 @@ class MetadatatMutator
                     $tenant->admin->notify(new TenantCreated($tenant->hostname));
                 }
             } else {
-                throw new \GraphQL\Error\Error("Tenant URL '{$value->branchUrl}' already exists.");
+                throw new \GraphQL\Error\Error("Branch URL '{$value->branchUrl}' already assigned.");
             }
         } else {
             $meta = Metadata::create($args['input']);
@@ -79,13 +79,15 @@ class MetadatatMutator
     **/
     public function update($rootValue, array $args, GraphQLContext $context = null, ResolveInfo $resolveInfo)
     {
-        // $decodeString = json_encode($branches->value);
-        // $decodeString = preg_replace("/]([^]]+)$/", ', ' . $args['input']['value'] . ']', $decodeString);
-        // \Log::info($decodeString);
-        // $branches->value = $decodeString;
-        // $branches::save();
-        // //$officeBranches = $branches->value;
-        // return $branches;
+        $id = $args['input']['id'];
+        $meta = Metadata::find($id);
+        $meta->update([
+            'key' => $args['input']['key'],
+            'value' => $args['input']['value']
+        ]);
+        if (strtolower($args['input']['key']) === 'branch') {
+        }
+        return $meta;
     }
 
     /**
@@ -100,8 +102,72 @@ class MetadatatMutator
     **/
     public function delete($rootValue, array $args, GraphQLContext $context = null, ResolveInfo $resolveInfo)
     {
-        $meta = Metadata::find($args['input']['id'])->delete();
-        \Log::info($meta);
+        $meta = Metadata::find($args['input']['id']);
+        $value = json_decode($meta->value);
+
+        if (strtolower($args['input']['key']) === 'branch') {
+            // Get current Hostname
+            $hostname = app(\Hyn\Tenancy\Environment::class)->hostname();
+
+            // Create the branch and assign a URL to them.
+            if (isset($hostname))
+            {
+                // Get FQDN (Fully-Qualified Domain Name) by current hostname
+                $fqdn = $hostname->fqdn;
+                $FQDN = explode('.', $fqdn, 2);
+
+                $name = strtolower($FQDN[0] . '_' . trim($value->branchUrl));
+            }
+
+            $baseUrl = env('APP_URL_BASE');
+            $result = Tenant::delete($name);
+
+            if ($result === "Tenant {$name}.{$baseUrl} successfully deleted.") {
+                $meta->delete();
+            } else {
+                throw new \GraphQL\Error\Error("Unable to remove URL '{$name}' and all associated data.");
+            }
+        } else {
+            $meta->delete();
+        }
         return $meta;
+    }
+
+    private function writeToBranchDB(array $args = [])
+    {
+
+
+        // queue jobs
+        // trigger an event when a master tenant is having a configuration changed and listen to the event to loop over all branches and dispatch one job per branch to update the configuration on that branch, the branch specific job can be tenant aware/specific for one tenant
+        // no connection overlap, fast and reliable if you have plenty of queue workers
+        // (looks at horizon)
+        // https://discordapp.com/channels/146267795754057729/294067877424660480/510523627746361380
+
+        $baseUrl = env('APP_URL_BASE');
+        $mainProfile = Metadata::GetProfile();
+        $branches = Metadata::keyFilter('branch');
+
+        // Get current Hostname
+        $hostname = app(\Hyn\Tenancy\Environment::class)->hostname();
+
+        // Loop through the branches and insert the data into them real time.
+        foreach ($branches as &$branch) {
+            $value = json_decode($branch->value);
+            $name = strtolower(explode('.', $hostname->fqdn, 2)[0] . '_' . trim($value->branchUrl) . '.' . $baseUrl);
+            $uuid = DB::connection('system')->select('select w.uuid from hostnames h inner join websites w on h.website_id = w.id where fqdn = :name', ['name' => $name]){0}->uuid;
+
+            $pdo = DB::connection('system')->getPdo();
+            \Log::info(json_encode($pdo));
+
+            //\Log::info($uuid);
+
+            // \Log::info($name);
+            // \Log::info($mainProfile);
+        }
+
+       // \Log::info($branches);
+
+        //$attr = json_decode(DB::connection('system')->table("hostnames")->where('fqdn', '=', 'andela_ikeja.erp.dev')->get());
+        //\Log::info($attr);
     }
 }

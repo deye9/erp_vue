@@ -74,8 +74,17 @@ class Tenant
 
     private static function makeAdmin($name, $email, $password): User
     {
-        // $2y$10$7HVvJeG9Sd.oyUsfcPAy9.YASOrIVN4TAaCebDfXljQETwE024Lua
+        // Create and setup branch here.
         if (strpos($password, '$') !== false) {
+            // Get current Hostname
+            $hostname = app(\Hyn\Tenancy\Environment::class)->hostname();
+            if (isset($hostname))
+            {
+                // Get FQDN (Fully-Qualified Domain Name) by current hostname
+                $fqdn = $hostname->fqdn;
+                $FQDN = explode('.', $fqdn, 2);
+                $name = $FQDN[0];
+            }
             $admin = User::create(['name' => $name, 'email' => $email, 'password' => $password]);
         } else {
             $admin = User::create(['name' => $name, 'email' => $email, 'password' => Hash::make($password)]);

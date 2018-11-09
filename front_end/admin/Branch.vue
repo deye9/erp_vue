@@ -21,7 +21,7 @@
                                         </v-flex>
 
                                         <v-flex sm6 lg6>
-                                            <v-combobox label="Parent Office" autocomplete required :items="currencies" item-text="name" item-value="symbol" v-model="branch.ReportsTo"></v-combobox>
+                                            <v-combobox label="Parent Office" autocomplete required :items="Offices" item-text="value" item-value="id" v-model="branch.ReportsTo" return-object></v-combobox>
                                         </v-flex>
                                         <v-flex sm6 lg6>
                                             <v-combobox label="Currency" autocomplete required :items="currencies" v-model="branch.currency"
@@ -89,7 +89,7 @@
             // Query with parameters
             branches() {
                 return {
-                    query: gql`query getBranches($details: String!) {filterbykey(key: $details) { id, value }}`,
+                    query: gql`query getBranchDetails($details: String!) {filterbykey(key: $details) { id, value }}`,
                     variables() {
                         return {
                             details: "branch",
@@ -99,10 +99,21 @@
                         return data.filterbykey;
                     },
                     error(error) {
-                        this.$store.commit('Snackbar', {color: 'red', text: 'We\'ve got an error!\n' + error, show: true});
+                        this.$store.commit('Snackbar', {color: 'red', text: 'Unable to retrieve Branch Offices.' + error, show: true});
                     },
                 }
             },
+            // Offices() {
+            //     return {
+            //         query: gql`query getBranchSummary { getbranches { id, value } }`,
+            //         update(data) {
+            //             return data.getbranches;
+            //         },
+            //         error(error) {
+            //             this.$store.commit('Snackbar', {color: 'red', text: 'Unable to retrieve your office summary.', show: true});
+            //         },
+            //     }
+            // }
         },
         components: {
             VWidget,
@@ -118,11 +129,11 @@
                 state: null,
                 country: null,
                 endTime: null,
-                ReportsTo: null,
                 startTime: null,
                 branchUrl: null,
                 branchName: null,
-                currency: { name: 'Nigerian Naira', symbol: '₦' },
+                ReportsTo: { id: 0, value: "Head Office" },
+                currency: { symbol: '₦', name: 'Nigerian Naira' },
             },
             modal: false,
             endTimeMenu: false,
@@ -183,7 +194,7 @@
                         this.$store.commit('Snackbar', {color: 'blue', text: 'Branch has been successfully updated.', show: true});
                     }).catch((error) => {
                         // button.disabled = false;
-                        this.$store.commit('Snackbar', {color: 'red', text: 'An error occurred while setting up your branch. Kindly try again.', show: true});
+                        this.$store.commit('Snackbar', {color: 'red', text: 'An error occurred while updating up your branch. Kindly try again.', show: true});
                     });
                 } else {
                     this.$apollo.mutate({
@@ -239,7 +250,7 @@
                     this.$store.commit('Snackbar', {color: 'blue', text: 'Branch has been successfully updated.', show: true});
                 }).catch((error) => {
                     // button.disabled = false;
-                    this.$store.commit('Snackbar', {color: 'red', text: 'An error occurred while deleting the branch. Kindly try again.', show: true});
+                    this.$store.commit('Snackbar', {color: 'red', text: error.message.replace("GraphQL error: ", ''), show: true});
                 });
             },
             onpageChange(pageNos) {

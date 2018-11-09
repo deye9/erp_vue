@@ -38,7 +38,18 @@ class Metadata extends Model implements Auditable
 
     public static function GetBranches() {
         // Remember to check for null just in case it fails.
-       return Metadata::whereRaw("lower(key) = lower('BRANCH')")->first();
+        $a = array("id" => 0, "key" => "Branch", "value" => "Head Office");
+        $meta = Metadata::select('id', 'key', 'value->branchName AS value')->whereRaw("lower(key) = lower('BRANCH')")->orderBy('id', 'asc')->get();
+
+        $value = json_decode($meta);
+
+        // Insert element to the begining of the array.
+        array_unshift($value, $a);
+        return $value;
+    }
+
+    public static function keyFilter($keyName) {
+        return Metadata::whereRaw("lower(key) = lower('" . $keyName . "')")->orderBy('id', 'asc')->get();
     }
 
     public static function getBranch($branchName) {
@@ -53,9 +64,5 @@ class Metadata extends Model implements Auditable
     public static function branchUrlExists($branchUrl): string {
         $res = Metadata::where('value->branchUrl', '=', $branchUrl)->exists();
         return (boolval($res) ? 'true' : 'false');
-    }
-
-    public function keyFilter() {
-        \Log::info(12);
     }
 }
