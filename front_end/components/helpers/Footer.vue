@@ -1,18 +1,18 @@
 <template>
     <div>
-        <v-pagination v-model="page" :length="paginationLength" :total-visible="totalVisible" @input="onpageChange" dark circle></v-pagination>
+        <v-pagination ref="pager" v-model="page" :length="paginationLength" :total-visible="totalVisible" @input="onpageChange" dark circle></v-pagination>
 
-        <v-btn :color="saveClass" dark @click="$emit('saveDeferred');" v-show="displaySave">
+        <v-btn id="saveBtn" :color="saveClass" dark @click="$emit('saveDeferred');" v-show="displaySave">
             {{saveName}}
             <v-icon dark right>{{saveIcon}}</v-icon>
         </v-btn>
 
-        <v-btn :color="deleteClass" dark @click="$emit('deleteDeferred');" v-show="displayDelete">
+        <v-btn id="deleteBtn" :color="deleteClass" dark @click="$emit('deleteDeferred');" v-show="displayDelete">
             {{deleteName}}
             <v-icon dark right>{{deleteIcon}}</v-icon>
         </v-btn>
 
-        <v-btn dark @click="clearForm" v-show="displayClear">
+        <v-btn id="clearBtn" dark @click="clearForm" v-show="displayClear">
             {{clearName}}
             <v-icon right>{{clearIcon}}</v-icon>
         </v-btn>
@@ -82,17 +82,11 @@
         methods: {
             clearForm() {
                 this.$data.page = 1;
+                this.$emit('clearDeferred');
                 this.$data.saveIcon = "save";
                 this.$data.displayClear = false;
                 this.$data.displayDelete = false;
                 this.$data.saveName = "Add Record";
-                if (this.deferClear) {
-                    this.$emit('clearDeferred');
-                } else {
-                    for (var key in this.dataset) {
-                        this.dataset[key] = null;
-                    }
-                }
             },
             onpageChange(pageNos) {
                 this.$data.saveIcon = "update";
@@ -102,5 +96,22 @@
                 this.$data.saveName = "Update Record";
             }
         },
+        reset() {
+            document.getElementById('clearBtn').click();
+        },
+        toggleSave() {
+            if (document.getElementById('saveBtn').disabled == false) {
+                document.getElementById('saveBtn').disabled = true;
+            } else {
+                document.getElementById('saveBtn').disabled = false;
+            }
+        },
+        toggleDelete() {
+            if (document.getElementById('deleteBtn').disabled == false) {
+                document.getElementById('deleteBtn').disabled = true;
+            } else {
+                document.getElementById('deleteBtn').disabled = false;
+            }
+        }
     }
 </script>

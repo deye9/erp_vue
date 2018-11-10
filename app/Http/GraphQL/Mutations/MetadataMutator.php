@@ -105,31 +105,31 @@ class MetadataMutator
         $meta = Metadata::find($args['input']['id']);
         $value = json_decode($meta->value);
 
-        // if (strtolower($args['input']['key']) === 'branch') {
-        //     // Get current Hostname
-        //     $hostname = app(\Hyn\Tenancy\Environment::class)->hostname();
+        if (strtolower($args['input']['key']) === 'branch') {
+            // Get current Hostname
+            $hostname = app(\Hyn\Tenancy\Environment::class)->hostname();
 
-        //     // Create the branch and assign a URL to them.
-        //     if (isset($hostname))
-        //     {
-        //         // Get FQDN (Fully-Qualified Domain Name) by current hostname
-        //         $fqdn = $hostname->fqdn;
-        //         $FQDN = explode('.', $fqdn, 2);
+            // Create the branch and assign a URL to them.
+            if (isset($hostname))
+            {
+                // Get FQDN (Fully-Qualified Domain Name) by current hostname
+                $fqdn = $hostname->fqdn;
+                $FQDN = explode('.', $fqdn, 2);
 
-        //         $name = strtolower($FQDN[0] . '_' . trim($value->branchUrl));
-        //     }
+                $name = strtolower($FQDN[0] . '_' . trim($value->branchUrl));
+            }
 
-        //     $baseUrl = env('APP_URL_BASE');
-        //     $result = Tenant::delete($name);
+            $baseUrl = env('APP_URL_BASE');
+            $result = Tenant::delete($name);
 
-        //     if ($result === "Tenant {$name}.{$baseUrl} successfully deleted.") {
-        //         $meta->delete();
-        //     } else {
-        //         throw new \GraphQL\Error\Error("Unable to remove URL '{$name}' and all associated data.");
-        //     }
-        // } else {
+            if ($result === "Tenant {$name}.{$baseUrl} successfully deleted.") {
+                $meta->delete();
+            } else {
+                throw new \GraphQL\Error\Error("Unable to remove URL '{$name}' and all associated data.");
+            }
+        } else {
              $meta->delete();
-        // }
+        }
         return $meta;
     }
 

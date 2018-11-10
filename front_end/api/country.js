@@ -1,4 +1,4 @@
-export default [
+const countries = [
   {
     'country': 'Aruba',
     'abbr': 'AW'
@@ -956,3 +956,17 @@ export default [
     'abbr': 'ZW'
   }
 ];
+
+// Sort countries
+function sorting(json_object, key_to_sort_by) {
+    function sortByKey(a, b) {
+        var x = a[key_to_sort_by];
+        var y = b[key_to_sort_by];
+        return ((x < y) ? -1 : ((x > y) ? 1 : 0));
+    }
+    json_object.sort(sortByKey);
+}
+
+sorting(countries, 'country');
+
+export default countries;

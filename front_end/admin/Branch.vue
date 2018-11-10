@@ -5,7 +5,7 @@
                 <v-flex lg12>
                     <v-widget title="Branch Offices...">
                         <div slot="widget-header-action">
-                            <v-btn fab dark small color="primary" @click="clearForm">
+                            <v-btn fab dark small color="primary" @click="clearFormData">
                                 <v-icon>add</v-icon>
                             </v-btn>
                         </div>
@@ -14,7 +14,7 @@
                                 <v-form ref="form" lazy-validation>
                                     <v-layout row wrap>
                                         <v-flex sm6 lg6>
-                                            <v-text-field class="tolower" :suffix="setDomain" label="Url" v-model="branch.branchUrl" :hint="`https://${tenant.companyname.toLowerCase()}_${branch.branchUrl}${setDomain}`" v-validate="'required'" data-vv-name="branchUrl" :error-messages="errors.collect('branchUrl')" required></v-text-field>
+                                            <v-text-field id="branchurl" class="tolower" :suffix="setDomain" label="Url" v-model="branch.branchUrl" :hint="`https://${tenant.companyname.toLowerCase()}_${branch.branchUrl}${setDomain}`" v-validate="'required'" data-vv-name="branchUrl" :error-messages="errors.collect('branchUrl')" required></v-text-field>
                                         </v-flex>
                                         <v-flex sm6 lg6>
                                             <v-text-field label="Branch Name" v-model="branch.branchName" v-validate="'required'" data-vv-name="branchName" :error-messages="errors.collect('branchName')" required></v-text-field>
@@ -36,7 +36,8 @@
                                         </v-flex>
 
                                         <v-flex sm6 lg6>
-                                            <v-text-field label="Country" v-validate="'required'" data-vv-name="country" :error-messages="errors.collect('country')" v-model="branch.country" required></v-text-field>
+                                            <v-combobox label="Country" autocomplete required :items="countries" v-model="branch.country"
+                                            item-text="country" item-value="abbr" :hint="`${branch.country.country}, ${branch.country.abbr}`" persistent-hint return-object></v-combobox>
                                         </v-flex>
                                         <v-flex sm6 lg6>
                                             <v-text-field label="State" v-validate="'required'" data-vv-name="state" :error-messages="errors.collect('state')" v-model="branch.state" required></v-text-field>
@@ -67,8 +68,8 @@
                             </v-layout>
                         </div>
                         <div slot="widget-footer-action">
-                            <footer-toolbar :TotalRecords="branches.length" @pageChanged="onpageChange"
-                                displaySave v-on:saveDeferred="saveFormData" v-on:deleteDeferred="deleteFormData" v-on:clearDeferred="clearFormData">
+                            <footer-toolbar :TotalRecords="branches.length" @pageChanged="onpageChange" displaySave
+                                v-on:saveDeferred="saveFormData" v-on:deleteDeferred="deleteFormData" v-on:clearDeferred="clearFormData">
                             </footer-toolbar>
                         </div>
                     </v-widget>
@@ -80,7 +81,8 @@
 
 <script>
     import gql from 'graphql-tag';
-    import Currencies  from '../api/currencies';
+    import Countries from '../api/country';
+    import Currencies from '../api/currencies';
     import VWidget from '../components/VWidget';
     import FooterToolbar from '../components/helpers/Footer';
 
@@ -123,17 +125,18 @@
                 phone: null,
                 email: null,
                 state: null,
-                country: null,
                 endTime: null,
                 startTime: null,
                 branchUrl: null,
                 branchName: null,
                 ReportsTo: { id: 0, value: "Head Office" },
+                country: { 'country': 'Nigeria', 'abbr': 'NG'},
                 currency: { symbol: '₦', name: 'Nigerian Naira' },
             },
             modal: false,
             endTimeMenu: false,
             startTimeMenu: false,
+            countries: Countries,
             currencies: Currencies,
         }),
         computed:  {
@@ -148,7 +151,7 @@
                 this.$apollo.query({
                     query: gql`query getBranchSummary { getbranches { id, value }}`,
                 }).then(result => this.$data.offices = result.data.getbranches);
-            },
+            }
         },
         methods: {
             closeDialog() {
@@ -165,12 +168,14 @@
                         this.currency = { name: 'Nigerian Naira', symbol: '₦' };
                     }
                 }
+                FooterToolbar.reset();
+                document.getElementById('branchurl').focus();
                 this.$apollo.queries.officessDataset.refetch();
                 this.$apollo.queries.branchesDataset.refetch();
+                document.getElementById('branchurl').readOnly = false;
             },
             saveFormData() {
-                // var button = document.getElementById("SaveData");
-                // button.disabled = true
+                FooterToolbar.toggleSave();
 
                 // Call to the graphql mutation
                 if (this.$data.id >= 1) {
@@ -192,12 +197,12 @@
                             },
                         },
                     }).then((data) => {
-                        // button.disabled = false;
                         this.clearFormData();
+                        FooterToolbar.toggleSave();
                         this.$store.commit('Snackbar', {color: 'blue', text: 'Branch has been successfully updated.', show: true});
                     }).catch((error) => {
-                        // button.disabled = false;
-                        this.$store.commit('Snackbar', {color: 'red', text: 'An error occurred while updating up your branch. Kindly try again.', show: true});
+                        FooterToolbar.toggleSave();
+                        this.$store.commit('Snackbar', {color: 'red', text: error.message.replace("GraphQL error: ", ''), show: true});
                     });
                 } else {
                     this.$apollo.mutate({
@@ -218,16 +223,18 @@
                             }
                         },
                     }).then((data) => {
-                        // button.disabled = false;
                         this.clearFormData();
+                        FooterToolbar.toggleSave();
                         this.$store.commit('Snackbar', {color: 'blue', text: 'Branch has been successfully registered.', show: true});
                     }).catch((error) => {
-                        // button.disabled = false;
+                        FooterToolbar.toggleSave();
                         this.$store.commit('Snackbar', {color: 'red', text: error.message.replace("GraphQL error: ", ''), show: true});
                     });
                 }
             },
             deleteFormData() {
+                FooterToolbar.toggleDelete();
+
                 this.$apollo.mutate({
                     // Mutation Query
                     mutation: gql`mutation($label: DeleteMetadataInput!) { deleteMetadata(input: $label) { id } }`,
@@ -246,16 +253,17 @@
                         },
                     },
                 }).then((data) => {
-                    // button.disabled = false;
                     this.clearFormData();
+                    FooterToolbar.toggleDelete();
                     this.$store.commit('Snackbar', {color: 'blue', text: 'Branch has been successfully updated.', show: true});
                 }).catch((error) => {
-                    // button.disabled = false;
+                    FooterToolbar.toggleDelete();
                     this.$store.commit('Snackbar', {color: 'red', text: error.message.replace("GraphQL error: ", ''), show: true});
                 });
             },
             onpageChange(pageNos) {
                 this.$data.page = pageNos - 1;
+                document.getElementById('branchurl').readOnly = true;
                 this.$data.id = this.$data.branches[this.$data.page]['id'];
                 this.$data.branch = JSON.parse(this.$data.branches[this.$data.page]['value']);
             }
