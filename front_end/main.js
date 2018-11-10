@@ -5,14 +5,16 @@ import axios from 'axios';
 import './theme/default.css';
 import Vuetify from 'vuetify';
 import router from './router';
-import VueApollo from "vue-apollo";
 //import './theme/default.styl';
 import VeeValidate from 'vee-validate';
 import Truncate from 'lodash.truncate';
 import VueResource from 'vue-resource';
-import ApolloClient from "apollo-boost";
 import 'font-awesome/css/font-awesome.css';
 import colors from 'vuetify/es5/util/colors';
+import { ApolloClient } from 'apollo-client';
+import { HttpLink } from 'apollo-link-http';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import VueApollo from 'vue-apollo';
 import 'material-design-icons-iconfont/dist/material-design-icons.css'; // Ensure you are using css-loader
 
 Vue.config.devtools = true;
@@ -85,18 +87,25 @@ const store = new Vuex.Store({
     }
 });
 
-const apolloProvider = new VueApollo({
-    defaultClient: new ApolloClient({
-        uri: "/graphql"
+const httpLink = new HttpLink({
+    // You should use an absolute URL here
+    uri: '/graphql',
+})
+
+// Create the apollo client
+const apolloClient = new ApolloClient({
+    link: httpLink,
+    //shouldBatch: true,
+    addTypename: false,
+    connectToDevTools: true,
+    cache: new InMemoryCache({
+        addTypename: false
     }),
-    defaultOptions: {
-        // apollo options applied to all queries in components
-        $query: {
-            loadingKey: 'loading',
-            // fetchPolicy: 'cache-and-network',
-        },
-    },
-});
+})
+
+const apolloProvider = new VueApollo({
+    defaultClient: apolloClient,
+})
 
 /* eslint-disable no-new */
 new Vue({
@@ -106,7 +115,5 @@ new Vue({
     apolloProvider,
     components: { App },
     template: '<App/>',
-    apollo: {
-        // Apollo specific options
-    },
+    apolloProvider
 });

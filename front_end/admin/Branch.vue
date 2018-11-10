@@ -21,7 +21,7 @@
                                         </v-flex>
 
                                         <v-flex sm6 lg6>
-                                            <v-combobox label="Parent Office" autocomplete required :items="Offices" item-text="value" item-value="id" v-model="branch.ReportsTo" return-object></v-combobox>
+                                            <v-combobox label="Parent Office" autocomplete required :items="offices" item-text="value" item-value="id" v-model="branch.ReportsTo" return-object></v-combobox>
                                         </v-flex>
                                         <v-flex sm6 lg6>
                                             <v-combobox label="Currency" autocomplete required :items="currencies" v-model="branch.currency"
@@ -86,34 +86,29 @@
 
     export default {
         apollo: {
-            // Query with parameters
-            branches() {
-                return {
-                    query: gql`query getBranchDetails($details: String!) {filterbykey(key: $details) { id, value }}`,
-                    variables() {
-                        return {
-                            details: "branch",
-                        }
-                    },
-                    update(data) {
-                        return data.filterbykey;
-                    },
-                    error(error) {
-                        this.$store.commit('Snackbar', {color: 'red', text: 'Unable to retrieve Branch Offices.' + error, show: true});
-                    },
+            branchesDataset: {
+                query: gql`query getBranchDetails($details: String!) {filterbykey(key: $details) { id, value }}`,
+                variables() {
+                    return {
+                        details: "branch",
+                    }
+                },
+                update(data) {
+                    this.$data.branches = data.filterbykey;
+                },
+                error(error) {
+                    this.$store.commit('Snackbar', {color: 'red', text: 'Unable to retrieve Branch Offices.', show: true});
                 }
             },
-            // Offices() {
-            //     return {
-            //         query: gql`query getBranchSummary { getbranches { id, value } }`,
-            //         update(data) {
-            //             return data.getbranches;
-            //         },
-            //         error(error) {
-            //             this.$store.commit('Snackbar', {color: 'red', text: 'Unable to retrieve your office summary.', show: true});
-            //         },
-            //     }
-            // }
+            officessDataset: {
+                query: gql`query getBranchSummary { getbranches { id, value }}`,
+                update(data) {
+                    this.$data.offices = data.getbranches;
+                },
+                error(error) {
+                    this.$store.commit('Snackbar', {color: 'red', text: 'Unable to retrieve Branch Offices Summary.', show: true});
+                }
+            },
         },
         components: {
             VWidget,
@@ -122,6 +117,7 @@
         data: () => ({
             id: 0,
             page: 1,
+            offices: [],
             branches: [],
             branch: {
                 phone: null,
@@ -148,6 +144,11 @@
                 var str = window.location.hostname.split(".");
                 return '.' + str.splice(1,2).join(".").toLowerCase();
             },
+            getOfficeSummary() {
+                this.$apollo.query({
+                    query: gql`query getBranchSummary { getbranches { id, value }}`,
+                }).then(result => this.$data.offices = result.data.getbranches);
+            },
         },
         methods: {
             closeDialog() {
@@ -164,6 +165,8 @@
                         this.currency = { name: 'Nigerian Naira', symbol: '₦' };
                     }
                 }
+                this.$apollo.queries.officessDataset.refetch();
+                this.$apollo.queries.branchesDataset.refetch();
             },
             saveFormData() {
                 // var button = document.getElementById("SaveData");
@@ -244,8 +247,6 @@
                     },
                 }).then((data) => {
                     // button.disabled = false;
-                    delete this.$data.branches[this.$data.page];
-                    FooterToolbar.TotalRecords = this.$data.branches.length;
                     this.clearFormData();
                     this.$store.commit('Snackbar', {color: 'blue', text: 'Branch has been successfully updated.', show: true});
                 }).catch((error) => {
