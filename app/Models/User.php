@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use Hyn\Tenancy\Traits\UsesTenantConnection;
-use Illuminate\Notifications\Notifiable;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Notifications\Notifiable;
+use Hyn\Tenancy\Traits\UsesTenantConnection;
 use App\Notifications\MailResetPasswordToken;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -29,6 +29,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function getRootAdmin()
+    {
+        return User::find(1);
+    }
 
     /**
      * Send a password reset email to the user

@@ -69,7 +69,10 @@
                                     <input type="file" v-on:change="onLogoChange" class="form-control" accept="image/*" id="LogoUpload" name="LogoUpload" placeholder="Choose your Logo">
                                 </div>
                                 <div class="float-right">
-                                    <button id="Btnupload" name="Btnupload" class="btn btn-success btn-block" @click="upload">Upload</button>
+                                    <button id="Btnupload" name="Btnupload" class="btn btn-success btn-block" disabled @click="upload">
+                                        Upload
+                                        <v-icon right dark>cloud_upload</v-icon>
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -95,8 +98,8 @@
   </div>
 </template>
 
-<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
 <script>
+    var button = document.getElementById("Btnupload");
     import gql from 'graphql-tag';
     import VWidget from '../components/VWidget';
     import ThemeSettings from '../components/ThemeSettings';
@@ -167,16 +170,14 @@
                     const formData = new FormData()
                     formData.append('file', this.$data.registration.logo);
                     formData.append('upload_preset', this.cloudinary.uploadPreset);
-                    formData.append('tags', this.tenant.companyname);
+                    formData.append('tags', this.cloudinary.resourceType + "'s for " + this.tenant.companyname);
 
                     axios.post(this.clUrl, formData)
                         .then(response => {
                             if (response.status === 200) {
-                                console.log(response.data);
                                 this.registration.logo = response.data.secure_url;
                                 this.$store.commit('updatetenant', this.$data.registration);
                                 this.$store.commit('Snackbar', {color: 'blue', text: 'Image has been successfully uploaded.', show: true});
-                                button.disabled = false;
                             }
                     })
                 } else {
@@ -212,6 +213,8 @@
                     Rlogo.logo = event.target.result;
                 }.bind(Rlogo);
 
+                var button = document.getElementById("Btnupload");
+                button.removeAttribute("disabled");
                 document.getElementById('uploadInfo').innerText = document.getElementById("LogoUpload").value;
             },
             //upload() {
@@ -234,12 +237,6 @@
                 var button = document.getElementById("SaveData");
                 button.disabled = true;
 
-                // We save the user input in case of an error
-                const newTag = this.newTag;
-
-                // We clear it early to give the UI a snappy feel
-                this.newTag = '';
-
                 // Call to the graphql mutation
                 if (this.$data.id >= 1) {
                     this.$apollo.mutate({
@@ -256,15 +253,13 @@
                                 id: 1,
                                 key: 'Company Profile',
                                 value: '',
-                                __typename: 'Registration',
+                                __typename: 'Metadata',
                             },
                         },
                     }).then((data) => {
                         this.$store.commit('Snackbar', {color: 'blue', text: 'Profile has been successfully setup.', show: true});
                     }).catch((error) => {
                         this.$store.commit('Snackbar', {color: 'blue', text: 'An error occurred while setting up your profile. Kindly try again.', show: true});
-                        // We restore the initial user input
-                        this.newTag = newTag
                     });
                 } else {
                     this.$apollo.mutate({
@@ -281,7 +276,7 @@
                                 id: 0,
                                 key: 'Company Profile',
                                 value: '',
-                                __typename: 'Registration',
+                                __typename: 'Metadata',
                             }
                         },
                     }).then((data) => {
@@ -290,9 +285,6 @@
                     }).catch((error) => {
                         button.disabled = false;
                         this.$store.commit('Snackbar', {color: 'blue', text: 'An error occurred while setting up your profile. Kindly try again.', show: true});
-
-                        // We restore the initial user input
-                        this.newTag = newTag
                     });
                 }
             }
@@ -306,7 +298,7 @@
     }
 
     .upload-btn-wrapper {
-        width: 75%;
+        width: 70%;
         overflow: hidden;
         position: relative;
         display: inline-block;

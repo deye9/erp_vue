@@ -1,13 +1,16 @@
 extend type Query {
     me: User @auth
-    registration(id: ID @eq key: String @eq): Metadata @find(model: "App\\Models\\Metadata")
     metadatas: [Metadata!]! @paginate(type: "paginator" model: "App\\Models\\Metadata")
+    registration(id: ID @eq key: String @eq): Metadata @find(model: "App\\Models\\Metadata")
+    getbranches: [Metadata!]! @field(resolver: "App\\Http\\GraphQL\\Queries\\MetadataQuery@branches")
+    filterbykey(key: String @eq): [Metadata!]! @field(resolver: "App\\Http\\GraphQL\\Queries\\MetadataQuery@keyFilter")
+    getbranch(id: ID @eq BranchName: String @eq): Metadata @field(resolver: "App\\Http\\GraphQL\\Queries\\MetadataQuery@searchBranch")
 }
 
 extend type Mutation {
-    updateMetadata (input: UpdateMetadataInput!): Metadata @update(flatten: true model: "App\\Models\\Metadata")
-    deleteMetadata (input: DeleteMetadataInput!): Metadata @delete(flatten: true model: "App\\Models\\Metadata")
-    createMetadata (input: CreateMetadataInput!): Metadata @create(flatten: true model: "App\\Models\\Metadata")
+    createMetadata (input: CreateMetadataInput!): Metadata @field(resolver: "App\\Http\\GraphQL\\Mutations\\MetadataMutator@create")
+    updateMetadata (input: UpdateMetadataInput!): Metadata @field(resolver: "App\\Http\\GraphQL\\Mutations\\MetadataMutator@update")
+    deleteMetadata (input: DeleteMetadataInput!): Metadata @field(resolver: "App\\Http\\GraphQL\\Mutations\\MetadataMutator@delete")
 }
 
 type Metadata {

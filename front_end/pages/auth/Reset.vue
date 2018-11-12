@@ -2,11 +2,11 @@
     <v-app id="reset" class="primary">
         <v-toolbar dark color="primary" dense>
             <a href="/home" class="d-flex router-link-active">
-                <img :src="tenant.logo" height='38px' width='38px'>
+                <img :src="this.tenant.logo" height='38px' width='38px'>
             </a>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="/home">
-                <v-toolbar-title class="white--text"> Welcome to {{tenant.companyname}} </v-toolbar-title>
+                <v-toolbar-title class="white--text"> Welcome to {{this.tenant.companyname}} </v-toolbar-title>
             </a>
             <v-spacer></v-spacer>
         </v-toolbar>
@@ -20,7 +20,7 @@
                         <v-card class="elevation-1 pa-3">
                         <v-card-text>
                             <div class="layout column align-center">
-                                <img :src="tenant.logo" :alt="tenant.companyname" width="120" height="120">
+                                <img :src="this.tenant.logo" :alt="this.tenant.companyname" width="120" height="120">
                                 <h3 class="flex my-4 primary--text align-center">Reset your Password</h3>
                             </div>
                             <v-form>

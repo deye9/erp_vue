@@ -1,9 +1,9 @@
 <template>
-  <v-navigation-drawer id="appDrawer" :mini-variant.sync="mini" fixed :dark="$vuetify.dark" app v-model="drawer" width="260">
+  <v-navigation-drawer id="appDrawer" :mini-variant.sync="mini" fixed :dark="this.$vuetify.dark" app v-model="drawer" width="260">
     <v-toolbar color="primary darken-1" dark>
-      <img v-bind:src="computeLogo" height="36" :alt="tenant.companyname">
+      <img v-bind:src="computeLogo" height="36" :alt="this.tenant.companyname">
       <v-toolbar-title class="ml-0 pl-3">
-        <span class="hidden-sm-and-down">{{tenant.companyname}}</span>
+        <span class="hidden-sm-and-down">{{this.tenant.companyname}}</span>
       </v-toolbar-title>
     </v-toolbar>
     <vue-perfect-scrollbar class="drawer-menu--scroll" :settings="scrollSettings">
@@ -100,7 +100,6 @@ export default {
         window.getApp.$on('APP_DRAWER_TOGGLED', () => {
             this.drawer = (!this.drawer);
         });
-        this.$vuetify.dark = (tenant.theme.sideBarOption === 'dark');
   },
   methods: {
         genChildTarget (item, subItem) {

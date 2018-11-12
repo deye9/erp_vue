@@ -2,11 +2,11 @@
     <v-app id="home">
         <v-toolbar dark color="primary" dense>
             <a href="/home" class="d-flex router-link-active">
-                <img :src="tenant.logo" height='38px' width='38px'>
+                <img :src="this.tenant.logo" height='38px' width='38px'>
             </a>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <a href="/home">
-                <v-toolbar-title class="white--text"> Welcome to {{tenant.companyname}} </v-toolbar-title>
+                <v-toolbar-title class="white--text"> Welcome to {{this.tenant.companyname}} </v-toolbar-title>
             </a>
             <v-spacer></v-spacer>
             <v-toolbar-items>
@@ -17,9 +17,9 @@
         <v-container fluid fill-height>
             <v-layout align-center justify-center>
                 <div class="text-md-center">
-                    <h1 class="mainheader"> {{tenant.companyname}} </h1>
+                    <h1 class="mainheader"> {{this.tenant.companyname}} </h1>
                     <br />
-                    <h2 class="my-3 headline"> {{tenant.catchphase}} </h2>
+                    <h2 class="my-3 headline"> {{this.tenant.catchphase}} </h2>
                 </div>
             </v-layout>
         </v-container>

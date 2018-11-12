@@ -54,9 +54,9 @@
         data () {
             return {
                 colorCode: '',
-                themeColor: 'indigo',
-                sideBarOption: 'light',
-                colors: colors
+                colors: colors,
+                themeColor: null,
+                sideBarOption: null,
             };
         },
         methods: { },
@@ -145,13 +145,18 @@
                     }
                 ];
             },
+            tenant() {
+                return this.$store.state.tenant
+            },
         },
         watch: {
             themeColor: {
                 handler (val) {
-                    this.colorCode = this.colors[val].base;
-                    this.$vuetify.theme.primary = this.colors[val].base;
-                    this.$emit('ColorOptions', {themeColor: this.themeColor + '[' + this.colorCode + ']', sideBarOption: this.sideBarOption});
+                    if (val !== null) {
+                        this.colorCode = this.colors[val].base;
+                        this.$vuetify.theme.primary = this.colors[val].base;
+                        this.$emit('ColorOptions', {themeColor: this.themeColor + '[' + this.colorCode + ']', sideBarOption: this.sideBarOption});
+                    }
                 },
                 immediate: true
             },
@@ -162,7 +167,12 @@
                 },
                 immediate: true,
             }
-        }
+        },
+        // created() {
+            // var theme = this.tenant.theme.themeColor;
+            // this.$data.sideBarOption = this.tenant.theme.sideBarOption;
+            // this.$data.themeColor = theme.slice(0, theme.indexOf("["));
+        // }
     };
 </script>
 

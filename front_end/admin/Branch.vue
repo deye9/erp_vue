@@ -1,134 +1,278 @@
 <template>
-  <div id="page-steppers">
-    <v-container grid-list-xl fluid>
-      <v-layout row wrap>
-        <v-flex sm12>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group row">
-                        <label for="companyname" class="col-4 col-form-label"> Company Name <i style="color:red;">*</i> </label>
-                        <div class="col-8">
-                            <input id="companyname" name="companyname" placeholder="Company Name" class="form-control" required="required" type="text">
+    <div id="page-alerts">
+        <v-container grid-list-xl fluid>
+            <v-layout row wrap>
+                <v-flex lg12>
+                    <v-widget title="Branch Offices...">
+                        <div slot="widget-header-action">
+                            <v-btn fab dark small color="primary" @click="clearFormData">
+                                <v-icon>add</v-icon>
+                            </v-btn>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="catchphase" class="col-4 col-form-label"> Catch Phase </label>
-                        <div class="col-8">
-                            <input id="catchphase" name="catchphase" placeholder="Catch Phase" class="form-control" type="text">
+                        <div slot="widget-content">
+                            <v-layout wrap justify-space-around align-center class="ma-0">
+                                <v-form ref="form" lazy-validation>
+                                    <v-layout row wrap>
+                                        <v-flex sm6 lg6>
+                                            <v-text-field id="branchurl" class="tolower" :suffix="setDomain" label="Url" v-model="branch.branchUrl" :hint="`https://${tenant.companyname.toLowerCase()}_${branch.branchUrl}${setDomain}`" v-validate="'required'" data-vv-name="branchUrl" :error-messages="errors.collect('branchUrl')" required></v-text-field>
+                                        </v-flex>
+                                        <v-flex sm6 lg6>
+                                            <v-text-field label="Branch Name" v-model="branch.branchName" v-validate="'required'" data-vv-name="branchName" :error-messages="errors.collect('branchName')" required></v-text-field>
+                                        </v-flex>
+
+                                        <v-flex sm6 lg6>
+                                            <v-combobox label="Parent Office" autocomplete required :items="offices" item-text="value" item-value="id" v-model="branch.ReportsTo" return-object></v-combobox>
+                                        </v-flex>
+                                        <v-flex sm6 lg6>
+                                            <v-combobox label="Currency" autocomplete required :items="currencies" v-model="branch.currency"
+                                            item-text="name" item-value="symbol" :hint="`${branch.currency.name}, ${branch.currency.symbol}`" persistent-hint return-object></v-combobox>
+                                        </v-flex>
+
+                                        <v-flex sm6 lg6>
+                                            <v-text-field label="Email" v-validate="'required|email'" data-vv-name="email" :error-messages="errors.collect('email')" v-model="branch.email" required></v-text-field>
+                                        </v-flex>
+                                        <v-flex sm6 lg6>
+                                            <v-text-field label="Phone" name="Phone" placeholder="+(###) ###-####-####" v-validate="'required'" data-vv-name="phone" :error-messages="errors.collect('phone')" v-model="branch.phone" return-masked-value mask="+(###) ###-####-####" required></v-text-field>
+                                        </v-flex>
+
+                                        <v-flex sm6 lg6>
+                                            <v-combobox label="Country" autocomplete required :items="countries" v-model="branch.country"
+                                            item-text="country" item-value="abbr" :hint="`${branch.country.country}, ${branch.country.abbr}`" persistent-hint return-object></v-combobox>
+                                        </v-flex>
+                                        <v-flex sm6 lg6>
+                                            <v-text-field label="State" v-validate="'required'" data-vv-name="state" :error-messages="errors.collect('state')" v-model="branch.state" required></v-text-field>
+                                        </v-flex>
+
+                                        <v-flex sm6 lg6>
+                                            <v-menu ref="startTime" :close-on-content-click="false" v-model="startTimeMenu" transition="scale-transition" offset-y full-width :nudge-bottom="-24" max-width="290px" :return-value.sync="branch.startTime">
+                                            <v-text-field slot="activator" label="Resumption Time" v-model="branch.startTime" append-icon="access_time" readonly v-validate="'required'" data-vv-name="startTime" :error-messages="errors.collect('startTime')" required></v-text-field>
+                                            <v-time-picker v-model="branch.startTime">
+                                                <v-spacer></v-spacer>
+                                                <v-btn flat color="primary" @click="startTimeMenu = false">Cancel</v-btn>
+                                                <v-btn flat color="primary" @click="$refs.startTime.save(branch.startTime)">OK</v-btn>
+                                            </v-time-picker>
+                                            </v-menu>
+                                        </v-flex>
+                                        <v-flex sm6 lg6>
+                                            <v-menu ref="endTime" lazy :close-on-content-click="false" v-model="endTimeMenu" transition="scale-transition" offset-y full-width :nudge-bottom="-24" max-width="290px" :return-value.sync="branch.endTime">
+                                            <v-text-field slot="activator" label="Closing Time" v-model="branch.endTime" append-icon="access_time" readonly v-validate="'required'" data-vv-name="endTime" :error-messages="errors.collect('endTime')" required></v-text-field>
+                                            <v-time-picker v-model="branch.endTime" >
+                                                <v-spacer></v-spacer>
+                                                <v-btn flat color="primary" @click="endTimeMenu = false">Cancel</v-btn>
+                                                <v-btn flat color="primary" @click="$refs.endTime.save(branch.endTime)">OK</v-btn>
+                                            </v-time-picker>
+                                            </v-menu>
+                                        </v-flex>
+                                        </v-layout>
+                                    </v-form>
+                            </v-layout>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="email" class="col-4 col-form-label"> Official Email <i style="color:red;">*</i> </label>
-                        <div class="col-8">
-                            <input id="email" name="email" placeholder="Email" class="form-control" required="required" type="text">
+                        <div slot="widget-footer-action">
+                            <footer-toolbar :TotalRecords="branches.length" @pageChanged="onpageChange" displaySave
+                                v-on:saveDeferred="saveFormData" v-on:deleteDeferred="deleteFormData" v-on:clearDeferred="clearFormData">
+                            </footer-toolbar>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="website" class="col-4 col-form-label"> Website </label>
-                        <div class="col-8">
-                            <input id="website" name="website" placeholder="Website" class="form-control" type="text">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="publicinfo" class="col-4 col-form-label"> Public Info </label>
-                        <div class="col-8">
-                            <textarea id="publicinfo" name="publicinfo" cols="40" rows="4" class="form-control"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="publicinfo" class="col-4 col-form-label"> Logo </label>
-                        <div class="col-8 input-group input-group-lg upload-wrapper">
-                            <div class="input-group-prepend">
-                                <div class="float-left previewImg">
-                                    <img class="img-responsive center-block" id="imgPreview" src="/images/question_mark.svg" alt="Logo holder" style="width:36px;height:36px;" />
-                                </div>
-                                &nbsp;&nbsp;&nbsp;&nbsp;
-                                <span class="input-group-text">
-                                    <i class="fas fa-upload"></i>
-                                </span>
-                            </div>
-                            <input type="text" id="fake_input" class="form-control form-style-fake" style="width:60%;" placeholder="Choose your Logo" readonly>
-                            <input type="file" id="LogoUpload" name="LogoUpload" accept="image/*" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <v-btn color="primary" @click.native="step = 2">Continue</v-btn>
-        </v-flex>
-      </v-layout>
-    </v-container>
-  </div>
+                    </v-widget>
+                </v-flex>
+            </v-layout>
+        </v-container>
+    </div>
 </template>
 
 <script>
-import VWidget from '../components/VWidget';
-export default {
-  components: {
-    VWidget
-  },
-  data () {
-    return {
-      step: 1,
-      e13: 1,
-    };
-  },
-  computed: {
-  },
-  methods: {
-  }
-};
+    import gql from 'graphql-tag';
+    import Countries from '../api/country';
+    import Currencies from '../api/currencies';
+    import VWidget from '../components/VWidget';
+    import FooterToolbar from '../components/helpers/Footer';
 
-    $(document).ready(function() {
-        // FileList object
-        var files = "";
-
-        $("#LogoUpload").change(function(evt) {
-            var file = evt.target.files[0];
-            var allowed_mimeTypes = "image/";
-            var file_type = file.type.split('/')[0] + "/";
-            if (allowed_mimeTypes.toLowerCase().indexOf(file_type) === -1)
-            {
-                alert("Only Image file formats are allowed.");
-                $("#LogoUpload").val("");
-                return false;
+    export default {
+        apollo: {
+            branchesDataset: {
+                query: gql`query getBranchDetails($details: String!) {filterbykey(key: $details) { id, value }}`,
+                variables() {
+                    return {
+                        details: "branch",
+                    }
+                },
+                update(data) {
+                    this.$data.branches = data.filterbykey;
+                },
+                error(error) {
+                    this.$store.commit('Snackbar', {color: 'red', text: 'Unable to retrieve Branch Offices.', show: true});
+                }
+            },
+            officessDataset: {
+                query: gql`query getBranchSummary { getbranches { id, value }}`,
+                update(data) {
+                    this.$data.offices = data.getbranches;
+                },
+                error(error) {
+                    this.$store.commit('Snackbar', {color: 'red', text: 'Unable to retrieve Branch Offices Summary.', show: true});
+                }
+            },
+        },
+        components: {
+            VWidget,
+            FooterToolbar
+        },
+        data: () => ({
+            id: 0,
+            page: 1,
+            offices: [],
+            branches: [],
+            branch: {
+                phone: null,
+                email: null,
+                state: null,
+                endTime: null,
+                startTime: null,
+                branchUrl: null,
+                branchName: null,
+                ReportsTo: { id: 0, value: "Head Office" },
+                country: { 'country': 'Nigeria', 'abbr': 'NG'},
+                currency: { symbol: '₦', name: 'Nigerian Naira' },
+            },
+            modal: false,
+            endTimeMenu: false,
+            startTimeMenu: false,
+            countries: Countries,
+            currencies: Currencies,
+        }),
+        computed:  {
+            tenant() {
+                return this.$store.state.tenant
+            },
+            setDomain() {
+                var str = window.location.hostname.split(".");
+                return '.' + str.splice(1,2).join(".").toLowerCase();
+            },
+            getOfficeSummary() {
+                this.$apollo.query({
+                    query: gql`query getBranchSummary { getbranches { id, value }}`,
+                }).then(result => this.$data.offices = result.data.getbranches);
             }
+        },
+        methods: {
+            closeDialog() {
+                this.$parent.isActive = false;
+            },
+            clearFormData() {
+                this.$data.id = 0;
+                this.$data.page = 1;
+                for (var key in this.branch) {
+                    if (key !== 'currency')
+                    {
+                        this.branch[key] = null;
+                    } else {
+                        this.currency = { name: 'Nigerian Naira', symbol: '₦' };
+                    }
+                }
+                FooterToolbar.reset();
+                document.getElementById('branchurl').focus();
+                this.$apollo.queries.officessDataset.refetch();
+                this.$apollo.queries.branchesDataset.refetch();
+                document.getElementById('branchurl').readOnly = false;
+            },
+            saveFormData() {
+                FooterToolbar.toggleSave();
 
-            var reader = new FileReader();
-            reader.readAsDataURL(file);
-            reader.onload = function(event) {
-                $('#imgPreview').attr('src', event.target.result);
-                $('#imgPreview').attr('width', '36px');
-                $('#imgPreview').attr('height', '36px');
-            };
-        });
-    });
+                // Call to the graphql mutation
+                if (this.$data.id >= 1) {
+                    this.$apollo.mutate({
+                        // Mutation Query
+                        mutation: gql`mutation($label: UpdateMetadataInput!) { updateMetadata(input: $label) { id, key, value } }`,
+                        // Parameters
+                        variables: {
+                            label: {'id': this.$data.id, key: "Branch", value: JSON.stringify(this.$data.branch)}
+                        },
+                        // Optimistic UI. Will be treated as a 'fake' result as soon as the request is made so that the UI can react quickly and the user be happy
+                        optimisticResponse: {
+                            __typename: 'Mutation',
+                            updateMetadata: {
+                                id: this.$data.id,
+                                key: 'Branch',
+                                value: '',
+                                __typename: 'Metadata',
+                            },
+                        },
+                    }).then((data) => {
+                        this.clearFormData();
+                        FooterToolbar.toggleSave();
+                        this.$store.commit('Snackbar', {color: 'blue', text: 'Branch has been successfully updated.', show: true});
+                    }).catch((error) => {
+                        FooterToolbar.toggleSave();
+                        this.$store.commit('Snackbar', {color: 'red', text: error.message.replace("GraphQL error: ", ''), show: true});
+                    });
+                } else {
+                    this.$apollo.mutate({
+                        // Mutation Query
+                        mutation: gql`mutation($label: CreateMetadataInput!) { createMetadata(input: $label) { id, key, value } }`,
+                        // Parameters
+                        variables: {
+                            label: {key: "Branch", value: JSON.stringify(this.$data.branch)}
+                        },
+                        // Optimistic UI. Will be treated as a 'fake' result as soon as the request is made so that the UI can react quickly and the user be happy
+                        optimisticResponse: {
+                            __typename: 'Mutation',
+                            createMetadata: {
+                                id: 0,
+                                key: 'Branch',
+                                value: '',
+                                __typename: 'Metadata',
+                            }
+                        },
+                    }).then((data) => {
+                        this.clearFormData();
+                        FooterToolbar.toggleSave();
+                        this.$store.commit('Snackbar', {color: 'blue', text: 'Branch has been successfully registered.', show: true});
+                    }).catch((error) => {
+                        FooterToolbar.toggleSave();
+                        this.$store.commit('Snackbar', {color: 'red', text: error.message.replace("GraphQL error: ", ''), show: true});
+                    });
+                }
+            },
+            deleteFormData() {
+                FooterToolbar.toggleDelete();
+
+                this.$apollo.mutate({
+                    // Mutation Query
+                    mutation: gql`mutation($label: DeleteMetadataInput!) { deleteMetadata(input: $label) { id } }`,
+                    // Parameters
+                    variables: {
+                        label: {'id': this.$data.id}
+                    },
+                    // Optimistic UI. Will be treated as a 'fake' result as soon as the request is made so that the UI can react quickly and the user be happy
+                    optimisticResponse: {
+                        __typename: 'Mutation',
+                        deleteMetadata: {
+                            id: this.$data.id,
+                            key: 'Branch',
+                            value: '',
+                            __typename: 'Metadata',
+                        },
+                    },
+                }).then((data) => {
+                    this.clearFormData();
+                    FooterToolbar.toggleDelete();
+                    this.$store.commit('Snackbar', {color: 'blue', text: 'Branch has been successfully updated.', show: true});
+                }).catch((error) => {
+                    FooterToolbar.toggleDelete();
+                    this.$store.commit('Snackbar', {color: 'red', text: error.message.replace("GraphQL error: ", ''), show: true});
+                });
+            },
+            onpageChange(pageNos) {
+                this.$data.page = pageNos - 1;
+                document.getElementById('branchurl').readOnly = true;
+                this.$data.id = this.$data.branches[this.$data.page]['id'];
+                this.$data.branch = JSON.parse(this.$data.branches[this.$data.page]['value']);
+            }
+        },
+    };
 </script>
 
-<style lang="stylus" scoped>
-    .form-style-fake{position:relative;top:0px;width:90%;}
-
-    .upload-wrapper {
-        margin-top: 20px;
-        overflow: hidden;
-        position: relative;
-    }
-
-    .btn-upload {
-        border: 2px solid gray;
-        color: gray;
-        background-color: white;
-        padding: 8px 20px;
-        border-radius: 8px;
-        font-size: 20px;
-        font-weight: bold;
-        width: 100%;
-    }
-
-    .upload-wrapper input[type=file] {
-        font-size: 100px;
-        position: absolute;
-        left: 0;
-        top: 0;
-        opacity: 0;
+<style scoped>
+    .tolower{
+        text-transform: lowercase;
     }
 </style>

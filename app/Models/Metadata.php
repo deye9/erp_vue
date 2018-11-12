@@ -33,6 +33,36 @@ class Metadata extends Model implements Auditable
 
     public static function GetProfile() {
         // Remember to check for null just in case it fails.
-       return Metadata::where('key', '=', 'Company Profile')->first();
+       return Metadata::whereRaw("lower(key) = 'company profile'")->first();
+    }
+
+    public static function GetBranches() {
+        // Remember to check for null just in case it fails.
+        $a = array("id" => 0, "key" => "Branch", "value" => "Head Office");
+        $meta = Metadata::select('id', 'key', 'value->branchName AS value')->whereRaw("lower(key) = 'branch'")->orderBy('id', 'asc')->get();
+
+        $value = json_decode($meta);
+
+        // Insert element to the begining of the array.
+        array_unshift($value, $a);
+        return $value;
+    }
+
+    public static function keyFilter($keyName) {
+        return Metadata::whereRaw("lower(key) = lower('" . $keyName . "')")->orderBy('id', 'asc')->get();
+    }
+
+    public static function getBranch($branchName) {
+        return Metadata::where('value->branchName', '=', $branchName)->first();
+    }
+
+    public static function branchExists($branchName): string {
+        $res = Metadata::where('value->branchName', '=', $branchName)->exists();
+        return (boolval($res) ? 'true' : 'false');
+    }
+
+    public static function branchUrlExists($branchUrl): string {
+        $res = Metadata::where('value->branchUrl', '=', $branchUrl)->exists();
+        return (boolval($res) ? 'true' : 'false');
     }
 }
