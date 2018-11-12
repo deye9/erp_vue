@@ -64,6 +64,9 @@ class MetadataMutator
         } else {
             $meta = Metadata::create($args['input']);
         }
+
+        // Propagate the changes to all clients.
+        DB::select('SELECT * FROM public."propagate_changes"()');
         return $meta;
     }
 
@@ -87,6 +90,9 @@ class MetadataMutator
         ]);
         if (strtolower($args['input']['key']) === 'branch') {
         }
+
+        // Propagate the changes to all clients.
+        DB::select('SELECT * FROM public."propagate_changes"()');
         return $meta;
     }
 
@@ -131,43 +137,5 @@ class MetadataMutator
              $meta->delete();
         }
         return $meta;
-    }
-
-    private function writeToBranchDB(array $args = [])
-    {
-
-
-        // queue jobs
-        // trigger an event when a master tenant is having a configuration changed and listen to the event to loop over all branches and dispatch one job per branch to update the configuration on that branch, the branch specific job can be tenant aware/specific for one tenant
-        // no connection overlap, fast and reliable if you have plenty of queue workers
-        // (looks at horizon)
-        // https://discordapp.com/channels/146267795754057729/294067877424660480/510523627746361380
-
-        $baseUrl = env('APP_URL_BASE');
-        $mainProfile = Metadata::GetProfile();
-        $branches = Metadata::keyFilter('branch');
-
-        // Get current Hostname
-        $hostname = app(\Hyn\Tenancy\Environment::class)->hostname();
-
-        // Loop through the branches and insert the data into them real time.
-        foreach ($branches as &$branch) {
-            $value = json_decode($branch->value);
-            $name = strtolower(explode('.', $hostname->fqdn, 2)[0] . '_' . trim($value->branchUrl) . '.' . $baseUrl);
-            $uuid = DB::connection('system')->select('select w.uuid from hostnames h inner join websites w on h.website_id = w.id where fqdn = :name', ['name' => $name]){0}->uuid;
-
-            $pdo = DB::connection('system')->getPdo();
-            \Log::info(json_encode($pdo));
-
-            //\Log::info($uuid);
-
-            // \Log::info($name);
-            // \Log::info($mainProfile);
-        }
-
-       // \Log::info($branches);
-
-        //$attr = json_decode(DB::connection('system')->table("hostnames")->where('fqdn', '=', 'andela_ikeja.erp.dev')->get());
-        //\Log::info($attr);
     }
 }

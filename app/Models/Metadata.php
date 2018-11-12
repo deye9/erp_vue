@@ -33,13 +33,13 @@ class Metadata extends Model implements Auditable
 
     public static function GetProfile() {
         // Remember to check for null just in case it fails.
-       return Metadata::whereRaw("lower(key) = lower('Company Profile')")->first();
+       return Metadata::whereRaw("lower(key) = 'company profile'")->first();
     }
 
     public static function GetBranches() {
         // Remember to check for null just in case it fails.
         $a = array("id" => 0, "key" => "Branch", "value" => "Head Office");
-        $meta = Metadata::select('id', 'key', 'value->branchName AS value')->whereRaw("lower(key) = lower('BRANCH')")->orderBy('id', 'asc')->get();
+        $meta = Metadata::select('id', 'key', 'value->branchName AS value')->whereRaw("lower(key) = 'branch'")->orderBy('id', 'asc')->get();
 
         $value = json_decode($meta);
 
