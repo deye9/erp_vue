@@ -1,5 +1,5 @@
 {
-    "name": "school-erp",
+    "name": "saas-erp",
     "version": "1.0.0",
     "description": "A Multi-tenant ERP using Laravel and Vuejs.",
     "author": "Adegbenga A. Adeye <adegbenga.adeye@outlook.com>",

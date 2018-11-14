@@ -31,8 +31,7 @@
                 class="elevation-1"
                 item-key="name"
                 select-all
-                v-model="complex.selected"
-                >
+                v-model="complex.selected">
                 <template slot="items" slot-scope="props">
                 <td>
                   <v-checkbox

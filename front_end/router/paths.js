@@ -106,16 +106,6 @@ export default [
         }
     },
     {
-        path: '/admin/roles',
-        meta: {
-            breadcrumb: true
-        },
-        name: 'components/roles',
-        component: function (resolve) {
-            require(['../admin/Roles.vue'], resolve);
-        }
-    },
-    {
         path: '/admin/users',
         meta: {
             breadcrumb: true
