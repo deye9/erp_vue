@@ -1,36 +1,33 @@
 {
-  "_args": [
-    [
-      "@fortawesome/vue-fontawesome@0.1.1",
-      "/Users/andelatsm/Desktop/Projects/PHP Apps/ERP"
-    ]
-  ],
-  "_from": "@fortawesome/vue-fontawesome@0.1.1",
-  "_id": "@fortawesome/vue-fontawesome@0.1.1",
+  "_from": "@fortawesome/vue-fontawesome@0.1.2",
+  "_id": "@fortawesome/vue-fontawesome@0.1.2",
   "_inBundle": false,
-  "_integrity": "sha512-dvPpA9eI18bWr3E+c0JvCYD6xl/keEj0ICTMShUPbxsGkd6PdFU9xYjqA8qE8ahsY+xhbQzZt/k1FKlpMGaRXA==",
+  "_integrity": "sha512-K/3awMf8AZmTyiYfNVuTHAtjToro6tE/yNV8dsmFk/2v6CXj+6wGltMzX8VBF9vC9rz3iv1zTwMdwtYaQYrAmQ==",
   "_location": "/@fortawesome/vue-fontawesome",
   "_phantomChildren": {},
   "_requested": {
     "type": "version",
     "registry": true,
-    "raw": "@fortawesome/vue-fontawesome@0.1.1",
+    "raw": "@fortawesome/vue-fontawesome@0.1.2",
     "name": "@fortawesome/vue-fontawesome",
     "escapedName": "@fortawesome%2fvue-fontawesome",
     "scope": "@fortawesome",
-    "rawSpec": "0.1.1",
+    "rawSpec": "0.1.2",
     "saveSpec": null,
-    "fetchSpec": "0.1.1"
+    "fetchSpec": "0.1.2"
   },
   "_requiredBy": [
+    "#USER",
     "/"
   ],
-  "_resolved": "https://registry.npmjs.org/@fortawesome/vue-fontawesome/-/vue-fontawesome-0.1.1.tgz",
-  "_spec": "0.1.1",
+  "_resolved": "https://registry.npmjs.org/@fortawesome/vue-fontawesome/-/vue-fontawesome-0.1.2.tgz",
+  "_shasum": "f993d7788bd6f031a1a20ff8f608ed0f36c83185",
+  "_spec": "@fortawesome/vue-fontawesome@0.1.2",
   "_where": "/Users/andelatsm/Desktop/Projects/PHP Apps/ERP",
   "bugs": {
     "url": "https://github.com/FortAwesome/vue-fontawesome/issues"
   },
+  "bundleDependencies": false,
   "contributors": [
     {
       "name": "Travis Chase",
@@ -42,6 +39,7 @@
     }
   ],
   "dependencies": {},
+  "deprecated": false,
   "description": "Official Vue component for Font Awesome 5",
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.0",
@@ -53,8 +51,8 @@
     "concurrently": "^3.5.0",
     "cross-env": "^5.1.1",
     "humps": "^2.0.1",
-    "husky": "^0.14.3",
-    "jest": "^22.4.3",
+    "husky": "^1.1.2",
+    "jest": "^23.6.0",
     "lint-staged": "^7.0.1",
     "markdown-toc": "^1.2.0",
     "rollup": "^0.57.1",
@@ -90,5 +88,5 @@
     "prepack": "npm run dist",
     "test": "jest"
   },
-  "version": "0.1.1"
+  "version": "0.1.2"
 }
