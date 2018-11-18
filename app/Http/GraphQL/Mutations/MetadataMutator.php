@@ -13,6 +13,8 @@ use Nuwave\Lighthouse\Support\Contracts\GraphQLContext;
 
 class MetadataMutator
 {
+    use UsesTenantConnection;
+
     /**
      * Return a value for the field.
      *
@@ -66,7 +68,7 @@ class MetadataMutator
         }
 
         // Propagate the changes to all clients.
-        DB::select('SELECT * FROM public."propagate_changes"()');
+        DB::connection('tenant')->select('SELECT * FROM public.propagate_changes()');
         return $meta;
     }
 
@@ -92,7 +94,7 @@ class MetadataMutator
         }
 
         // Propagate the changes to all clients.
-        DB::select('SELECT * FROM public."propagate_changes"()');
+        DB::connection('tenant')->select('SELECT * FROM public."propagate_changes"()');
         return $meta;
     }
 

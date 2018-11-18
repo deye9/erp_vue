@@ -63,4 +63,9 @@ class MetadataQuery
     {
         return Metadata::GetBranches();
     }
+
+    public function keys($rootValue, array $args, GraphQLContext $context = null, ResolveInfo $resolveInfo)
+    {
+        return Metadata::GetKeys();
+    }
 }

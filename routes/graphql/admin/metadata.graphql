@@ -1,7 +1,8 @@
 extend type Query {
     me: User @auth
-    metadatas: [Metadata!]! @paginate(type: "paginator" model: "App\\Models\\Metadata")
+    metadatas: [Metadata!]! @all(model: "App\\Models\\Metadata")
     registration(id: ID @eq key: String @eq): Metadata @find(model: "App\\Models\\Metadata")
+    getKeys: [Metadata!]! @field(resolver: "App\\Http\\GraphQL\\Queries\\MetadataQuery@keys")
     getbranches: [Metadata!]! @field(resolver: "App\\Http\\GraphQL\\Queries\\MetadataQuery@branches")
     filterbykey(key: String @eq): [Metadata!]! @field(resolver: "App\\Http\\GraphQL\\Queries\\MetadataQuery@keyFilter")
     getbranch(id: ID @eq BranchName: String @eq): Metadata @field(resolver: "App\\Http\\GraphQL\\Queries\\MetadataQuery@searchBranch")
