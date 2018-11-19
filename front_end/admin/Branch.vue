@@ -99,7 +99,7 @@
                     this.$data.branches = data.filterbykey;
                 },
                 error(error) {
-                    this.$store.commit('Snackbar', {color: 'red', text: 'Unable to retrieve Branch Offices.', show: true});
+                    this.$store.commit('Snackbar', {color: 'error', text: 'Unable to retrieve Branch Offices.', show: true});
                 }
             },
             officessDataset: {
@@ -108,7 +108,7 @@
                     this.$data.offices = data.getbranches;
                 },
                 error(error) {
-                    this.$store.commit('Snackbar', {color: 'red', text: 'Unable to retrieve Branch Offices Summary.', show: true});
+                    this.$store.commit('Snackbar', {color: 'error', text: 'Unable to retrieve Branch Offices Summary.', show: true});
                 }
             },
         },
@@ -199,10 +199,10 @@
                     }).then((data) => {
                         this.clearFormData();
                         FooterToolbar.toggleSave();
-                        this.$store.commit('Snackbar', {color: 'blue', text: 'Branch has been successfully updated.', show: true});
+                        this.$store.commit('Snackbar', {color: 'primary', text: 'Branch has been successfully updated.', show: true});
                     }).catch((error) => {
                         FooterToolbar.toggleSave();
-                        this.$store.commit('Snackbar', {color: 'red', text: error.message.replace("GraphQL error: ", ''), show: true});
+                        this.$store.commit('Snackbar', {color: 'error', text: error.message.replace("GraphQL error: ", ''), show: true});
                     });
                 } else {
                     this.$apollo.mutate({
@@ -225,10 +225,10 @@
                     }).then((data) => {
                         this.clearFormData();
                         FooterToolbar.toggleSave();
-                        this.$store.commit('Snackbar', {color: 'blue', text: 'Branch has been successfully registered.', show: true});
+                        this.$store.commit('Snackbar', {color: 'primary', text: 'Branch has been successfully registered.', show: true});
                     }).catch((error) => {
                         FooterToolbar.toggleSave();
-                        this.$store.commit('Snackbar', {color: 'red', text: error.message.replace("GraphQL error: ", ''), show: true});
+                        this.$store.commit('Snackbar', {color: 'error', text: error.message.replace("GraphQL error: ", ''), show: true});
                     });
                 }
             },
@@ -255,10 +255,10 @@
                 }).then((data) => {
                     this.clearFormData();
                     FooterToolbar.toggleDelete();
-                    this.$store.commit('Snackbar', {color: 'blue', text: 'Branch has been successfully updated.', show: true});
+                    this.$store.commit('Snackbar', {color: 'primary', text: 'Branch has been successfully updated.', show: true});
                 }).catch((error) => {
                     FooterToolbar.toggleDelete();
-                    this.$store.commit('Snackbar', {color: 'red', text: error.message.replace("GraphQL error: ", ''), show: true});
+                    this.$store.commit('Snackbar', {color: 'error', text: error.message.replace("GraphQL error: ", ''), show: true});
                 });
             },
             onpageChange(pageNos) {

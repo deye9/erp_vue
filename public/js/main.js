@@ -13966,31 +13966,41 @@ var Menu = [
   group: "admin",
   component: "admin",
   icon: "filter_vintage",
-  items: [{ name: "users", title: "Users", component: "components/users" }, { name: "metadata", title: "Metadata", component: "components/metadata" }, { name: "admin branch", title: "Branch Offices", component: "admin/branch" }, { name: "admin profile", title: "Company Profile", component: "admin/company_profile" }, { name: "access control", title: "Access Control", component: "components/permissions" }]
-}, {
-  title: "Chat",
-  group: "apps",
-  icon: "chat_bubble",
-  target: "_blank",
-  name: "Chat"
-}, {
-  title: "Inbox",
-  group: "apps",
-  name: "Mail",
-  target: "_blank",
-  icon: "email"
-}, {
-  title: "Media",
-  group: "apps",
-  name: "Media",
-  icon: "perm_media"
-}, {
-  title: "Widgets",
-  group: "widgets",
-  component: "widgets",
-  icon: "widgets",
-  items: [{ name: "social", title: "Social", component: "components/social" }, { name: "statistic", title: "Statistic", badge: "new", component: "components/statistic" }, { name: "chart", title: "Chart", component: "components/chart" }, { name: "list", title: "List", component: "components/widget-list" }]
-}, { header: "UI Elements" }, {
+  items: [{ name: "metadata", title: "Metadata", component: "components/metadata" }, { name: "users", title: "Users Management", component: "components/users" }, { name: "admin branch", title: "Branch Offices", component: "admin/branch" }, { name: "admin profile", title: "Company Profile", component: "admin/company_profile" }, { name: "access control", title: "Access Control", component: "components/permissions" }]
+},
+//   {
+//     title: "Chat",
+//     group: "apps",
+//     icon: "chat_bubble",
+//     target: "_blank",
+//     name: "Chat",
+//   },
+//   {
+//     title: "Inbox",
+//     group: "apps",
+//     name: "Mail",
+//     target: "_blank",
+//     icon: "email",
+//   },
+//   {
+//     title: "Media",
+//     group: "apps",
+//     name: "Media",
+//     icon: "perm_media",
+//   },
+//   {
+//     title: "Widgets",
+//     group: "widgets",
+//     component: "widgets",
+//     icon: "widgets",
+//     items: [
+//       { name: "social", title: "Social", component: "components/social" },
+//       { name: "statistic", title: "Statistic", badge: "new", component: "components/statistic" },
+//       { name: "chart", title: "Chart", component: "components/chart" },
+//       { name: "list", title: "List", component: "components/widget-list" },
+//     ]
+//   },
+{ header: "UI Elements" }, {
   title: "General",
   group: "components",
   component: "components",

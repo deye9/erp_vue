@@ -119,7 +119,7 @@
                         return JSON.parse(data.registration.value)
                     },
                     error(error) {
-                        this.$store.commit('Snackbar', {color: 'red', text: 'We\'ve got an error!\n' + error, show: true});
+                        this.$store.commit('Snackbar', {color: 'error', text: 'We\'ve got an error!\n' + error, show: true});
                     },
                 }
             },
@@ -177,11 +177,11 @@
                             if (response.status === 200) {
                                 this.registration.logo = response.data.secure_url;
                                 this.$store.commit('updatetenant', this.$data.registration);
-                                this.$store.commit('Snackbar', {color: 'blue', text: 'Image has been successfully uploaded.', show: true});
+                                this.$store.commit('Snackbar', {color: 'primary', text: 'Image has been successfully uploaded.', show: true});
                             }
                     })
                 } else {
-                    this.$store.commit('Snackbar', {color: 'red', text: 'Kindly select a valid image to upload.', show: true});
+                    this.$store.commit('Snackbar', {color: 'error', text: 'Kindly select a valid image to upload.', show: true});
                 }
             },
             // Triggered when `ColorOptions` event is emitted by the child.
@@ -199,7 +199,7 @@
                 var file_type = file.type.split('/')[0] + "/";
                 if (allowed_mimeTypes.toLowerCase().indexOf(file_type) === -1)
                 {
-                    this.$store.commit('Snackbar', {color: 'red', text: 'Only Image file formats are allowed.', show: true});
+                    this.$store.commit('Snackbar', {color: 'error', text: 'Only Image file formats are allowed.', show: true});
                     return false;
                 }
                 var reader = new FileReader();
@@ -225,12 +225,12 @@
                 //             if (response.data.success) {
                 //                 this.registration.logo = response.data.filename;
                 //                 this.$store.commit('updatetenant', this.$data.registration);
-                //                 this.$store.commit('Snackbar', {color: 'blue', text: response.data.success, show: true});
+                //                 this.$store.commit('Snackbar', {color: 'primary', text: response.data.success, show: true});
                 //             }
                 //         }
                 //     );
                 // } else {
-                //     this.$store.commit('Snackbar', {color: 'red', text: 'Kindly select a valid image to upload.', show: true});
+                //     this.$store.commit('Snackbar', {color: 'error', text: 'Kindly select a valid image to upload.', show: true});
                 // }
             //},
             submit() {
@@ -257,9 +257,9 @@
                             },
                         },
                     }).then((data) => {
-                        this.$store.commit('Snackbar', {color: 'blue', text: 'Profile has been successfully setup.', show: true});
+                        this.$store.commit('Snackbar', {color: 'primary', text: 'Profile has been successfully setup.', show: true});
                     }).catch((error) => {
-                        this.$store.commit('Snackbar', {color: 'blue', text: 'An error occurred while setting up your profile. Kindly try again.', show: true});
+                        this.$store.commit('Snackbar', {color: 'error', text: 'An error occurred while setting up your profile. Kindly try again.', show: true});
                     });
                 } else {
                     this.$apollo.mutate({
@@ -281,10 +281,10 @@
                         },
                     }).then((data) => {
                         button.disabled = false;
-                        this.$store.commit('Snackbar', {color: 'blue', text: 'Profile has been successfully setup.', show: true});
+                        this.$store.commit('Snackbar', {color: 'primary', text: 'Profile has been successfully setup.', show: true});
                     }).catch((error) => {
                         button.disabled = false;
-                        this.$store.commit('Snackbar', {color: 'blue', text: 'An error occurred while setting up your profile. Kindly try again.', show: true});
+                        this.$store.commit('Snackbar', {color: 'error', text: 'An error occurred while setting up your profile. Kindly try again.', show: true});
                     });
                 }
             }

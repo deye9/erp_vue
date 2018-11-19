@@ -2,15 +2,16 @@
   <div id="page-alerts">
     <v-container grid-list-xl fluid>
       <v-layout row wrap>
-        <v-flex sm12>
-          <h3>Complex Table</h3>
-        </v-flex>
         <v-flex lg12>
-          <v-card>
+          <v-card v-show="!isNew">
             <v-toolbar card color="white">
                 <v-text-field flat solo prepend-icon="search" placeholder="Type something" v-model="search" hide-details class="hidden-sm-and-down" clearable></v-text-field>
-                <v-btn icon>
+                <!-- <v-btn icon>
                     <v-icon>filter_list</v-icon>
+                </v-btn> -->
+                <v-btn dark color="primary" @click="addNewUser">
+                    Add New
+                    <v-icon dark>add</v-icon>
                 </v-btn>
             </v-toolbar>
             <v-divider></v-divider>
@@ -18,29 +19,32 @@
               <v-data-table :headers="complex.headers" :search="search" :items="complex.items" :rows-per-page-items="[10,25,50,{text:'All','value':-1}]" class="elevation-1" item-key="name"
                 select-all v-model="complex.selected">
                 <template slot="items" slot-scope="props">
-                <td>
-                  <v-checkbox primary hide-details v-model="props.selected"></v-checkbox>
-                </td>
-                  <td>
-                    <v-avatar size="32">
-                      <img :src="props.item.avatar" alt="">
-                    </v-avatar>
-                  </td>
-                  <td>{{ props.item.name }}</td>
-                  <td>{{ props.item.email }}</td>
-                  <td>{{ props.item.jobTitle }}</td>
-                  <td>{{ props.item.phone }}</td>
-                  <td>
-                    <v-btn depressed outline icon fab dark color="primary" small>
-                      <v-icon>edit</v-icon>
-                    </v-btn>
-                    <v-btn depressed outline icon fab dark color="pink" small>
-                      <v-icon>delete</v-icon>
-                    </v-btn>
-                  </td>
+                    <td>
+                    <v-checkbox primary hide-details v-model="props.selected"></v-checkbox>
+                    </td>
+                    <td>
+                        <v-avatar size="32">
+                        <img :src="props.item.avatar" alt="">
+                        </v-avatar>
+                    </td>
+                    <td>{{ props.item.name }}</td>
+                    <td>{{ props.item.email }}</td>
+                    <td>{{ props.item.jobTitle }}</td>
+                    <td>{{ props.item.phone }}</td>
+                    <td>
+                        <v-btn depressed outline icon fab dark color="primary" small>
+                        <v-icon>edit</v-icon>
+                        </v-btn>
+                        <v-btn depressed outline icon fab dark color="pink" small>
+                        <v-icon>delete</v-icon>
+                        </v-btn>
+                    </td>
                 </template>
               </v-data-table>
             </v-card-text>
+          </v-card>
+          <v-card v-show="isNew">
+              <h1>Welcome back.</h1>
           </v-card>
         </v-flex>
       </v-layout>
@@ -49,42 +53,49 @@
 </template>
 
 <script>
+    import router from '../router';
     import { Items as Users } from '../api/user';
     export default {
-    data () {
-        return {
-            search: '',
-            complex: {
-                selected: [],
-                headers: [
-                {
-                    text: 'Avatar',
-                    value: 'avatar'
-                },
-                {
-                    text: 'Name',
-                    value: 'name'
-                },
-                {
-                    text: 'Email',
-                    value: 'email'
-                },
-                {
-                    text: 'Department',
-                    value: 'department'
-                },
-                {
-                    text: 'Phone',
-                    value: 'phone'
-                },
-                {
-                    text: 'Action',
-                    value: ''
-                },
-                ],
-                items: Users
+        data () {
+            return {
+                search: '',
+                isNew: false,
+                complex: {
+                    selected: [],
+                    headers: [
+                    {
+                        text: 'Avatar',
+                        value: 'avatar'
+                    },
+                    {
+                        text: 'Name',
+                        value: 'name'
+                    },
+                    {
+                        text: 'Email',
+                        value: 'email'
+                    },
+                    {
+                        text: 'Department',
+                        value: 'department'
+                    },
+                    {
+                        text: 'Phone',
+                        value: 'phone'
+                    },
+                    {
+                        text: 'Action',
+                        value: ''
+                    },
+                    ],
+                    items: Users
+                }
+            };
+        },
+        methods: {
+            addNewUser() {
+                this.$data.isNew = true;
             }
-        };
-    }
+        }
     };
 </script>
