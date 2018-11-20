@@ -41,26 +41,53 @@
                     </v-card-text>
                 </v-card>
             </v-flex>
-            <v-flex sm12 md6 sm6 v-show="isNew">
-                <v-widget title="User Details">
+            <v-flex d-flex xs12 sm6 md3>
+                <v-widget title="User Details" v-show="isNew">
                     <div slot="widget-header-action">
-                        <v-btn fab dark small color="indigo">
-                            <v-icon>add</v-icon>
-                        </v-btn>
+                        <img :src="logo" class="img-responsive center-block" :alt="user.name" :title="user.name" style="width:36px;height:36px;">
                     </div>
                     <div slot="widget-content">
-                        <v-alert type="success" :value="true">
-                            This is a success alert.
-                        </v-alert>
-                        <v-alert type="info" :value="true">
-                            This is a info alert.
-                        </v-alert>
-                        <v-alert type="warning" :value="true">
-                            This is a warning alert.
-                        </v-alert>
-                        <v-alert type="error" :value="true">
-                            This is a error alert.
-                        </v-alert>
+                        <div class="row">
+                            <div class="col-4"> ID: </div>
+                            <div class="col-8"> {{user.id}} </div>
+                        </div>
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-4"> Full Name: </div>
+                            <div class="col-8"> {{user.name}} </div>
+                        </div>
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-4"> Job Title: </div>
+                            <div class="col-8"> {{user.jobTitle}} </div>
+                        </div>
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-4"> Marital Status: </div>
+                            <div class="col-8"> {{user.marital}} </div>
+                        </div>
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-4"> E-mail Address: </div>
+                            <div class="col-8"> {{user.email}} </div>
+                        </div>
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-6"> Employment Status: </div>
+                            <div class="col-6"> {{user.status}} </div>
+                        </div>
+                    </div>
+                </v-widget>
+            </v-flex>
+            <v-flex d-flex xs12 sm6 md3>
+                <v-widget title="User Picture" v-show="isNew">
+                    <div slot="widget-content">
+                        <img :src="logo" class="img-responsive center-block" alt="Logo holder" style="width:200px;height:260px;" id="imgPreview" name="imgPreview">
                     </div>
                 </v-widget>
             </v-flex>
@@ -151,6 +178,16 @@
         },
         data () {
             return {
+                user: {
+                    id: 0,
+                    sex: null,
+                    name: null,
+                    logo: null,
+                    email: null,
+                    status: null,
+                    marital: null,
+                    jobTitle: null,
+                },
                 search: '',
                 isNew: false,
                 complex: {
@@ -188,6 +225,11 @@
         methods: {
             addNewUser() {
                 this.$data.isNew = true;
+            }
+        },
+        computed: {
+            logo() {
+                return (this.$data.user.logo === null) ? '/images/question_mark.svg' : this.$data.user.logo ;
             }
         }
     };

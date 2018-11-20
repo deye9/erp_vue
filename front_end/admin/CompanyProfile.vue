@@ -65,7 +65,6 @@
                                         </div>
                                         <div class="upload-btn-wrapper">
                                             <button id="uploadInfo" name="uploadInfo"  style="color:black;" class="btn">Choose your Logo</button>
-                                            <!-- <input type="file" v-on:change="upload($event.target.files)" class="form-control" accept="image/*" placeholder="Choose your Logo"> -->
                                             <input type="file" v-on:change="onLogoChange" class="form-control" accept="image/*" id="LogoUpload" name="LogoUpload" placeholder="Choose your Logo">
                                         </div>
                                         <div class="float-right">
