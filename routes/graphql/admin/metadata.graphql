@@ -38,9 +38,3 @@ input UpdateMetadataInput
 input DeleteMetadataInput {
     id: ID! @rules(apply: ["required"])
 }
-
-interface MutationResponse {
-  code: String!
-  success: Boolean!
-  message: String!
-}

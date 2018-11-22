@@ -170,6 +170,15 @@
 </template>
 
 <script>
+    var requestInit = {
+        mode: "cors",
+        method: "GET",
+        cache: "no-cache",
+        headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            "Authorization": 'Token ' + sessionStorage.getItem('id_token')
+        }
+    };
     import VWidget from '../components/VWidget';
     import { Items as Users } from '../api/user';
     export default {
@@ -231,6 +240,13 @@
             logo() {
                 return (this.$data.user.logo === null) ? '/images/question_mark.svg' : this.$data.user.logo ;
             }
+        },
+        created() {
+            var myRequest = new Request('/graphql?query=query {getRoles{id, name}}', requestInit);
+            return fetch(myRequest)
+                .then(res => res.json())
+                .then(json => { console.log(json) })
+                .catch(err => this.$store.commit('Snackbar', {color: 'error', text: 'An error occurred while setting up your profile. Kindly try again.', show: true}));
         }
     };
 </script>
