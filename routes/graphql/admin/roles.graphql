@@ -1,18 +1,19 @@
 extend type Query {
-    getRoles: [Role!]! @field(resolver: "App\\Http\\GraphQL\\Queries\\RoleQuery@roles")
+    getUserRoles: [Role!]! @field(resolver: "App\\Http\\GraphQL\\Queries\\RoleQuery@UserRoles")
 }
 
-extend type Roles {
-    createRole (input: CreateRoleInput!): Metadata @field(resolver: "App\\Http\\GraphQL\\Mutations\\RoleMutator@create")
-    updateRole (input: UpdateRoleInput!): Metadata @field(resolver: "App\\Http\\GraphQL\\Mutations\\RoleMutator@update")
-    deleteRole (input: DeleteRoleInput!): Metadata @field(resolver: "App\\Http\\GraphQL\\Mutations\\RoleMutator@delete")
+extend type Mutation {
+    createRole (input: CreateRoleInput!): Role @create(model: "App\\Models\\Role" flatten: true)
+    updateRole (input: UpdateRoleInput!): Role @field(resolver: "App\\Http\\GraphQL\\Mutations\\RoleMutator@update")
+    deleteRole (input: DeleteRoleInput!): Role @field(resolver: "App\\Http\\GraphQL\\Mutations\\RoleMutator@delete")
 }
 
 type Role {
     id: ID
     name: String!
+    userInRole: Boolean
     guard_name: String!
-    created_at: DateTime!
+    created_at: Date!
     updated_at: DateTime
 }
 

@@ -6,7 +6,7 @@
                 <v-card>
                     <v-toolbar card color="white">
                         <v-text-field flat solo prepend-icon="search" placeholder="Type something" v-model="search" hide-details class="hidden-sm-and-down" clearable></v-text-field>
-                        <v-btn dark color="primary" @click="addNewUser">
+                        <v-btn dark color="primary" @click="addUser">
                             Add New
                             <v-icon dark>add</v-icon>
                         </v-btn>
@@ -41,8 +41,8 @@
                     </v-card-text>
                 </v-card>
             </v-flex>
-            <v-flex d-flex xs12 sm6 md3>
-                <v-widget title="User Details" v-show="isNew">
+            <v-flex sm12 md6 sm6 v-show="isNew">
+                <v-widget title="User Details" style="max-height:396px; overflow:auto;">
                     <div slot="widget-header-action">
                         <img :src="logo" class="img-responsive center-block" :alt="user.name" :title="user.name" style="width:36px;height:36px;">
                     </div>
@@ -84,37 +84,31 @@
                     </div>
                 </v-widget>
             </v-flex>
-            <v-flex d-flex xs12 sm6 md3>
-                <v-widget title="User Picture" v-show="isNew">
-                    <div slot="widget-content">
-                        <img :src="logo" class="img-responsive center-block" alt="Logo holder" style="width:200px;height:260px;" id="imgPreview" name="imgPreview">
-                    </div>
-                </v-widget>
-            </v-flex>
             <v-flex sm12 md6 sm6 v-show="isNew">
                 <v-widget title="Roles">
-                    <div slot="widget-header-action">
-                        <v-btn fab dark small color="indigo">
-                            <v-icon>add</v-icon>
-                        </v-btn>
-                    </div>
-                    <div slot="widget-content">
-                    <v-alert color="success" icon="new_releases" :value="true">
-                        This is a success alert with a custom icon.
-                    </v-alert>
-                    <v-alert color="warning" :value="true" icon="message">
-                        This is a warning alert with a custom icon.
-                    </v-alert>
-                    <v-alert color="info" icon="star" :value="true">
-                        This is a info alert with a custom icon.
-                    </v-alert>
-                    <v-alert color="error" :value="true">
-                        This is an error alert with no icon.
-                    </v-alert>
+                    <div slot="widget-content" style="max-height:270px; overflow:auto;">
+                        <v-list two-line v-for="(role, index) in userRoles" :key="role.id">
+                            <v-list-tile @click="toggle(index)">
+                                <v-list-tile-action>
+                                    <v-checkbox v-model="role.userInRole"></v-checkbox>
+                                </v-list-tile-action>
+                                <v-list-tile-content @click.prevent="role.userInRole = !role.userInRole">
+                                    <v-list-tile-title> {{ role.name.toUpperCase() }} </v-list-tile-title>
+                                    <v-list-tile-sub-title> Created On: {{ role.created_at }}. </v-list-tile-sub-title>
+                                </v-list-tile-content>
+                            </v-list-tile>
+                        </v-list>
+                        <v-divider></v-divider>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" v-model="roleName" placeholder="Enter Role Name" aria-label="Enter Role Name" aria-describedby="role-button">
+                            <div class="input-group-append">
+                                <button type="button" class="btn primary" id="role-button" @click="addRole" style="color:white;">Add Role</button>
+                            </div>
+                        </div>
                     </div>
                 </v-widget>
             </v-flex>
-            <v-flex lg12 v-show="isNew">
+            <!-- <v-flex lg12 v-show="isNew">
                 <v-widget title="Permissions">
                     <div slot="widget-header-action">
                         <v-btn fab dark small color="indigo">
@@ -126,7 +120,7 @@
                              <v-card>
                     <v-toolbar card color="white">
                         <v-text-field flat solo prepend-icon="search" placeholder="Type something" v-model="search" hide-details class="hidden-sm-and-down" clearable></v-text-field>
-                        <v-btn dark color="primary" @click="addNewUser">
+                        <v-btn dark color="primary" @click="addUser">
                             Add New
                             <v-icon dark>add</v-icon>
                         </v-btn>
@@ -163,7 +157,7 @@
                         </v-flex>
                     </div>
                 </v-widget>
-            </v-flex>
+            </v-flex> -->
         </v-layout>
     </v-container>
   </div>
@@ -175,6 +169,7 @@
         method: "GET",
         cache: "no-cache",
         headers: {
+            "Accept": "application/json",
             "Content-Type": "application/json; charset=utf-8",
             "Authorization": 'Token ' + sessionStorage.getItem('id_token')
         }
@@ -196,9 +191,12 @@
                     status: null,
                     marital: null,
                     jobTitle: null,
+                    assignedRoles: []
                 },
                 search: '',
                 isNew: false,
+                userRoles: [],
+                roleName: null,
                 complex: {
                     selected: [],
                     headers: [
@@ -228,12 +226,50 @@
                     },
                     ],
                     items: Users
-                }
+                },
             };
         },
         methods: {
-            addNewUser() {
+            async addRole() {
+                if (this.$data.roleName !== null) {
+                    // this.$data.userRoles.push({
+                    //     id: 0,
+                    //     userInRole: false,
+                    //     name: this.$data.roleName,
+                    //     created_at: new Date().toISOString().slice(0,10)
+                    // });
+
+                    return await fetch('/graphql',
+                    {
+                        method: 'POST',
+                        headers: {
+                            "Accept": "application/json",
+                            "Content-Type": "application/json; charset=utf-8",
+                            "Authorization": 'Token ' + sessionStorage.getItem('id_token')
+                        },
+                        body: '{"query":"mutation { createRole(input: {name: \\"' + this.$data.roleName + '\\"}) { key }}"}; '
+                    })
+                        .then(res => res.json())
+                        .then(json => {
+                            this.$data.keys.push(json.data.createMetadata);
+                            this.$data.roleName = null;
+                        })
+                        .catch(err => this.$store.commit('Snackbar', {color: 'error', text: 'An error occurred while setting up your profile. Kindly try again.', show: true}));
+                } else {
+                    this.$store.commit('Snackbar', {color: 'error', text: 'Role name cannot be empty.', show: true});
+                }
+            },
+            addUser() {
                 this.$data.isNew = true;
+            },
+            toggle (index) {
+                // const i = this.selected.indexOf(index)
+
+                // if (i > -1) {
+                //     this.selected.splice(i, 1)
+                // } else {
+                //     this.selected.push(index)
+                // }
             }
         },
         computed: {
@@ -242,10 +278,10 @@
             }
         },
         created() {
-            var myRequest = new Request('/graphql?query=query {getRoles{id, name}}', requestInit);
+            var myRequest = new Request('/graphql?query=query {getUserRoles{id, name, userInRole, created_at}}', requestInit);
             return fetch(myRequest)
                 .then(res => res.json())
-                .then(json => { console.log(json) })
+                .then(json => this.$data.userRoles = json.data.getUserRoles)
                 .catch(err => this.$store.commit('Snackbar', {color: 'error', text: 'An error occurred while setting up your profile. Kindly try again.', show: true}));
         }
     };

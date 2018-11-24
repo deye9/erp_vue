@@ -22,7 +22,7 @@ class RoleQuery
      *
      * @return mixed
      */
-    public function roles($rootValue, array $args, GraphQLContext $context = null, ResolveInfo $resolveInfo)
+    public function UserRoles($rootValue, array $args, GraphQLContext $context = null, ResolveInfo $resolveInfo)
     {
         // Get the currently authenticated user...
         $user = $this->getAuthUser();
@@ -35,9 +35,23 @@ class RoleQuery
             ], 401);
         }
 
-        \Log::info($user->email);
+        // Get all Roles from the DB.
+        $roles = Role::all();
 
+        // Get the sorted names of the user's roles
+        $userroles = $user->getRoleNames()->sort();
 
+        foreach ($userroles as $key => $roleName) {
+            $roles->map(function ($roles) use($roleName) {
+                if ($roles->name === $roleName) {
+                    $roles['userInRole'] = true;
+                } else {
+                    $roles['userInRole'] = false;
+                }
+                return $roles;
+            });
+        }
 
+        return $roles;
     }
 }
