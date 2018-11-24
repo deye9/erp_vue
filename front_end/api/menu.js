@@ -13,6 +13,7 @@ const Menu = [
     component: "admin",
     icon: "filter_vintage",
     items: [
+        { name: "roles", title: "Roles", component: "components/roles" },
         { name: "metadata", title: "Metadata", component: "components/metadata" },
         { name: "users", title: "Users Management", component: "components/users" },
         { name: "admin branch", title: "Branch Offices", component: "admin/branch" },

@@ -162,17 +162,17 @@
             },
             sideBarOption: {
                 handler (val) {
-                    this.$vuetify.dark = (val === 'dark');
+                    this.$store.commit('updatetenant', {sideBarOption: val});
                     this.$emit('ColorOptions', {themeColor: this.themeColor + '[' + this.colorCode + ']', sideBarOption: val});
                 },
                 immediate: true,
             }
         },
-        // created() {
-            // var theme = this.tenant.theme.themeColor;
-            // this.$data.sideBarOption = this.tenant.theme.sideBarOption;
-            // this.$data.themeColor = theme.slice(0, theme.indexOf("["));
-        // }
+        created() {
+            var theme = this.tenant.theme.themeColor;
+            this.$data.sideBarOption = this.tenant.theme.sideBarOption;
+            this.$data.themeColor = theme.slice(0, theme.indexOf("["));
+        }
     };
 </script>
 

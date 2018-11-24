@@ -27,19 +27,24 @@ Vue.use(Vuex);
 Vue.use(VueApollo);
 Vue.use(VueResource);
 Vue.use(VeeValidate, { fieldsBagName: 'formFields' });
+
+var matches = _tenant.theme.themeColor.match(/\[(.*?)\]/);
 Vue.use(Vuetify, {
-  options: {
-    themeVariations: ['primary', 'secondary', 'accent'],
-    extra: {
-      mainToolbar: {
-        color: 'primary',
-      },
-      sideToolbar: {},
-      sideNav: 'primary',
-      mainNav: 'primary lighten-1',
-      bodyBg: '',
+    theme: {
+        primary: matches[1],
+    },
+    options: {
+        themeVariations: ['primary', 'secondary', 'accent'],
+        extra: {
+            mainToolbar: {
+                color: 'primary',
+            },
+            sideToolbar: {},
+            sideNav: 'primary',
+            mainNav: 'primary lighten-1',
+            bodyBg: '',
+        }
     }
-  }
 });
 
 Vue.http.options.crossOrigin = true;
@@ -74,8 +79,13 @@ const store = new Vuex.Store({
             state.snack.color = payload.color;
         },
         updatetenant (state, payload) {
-            state.tenant.logo = payload.logo;
-            state.tenant.companyname = payload.companyname;
+            if (payload.sideBarOption) {
+                alert(payload.sideBarOption);
+                state.tenant.theme.sideBarOption = payload.sideBarOption;
+            } else {
+                state.tenant.logo = payload.logo;
+                state.tenant.companyname = payload.companyname;
+            }
         },
         response (state, payload) {
           state.message = payload.message;
@@ -90,7 +100,7 @@ const store = new Vuex.Store({
 const httpLink = new HttpLink({
     // You should use an absolute URL here
     uri: '/graphql',
-})
+});
 
 // Create the apollo client
 const apolloClient = new ApolloClient({
@@ -101,11 +111,11 @@ const apolloClient = new ApolloClient({
     cache: new InMemoryCache({
         addTypename: false
     }),
-})
+});
 
 const apolloProvider = new VueApollo({
     defaultClient: apolloClient,
-})
+});
 
 /* eslint-disable no-new */
 new Vue({

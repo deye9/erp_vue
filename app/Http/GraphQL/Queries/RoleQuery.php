@@ -45,8 +45,10 @@ class RoleQuery
             $roles->map(function ($roles) use($roleName) {
                 if ($roles->name === $roleName) {
                     $roles['userInRole'] = true;
+                    $roles['userCount'] = $roles->users->count();
                 } else {
                     $roles['userInRole'] = false;
+                    $roles['userCount'] = $roles->users->count();
                 }
                 return $roles;
             });

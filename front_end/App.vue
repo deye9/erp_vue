@@ -41,7 +41,6 @@
     import AppToolbar from './components/AppToolbar';
     import AppFab from './components/AppFab';
     import PageHeader from './components/PageHeader';
-    //import menu from './api/menu';
     import AppEvents from  './event';
     export default {
         components: {
@@ -59,14 +58,9 @@
             },
             tenant() {
                 return this.$store.state.tenant
-            },
+            }
         },
         created () {
-            var matches = this.tenant.theme.themeColor.match(/\[(.*?)\]/);
-            if (matches) {
-                this.$vuetify.theme.primary = matches[1];
-                this.$vuetify.dark = (this.tenant.theme.sideBarOption === 'dark');
-            }
             AppEvents.forEach(item => {
                 this.$on(item.name, item.callback);
             });

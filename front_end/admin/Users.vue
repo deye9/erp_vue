@@ -93,12 +93,24 @@
                                     <v-checkbox v-model="role.userInRole"></v-checkbox>
                                 </v-list-tile-action>
                                 <v-list-tile-content @click.prevent="role.userInRole = !role.userInRole">
-                                    <v-list-tile-title> {{ role.name.toUpperCase() }} </v-list-tile-title>
+                                    <v-list-tile-title>
+                                        {{ role.name.toUpperCase() }}
+                                    </v-list-tile-title>
                                     <v-list-tile-sub-title> Created On: {{ role.created_at }}. </v-list-tile-sub-title>
                                 </v-list-tile-content>
+                                <v-list-tile-action>
+                                <v-list-tile-action-text>{{role.userCount}} user(s)</v-list-tile-action-text>
+                                    <v-icon v-if="role.userCount < 0" color="red lighten-1">
+                                        delete
+                                    </v-icon>
+
+                                    <v-icon v-else color="yellow darken-2">
+                                        edit
+                                    </v-icon>
+                                </v-list-tile-action>
                             </v-list-tile>
+                            <v-divider></v-divider>
                         </v-list>
-                        <v-divider></v-divider>
                         <div class="input-group mb-3">
                             <input type="text" class="form-control" v-model="roleName" placeholder="Enter Role Name" aria-label="Enter Role Name" aria-describedby="role-button">
                             <div class="input-group-append">
@@ -232,13 +244,6 @@
         methods: {
             async addRole() {
                 if (this.$data.roleName !== null) {
-                    // this.$data.userRoles.push({
-                    //     id: 0,
-                    //     userInRole: false,
-                    //     name: this.$data.roleName,
-                    //     created_at: new Date().toISOString().slice(0,10)
-                    // });
-
                     return await fetch('/graphql',
                     {
                         method: 'POST',
@@ -247,14 +252,19 @@
                             "Content-Type": "application/json; charset=utf-8",
                             "Authorization": 'Token ' + sessionStorage.getItem('id_token')
                         },
-                        body: '{"query":"mutation { createRole(input: {name: \\"' + this.$data.roleName + '\\"}) { key }}"}; '
+                        body: '{"query":"mutation { createRole(input: {name: \\\"' + this.$data.roleName + '\\\"}) { id, created_at }}"}'
                     })
                         .then(res => res.json())
                         .then(json => {
-                            this.$data.keys.push(json.data.createMetadata);
+                            this.$data.userRoles.push({
+                                id: json.data.createRole.id,
+                                userInRole: false,
+                                name: this.$data.roleName,
+                                created_at: json.data.createRole.created_at
+                            });
                             this.$data.roleName = null;
                         })
-                        .catch(err => this.$store.commit('Snackbar', {color: 'error', text: 'An error occurred while setting up your profile. Kindly try again.', show: true}));
+                        .catch(err => this.$store.commit('Snackbar', {color: 'error', text: err, show: true}));
                 } else {
                     this.$store.commit('Snackbar', {color: 'error', text: 'Role name cannot be empty.', show: true});
                 }
@@ -278,7 +288,7 @@
             }
         },
         created() {
-            var myRequest = new Request('/graphql?query=query {getUserRoles{id, name, userInRole, created_at}}', requestInit);
+            var myRequest = new Request('/graphql?query=query {getUserRoles{id, name, userInRole, userCount, created_at}}', requestInit);
             return fetch(myRequest)
                 .then(res => res.json())
                 .then(json => this.$data.userRoles = json.data.getUserRoles)
