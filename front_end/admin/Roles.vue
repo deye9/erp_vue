@@ -6,24 +6,24 @@
                     <v-widget title="Roles">
                         <div slot="widget-content" style="max-height:320px; overflow-y:auto;">
                             <v-list two-line v-for="(role, index) in userRoles" :key="role.id">
-                                <v-list-tile @click="toggle(index)">
-                                    <v-list-tile-action>
+                                <v-list-tile>
+                                    <v-list-tile-action @click="toggle(index)">
                                         <v-checkbox></v-checkbox>
                                     </v-list-tile-action>
                                     <v-list-tile-content>
                                         <v-list-tile-title>
-                                            {{ role.name.toUpperCase() }}
+                                            <v-edit-dialog :return-value.sync="role.name" lazy @save="save(index)">
+                                                <span style="text-decoration: underline dashed blue;">{{ role.name.toUpperCase() }}</span>
+                                            <v-text-field slot="input" v-model="role.name" :rules="[max25chars]"
+                                                label="Edit" single-line counter></v-text-field>
+                                            </v-edit-dialog>
                                         </v-list-tile-title>
                                         <v-list-tile-sub-title> Created On: {{ role.created_at }}. </v-list-tile-sub-title>
                                     </v-list-tile-content>
-                                    <v-list-tile-action>
-                                    <v-list-tile-action-text>{{role.userCount}} user(s)</v-list-tile-action-text>
-                                        <v-icon v-if="role.userCount < 0" color="red lighten-1">
+                                    <v-list-tile-action @click="modify(index, role.userCount)">
+                                        <v-list-tile-action-text>{{role.userCount}} user(s)</v-list-tile-action-text>
+                                        <v-icon v-if="!role.userCount" color="red lighten-1">
                                             delete
-                                        </v-icon>
-
-                                        <v-icon v-else color="yellow darken-2">
-                                            edit
                                         </v-icon>
                                     </v-list-tile-action>
                                 </v-list-tile>
@@ -59,15 +59,24 @@
         components: {
             VWidget
         },
-        data() {
-            return {
-                userRoles: [],
-                roleName: null,
-                selectedRoles: [],
-            };
-        },
+        data: () => ({
+            userRoles: [],
+            roleName: null,
+            selectedRoles: [],
+            max25chars: v => v.length <= 30 || 'Input too long!',
+        }),
         computed: {},
         methods: {
+            toggle (index) {
+                alert('checkbox');
+                // const i = this.selected.indexOf(index)
+
+                // if (i > -1) {
+                //     this.selected.splice(i, 1)
+                // } else {
+                //     this.selected.push(index)
+                // }
+            },
             async addRole() {
                 if (this.$data.roleName !== null) {
                     return await fetch('/graphql',
@@ -83,26 +92,56 @@
                         .then(res => res.json())
                         .then(json => {
                             this.$data.userRoles.push({
-                                id: json.data.createRole.id,
+                                userCount: 0,
                                 userInRole: false,
                                 name: this.$data.roleName,
+                                id: json.data.createRole.id,
                                 created_at: json.data.createRole.created_at
                             });
                             this.$data.roleName = null;
+                            this.$store.commit('Snackbar', {color: 'primary', text: 'Role has been successfully added.', show: true})
                         })
                         .catch(err => this.$store.commit('Snackbar', {color: 'error', text: err, show: true}));
                 } else {
                     this.$store.commit('Snackbar', {color: 'error', text: 'Role name cannot be empty.', show: true});
                 }
             },
-            toggle (index) {
-                // const i = this.selected.indexOf(index)
-
-                // if (i > -1) {
-                //     this.selected.splice(i, 1)
-                // } else {
-                //     this.selected.push(index)
-                // }
+            async modify (index, userCount) {
+                const selectedRole = this.$data.userRoles[index];
+                if (userCount <= 0) {
+                    return await fetch('/graphql',
+                    {
+                        method: 'POST',
+                        headers: {
+                            "Accept": "application/json",
+                            "Content-Type": "application/json; charset=utf-8",
+                            "Authorization": 'Token ' + sessionStorage.getItem('id_token')
+                        },
+                        body: '{"query":"mutation { deleteRole(input: {id: ' + selectedRole.id + '}) { id }}"}'
+                    })
+                        .then(res => res.json())
+                        .then(json => {
+                            this.$data.userRoles.splice(index, 1);
+                            this.$store.commit('Snackbar', {color: 'primary', text: 'Role has been successfully removed.', show: true})
+                        })
+                        .catch(err => this.$store.commit('Snackbar', {color: 'error', text: err, show: true}));
+                }
+            },
+            async save (index) {
+                const selectedRole = this.$data.userRoles[index];
+                return await fetch('/graphql',
+                {
+                    method: 'POST',
+                    headers: {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json; charset=utf-8",
+                        "Authorization": 'Token ' + sessionStorage.getItem('id_token')
+                    },
+                    body: '{"query":"mutation { updateRole(input: {id:' + selectedRole.id + ',name: \\\"' + selectedRole.name + '\\\"}) { id }}"}'
+                })
+                    .then(res => res.json())
+                    .then(json => this.$store.commit('Snackbar', {color: 'primary', text: 'Role Name has been successfully updated.', show: true}))
+                    .catch(err => this.$store.commit('Snackbar', {color: 'error', text: err, show: true}));
             }
         },
         created() {
@@ -110,9 +149,10 @@
             return fetch(myRequest)
                 .then(res => res.json())
                 .then(json => this.$data.userRoles = json.data.getUserRoles)
-                .catch(err => this.$store.commit('Snackbar', {color: 'error', text: 'An error occurred while setting up your profile. Kindly try again.', show: true}));
-
-            // Issue a get command to get the roles and associated permissions.
+                .catch(err => this.$store.commit('Snackbar', {color: 'error', text: err, show: true}));
+        }
+    };
+    // Issue a get command to get the roles and associated permissions.
             // query {acl{id,name,permissions{id,name,title,group,icon,component}}}
 
             // query acl {
@@ -130,6 +170,4 @@
             //     }
             //   }
             // }
-        }
-    };
 </script>

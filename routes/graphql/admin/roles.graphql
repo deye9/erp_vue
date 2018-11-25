@@ -4,8 +4,8 @@ extend type Query {
 
 extend type Mutation {
     createRole (input: CreateRoleInput!): Role @create(model: "App\\Models\\Role" flatten: true)
-    updateRole (input: UpdateRoleInput!): Role @field(resolver: "App\\Http\\GraphQL\\Mutations\\RoleMutator@update")
-    deleteRole (input: DeleteRoleInput!): Role @field(resolver: "App\\Http\\GraphQL\\Mutations\\RoleMutator@delete")
+    updateRole (input: UpdateRoleInput!): Role @update(model: "App\\Models\\Role" flatten: true)
+    deleteRole (input: DeleteRoleInput!): Role @delete(model: "App\\Models\\Role" flatten: true)
 }
 
 type Role {
@@ -26,7 +26,7 @@ input CreateRoleInput
 input UpdateRoleInput
 {
     id: ID! @rules(apply: ["required"])
-    name: String
+    name: String @rules(apply: ["required"])
 }
 
 input DeleteRoleInput {

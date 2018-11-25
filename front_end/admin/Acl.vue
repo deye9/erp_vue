@@ -3,131 +3,138 @@
     <v-container grid-list-xl fluid>
       <v-layout row wrap>
         <v-flex sm12 md12>
-            <v-widget title="Roles">
-                <div slot="widget-content" style="max-height:150px; overflow:auto;">
-                    <v-list two-line v-for="(role, index) in userRoles" :key="role.id">
-                        <v-list-tile @click="toggle(index)">
-                            <v-list-tile-action>
-                                <v-checkbox></v-checkbox>
-                            </v-list-tile-action>
-                            <v-list-tile-content>
-                                <v-list-tile-title>
-                                    {{ role.name.toUpperCase() }}
-                                </v-list-tile-title>
-                                <v-list-tile-sub-title> Created On: {{ role.created_at }}. </v-list-tile-sub-title>
-                            </v-list-tile-content>
-                            <v-list-tile-action>
-                            <v-list-tile-action-text>{{role.userCount}} user(s)</v-list-tile-action-text>
-                                <v-icon v-if="role.userCount < 0" color="red lighten-1">
-                                    delete
-                                </v-icon>
-
-                                <v-icon v-else color="yellow darken-2">
-                                    edit
-                                </v-icon>
-                            </v-list-tile-action>
-                        </v-list-tile>
-                        <v-divider></v-divider>
-                    </v-list>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" v-model="roleName" placeholder="Enter Role Name" aria-label="Enter Role Name" aria-describedby="role-button">
-                        <div class="input-group-append">
-                            <button type="button" class="btn primary" id="role-button" @click="addRole" style="color:white;">Add Role</button>
+            <v-widget title="Setup Access Control via Roles">
+                <div slot="widget-content">
+                    <v-combobox label="Select Role" autocomplete required :items="userRoles"
+                    item-text="name" item-value="id" v-model="selectedRole" return-object
+                    v-on:change="getPermissions"></v-combobox>
+                </div>
+            </v-widget>
+        </v-flex>
+        <!-- <v-flex sm5 md5>
+            <v-card>
+                <v-card-title class="d-flex justify-content-center">
+                    <h4>Role Permissions</h4>
+                </v-card-title>
+                <v-card-text>
+                    <div class="dual-list list-left col-md-5">
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text fa fa-search"></span>
+                                </div>
+                                <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
+                                <div class="input-group-append">
+                                    <a class="input-group-text btn btn-default selector" title="select all">
+                                        <i class="far fa-square"></i>
+                                    </a>
+                                </div>
+                            </div>
                         </div>
+                        <ul class="list-group in_role" style="max-height: 250px; overflow-y: scroll;"></ul>
+                    </div>
+                </v-card-text>
+            </v-card>
+        </v-flex>
+
+        <v-flex sm2 md2>
+            <v-btn color="primary" fab dark small px5>
+                <v-icon>chevron_left</v-icon>
+            </v-btn>
+            <br />
+            <v-btn color="primary" fab dark small px5>
+                <v-icon>chevron_right</v-icon>
+            </v-btn>
+        </v-flex>
+
+        <v-flex sm5 md5>
+            <v-card>
+                <v-card-title class="black--text pa-3">
+                    <h4>Available Menu's</h4>
+                </v-card-title>
+                <v-card-text>
+                    <div class="dual-list list-right col-md-5">
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <a class="input-group-text btn btn-default selector" title="select all">
+                                        <i class="far fa-square"></i>
+                                    </a>
+                                </div>
+                                <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
+                                <div class="input-group-append">
+                                    <span class="input-group-text fa fa-search"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="list-group available_users" style="max-height: 250px; overflow-y: scroll;">
+
+                        </ul>
+                    </div>
+                </v-card-text>
+            </v-card>
+        </v-flex> -->
+        <div class="main-container">
+
+            <div class="row">
+                <div class="dual-list list-left col-md-5">
+                    <div class="jumbotron">
+                        <p class="text-center"><strong id="usersTitle"> Role Permissions </strong></p>
+
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text fa fa-search"></span>
+                                </div>
+                                <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
+                                <div class="input-group-append">
+                                    <a class="input-group-text btn btn-default selector" title="select all">
+                                        <i class="far fa-square"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="list-group in_role" style="max-height: 250px; overflow-y: scroll;"></ul>
                     </div>
                 </div>
-            </v-widget>
-        </v-flex>
-        <!-- <v-flex sm12 md6 sm6>
-            <v-widget title="Permissions">
-                <div slot="widget-header-action">
-                    <v-btn fab dark small color="indigo" @click="setPermissions" :loading="loading">
-                        <v-icon>add</v-icon>
-                    </v-btn>
+
+                <div class="list-arrows col-md-1 text-center">
+                    <button class="btn bg-blue btn-sm move-left">
+                        <span class="fas fa-chevron-left"></span>
+                    </button>
+
+                    <button class="btn bg-blue btn-sm move-right">
+                        <span class="fas fa-chevron-right"></span>
+                    </button>
                 </div>
-                <div slot="widget-content">
-                <v-alert color="success" icon="new_releases" :value="true">
-                    This is a success alert with a custom icon.
-                </v-alert>
-                <v-alert color="warning" :value="true" icon="message">
-                    This is a warning alert with a custom icon.
-                </v-alert>
-                <v-alert color="info" icon="star" :value="true">
-                    This is a info alert with a custom icon.
-                </v-alert>
-                <v-alert color="error" :value="true">
-                    This is an error alert with no icon.
-                </v-alert>
+
+                <div class="dual-list list-right col-md-5">
+                    <div class="jumbotron">
+                        <p class="text-center"><strong> Available Menu's </strong></p>
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <a class="input-group-text btn btn-default selector" title="select all">
+                                        <i class="far fa-square"></i>
+                                    </a>
+                                </div>
+                                <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
+                                <div class="input-group-append">
+                                    <span class="input-group-text fa fa-search"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="list-group available_users" style="max-height: 250px; overflow-y: scroll;">
+
+                        </ul>
+                    </div>
                 </div>
-            </v-widget>
-        </v-flex>
-        <v-flex lg12>
-            <v-widget title="Users">
-                <div slot="widget-header-action">
-                    <v-btn fab dark small color="indigo" @click="registerUsers" :loading="loading">
-                        <v-icon>add</v-icon>
-                    </v-btn>
-                </div>
-                <div slot="widget-content">
-                    <v-flex lg12>
-                        <v-card>
-                            <v-toolbar card color="white">
-                            <v-text-field
-                            flat
-                            solo
-                            prepend-icon="search"
-                            placeholder="Type something"
-                            v-model="search"
-                            hide-details
-                            class="hidden-sm-and-down"
-                            ></v-text-field>
-                            <v-btn icon>
-                                <v-icon>filter_list</v-icon>
-                            </v-btn>
-                            </v-toolbar>
-                            <v-divider></v-divider>
-                            <v-card-text class="pa-0">
-                            <v-data-table
-                                :headers="complex.headers"
-                                :search="search"
-                                :items="complex.items"
-                                :rows-per-page-items="[10,25,50,{text:'All','value':-1}]"
-                                class="elevation-1"
-                                item-key="name"
-                                select-all
-                                v-model="complex.selected">
-                                <template slot="items" slot-scope="props">
-                                <td>
-                                <v-checkbox
-                                    primary
-                                    hide-details
-                                    v-model="props.selected"
-                                ></v-checkbox>
-                                </td>
-                                <td>
-                                    <v-avatar size="32">
-                                    <img :src="props.item.avatar" alt="">
-                                    </v-avatar>
-                                </td>
-                                <td>{{ props.item.name }}</td>
-                                <td>{{ props.item.email }}</td>
-                                <td>{{ props.item.phone }}</td>
-                                <td>
-                                    <v-btn depressed outline icon fab dark color="primary" small>
-                                    <v-icon>edit</v-icon>
-                                    </v-btn>
-                                    <v-btn depressed outline icon fab dark color="pink" small>
-                                    <v-icon>delete</v-icon>
-                                    </v-btn>
-                                </td>
-                                </template>
-                            </v-data-table>
-                            </v-card-text>
-                        </v-card>
-                    </v-flex>
-                </div>
-            </v-widget>
-        </v-flex> -->
+            </div>
+
+            <div class="container-controls float-right">
+                <button id="updatePermissions" name="updatePermissions" type="button" class="btn btn-info text-center"> Update Permissions </button>
+            </div>
+        </div>
       </v-layout>
     </v-container>
   </div>
@@ -149,50 +156,15 @@
         components: {
             VWidget
         },
-        data() {
-            return {
-                userRoles: [],
-                roleName: null,
-                selectedRoles: [],
-            };
-        },
+        data: () => ({
+            userRoles: [],
+            selectedRole: null,
+        }),
         computed: {},
         methods: {
-            async addRole() {
-                if (this.$data.roleName !== null) {
-                    return await fetch('/graphql',
-                    {
-                        method: 'POST',
-                        headers: {
-                            "Accept": "application/json",
-                            "Content-Type": "application/json; charset=utf-8",
-                            "Authorization": 'Token ' + sessionStorage.getItem('id_token')
-                        },
-                        body: '{"query":"mutation { createRole(input: {name: \\\"' + this.$data.roleName + '\\\"}) { id, created_at }}"}'
-                    })
-                        .then(res => res.json())
-                        .then(json => {
-                            this.$data.userRoles.push({
-                                id: json.data.createRole.id,
-                                userInRole: false,
-                                name: this.$data.roleName,
-                                created_at: json.data.createRole.created_at
-                            });
-                            this.$data.roleName = null;
-                        })
-                        .catch(err => this.$store.commit('Snackbar', {color: 'error', text: err, show: true}));
-                } else {
-                    this.$store.commit('Snackbar', {color: 'error', text: 'Role name cannot be empty.', show: true});
-                }
-            },
-            toggle (index) {
-                // const i = this.selected.indexOf(index)
-
-                // if (i > -1) {
-                //     this.selected.splice(i, 1)
-                // } else {
-                //     this.selected.push(index)
-                // }
+            getPermissions() {
+                alert(2);
+                console.log(this.$data.selectedRole);
             }
         },
         created() {
@@ -200,26 +172,22 @@
             return fetch(myRequest)
                 .then(res => res.json())
                 .then(json => this.$data.userRoles = json.data.getUserRoles)
-                .catch(err => this.$store.commit('Snackbar', {color: 'error', text: 'An error occurred while setting up your profile. Kindly try again.', show: true}));
-
-            // Issue a get command to get the roles and associated permissions.
-            // query {acl{id,name,permissions{id,name,title,group,icon,component}}}
-
-            // query acl {
-            //   acl {
-            //   	id
-            //     name
-            //     created_at
-            //     updated_at
-            //     permissions {
-            //       id
-            //       name
-            //       title
-            //       group
-            //       icon
-            //     }
-            //   }
-            // }
+                .catch(err => this.$store.commit('Snackbar', {color: 'error', text: 'An error occurred while retrieving registered Roles. Kindly try again.', show: true}));
         }
     };
 </script>
+
+<style scoped>
+    .dual-list .list-group {
+            margin-top: 8px;
+        }
+        .list-left li, .list-right li {
+            cursor: pointer;
+        }
+        .list-arrows {
+            padding-top: 100px;
+        }
+            .list-arrows button {
+                margin-bottom: 20px;
+            }
+</style>

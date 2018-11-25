@@ -29,8 +29,5 @@ class TenantDatabaseSeeder extends Seeder
         // Role::create(['name' => 'student']);
         // Role::create(['name' => 'staff']);
         // Role::create(['name' => 'hod']);
-
-        // add a default guest role
-        Role::create(['name' => 'guest']);
     }
 }

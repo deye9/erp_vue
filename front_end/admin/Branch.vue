@@ -14,7 +14,7 @@
                                 <v-form ref="form" lazy-validation>
                                     <v-layout row wrap>
                                         <v-flex sm6 lg6>
-                                            <v-text-field id="branchurl" class="tolower" :suffix="setDomain" label="Url" v-model="branch.branchUrl" :hint="`https://${tenant.companyname.toLowerCase()}_${branch.branchUrl}${setDomain}`" v-validate="'required'" data-vv-name="branchUrl" :error-messages="errors.collect('branchUrl')" required></v-text-field>
+                                            <v-text-field id="branchurl" class="tolower" :suffix="setDomain" label="Url" v-model="branch.branchUrl" :hint="`https://${this.tenant.companyname.toLowerCase()}_${branch.branchUrl}${setDomain}`" v-validate="'required'" data-vv-name="branchUrl" :error-messages="errors.collect('branchUrl')" required></v-text-field>
                                         </v-flex>
                                         <v-flex sm6 lg6>
                                             <v-text-field label="Branch Name" v-model="branch.branchName" v-validate="'required'" data-vv-name="branchName" :error-messages="errors.collect('branchName')" required></v-text-field>
