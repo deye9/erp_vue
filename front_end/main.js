@@ -80,7 +80,6 @@ const store = new Vuex.Store({
         },
         updatetenant (state, payload) {
             if (payload.sideBarOption) {
-                alert(payload.sideBarOption);
                 state.tenant.theme.sideBarOption = payload.sideBarOption;
             } else {
                 state.tenant.logo = payload.logo;

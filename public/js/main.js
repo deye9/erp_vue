@@ -16742,7 +16742,6 @@ var store = new __WEBPACK_IMPORTED_MODULE_2_vuex__["a" /* default */].Store({
         },
         updatetenant: function updatetenant(state, payload) {
             if (payload.sideBarOption) {
-                alert(payload.sideBarOption);
                 state.tenant.theme.sideBarOption = payload.sideBarOption;
             } else {
                 state.tenant.logo = payload.logo;
@@ -18625,7 +18624,7 @@ exports = module.exports = __webpack_require__(3)(false);
 
 
 // module
-exports.push([module.i, "\n#appDrawer {\n  overflow: hidden;\n}\n#appDrawer .drawer-menu--scroll {\n  height: calc(100vh - 48px);\n  overflow: auto;\n}\n", ""]);
+exports.push([module.i, "\n#appDrawer,\noverflow: hidden,\n.drawer-menu--scroll {\n  height: calc(100vh - 48px);\n  overflow: auto;\n}\n", ""]);
 
 // exports
 
@@ -18704,63 +18703,64 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'app-drawer',
-  components: {
-    VuePerfectScrollbar: __WEBPACK_IMPORTED_MODULE_1_vue_perfect_scrollbar___default.a
-  },
-  props: {
-    expanded: {
-      type: Boolean,
-      default: true
-    }
-  },
-  data: function data() {
-    return {
-      mini: false,
-      drawer: true,
-      menus: __WEBPACK_IMPORTED_MODULE_0__api_menu__["a" /* default */],
-      scrollSettings: {
-        maxScrollbarLength: 160
-      }
-    };
-  },
-  computed: {
-    computeGroupActive: function computeGroupActive() {
-      return true;
+    name: 'app-drawer',
+    components: {
+        VuePerfectScrollbar: __WEBPACK_IMPORTED_MODULE_1_vue_perfect_scrollbar___default.a
     },
-    computeLogo: function computeLogo() {
-      return this.$store.state.tenant.logo;
+    props: {
+        expanded: {
+            type: Boolean,
+            default: true
+        }
     },
-    tenant: function tenant() {
-      return this.$store.state.tenant;
-    },
-    toolBarIsDark: function toolBarIsDark() {
-      return this.tenant.theme.sideBarOption === 'dark';
-    }
-  },
-  created: function created() {
-    var _this = this;
-
-    window.getApp.$on('APP_DRAWER_TOGGLED', function () {
-      _this.drawer = !_this.drawer;
-    });
-  },
-
-  methods: {
-    genChildTarget: function genChildTarget(item, subItem) {
-      if (subItem.href) return;
-      if (subItem.component) {
+    data: function data() {
         return {
-          name: subItem.component
+            mini: false,
+            drawer: true,
+            menus: __WEBPACK_IMPORTED_MODULE_0__api_menu__["a" /* default */],
+            scrollSettings: {
+                maxScrollbarLength: 160
+            }
         };
-      }
-      return { name: item.group + '/' + subItem.name };
+    },
+    computed: {
+        computeGroupActive: function computeGroupActive() {
+            return true;
+        },
+        computeLogo: function computeLogo() {
+            return this.$store.state.tenant.logo;
+        },
+        tenant: function tenant() {
+            return this.$store.state.tenant;
+        },
+        toolBarIsDark: function toolBarIsDark() {
+            return this.tenant.theme.sideBarOption === 'dark';
+        }
+    },
+    created: function created() {
+        var _this = this;
+
+        window.getApp.$on('APP_DRAWER_TOGGLED', function () {
+            _this.drawer = !_this.drawer;
+        });
+    },
+
+    methods: {
+        genChildTarget: function genChildTarget(item, subItem) {
+            if (subItem.href) return;
+            if (subItem.component) {
+                return {
+                    name: subItem.component
+                };
+            }
+            return { name: item.group + '/' + subItem.name };
+        }
     }
-  }
 });
 
 /***/ }),
