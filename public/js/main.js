@@ -46695,7 +46695,7 @@ if (inBrowser && window.Vue) {
     component: function component(resolve) {
         __webpack_require__.e/* require */(3).then(function() { var __WEBPACK_AMD_REQUIRE_ARRAY__ = [__webpack_require__(197)]; ((resolve).apply(null, __WEBPACK_AMD_REQUIRE_ARRAY__));}.bind(this)).catch(__webpack_require__.oe);
     }
-},, {
+}, {
     path: '/admin/metadata',
     meta: {
         breadcrumb: true

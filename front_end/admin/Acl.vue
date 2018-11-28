@@ -87,9 +87,9 @@
                                                                 </v-list-tile>
                                                             </v-list-group>
                                                             <!--child item-->
-                                                            <v-list-tile @click.prevent="toggle($event, subItem)" v-else :key="i" :to="genChildTarget(item, subItem)" :href="subItem.href" :disabled="subItem.disabled" :target="subItem.target" ripple="ripple">
+                                                            <v-list-tile @click.prevent='toggle(subItem, `chk_${subItem.name.replace(/ /g,"_")}`)' v-else :key="i" :href="subItem.href" :disabled="subItem.disabled" :target="subItem.target" ripple="ripple">
                                                                 <v-list-tile-action style="margin-top:12px;">
-                                                                    <v-checkbox></v-checkbox>
+                                                                    <v-checkbox v-bind:id='`chk_${subItem.name.replace(/ /g,"_")}`'></v-checkbox>
                                                                 </v-list-tile-action>
                                                                 <v-list-tile-content>
                                                                     <v-list-tile-title><span>{{ subItem.title }}</span></v-list-tile-title>
@@ -103,9 +103,9 @@
                                                     <v-subheader v-else-if="item.header" :key="i">{{ item.header }}</v-subheader>
                                                     <v-divider v-else-if="item.divider" :key="i"></v-divider>
                                                     <!--top-level link-->
-                                                    <v-list-tile @click.prevent="toggle($event, item)" v-else :to="!item.href ? { name: item.name } : null" :href="item.href" ripple="ripple" :disabled="item.disabled" :target="item.target" rel="noopener" :key="item.name">
+                                                    <v-list-tile @click.prevent='toggle(item, `chk_${item.name.replace(/ /g,"_")}`)' v-else :href="item.href" ripple="ripple" :disabled="item.disabled" :target="item.target" rel="noopener" :key="item.name">
                                                         <v-list-tile-action style="margin-top:12px;">
-                                                            <v-checkbox></v-checkbox>
+                                                            <v-checkbox v-bind:id='`chk_${item.name.replace(/ /g,"_")}`'></v-checkbox>
                                                         </v-list-tile-action>
                                                         <v-list-tile-action v-if="item.icon">
                                                             <v-icon>{{ item.icon }}</v-icon>
@@ -156,12 +156,14 @@
         }),
         computed: {},
         methods: {
-            toggle (_item) {
-                console.log(_item);
-                event.cancelBubble = true;
-                event.preventDefault();
-                event.stopPropagation();
-                //
+            toggle (_item, _ctrl) {
+                // Check if the checkbox is checked and set the checked state.
+                const IsChecked = document.getElementById(_ctrl).checked;
+                document.getElementById(_ctrl).checked = !IsChecked; //.setAttribute('aria-checked', !IsChecked);
+
+
+                // '`chk_${subItem.name.replace(/ /g,"_")}`'
+
                 // const i = this.selected.indexOf(index)
 
                 // if (i > -1) {

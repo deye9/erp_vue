@@ -124,7 +124,7 @@ export default [
         component: function (resolve) {
             require(['../admin/Roles.vue'], resolve);
         }
-    },,
+    },
     {
         path: '/admin/metadata',
         meta: {
