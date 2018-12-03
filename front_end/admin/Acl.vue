@@ -21,11 +21,6 @@
                                                         <span class="input-group-text fa fa-search"></span>
                                                     </div>
                                                     <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
-                                                    <div class="input-group-append">
-                                                        <a class="input-group-text btn btn-default selector" title="select all">
-                                                            <i class="far fa-square"></i>
-                                                        </a>
-                                                    </div>
                                                 </div>
                                             </div>
                                             <ul class="list-group in_role" style="max-height: 250px; overflow-y: scroll;"></ul>
@@ -47,21 +42,13 @@
                                             <p class="text-center"><strong> Available Menu's </strong></p>
                                             <div class="row">
                                                 <div class="input-group mb-3">
-                                                    <div class="input-group-prepend">
-                                                        <a class="input-group-text btn btn-default selector" title="select all">
-                                                            <i class="far fa-square"></i>
-                                                        </a>
-                                                    </div>
-                                                    <input type="text" name="SearchDualList" class="form-control" placeholder="search" />
+                                                    <input type="text" id="SearchDualList" @keyup="SearchList('SearchDualList', '.available_menus');" class="form-control" placeholder="search" />
                                                     <div class="input-group-append">
                                                         <span class="input-group-text fa fa-search"></span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!-- <ul class="list-group available_users" style="max-height: 250px; overflow-y: scroll;">
-
-                                            </ul> -->
-                                            <v-list dense expand style="max-height: 250px; overflow-y: scroll;">
+                                            <v-list dense expand class="available_menus" style="max-height: 250px; overflow-y: scroll;">
                                                 <template v-for="(item, i) in menus">
                                                     <!--group with subitems-->
                                                     <v-list-group v-if="item.items" :key="item.name" :group="item.group" :prepend-icon="item.icon" no-action="no-action">
@@ -87,7 +74,7 @@
                                                                 </v-list-tile>
                                                             </v-list-group>
                                                             <!--child item-->
-                                                            <v-list-tile @click.prevent='toggle(subItem, `chk_${subItem.name.replace(/ /g,"_")}`)' v-else :key="i" :href="subItem.href" :disabled="subItem.disabled" :target="subItem.target" ripple="ripple">
+                                                            <v-list-tile :title="subItem.title" @click.prevent='toggle(subItem, `chk_${subItem.name.replace(/ /g,"_")}`)' v-else :key="i" :href="subItem.href" :disabled="subItem.disabled" :target="subItem.target" ripple="ripple">
                                                                 <v-list-tile-action style="margin-top:12px;">
                                                                     <v-checkbox v-bind:id='`chk_${subItem.name.replace(/ /g,"_")}`'></v-checkbox>
                                                                 </v-list-tile-action>
@@ -103,7 +90,7 @@
                                                     <v-subheader v-else-if="item.header" :key="i">{{ item.header }}</v-subheader>
                                                     <v-divider v-else-if="item.divider" :key="i"></v-divider>
                                                     <!--top-level link-->
-                                                    <v-list-tile @click.prevent='toggle(item, `chk_${item.name.replace(/ /g,"_")}`)' v-else :href="item.href" ripple="ripple" :disabled="item.disabled" :target="item.target" rel="noopener" :key="item.name">
+                                                    <v-list-tile :title="item.title" @click.prevent='toggle(item, `chk_${item.name.replace(/ /g,"_")}`)' v-else :href="item.href" ripple="ripple" :disabled="item.disabled" :target="item.target" rel="noopener" :key="item.name">
                                                         <v-list-tile-action style="margin-top:12px;">
                                                             <v-checkbox v-bind:id='`chk_${item.name.replace(/ /g,"_")}`'></v-checkbox>
                                                         </v-list-tile-action>
@@ -154,14 +141,23 @@
             userRoles: [],
             selectedRole: null,
         }),
-        computed: {},
+        computed: {
+
+        },
         methods: {
             toggle (_item, _ctrl) {
-                // Check if the checkbox is checked and set the checked state.
-                const IsChecked = document.getElementById(_ctrl).checked;
-                document.getElementById(_ctrl).checked = !IsChecked; //.setAttribute('aria-checked', !IsChecked);
+                // // Check if the checkbox is checked and set the checked state.
+                // const IsChecked = document.getElementById(_ctrl).checked;
+                // document.getElementById(_ctrl).checked = !IsChecked; //.setAttribute('aria-checked', !IsChecked);
 
-
+                this.$nextTick(() => {
+                    let elt = document.getElementById(_ctrl);
+                    if(elt.checked) {
+                        document.getElementById(_ctrl).checked = false;
+                    } else {
+                        document.getElementById(_ctrl).checked = true;
+                    }
+                });
                 // '`chk_${subItem.name.replace(/ /g,"_")}`'
 
                 // const i = this.selected.indexOf(index)
@@ -171,6 +167,39 @@
                 // } else {
                 //     this.selected.push(index)
                 // }
+            },
+             titleCase (str) {
+                return str.toLowerCase().split(' ').map(function(word) {
+                    return (word.charAt(0).toUpperCase() + word.slice(1));
+                }).join(' ');
+            },
+            SearchList(_Ctrl, searchIn) {
+                const searchText = this.titleCase(document.getElementById(_Ctrl).value);
+
+                // Get all objects within the container we are searching.
+                const container = document.querySelector(searchIn);
+
+                // Place all Anchors inside an Array using the Array Spread Operator
+                const anchorContainer = [...container.querySelectorAll("div > a")];
+
+                // Show all elements.
+                anchorContainer.forEach(filter => {
+                    filter.parentElement.style.display = "block";
+                });
+
+                // Get all Valid and Invalid Anchors
+                const valid = anchorContainer.filter(anchors => anchors.title.includes(searchText));
+                const invalid = anchorContainer.filter(anchors => anchors.title.indexOf(searchText) === -1);
+
+                // Hide all anchors that don't match.
+                invalid.forEach(filter => {
+                    filter.parentElement.style.display = "none";
+                    // v-list__group__header v-list__group__header--active
+                    // if (!filter.parentElement.parentElement.className.includes(searchIn.replace('.','')))
+                    // {
+                    //     filter.parentElement.parentElement.style.display = "none";
+                    // }
+                });
             },
             getPermissions() {
                 console.log(this.$data.selectedRole);
