@@ -28,11 +28,11 @@
                                     </div>
 
                                     <div class="list-arrows col-md-1 text-center">
-                                        <button class="btn move-left primary" fab dark small>
+                                        <button class="btn move-left primary" fab dark small @click="AllocatePermissions('move-left')">
                                             <span class="fas fa-chevron-left"></span>
                                         </button>
 
-                                        <button class="btn move-right primary" fab dark small>
+                                        <button class="btn move-right primary" fab dark small @click="AllocatePermissions('move-right')">
                                             <span class="fas fa-chevron-right"></span>
                                         </button>
                                     </div>
@@ -141,9 +141,7 @@
             userRoles: [],
             selectedRole: null,
         }),
-        computed: {
-
-        },
+        computed: { },
         methods: {
             toggle (_item, _ctrl) {
                 // // Check if the checkbox is checked and set the checked state.
@@ -194,12 +192,36 @@
                 // Hide all anchors that don't match.
                 invalid.forEach(filter => {
                     filter.parentElement.style.display = "none";
-                    // v-list__group__header v-list__group__header--active
-                    // if (!filter.parentElement.parentElement.className.includes(searchIn.replace('.','')))
-                    // {
-                    //     filter.parentElement.parentElement.style.display = "none";
-                    // }
+
+                    // Hide all elements based on ClassName.
+                    if (filter.parentElement.parentElement.className === 'v-list__group__items v-list__group__items--no-action')
+                    {
+                        filter.parentElement.parentElement.parentElement.style.display = "none";
+                    }
                 });
+
+                // Display all valid Anchors.
+                valid.forEach(filter => {
+                    filter.parentElement.style.display = "block";
+                    filter.parentElement.parentElement.parentElement.style.display = "block";
+                });
+
+                document.getElementsByClassName('v-list available_menus v-list--dense theme--light')[0].style.dispay = "block";
+            },
+            AllocatePermissions(_Direction) {
+                // move-right, move-right
+                // $('.list-arrows button').click(function () {
+                //     var $button = $(this), actives = '';
+                //     if ($button.hasClass('move-left')) {
+                //         actives = $('.list-right ul li.active');
+                //         actives.clone().appendTo('.list-left ul');
+                //         actives.remove();
+                //     } else if ($button.hasClass('move-right')) {
+                //         actives = $('.list-left ul li.active');
+                //         actives.clone().appendTo('.list-right ul');
+                //         actives.remove();
+                //     }
+                // });
             },
             getPermissions() {
                 console.log(this.$data.selectedRole);

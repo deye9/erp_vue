@@ -50,10 +50,9 @@ if (mix.inProduction()) {
                 '/Users/andelatsm/.valet/Certificates/erp.dev.crt'
         },
         open: 'external',
-        notify: false,
+        notify: true,
         reload: true,
         reloadOnRestart: true,
-        // reloadDelay: 10000, // Delay for 10 seconds before reloading / injecting the file change event.
         proxyReq: [
             function(proxyReq) {
                 proxyReq.setHeader('Access-Control-Allow-Origin', '*');
