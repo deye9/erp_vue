@@ -28,7 +28,7 @@
                                     </div>
 
                                     <div class="list-arrows col-md-1 text-center">
-                                        <button class="btn move-left primary" fab dark small @click="AllocatePermissions('move-left')">
+                                        <button class="btn move-left primary" fab dark small @click="AllocatePermissions('move-left', '.available_menus')">
                                             <span class="fas fa-chevron-left"></span>
                                         </button>
 
@@ -76,7 +76,7 @@
                                                             <!--child item-->
                                                             <v-list-tile :title="subItem.title" @click.prevent='toggle(subItem, `chk_${subItem.name.replace(/ /g,"_")}`)' v-else :key="i" :href="subItem.href" :disabled="subItem.disabled" :target="subItem.target" ripple="ripple">
                                                                 <v-list-tile-action style="margin-top:12px;">
-                                                                    <v-checkbox v-bind:id='`chk_${subItem.name.replace(/ /g,"_")}`'></v-checkbox>
+                                                                    <v-checkbox v-bind:id='`chk_${subItem.name.replace(/ /g,"_")}`' :data-menu="subItem.title" :data-parent="item.title"></v-checkbox>
                                                                 </v-list-tile-action>
                                                                 <v-list-tile-content>
                                                                     <v-list-tile-title><span>{{ subItem.title }}</span></v-list-tile-title>
@@ -92,7 +92,7 @@
                                                     <!--top-level link-->
                                                     <v-list-tile :title="item.title" @click.prevent='toggle(item, `chk_${item.name.replace(/ /g,"_")}`)' v-else :href="item.href" ripple="ripple" :disabled="item.disabled" :target="item.target" rel="noopener" :key="item.name">
                                                         <v-list-tile-action style="margin-top:12px;">
-                                                            <v-checkbox v-bind:id='`chk_${item.name.replace(/ /g,"_")}`'></v-checkbox>
+                                                            <v-checkbox v-bind:id='`chk_${item.name.replace(/ /g,"_")}`' :data-menu="item.title" data-parent="self"></v-checkbox>
                                                         </v-list-tile-action>
                                                         <v-list-tile-action v-if="item.icon">
                                                             <v-icon>{{ item.icon }}</v-icon>
@@ -208,8 +208,14 @@
 
                 document.getElementsByClassName('v-list available_menus v-list--dense theme--light')[0].style.dispay = "block";
             },
-            AllocatePermissions(_Direction) {
-                // move-right, move-right
+            AllocatePermissions(_Direction, searchIn) {
+                if (_Direction.toLowerCase() === 'move-left') {
+                    var chkBoxes = document.querySelectorAll('[aria-checked="true"]');
+                    console.log(chkBoxes);
+                } else if(_Direction.toLowerCase() === 'move-right') {
+
+                }
+                // move-right, move-left
                 // $('.list-arrows button').click(function () {
                 //     var $button = $(this), actives = '';
                 //     if ($button.hasClass('move-left')) {
@@ -234,6 +240,7 @@
                         name: subItem.component,
                     };
                 }
+
                 return { name: `${item.group}/${(subItem.name)}` };
             },
         },
